@@ -472,6 +472,10 @@
     0 30px 60px -22px rgba(0, 0, 0, 0.65),
     0 14px 34px -14px rgba(232, 84, 10, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  /* Skip rendering + animation work when off-screen. Cuts main-thread
+     style/layout cost by an order of magnitude during page load. */
+  content-visibility: auto;
+  contain-intrinsic-size: 400px 380px;
 }
 .mock-code__tabs {
   display: flex;
@@ -590,6 +594,8 @@
     0 30px 60px -22px rgba(0, 0, 0, 0.65),
     0 14px 34px -14px rgba(232, 84, 10, 0.18);
   padding: 0;
+  content-visibility: auto;
+  contain-intrinsic-size: 400px 380px;
 }
 .mock-chat__head {
   display: flex;
@@ -739,6 +745,8 @@
    ============================================================ */
 .split-image-mock--turn {
   position: relative;
+  content-visibility: auto;
+  contain-intrinsic-size: 400px 380px;
   background:
     radial-gradient(60% 60% at 75% 35%, rgba(232, 84, 10, 0.16), transparent 65%),
     radial-gradient(70% 60% at 20% 80%, rgba(80, 40, 20, 0.36), transparent 60%),
@@ -1697,11 +1705,11 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-on-light-secondary);
+  color: #5A5A5A;
   padding: 6px 10px;
-  border: 1px solid var(--border-light);
+  border: 1px solid rgba(0, 0, 0, 0.16);
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.015);
+  background: rgba(0, 0, 0, 0.035);
 }
 
 /* Responsive */

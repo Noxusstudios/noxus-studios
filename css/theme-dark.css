@@ -537,6 +537,16 @@
   border-color: rgba(184, 63, 0, 0.40);
   background: rgba(184, 63, 0, 0.06);
 }
+:root:not(.dark) .bento-wide-meta {
+  color: var(--text-on-light-secondary);
+}
+:root:not(.dark) .bento-wide-headline,
+:root:not(.dark) .bento-wide-headline em {
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .bento-wide-headline em {
+  color: var(--orange-on-light);
+}
 
 /* ============================================================
    SERVICES — light-mode overrides (svc-tiers / svc-design / svc-retainers)
