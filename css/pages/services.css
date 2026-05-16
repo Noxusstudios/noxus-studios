@@ -1,0 +1,931 @@
+/* ============================================================
+   NOXUS — services.css
+   Services page (per spec Step 4)
+   ============================================================ */
+
+/* ============================================================
+   HERO — light, smaller than home
+   ============================================================ */
+
+.services-hero {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 15% 85%, #D4B5A8 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 15%, #EDD8CC 0%, transparent 50%),
+    #F0E6DF;
+  padding: 180px 40px 100px;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.services-hero__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 60px;
+}
+
+.services-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(72px, 11vw, 160px);
+  letter-spacing: -0.045em;
+  line-height: 0.86;
+  text-transform: uppercase;
+  color: var(--black);
+  margin: 0;
+}
+
+.services-hero__sub {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+.services-hero__rule {
+  width: 40px; height: 1px;
+  background: rgba(0, 0, 0, 0.30);
+  flex-shrink: 0;
+}
+.services-hero__sub-text {
+  font-family: var(--font-ui);
+  font-size: clamp(13px, 1.5vw, 17px);
+  color: var(--text-on-light-secondary);
+}
+
+.services-hero__meta {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-self: end;
+}
+.services-hero__meta-row {
+  display: flex; gap: 28px;
+  justify-content: flex-end;
+}
+.services-hero__meta-cell {
+  text-align: right;
+}
+.services-hero__meta-num {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 36px);
+  color: var(--black);
+  line-height: 1;
+}
+.services-hero__meta-lbl {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-on-light-secondary);
+  margin-top: 4px;
+}
+
+.services-hero__double-slash {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--text-on-light-secondary);
+  margin-bottom: 6px;
+}
+.services-hero__desc {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--text-on-light-primary);
+  line-height: 1.7;
+  max-width: 36ch;
+  margin: 0;
+}
+
+
+/* ============================================================
+   CTA SECTION — final push
+   ============================================================ */
+
+.svc-cta {
+  background: var(--black);
+  color: white;
+  padding: 100px 40px;
+  text-align: center;
+}
+.svc-cta__title {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 9vw, 120px);
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+  text-transform: uppercase;
+  color: white;
+  margin: 0;
+}
+.svc-cta__title em {
+  font-family: var(--font-ui);
+  font-style: italic;
+  color: var(--orange);
+  font-size: 0.5em;
+  vertical-align: 0.3em;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  margin-left: 8px;
+}
+.svc-cta__sub {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-on-dark-secondary);
+  margin: 24px 0 36px;
+}
+.svc-cta__row {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.svc-cta__price {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: white;
+}
+.svc-cta__price small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-on-dark-muted);
+  margin-bottom: 2px;
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .services-hero { padding: 140px 24px 60px; min-height: auto; }
+  .services-hero__inner { grid-template-columns: 1fr; gap: 36px; }
+  .services-hero__meta { text-align: left; }
+  .services-hero__meta-row { justify-content: flex-start; }
+  .services-hero__meta-cell { text-align: left; }
+
+  .svc-cta { padding: 64px 24px; }
+}
+
+/* ============================================================
+   SVC-TIERS — full pricing cards (Builds + Retainers)
+   ============================================================ */
+
+.svc-tiers,
+.svc-retainers {
+  background: var(--dark-bg);
+  padding: 80px 40px;
+  color: white;
+}
+
+.svc-tiers__top,
+.svc-retainers__top,
+.svc-design__top {
+  max-width: 1280px;
+  margin: 0 auto 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.svc-tiers__eyebrow,
+.svc-retainers__eyebrow,
+.svc-design__eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: var(--text-on-dark-secondary);
+  line-height: 1.6;
+}
+
+.svc-tiers__heading,
+.svc-retainers__heading,
+.svc-design__heading {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: white;
+  margin: 0;
+  max-width: 800px;
+}
+.svc-tiers__heading em,
+.svc-retainers__heading em,
+.svc-design__heading em {
+  font-style: italic;
+  color: var(--orange);
+}
+.svc-tiers__cur-note {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--text-on-light-muted);
+  margin: 14px 0 0;
+  align-self: flex-end;
+}
+:root.dark .svc-tiers__cur-note {
+  color: rgba(232, 220, 203, 0.55);
+}
+@media (max-width: 900px) {
+  .svc-tiers__cur-note {
+    align-self: flex-start;
+    margin-top: 12px;
+  }
+}
+
+.svc-tier-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* Retainers re-uses .svc-tier-grid but only has 3 cards — override to keep
+   them centered in a 3-col layout. */
+.svc-retainers .svc-tier-grid {
+  max-width: 1080px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.svc-tier {
+  position: relative;
+  background: var(--dark-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition:
+    box-shadow 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Non-featured: outer glow appears on hover/tap */
+.svc-tier:hover,
+.svc-tier:active,
+.svc-tier:focus-visible {
+  border-color: rgba(232, 84, 10, 0.5);
+  box-shadow:
+    0 0 0 1px rgba(232, 84, 10, 0.3),
+    0 0 20px 4px rgba(232, 84, 10, 0.15),
+    0 0 40px 8px rgba(232, 84, 10, 0.06);
+}
+.svc-tier { -webkit-tap-highlight-color: transparent; }
+
+/* Featured: always-on outer glow */
+.svc-tier.is-featured {
+  border-color: rgba(232, 84, 10, 0.6);
+  box-shadow:
+    0 0 0 1px rgba(232, 84, 10, 0.4),
+    0 0 24px 6px rgba(232, 84, 10, 0.18),
+    0 0 48px 12px rgba(232, 84, 10, 0.07);
+}
+
+.svc-tier.is-featured:hover,
+.svc-tier.is-featured:active,
+.svc-tier.is-featured:focus-visible {
+  box-shadow:
+    0 0 0 1px rgba(232, 84, 10, 0.5),
+    0 0 28px 8px rgba(232, 84, 10, 0.22),
+    0 0 56px 14px rgba(232, 84, 10, 0.09);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-tier { transition: none; }
+}
+
+.svc-tier__badge {
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  background: var(--orange);
+  color: white;
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 100px;
+}
+
+.svc-tier__eyebrow {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.svc-tier__price {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px 0 14px;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.svc-tier__price-amount {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 44px);
+  color: white;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.svc-tier__price-unit {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-on-dark-muted);
+}
+
+.svc-tier__tag {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-on-dark-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.svc-tier__features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.svc-tier__features li {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.5;
+  padding-left: 18px;
+  position: relative;
+}
+
+.svc-tier__features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.svc-tier__cta {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: white;
+  background: var(--orange);
+  padding: 14px 20px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 80ms;
+  margin-top: 8px;
+}
+
+.svc-tier__cta:hover,
+.svc-tier__cta:active,
+.svc-tier__cta:focus-visible { background: var(--orange-hover); }
+.svc-tier__cta { -webkit-tap-highlight-color: transparent; }
+
+.svc-tiers__disclaimer {
+  max-width: 1280px;
+  margin: 32px auto 0;
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-on-dark-muted);
+  text-align: center;
+}
+
+/* ============================================================
+   SVC-DESIGN — design services grid (5 items, scoped per project)
+   ============================================================ */
+
+.svc-design {
+  background: var(--dark-bg);
+  padding: 80px 40px;
+  color: white;
+  border-top: 1px solid var(--border-dark);
+}
+
+.svc-design-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.svc-design-item {
+  position: relative;
+  background: var(--dark-surface);
+  border: 1px solid var(--border-dark);
+  border-radius: 12px;
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 260px;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 380ms cubic-bezier(0.32, 0.72, 0, 1),
+    border-color 380ms cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 380ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.svc-design-item:hover,
+.svc-design-item:focus-within {
+  transform: translateY(-3px);
+  border-color: rgba(232, 84, 10, 0.35);
+  box-shadow:
+    0 18px 38px -22px rgba(0, 0, 0, 0.6),
+    0 6px 18px -8px rgba(232, 84, 10, 0.22);
+}
+
+/* Per-card subtle surface accent — varied subtly within single-orange rule */
+.svc-design-item--1::before,
+.svc-design-item--3::before,
+.svc-design-item--5::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+}
+.svc-design-item--1::before {
+  inset: 0;
+  background: radial-gradient(70% 60% at 100% 0%, rgba(232, 84, 10, 0.06), transparent 65%);
+}
+.svc-design-item--3::before {
+  inset: 0;
+  background: radial-gradient(60% 50% at 0% 100%, rgba(232, 84, 10, 0.05), transparent 60%);
+}
+.svc-design-item--5::before {
+  inset: 0;
+  background:
+    radial-gradient(55% 45% at 100% 100%, rgba(232, 84, 10, 0.05), transparent 60%),
+    radial-gradient(45% 35% at 0% 0%,    rgba(232, 84, 10, 0.04), transparent 60%);
+}
+
+.svc-design-item__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.svc-design-item__num {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--orange);
+  padding-top: 6px;
+}
+
+.svc-design-item__illus {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  color: var(--orange);
+  transition: transform 420ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.svc-design-item:hover .svc-design-item__illus {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+.svc-design-item__name {
+  font-family: var(--font-ui);
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.svc-design-item__desc {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--text-on-dark-secondary);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+
+.svc-design-item__cta {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--orange);
+  text-decoration: none;
+  transition: color 80ms;
+}
+
+.svc-design-item__cta:hover,
+.svc-design-item__cta:active,
+.svc-design-item__cta:focus-visible { color: var(--orange-hover); }
+.svc-design-item__cta { -webkit-tap-highlight-color: transparent; }
+
+.svc-design__disclaimer {
+  max-width: 1280px;
+  margin: 32px auto 0;
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-on-dark-muted);
+  text-align: center;
+}
+
+/* ============================================================
+   Responsive — tier cards stack at 900, design grid at 1100
+   ============================================================ */
+
+@media (max-width: 1100px) {
+  .svc-design-grid { grid-template-columns: repeat(2, 1fr); }
+  .svc-design-item { min-height: auto; }
+}
+
+@media (max-width: 1100px) {
+  .svc-tier-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .svc-tiers,
+  .svc-retainers,
+  .svc-design { padding: 56px 24px; }
+  .svc-tier-grid,
+  .svc-retainers .svc-tier-grid { grid-template-columns: 1fr; }
+  .svc-tiers__top,
+  .svc-retainers__top,
+  .svc-design__top { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 600px) {
+  .svc-design-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ============================================================
+   RETAINER CAPABILITIES (light) — 6-item grid
+   ============================================================ */
+
+.svc-caps {
+  background: var(--off-white);
+  padding: 100px 40px;
+  border-top: 1px solid var(--border-light);
+}
+.svc-caps__top {
+  max-width: 1280px;
+  margin: 0 auto 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+.svc-caps__eyebrow {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--orange);
+  line-height: 1.5;
+  flex: 0 0 auto;
+  padding-top: 8px;
+}
+.svc-caps__heading {
+  flex: 1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--text-on-light-primary);
+  max-width: 800px;
+}
+.svc-caps__heading em {
+  font-style: italic;
+  color: var(--orange);
+}
+.svc-caps__grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border-light);
+  border: 1px solid var(--border-light);
+}
+.svc-cap {
+  background: var(--off-white);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 220ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.svc-cap__num {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+.svc-cap__title {
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--text-on-light-primary);
+}
+.svc-cap__body {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-on-light-secondary);
+}
+
+/* Dark mode override — flip cream surface to dark cream-on-dark */
+:root.dark .svc-caps {
+  background: var(--dark-bg);
+  border-top-color: var(--border-dark);
+}
+:root.dark .svc-caps__heading { color: var(--text-on-dark-primary); }
+:root.dark .svc-caps__grid {
+  background: var(--border-dark);
+  border-color: var(--border-dark);
+}
+:root.dark .svc-cap { background: var(--dark-bg); }
+:root.dark .svc-cap__title { color: var(--text-on-dark-primary); }
+:root.dark .svc-cap__body { color: rgba(232, 220, 203, 0.65); }
+
+
+/* ============================================================
+   TECHNOLOGIES (dark) — live constellation with data-flow pulses
+
+   Each tool is a node, each line shows a real working pairing
+   (Shopify ⇄ React/Next.js = headless stack, Node ⇄ Bun/Express,
+   n8n ⇄ Node/Go/Python automation loop, etc).
+
+   A small orange dot travels each line continuously — feels like
+   data flowing through the network. Hover a node to focus its
+   connections (everything else dims).
+   ============================================================ */
+
+.svc-tech {
+  background: var(--dark-bg);
+  padding: 100px 40px;
+  color: var(--text-on-dark-primary);
+}
+.svc-tech__top {
+  max-width: 1280px;
+  margin: 0 auto 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+.svc-tech__eyebrow {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--orange);
+  line-height: 1.5;
+  flex: 0 0 auto;
+  padding-top: 8px;
+}
+.svc-tech__heading {
+  flex: 1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--text-on-dark-primary);
+  max-width: 800px;
+}
+.svc-tech__heading em {
+  font-style: italic;
+  color: var(--orange);
+}
+
+/* --- Stage + SVG -------------------------------------------- */
+.svc-tech__stage {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+.svc-tech__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* --- Links --------------------------------------------------- */
+.svc-tech__link {
+  stroke: rgba(232, 220, 203, 0.16);
+  stroke-width: 1;
+  fill: none;
+  transition:
+    stroke 320ms cubic-bezier(0.32, 0.72, 0, 1),
+    stroke-width 320ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.svc-tech__link.is-active {
+  stroke: var(--orange);
+  stroke-width: 1.5;
+}
+.svc-tech__link.is-dimmed { opacity: 0.08; }
+
+/* --- Pulses (injected by tech-constellation.js) ------------- */
+.svc-tech__pulse {
+  fill: var(--orange);
+  filter: drop-shadow(0 0 4px rgba(232, 84, 10, 0.55));
+  opacity: 0.85;
+  transition: opacity 280ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.svc-tech__link-group.is-dimmed .svc-tech__pulse { opacity: 0.12; }
+.svc-tech__link-group.is-active .svc-tech__pulse {
+  opacity: 1;
+  filter: drop-shadow(0 0 7px rgba(232, 84, 10, 0.9));
+}
+
+/* --- Nodes --------------------------------------------------- */
+.svc-tech__node { cursor: pointer; }
+.svc-tech__node-bg {
+  fill: var(--dark-bg);
+  stroke: var(--border-dark);
+  stroke-width: 1;
+  transition:
+    stroke 320ms cubic-bezier(0.32, 0.72, 0, 1),
+    fill 320ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.svc-tech__node-label {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  fill: var(--text-on-dark-primary);
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+  transition: fill 320ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.svc-tech__node.is-active .svc-tech__node-bg {
+  fill: rgba(232, 84, 10, 0.14);
+  stroke: var(--orange);
+  stroke-width: 1.6;
+}
+.svc-tech__node.is-active .svc-tech__node-label { fill: var(--orange); }
+.svc-tech__node.is-dimmed .svc-tech__node-bg { opacity: 0.25; }
+.svc-tech__node.is-dimmed .svc-tech__node-label { opacity: 0.35; }
+
+/* --- Hint ---------------------------------------------------- */
+.svc-tech__hint {
+  max-width: 1280px;
+  margin: 32px auto 0;
+  font-family: 'JetBrains Mono', 'SF Mono', 'Cascadia Mono', Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(232, 220, 203, 0.45);
+  text-align: center;
+}
+
+/* --- Light mode override ------------------------------------
+   Flips the always-dark constellation to a cream surface with
+   dark text + dark connection lines + lighter node fills.
+   Orange pulses and orange active-state stay the same — they
+   work on both backgrounds. */
+:root:not(.dark) .svc-tech {
+  background: #E8DCCB;
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .svc-tech__heading { color: var(--text-on-light-primary); }
+:root:not(.dark) .svc-tech__link {
+  stroke: rgba(0, 0, 0, 0.16);
+}
+:root:not(.dark) .svc-tech__node-bg {
+  fill: #F5EDE6;
+  stroke: var(--border-light);
+}
+:root:not(.dark) .svc-tech__node-label { fill: var(--text-on-light-primary); }
+:root:not(.dark) .svc-tech__node.is-active .svc-tech__node-bg {
+  fill: rgba(232, 84, 10, 0.10);
+  stroke: var(--orange);
+}
+:root:not(.dark) .svc-tech__node.is-active .svc-tech__node-label { fill: var(--orange); }
+:root:not(.dark) .svc-tech__hint {
+  color: var(--text-on-light-muted);
+}
+
+/* --- Mobile categorized list (replaces constellation on narrow) --- */
+.svc-tech__list { display: none; }
+.svc-tech__cat-title {
+  margin: 0 0 12px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.svc-tech__cat-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.svc-tech__cat-tags > span {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border: 1px solid var(--border-dark);
+  border-radius: 9999px;
+  background: rgba(232, 220, 203, 0.04);
+  color: var(--text-on-dark-primary);
+}
+/* Light-mode variant for the mobile list tags — matches the
+   :root:not(.dark) flip of the section above. */
+:root:not(.dark) .svc-tech__cat-tags > span {
+  border-color: var(--border-light);
+  background: #F5EDE6;
+  color: var(--text-on-light-primary);
+}
+
+/* --- Responsive --------------------------------------------- */
+@media (max-width: 1100px) {
+  .svc-caps__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .svc-caps,
+  .svc-tech { padding: 64px 24px; }
+  .svc-caps__top,
+  .svc-tech__top { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+  /* At ≤900px the constellation's 33 nodes shrink to unreadable text
+     if we let the viewBox auto-scale. Swap to a categorized list
+     view — same tools, grouped by workload, perfectly scannable
+     on a phone. The constellation hover/pulse storytelling is
+     desktop-only behavior. */
+  .svc-tech__svg { display: none; }
+  .svc-tech__list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  .svc-tech__hint { display: none; }
+}
+@media (max-width: 600px) {
+  .svc-caps__grid { grid-template-columns: 1fr; }
+  .svc-cap { padding: 28px 24px; }
+  .svc-tech__list { gap: 22px; }
+  .svc-tech__cat-tags > span { font-size: 12px; padding: 7px 12px; }
+}
+

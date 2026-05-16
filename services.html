@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="services.title">Services — Noxus</title>
+  <meta name="description" data-i18n="services.metaDesc" content="Hand-coded websites, design services, and monthly retainers from Noxus. Montréal-based. Builds from $500 USD." />
+<!-- Open Graph / social previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://noxusstudios.com/services.html">
+  <meta property="og:title" content="Services — Noxus">
+  <meta property="og:description" content="Hand-coded websites, design services, and monthly retainers from Noxus. Montréal-based. Builds from $500 USD.">
+  <meta property="og:image" content="https://noxusstudios.com/favicon-512.png">
+  <meta property="og:site_name" content="Noxus Studios">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Services — Noxus">
+  <meta name="twitter:description" content="Hand-coded websites, design services, and monthly retainers from Noxus. Montréal-based. Builds from $500 USD.">
+  <meta name="twitter:image" content="https://noxusstudios.com/favicon-512.png">
+
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/services.css">
+  <link rel="stylesheet" href="css/theme-dark.css">
+  <script>
+    // Apply persisted theme + lang before paint to avoid FOUC.
+    (function () {
+      try {
+        var t = localStorage.getItem('noxus-theme');
+        if (t === 'dark') document.documentElement.classList.add('dark');
+        var l = localStorage.getItem('noxus-lang');
+        if (l === 'fr' || l === 'en') document.documentElement.setAttribute('lang', l);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ====================== NAV ====================== -->
+  <header class="site-nav" id="site-nav">
+    <a href="index.html" class="nav-logo">noxus<span class="nav-logo-dot">.</span></a>
+
+    <div class="status-bar" aria-label="Studio availability">
+      <span class="status-bar__dot" aria-hidden="true"></span>
+      <span data-i18n="common.status.booking">Booking Open</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.replies">Replies within 24h</span>
+    </div>
+
+    <button class="lang-toggle" id="lang-toggle" type="button"
+            data-i18n-attr="aria-label=common.lang.aria"
+            aria-label="Switch language">
+      <span class="lang-toggle__opt is-active" data-lang="en" data-i18n="common.nav.lang.en">EN</span>
+      <span class="lang-toggle__sep" aria-hidden="true">|</span>
+      <span class="lang-toggle__opt" data-lang="fr" data-i18n="common.nav.lang.fr">FR</span>
+    </button>
+
+    <button class="theme-toggle" id="theme-toggle" type="button"
+            aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="theme-toggle-icon theme-toggle-moon" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+      <svg class="theme-toggle-icon theme-toggle-sun" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <line x1="12" y1="1" x2="12" y2="3" />
+        <line x1="12" y1="21" x2="12" y2="23" />
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+        <line x1="1" y1="12" x2="3" y2="12" />
+        <line x1="21" y1="12" x2="23" y2="12" />
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+      </svg>
+    </button>
+
+    <nav class="nav-pill is-collapsed" id="nav-pill" aria-label="Main navigation">
+      <div class="nav-pill-inner">
+        <a href="services.html" class="nav-pill-link is-active"><span data-i18n="common.nav.services">Services</span></a>
+        <a href="work.html"     class="nav-pill-link"><span data-i18n="common.nav.work">Work</span></a>
+        <a href="about.html"    class="nav-pill-link"><span data-i18n="common.nav.about">About</span></a>
+        <a href="faq.html"      class="nav-pill-link"><span data-i18n="common.nav.faq">FAQ</span></a>
+        <a href="contact.html"  class="nav-pill-link"><span data-i18n="common.nav.contact">Contact</span></a>
+      </div>
+      <span class="nav-pill-collapsed-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6"  x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </span>
+    </nav>
+  </header>
+
+  <div class="theme-curtain" id="theme-curtain" aria-hidden="true"></div>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">×</button>
+    <nav>
+      <a href="index.html"    class="nav-overlay-link" data-i18n="common.nav.home">Home</a>
+      <a href="services.html" class="nav-overlay-link" data-i18n="common.nav.services">Services</a>
+      <a href="work.html"     class="nav-overlay-link" data-i18n="common.nav.work">Work</a>
+      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
+      <a href="faq.html"      class="nav-overlay-link" data-i18n="common.nav.faq">FAQ</a>
+      <a href="contact.html"  class="nav-overlay-link" data-i18n="common.nav.contact">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- ====================== HERO ====================== -->
+    <section class="services-hero has-grain" data-theme="light" style="--grain-opacity: 0.085;">
+      <div class="hero-paths" aria-hidden="true"></div>
+      <div class="services-hero__inner">
+        <div>
+          <h1 class="services-hero__title" data-i18n="services.hero.title">SERVICES.</h1>
+          <div class="services-hero__sub">
+            <span class="services-hero__rule"></span>
+            <span class="services-hero__sub-text" data-i18n="services.hero.subtitle">Builds. Design. Retainers.</span>
+          </div>
+          <div style="margin-top: 28px;">
+            <div class="services-hero__double-slash">//</div>
+            <p class="services-hero__desc" data-i18n="services.hero.desc" data-i18n-html>
+              Hand-coded websites, design services, and ongoing partnerships — scoped to what you actually need.
+            </p>
+          </div>
+        </div>
+        <div class="services-hero__meta">
+          <div class="services-hero__meta-row">
+            <div class="services-hero__meta-cell">
+              <div class="services-hero__meta-num" data-i18n="services.hero.meta.tracksNum">03</div>
+              <div class="services-hero__meta-lbl" data-i18n="services.hero.meta.tracksLbl">Tracks</div>
+            </div>
+            <div class="services-hero__meta-cell">
+              <div class="services-hero__meta-num" data-i18n="services.hero.meta.startNum">$500 USD</div>
+              <div class="services-hero__meta-lbl" data-i18n="services.hero.meta.startLbl">Starter</div>
+            </div>
+            <div class="services-hero__meta-cell">
+              <div class="services-hero__meta-num" data-i18n="services.hero.meta.turnNum">4-7d</div>
+              <div class="services-hero__meta-lbl" data-i18n="services.hero.meta.turnLbl">Turnaround</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="contact.html" class="btn-bar hero-cta-bar" data-i18n="common.reserveBuild">Reserve Your Build</a>
+    </section>
+
+    <!-- ====================== ONE-TIME BUILDS ====================== -->
+    <section class="svc-tiers" data-theme="dark" id="builds">
+      <div class="svc-tiers__top">
+        <div>
+          <div class="svc-tiers__eyebrow" data-i18n="services.tiers.eyebrow" data-i18n-html>One-time<br>builds</div>
+        </div>
+        <h2 class="svc-tiers__heading" data-i18n="services.tiers.heading" data-i18n-html>
+          Pick the depth. <em>Same operator at every tier.</em>
+        </h2>
+        <p class="svc-tiers__cur-note" data-i18n="services.tiers.curNote">All prices in USD</p>
+      </div>
+
+      <div class="svc-tier-grid">
+
+        <article class="svc-tier reveal" style="transition-delay: 0ms">
+          <div class="svc-tier__eyebrow" data-i18n="services.tier1.label">/ 01 Starter</div>
+          <div class="svc-tier__price">
+            <span class="svc-tier__price-amount" data-i18n="services.tier1.amount">$500 USD</span>
+            <span class="svc-tier__price-unit" data-i18n="services.tier1.unit">one-time</span>
+          </div>
+          <p class="svc-tier__tag" data-i18n="services.tier1.tag">Fast landing page for leads, bookings, or launch validation.</p>
+          <ul class="svc-tier__features">
+            <li data-i18n="services.tier1.feat1">Hand-coded landing page</li>
+            <li data-i18n="services.tier1.feat2">Mobile-first responsive design</li>
+            <li data-i18n="services.tier1.feat3">SEO-optimized codebase</li>
+            <li data-i18n="services.tier1.feat4">Contact form integration</li>
+            <li data-i18n="services.tier1.feat5">Google Business Profile setup</li>
+            <li data-i18n="services.tier1.feat6">2 revision rounds</li>
+            <li data-i18n="services.tier1.feat7">14-day post-launch support</li>
+            <li data-i18n="services.tier1.feat9">Delivered in 4-7 days</li>
+          </ul>
+          <a href="contact.html" class="svc-tier__cta" data-i18n="services.tier1.cta">Reserve Starter →</a>
+        </article>
+
+        <article class="svc-tier is-featured reveal" style="transition-delay: 100ms">
+          <div class="svc-tier__badge" data-i18n="services.tier2.badge">Most Popular</div>
+          <div class="svc-tier__eyebrow" data-i18n="services.tier2.label">/ 02 Custom Build</div>
+          <div class="svc-tier__price">
+            <span class="svc-tier__price-amount" data-i18n="services.tier2.amount">$2,500 – $7,500 USD</span>
+            <span class="svc-tier__price-unit" data-i18n="services.tier2.unit">project</span>
+          </div>
+          <p class="svc-tier__tag" data-i18n="services.tier2.tag">Full websites &amp; Shopify stores.</p>
+          <ul class="svc-tier__features">
+            <li data-i18n="services.tier2.feat1">Everything in Starter, plus:</li>
+            <li data-i18n="services.tier2.feat2">5–10+ custom pages</li>
+            <li data-i18n="services.tier2.feat3">CMS or Shopify integration</li>
+            <li data-i18n="services.tier2.feat4">Advanced animations &amp; interactions</li>
+            <li data-i18n="services.tier2.feat5">Analytics &amp; conversion tracking</li>
+            <li data-i18n="services.tier2.feat6">Third-party integrations</li>
+            <li data-i18n="services.tier2.feat7">Performance optimization (95+ Lighthouse)</li>
+            <li data-i18n="services.tier2.feat9">Delivered in 5–7 days</li>
+          </ul>
+          <a href="contact.html" class="svc-tier__cta" data-i18n="services.tier2.cta">Reserve Custom →</a>
+        </article>
+
+        <article class="svc-tier reveal" style="transition-delay: 200ms">
+          <div class="svc-tier__eyebrow" data-i18n="services.tier3.label">/ 03 Pro</div>
+          <div class="svc-tier__price">
+            <span class="svc-tier__price-amount" data-i18n="services.tier3.amount">$5,000 USD</span>
+            <span class="svc-tier__price-unit" data-i18n="services.tier3.unit">launch pack</span>
+          </div>
+          <p class="svc-tier__tag" data-i18n="services.tier3.tag">Launch as a real operator. Site, community, and foundations in one drop.</p>
+          <ul class="svc-tier__features">
+            <li data-i18n="services.tier3.feat1">Hand-coded 1–3 page site</li>
+            <li data-i18n="services.tier3.feat2">Discord server setup (roles, channels, bots)</li>
+            <li data-i18n="services.tier3.feat3">SEO foundation + Google Business setup</li>
+            <li data-i18n="services.tier3.feat4">Brand mark + palette + type system</li>
+            <li data-i18n="services.tier3.feat5">1-page brand usage guide</li>
+            <li data-i18n="services.tier3.feat6">Mobile-first responsive</li>
+            <li data-i18n="services.tier3.feat8">Delivered in 7–10 days</li>
+          </ul>
+          <a href="contact.html" class="svc-tier__cta" data-i18n="services.tier3.cta">Reserve Pro →</a>
+        </article>
+
+        <article class="svc-tier reveal" style="transition-delay: 300ms">
+          <div class="svc-tier__eyebrow" data-i18n="services.tier4.label">/ 04 Enterprise</div>
+          <div class="svc-tier__price">
+            <span class="svc-tier__price-amount" data-i18n="services.tier4.amount">$10K+ USD</span>
+            <span class="svc-tier__price-unit" data-i18n="services.tier4.unit">project</span>
+          </div>
+          <p class="svc-tier__tag" data-i18n="services.tier4.tag">Web apps, SaaS &amp; complex platforms.</p>
+          <ul class="svc-tier__features">
+            <li data-i18n="services.tier4.feat1">Everything in Custom Build, plus:</li>
+            <li data-i18n="services.tier4.feat2">Full-stack app development</li>
+            <li data-i18n="services.tier4.feat3">Headless architecture</li>
+            <li data-i18n="services.tier4.feat4">User auth &amp; dashboards</li>
+            <li data-i18n="services.tier4.feat5">Payment processing (Stripe)</li>
+            <li data-i18n="services.tier4.feat6">Database design &amp; API development</li>
+            <li data-i18n="services.tier4.feat8">Custom timeline scoped to project</li>
+          </ul>
+          <a href="contact.html" class="svc-tier__cta" data-i18n="services.tier4.cta">Scope Project →</a>
+        </article>
+
+      </div>
+
+      <p class="svc-tiers__disclaimer" data-i18n="services.tiers.disclaimer">
+        // Every project is scoped and quoted individually.
+      </p>
+    </section>
+
+    <!-- ====================== DESIGN SERVICES ====================== -->
+    <section class="svc-design" data-theme="dark" id="design">
+      <div class="svc-design__top">
+        <div>
+          <div class="svc-design__eyebrow" data-i18n="services.design.eyebrow" data-i18n-html>Design<br>services</div>
+        </div>
+        <h2 class="svc-design__heading" data-i18n="services.design.heading" data-i18n-html>
+          Beyond the build. <em>Scoped per project.</em>
+        </h2>
+      </div>
+
+      <div class="svc-design-grid">
+        <article class="svc-design-item svc-design-item--1 reveal" style="transition-delay: 0ms">
+          <div class="svc-design-item__head">
+            <div class="svc-design-item__num" data-i18n="services.design.item1.num">/ 01</div>
+            <svg class="svc-design-item__illus" viewBox="0 0 60 60" aria-hidden="true">
+              <rect x="8"  y="10" width="44" height="6"  rx="1.5" fill="none" stroke="currentColor" stroke-width="1"/>
+              <rect x="8"  y="20" width="20" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1"/>
+              <rect x="32" y="20" width="20" height="14" rx="1.5" fill="currentColor" opacity="0.85"/>
+              <rect x="8"  y="38" width="44" height="3"  rx="1"   fill="currentColor" opacity="0.55"/>
+              <rect x="8"  y="44" width="30" height="3"  rx="1"   fill="currentColor" opacity="0.35"/>
+              <circle cx="50" cy="46" r="2.4" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="svc-design-item__name" data-i18n="services.design.item1.name">UI/UX Design</div>
+          <p class="svc-design-item__desc" data-i18n="services.design.item1.desc">App and web interface design — wireframes, prototypes, design systems.</p>
+          <a href="contact.html" class="svc-design-item__cta" data-i18n="services.design.itemCta">Book a call →</a>
+        </article>
+
+        <article class="svc-design-item svc-design-item--2 reveal" style="transition-delay: 80ms">
+          <div class="svc-design-item__head">
+            <div class="svc-design-item__num" data-i18n="services.design.item2.num">/ 02</div>
+            <svg class="svc-design-item__illus" viewBox="0 0 60 60" aria-hidden="true">
+              <circle cx="20" cy="22" r="11" fill="currentColor" opacity="0.85"/>
+              <rect x="28" y="14" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4"/>
+              <polygon points="14,52 30,28 46,52" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="svc-design-item__name" data-i18n="services.design.item2.name">Brand &amp; Graphic Design</div>
+          <p class="svc-design-item__desc" data-i18n="services.design.item2.desc">Logo, color system, typography, and graphic assets that hold together.</p>
+          <a href="contact.html" class="svc-design-item__cta" data-i18n="services.design.itemCta">Book a call →</a>
+        </article>
+
+        <article class="svc-design-item svc-design-item--3 reveal" style="transition-delay: 160ms">
+          <div class="svc-design-item__head">
+            <div class="svc-design-item__num" data-i18n="services.design.item3.num">/ 03</div>
+            <svg class="svc-design-item__illus" viewBox="0 0 60 60" aria-hidden="true">
+              <rect x="20" y="6" width="22" height="48" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+              <rect x="27" y="9" width="8" height="1.5" rx="0.75" fill="currentColor" opacity="0.55"/>
+              <rect x="23" y="14" width="16" height="3"  rx="1" fill="currentColor" opacity="0.85"/>
+              <rect x="23" y="20" width="16" height="14" rx="1.5" fill="currentColor" opacity="0.25"/>
+              <rect x="23" y="36" width="16" height="3"  rx="1" fill="currentColor" opacity="0.55"/>
+              <rect x="23" y="42" width="10" height="3"  rx="1" fill="currentColor" opacity="0.35"/>
+              <circle cx="31" cy="50" r="1.6" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="svc-design-item__name" data-i18n="services.design.item3.name">Mobile App Design</div>
+          <p class="svc-design-item__desc" data-i18n="services.design.item3.desc">iOS and Android UI design — native patterns, scoped to your platform.</p>
+          <a href="contact.html" class="svc-design-item__cta" data-i18n="services.design.itemCta">Book a call →</a>
+        </article>
+
+        <article class="svc-design-item svc-design-item--4 reveal" style="transition-delay: 240ms">
+          <div class="svc-design-item__head">
+            <div class="svc-design-item__num" data-i18n="services.design.item4.num">/ 04</div>
+            <svg class="svc-design-item__illus" viewBox="0 0 60 60" aria-hidden="true">
+              <rect x="6" y="14" width="44" height="30" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+              <rect x="10" y="18" width="18" height="3" rx="1" fill="currentColor" opacity="0.7"/>
+              <polyline points="10,38 18,30 24,34 32,26 40,28 46,22"
+                        fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="46" cy="22" r="2.2" fill="currentColor"/>
+              <rect x="22" y="48" width="16" height="2" rx="1" fill="currentColor" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="svc-design-item__name" data-i18n="services.design.item4.name">Pitch Deck Design</div>
+          <p class="svc-design-item__desc" data-i18n="services.design.item4.desc">Investor and sales decks that earn the next meeting.</p>
+          <a href="contact.html" class="svc-design-item__cta" data-i18n="services.design.itemCta">Book a call →</a>
+        </article>
+
+        <article class="svc-design-item svc-design-item--5 reveal" style="transition-delay: 320ms">
+          <div class="svc-design-item__head">
+            <div class="svc-design-item__num" data-i18n="services.design.item5.num">/ 05</div>
+            <svg class="svc-design-item__illus" viewBox="0 0 60 60" aria-hidden="true">
+              <rect x="6" y="10" width="48" height="40" rx="2" fill="none" stroke="currentColor" stroke-width="1"/>
+              <rect x="10" y="14" width="14" height="3" rx="1" fill="currentColor" opacity="0.55"/>
+              <rect x="10" y="22" width="8"  height="16" fill="currentColor" opacity="0.30"/>
+              <rect x="22" y="18" width="8"  height="20" fill="currentColor" opacity="0.60"/>
+              <rect x="34" y="26" width="8"  height="12" fill="currentColor" opacity="0.45"/>
+              <rect x="46" y="22" width="2"  height="16" fill="currentColor" opacity="0.85"/>
+              <line x1="10" y1="44" x2="50" y2="44" stroke="currentColor" stroke-width="0.7" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="svc-design-item__name" data-i18n="services.design.item5.name">Dashboard Design</div>
+          <p class="svc-design-item__desc" data-i18n="services.design.item5.desc">Admin panels, internal tools, data UIs — clarity over cleverness.</p>
+          <a href="contact.html" class="svc-design-item__cta" data-i18n="services.design.itemCta">Book a call →</a>
+        </article>
+      </div>
+
+      <p class="svc-design__disclaimer" data-i18n="services.design.disclaimer">
+        // Every design project is scoped per brief. Pricing on call.
+      </p>
+    </section>
+
+    <!-- ====================== TICKER ====================== -->
+    <div class="ticker-strip" aria-hidden="true">
+      <div class="ticker-track">
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+      </div>
+    </div>
+
+    <!-- ====================== MONTHLY RETAINERS ====================== -->
+    <section class="svc-retainers" data-theme="light" id="retainers">
+      <div class="svc-retainers__top">
+        <div>
+          <div class="svc-retainers__eyebrow" data-i18n="services.retainers.eyebrow" data-i18n-html>Monthly<br>retainers</div>
+        </div>
+        <h2 class="svc-retainers__heading" data-i18n="services.retainers.heading" data-i18n-html>
+          Past launch. <em>Your site keeps shipping.</em>
+        </h2>
+      </div>
+
+      <div class="svc-tier-grid">
+        <article class="svc-tier reveal" style="transition-delay: 0ms">
+          <div class="svc-tier__eyebrow" data-i18n="services.ret1.label">5 hrs · Maintenance</div>
+          <div class="svc-tier__price">
+            <span class="svc-tier__price-amount" data-i18n="services.ret1.amount">$500 USD</span>
+            <span class="svc-tier__price-unit" data-i18n="services.ret1.unit">/mo</span>
+          </div>
+          <p class="svc-tier__tag" data-i18n="services.ret1.tag">Keep your site running smooth.</p>
+          <ul class="svc-tier__features">
+            <li data-i18n="services.ret1.feat1">Bug fixes &amp; updates</li>
+            <li data-i18n="services.ret1.feat2">Content changes</li>
+            <li data-i18n="services.ret1.feat3">Plugin/app updates</li>
+            <li data-i18n="services.ret1.feat4">Monthly performance check</li>
+            <li data-i18n="services.ret1.feat5">Email support (24h response)</li>
+          </ul>
+          <a href="contact.html" class="svc-tier__cta" data-i18n="services.retCta">Book a call →</a>
+        </article>
+
+        <article class="svc-tier is-featured reveal" style="transition-delay: 100ms">
+          <div class="svc-tier__badge" data-i18n="services.ret2.badge">Most Popular</div>
+          <div class="svc-tier__eyebrow" data-i18n="services.ret2.label">15 hrs · Growth</div>
+          <div class="svc-tier__price">
+            <span class="svc-tier__price-amount" data-i18n="services.ret2.amount">$1,500 USD</span>
+            <span class="svc-tier__price-unit" data-i18n="services.ret2.unit">/mo</span>
+          </div>
+          <p class="svc-tier__tag" data-i18n="services.ret2.tag">Actively improve &amp; scale your site.</p>
+          <ul class="svc-tier__features">
+            <li data-i18n="services.ret2.feat1">Everything in Maintenance, plus:</li>
+            <li data-i18n="services.ret2.feat2">New feature development</li>
+            <li data-i18n="services.ret2.feat3">A/B testing &amp; CRO audits</li>
+            <li data-i18n="services.ret2.feat4">SEO improvements</li>
+            <li data-i18n="services.ret2.feat5">Third-party integrations</li>
+            <li data-i18n="services.ret2.feat6">Priority support</li>
+          </ul>
+          <a href="contact.html" class="svc-tier__cta" data-i18n="services.retCta">Book a call →</a>
+        </article>
+
+        <article class="svc-tier reveal" style="transition-delay: 200ms">
+          <div class="svc-tier__eyebrow" data-i18n="services.ret3.label">30 hrs · Scale</div>
+          <div class="svc-tier__price">
+            <span class="svc-tier__price-amount" data-i18n="services.ret3.amount">$3,000 USD</span>
+            <span class="svc-tier__price-unit" data-i18n="services.ret3.unit">/mo</span>
+          </div>
+          <p class="svc-tier__tag" data-i18n="services.ret3.tag">Your dedicated studio team.</p>
+          <ul class="svc-tier__features">
+            <li data-i18n="services.ret3.feat1">Everything in Growth, plus:</li>
+            <li data-i18n="services.ret3.feat2">Custom automation</li>
+            <li data-i18n="services.ret3.feat3">Full redesigns &amp; new pages</li>
+            <li data-i18n="services.ret3.feat4">Advanced analytics setup</li>
+            <li data-i18n="services.ret3.feat5">Same-day response guarantee</li>
+          </ul>
+          <a href="contact.html" class="svc-tier__cta" data-i18n="services.retCta">Book a call →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====================== INSIDE THE RETAINER (capabilities) ====================== -->
+    <section class="svc-caps" data-theme="light" id="caps">
+      <div class="svc-caps__top">
+        <div>
+          <div class="svc-caps__eyebrow" data-i18n="services.caps.eyebrow" data-i18n-html>Inside<br>the retainer</div>
+        </div>
+        <h2 class="svc-caps__heading" data-i18n="services.caps.heading" data-i18n-html>
+          Six things ship <em>every month.</em>
+        </h2>
+      </div>
+
+      <div class="svc-caps__grid">
+        <article class="svc-cap reveal" style="transition-delay: 0ms">
+          <div class="svc-cap__num">/ 01</div>
+          <h3 class="svc-cap__title" data-i18n="services.caps.c1.title">Design iteration</h3>
+          <p class="svc-cap__body" data-i18n="services.caps.c1.body">Surgical layout, nav, and styling adjustments. New conversion frames without tearing out the foundation. The page evolves; the brand stays consistent.</p>
+        </article>
+        <article class="svc-cap reveal" style="transition-delay: 60ms">
+          <div class="svc-cap__num">/ 02</div>
+          <h3 class="svc-cap__title" data-i18n="services.caps.c2.title">Bug fixes, same day</h3>
+          <p class="svc-cap__body" data-i18n="services.caps.c2.body">Broken cart? Glitchy nav? Form silently failing? Diagnosed same-day, fixed before the day's out — not parked in a ticket queue.</p>
+        </article>
+        <article class="svc-cap reveal" style="transition-delay: 120ms">
+          <div class="svc-cap__num">/ 03</div>
+          <h3 class="svc-cap__title" data-i18n="services.caps.c3.title">New features, shipped</h3>
+          <p class="svc-cap__body" data-i18n="services.caps.c3.body">Conversion sections, quizzes, calculators, filters, gated content, sticky CTAs. If you can describe the behaviour, it ships inside the month.</p>
+        </article>
+        <article class="svc-cap reveal" style="transition-delay: 180ms">
+          <div class="svc-cap__num">/ 04</div>
+          <h3 class="svc-cap__title" data-i18n="services.caps.c4.title">Stack integrations</h3>
+          <p class="svc-cap__body" data-i18n="services.caps.c4.body">Hooking your site into the rest of the stack: HubSpot, Notion, Klaviyo, Stripe, Plausible — whatever your ops actually run on. Wired up, tested end-to-end, documented.</p>
+        </article>
+        <article class="svc-cap reveal" style="transition-delay: 240ms">
+          <div class="svc-cap__num">/ 05</div>
+          <h3 class="svc-cap__title" data-i18n="services.caps.c5.title">Conversion audits</h3>
+          <p class="svc-cap__body" data-i18n="services.caps.c5.body">Monthly look at what visitors are actually doing on the site. Friction points flagged, prioritized, fixed at the source. A/B tests on the highest-leverage pages.</p>
+        </article>
+        <article class="svc-cap reveal" style="transition-delay: 300ms">
+          <div class="svc-cap__num">/ 06</div>
+          <h3 class="svc-cap__title" data-i18n="services.caps.c6.title">AI &amp; automation</h3>
+          <p class="svc-cap__body" data-i18n="services.caps.c6.body">Chatbots that actually know your services and pricing. Automations that handle the busy work — lead routing, content sync, scheduled reports. Less hype, more time back.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====================== TECH STACK ====================== -->
+    <section class="svc-tech" data-theme="dark" id="tech">
+      <div class="svc-tech__top">
+        <div>
+          <div class="svc-tech__eyebrow" data-i18n="services.tech.eyebrow">Stack</div>
+        </div>
+        <h2 class="svc-tech__heading" data-i18n="services.tech.heading" data-i18n-html>
+          Picked <em>for the workload.</em>
+        </h2>
+      </div>
+
+      <div class="svc-tech__stage">
+        <svg class="svc-tech__svg" viewBox="0 0 1500 580" xmlns="http://www.w3.org/2000/svg" aria-label="Stack constellation">
+
+          <!-- Connection lines (data-a / data-b reference node data-id).
+               JS injects an animated pulse traveling along each line and
+               highlights direct connections on hover. -->
+
+          <!-- Frontend internal -->
+          <g class="svc-tech__link-group" data-a="html"        data-b="css"     ><line class="svc-tech__link" x1="120"  y1="60"  x2="260"  y2="45"/></g>
+          <g class="svc-tech__link-group" data-a="html"        data-b="js"      ><line class="svc-tech__link" x1="120"  y1="60"  x2="400"  y2="60"/></g>
+          <g class="svc-tech__link-group" data-a="css"         data-b="tailwind"><line class="svc-tech__link" x1="260"  y1="45"  x2="540"  y2="155"/></g>
+          <g class="svc-tech__link-group" data-a="js"          data-b="ts"      ><line class="svc-tech__link" x1="400"  y1="60"  x2="540"  y2="45"/></g>
+          <g class="svc-tech__link-group" data-a="js"          data-b="react"   ><line class="svc-tech__link" x1="400"  y1="60"  x2="120"  y2="140"/></g>
+          <g class="svc-tech__link-group" data-a="ts"          data-b="react"   ><line class="svc-tech__link" x1="540"  y1="45"  x2="120"  y2="140"/></g>
+          <g class="svc-tech__link-group" data-a="react"       data-b="nextjs"  ><line class="svc-tech__link" x1="120"  y1="140" x2="260"  y2="155"/></g>
+          <g class="svc-tech__link-group" data-a="react"       data-b="reactnative"><line class="svc-tech__link" x1="120" y1="140" x2="400" y2="140"/></g>
+          <g class="svc-tech__link-group" data-a="ts"          data-b="nextjs"  ><line class="svc-tech__link" x1="540"  y1="45"  x2="260"  y2="155"/></g>
+          <g class="svc-tech__link-group" data-a="tailwind"    data-b="react"   ><line class="svc-tech__link" x1="540"  y1="155" x2="120"  y2="140"/></g>
+
+          <!-- Motion internal + bridges to Frontend -->
+          <g class="svc-tech__link-group" data-a="gsap"        data-b="motion"  ><line class="svc-tech__link" x1="680"  y1="60"  x2="810"  y2="45"/></g>
+          <g class="svc-tech__link-group" data-a="gsap"        data-b="svg"     ><line class="svc-tech__link" x1="680"  y1="60"  x2="810"  y2="140"/></g>
+          <g class="svc-tech__link-group" data-a="motion"      data-b="lottie"  ><line class="svc-tech__link" x1="810"  y1="45"  x2="680"  y2="140"/></g>
+          <g class="svc-tech__link-group" data-a="react"       data-b="motion"  ><line class="svc-tech__link" x1="120"  y1="140" x2="810"  y2="45"/></g>
+          <g class="svc-tech__link-group" data-a="js"          data-b="gsap"    ><line class="svc-tech__link" x1="400"  y1="60"  x2="680"  y2="60"/></g>
+          <g class="svc-tech__link-group" data-a="css"         data-b="svg"     ><line class="svc-tech__link" x1="260"  y1="45"  x2="810"  y2="140"/></g>
+
+          <!-- AI internal -->
+          <g class="svc-tech__link-group" data-a="claude"      data-b="anthropic"><line class="svc-tech__link" x1="960" y1="45"  x2="1100" y2="60"/></g>
+
+          <!-- Backend cluster + bridges -->
+          <g class="svc-tech__link-group" data-a="node"        data-b="express" ><line class="svc-tech__link" x1="960"  y1="140" x2="1100" y2="155"/></g>
+          <g class="svc-tech__link-group" data-a="node"        data-b="hono"    ><line class="svc-tech__link" x1="960"  y1="140" x2="1240" y2="140"/></g>
+          <g class="svc-tech__link-group" data-a="node"        data-b="bun"     ><line class="svc-tech__link" x1="960"  y1="140" x2="960"  y2="220"/></g>
+          <g class="svc-tech__link-group" data-a="express"     data-b="graphql" ><line class="svc-tech__link" x1="1100" y1="155" x2="1170" y2="295"/></g>
+
+          <!-- Frontend ↔ Backend -->
+          <g class="svc-tech__link-group" data-a="react"       data-b="node"    ><line class="svc-tech__link" x1="120"  y1="140" x2="960"  y2="140"/></g>
+          <g class="svc-tech__link-group" data-a="nextjs"      data-b="node"    ><line class="svc-tech__link" x1="260"  y1="155" x2="960"  y2="140"/></g>
+          <g class="svc-tech__link-group" data-a="ts"          data-b="node"    ><line class="svc-tech__link" x1="540"  y1="45"  x2="960"  y2="140"/></g>
+          <g class="svc-tech__link-group" data-a="nextjs"      data-b="graphql" ><line class="svc-tech__link" x1="260"  y1="155" x2="1170" y2="295"/></g>
+
+          <!-- Database & CMS bridges -->
+          <g class="svc-tech__link-group" data-a="node"        data-b="postgres"><line class="svc-tech__link" x1="960"  y1="140" x2="960"  y2="365"/></g>
+          <g class="svc-tech__link-group" data-a="python"      data-b="postgres"><line class="svc-tech__link" x1="1030" y1="295" x2="960"  y2="365"/></g>
+          <g class="svc-tech__link-group" data-a="go"          data-b="postgres"><line class="svc-tech__link" x1="1100" y1="235" x2="960"  y2="365"/></g>
+          <g class="svc-tech__link-group" data-a="rust"        data-b="postgres"><line class="svc-tech__link" x1="1240" y1="220" x2="960"  y2="365"/></g>
+          <g class="svc-tech__link-group" data-a="nextjs"      data-b="contentful"><line class="svc-tech__link" x1="260" y1="155" x2="1100" y2="430"/></g>
+          <g class="svc-tech__link-group" data-a="nextjs"      data-b="sanity"  ><line class="svc-tech__link" x1="260"  y1="155" x2="1240" y2="365"/></g>
+          <g class="svc-tech__link-group" data-a="node"        data-b="notion"  ><line class="svc-tech__link" x1="960"  y1="140" x2="1100" y2="365"/></g>
+
+          <!-- AI bridges -->
+          <g class="svc-tech__link-group" data-a="node"        data-b="claude"  ><line class="svc-tech__link" x1="960"  y1="140" x2="960"  y2="45"/></g>
+          <g class="svc-tech__link-group" data-a="node"        data-b="openai"  ><line class="svc-tech__link" x1="960"  y1="140" x2="1240" y2="45"/></g>
+
+          <!-- Commerce bridges -->
+          <g class="svc-tech__link-group" data-a="node"        data-b="stripe"  ><line class="svc-tech__link" x1="960"  y1="140" x2="1100" y2="495"/></g>
+          <g class="svc-tech__link-group" data-a="nextjs"      data-b="shopify" ><line class="svc-tech__link" x1="260"  y1="155" x2="960"  y2="495"/></g>
+          <g class="svc-tech__link-group" data-a="shopify"     data-b="stripe"  ><line class="svc-tech__link" x1="960"  y1="495" x2="1100" y2="495"/></g>
+
+          <!-- Automation bridges (Automation now in mid-left) -->
+          <g class="svc-tech__link-group" data-a="notion"      data-b="zapier"  ><line class="svc-tech__link" x1="1100" y1="365" x2="290"  y2="290"/></g>
+          <g class="svc-tech__link-group" data-a="zapier"      data-b="stripe"  ><line class="svc-tech__link" x1="290"  y1="290" x2="1100" y2="495"/></g>
+          <g class="svc-tech__link-group" data-a="n8n"         data-b="node"    ><line class="svc-tech__link" x1="150"  y1="360" x2="960"  y2="140"/></g>
+          <g class="svc-tech__link-group" data-a="make"        data-b="shopify" ><line class="svc-tech__link" x1="150"  y1="270" x2="960"  y2="495"/></g>
+
+          <!-- Deploy bridges -->
+          <g class="svc-tech__link-group" data-a="nextjs"      data-b="vercel"  ><line class="svc-tech__link" x1="260"  y1="155" x2="960"  y2="555"/></g>
+          <g class="svc-tech__link-group" data-a="react"       data-b="netlify" ><line class="svc-tech__link" x1="120"  y1="140" x2="1240" y2="430"/></g>
+          <g class="svc-tech__link-group" data-a="node"        data-b="cloudflare"><line class="svc-tech__link" x1="960" y1="140" x2="1100" y2="555"/></g>
+          <g class="svc-tech__link-group" data-a="node"        data-b="aws"     ><line class="svc-tech__link" x1="960"  y1="140" x2="1240" y2="495"/></g>
+          <g class="svc-tech__link-group" data-a="docker"      data-b="aws"     ><line class="svc-tech__link" x1="1240" y1="555" x2="1240" y2="495"/></g>
+          <g class="svc-tech__link-group" data-a="docker"      data-b="node"    ><line class="svc-tech__link" x1="1240" y1="555" x2="960"  y2="140"/></g>
+          <g class="svc-tech__link-group" data-a="go"          data-b="docker"  ><line class="svc-tech__link" x1="1100" y1="235" x2="1240" y2="555"/></g>
+          <g class="svc-tech__link-group" data-a="python"      data-b="docker"  ><line class="svc-tech__link" x1="1030" y1="295" x2="1240" y2="555"/></g>
+
+          <!-- Dev Tools bridges (now horizontal bottom row) -->
+          <g class="svc-tech__link-group" data-a="git"         data-b="vscode"  ><line class="svc-tech__link" x1="120"  y1="555" x2="240"  y2="555"/></g>
+          <g class="svc-tech__link-group" data-a="vscode"      data-b="cursor"  ><line class="svc-tech__link" x1="240"  y1="555" x2="360"  y2="555"/></g>
+          <g class="svc-tech__link-group" data-a="git"         data-b="vercel"  ><line class="svc-tech__link" x1="120"  y1="555" x2="960"  y2="555"/></g>
+          <g class="svc-tech__link-group" data-a="git"         data-b="netlify" ><line class="svc-tech__link" x1="120"  y1="555" x2="1240" y2="430"/></g>
+          <g class="svc-tech__link-group" data-a="figma"       data-b="react"   ><line class="svc-tech__link" x1="480"  y1="555" x2="120"  y2="140"/></g>
+
+          <!-- Nodes (100x28 pill, rx=14). rect x = cx-50, y = cy-14. -->
+          <!-- Frontend cluster -->
+          <g class="svc-tech__node" data-id="html"       ><rect class="svc-tech__node-bg" x="70"   y="46"  width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="120"  y="60" >HTML</text></g>
+          <g class="svc-tech__node" data-id="css"        ><rect class="svc-tech__node-bg" x="210"  y="31"  width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="260"  y="45" >CSS</text></g>
+          <g class="svc-tech__node" data-id="js"         ><rect class="svc-tech__node-bg" x="350"  y="46"  width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="400"  y="60" >JavaScript</text></g>
+          <g class="svc-tech__node" data-id="ts"         ><rect class="svc-tech__node-bg" x="490"  y="31"  width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="540"  y="45" >TypeScript</text></g>
+          <g class="svc-tech__node" data-id="react"      ><rect class="svc-tech__node-bg" x="70"   y="126" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="120"  y="140">React</text></g>
+          <g class="svc-tech__node" data-id="nextjs"     ><rect class="svc-tech__node-bg" x="210"  y="141" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="260"  y="155">Next.js</text></g>
+          <g class="svc-tech__node" data-id="reactnative"><rect class="svc-tech__node-bg" x="350"  y="126" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="400"  y="140">React Native</text></g>
+          <g class="svc-tech__node" data-id="tailwind"   ><rect class="svc-tech__node-bg" x="490"  y="141" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="540"  y="155">Tailwind CSS</text></g>
+
+          <!-- Motion cluster -->
+          <g class="svc-tech__node" data-id="gsap"       ><rect class="svc-tech__node-bg" x="630"  y="46"  width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="680"  y="60" >GSAP</text></g>
+          <g class="svc-tech__node" data-id="motion"     ><rect class="svc-tech__node-bg" x="760"  y="31"  width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="810"  y="45" >Motion</text></g>
+          <g class="svc-tech__node" data-id="lottie"     ><rect class="svc-tech__node-bg" x="630"  y="126" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="680"  y="140">Lottie</text></g>
+          <g class="svc-tech__node" data-id="svg"        ><rect class="svc-tech__node-bg" x="760"  y="126" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="810"  y="140">SVG</text></g>
+
+          <!-- AI cluster -->
+          <g class="svc-tech__node" data-id="claude"     ><rect class="svc-tech__node-bg" x="910"  y="31"  width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="960"  y="45" >Claude</text></g>
+          <g class="svc-tech__node" data-id="anthropic"  ><rect class="svc-tech__node-bg" x="1050" y="46"  width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1100" y="60" >Anthropic</text></g>
+          <g class="svc-tech__node" data-id="openai"     ><rect class="svc-tech__node-bg" x="1190" y="31"  width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1240" y="45" >OpenAI</text></g>
+
+          <!-- Backend cluster -->
+          <g class="svc-tech__node" data-id="node"       ><rect class="svc-tech__node-bg" x="910"  y="126" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="960"  y="140">Node.js</text></g>
+          <g class="svc-tech__node" data-id="express"    ><rect class="svc-tech__node-bg" x="1050" y="141" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1100" y="155">Express</text></g>
+          <g class="svc-tech__node" data-id="hono"       ><rect class="svc-tech__node-bg" x="1190" y="126" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1240" y="140">Hono</text></g>
+          <g class="svc-tech__node" data-id="bun"        ><rect class="svc-tech__node-bg" x="910"  y="206" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="960"  y="220">Bun</text></g>
+          <g class="svc-tech__node" data-id="go"         ><rect class="svc-tech__node-bg" x="1050" y="221" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1100" y="235">Go</text></g>
+          <g class="svc-tech__node" data-id="rust"       ><rect class="svc-tech__node-bg" x="1190" y="206" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1240" y="220">Rust</text></g>
+          <g class="svc-tech__node" data-id="python"     ><rect class="svc-tech__node-bg" x="980"  y="281" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1030" y="295">Python</text></g>
+          <g class="svc-tech__node" data-id="graphql"    ><rect class="svc-tech__node-bg" x="1120" y="281" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1170" y="295">GraphQL</text></g>
+
+          <!-- Database & CMS cluster -->
+          <g class="svc-tech__node" data-id="postgres"   ><rect class="svc-tech__node-bg" x="910"  y="351" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="960"  y="365">PostgreSQL</text></g>
+          <g class="svc-tech__node" data-id="notion"     ><rect class="svc-tech__node-bg" x="1050" y="351" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1100" y="365">Notion</text></g>
+          <g class="svc-tech__node" data-id="sanity"     ><rect class="svc-tech__node-bg" x="1190" y="351" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1240" y="365">Sanity</text></g>
+          <g class="svc-tech__node" data-id="contentful" ><rect class="svc-tech__node-bg" x="1050" y="416" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1100" y="430">Contentful</text></g>
+
+          <!-- Commerce cluster -->
+          <g class="svc-tech__node" data-id="shopify"    ><rect class="svc-tech__node-bg" x="910"  y="481" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="960"  y="495">Shopify</text></g>
+          <g class="svc-tech__node" data-id="stripe"     ><rect class="svc-tech__node-bg" x="1050" y="481" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1100" y="495">Stripe</text></g>
+
+          <!-- Automation cluster (moved to mid-left to fill empty space) -->
+          <g class="svc-tech__node" data-id="make"       ><rect class="svc-tech__node-bg" x="100"  y="256" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="150"  y="270">Make</text></g>
+          <g class="svc-tech__node" data-id="zapier"     ><rect class="svc-tech__node-bg" x="240"  y="276" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="290"  y="290">Zapier</text></g>
+          <g class="svc-tech__node" data-id="n8n"        ><rect class="svc-tech__node-bg" x="100"  y="346" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="150"  y="360">n8n</text></g>
+
+          <!-- Deploy cluster (compacted) -->
+          <g class="svc-tech__node" data-id="netlify"    ><rect class="svc-tech__node-bg" x="1190" y="416" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1240" y="430">Netlify</text></g>
+          <g class="svc-tech__node" data-id="aws"        ><rect class="svc-tech__node-bg" x="1190" y="481" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1240" y="495">AWS</text></g>
+          <g class="svc-tech__node" data-id="vercel"     ><rect class="svc-tech__node-bg" x="910"  y="541" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="960"  y="555">Vercel</text></g>
+          <g class="svc-tech__node" data-id="cloudflare" ><rect class="svc-tech__node-bg" x="1050" y="541" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1100" y="555">Cloudflare</text></g>
+          <g class="svc-tech__node" data-id="docker"     ><rect class="svc-tech__node-bg" x="1190" y="541" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="1240" y="555">Docker</text></g>
+
+          <!-- Dev Tools cluster (moved to bottom horizontal row) -->
+          <g class="svc-tech__node" data-id="git"        ><rect class="svc-tech__node-bg" x="70"   y="541" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="120"  y="555">Git</text></g>
+          <g class="svc-tech__node" data-id="vscode"     ><rect class="svc-tech__node-bg" x="190"  y="541" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="240"  y="555">VS Code</text></g>
+          <g class="svc-tech__node" data-id="cursor"     ><rect class="svc-tech__node-bg" x="310"  y="541" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="360"  y="555">Cursor</text></g>
+          <g class="svc-tech__node" data-id="figma"      ><rect class="svc-tech__node-bg" x="430"  y="541" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="480"  y="555">Figma</text></g>
+          <g class="svc-tech__node" data-id="linear"     ><rect class="svc-tech__node-bg" x="550"  y="541" width="100" height="28" rx="14"/><text class="svc-tech__node-label" x="600"  y="555">Linear</text></g>
+        </svg>
+
+        <!-- Mobile fallback: same content as a categorized tag list.
+             Hidden by default (.svc-tech__list { display: none }) and
+             revealed on narrow viewports where the constellation is hidden. -->
+        <ul class="svc-tech__list">
+          <li>
+            <div class="svc-tech__cat-title" data-i18n="services.tech.cat.frontend">Frontend</div>
+            <div class="svc-tech__cat-tags">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>TypeScript</span><span>React</span><span>Next.js</span><span>React Native</span><span>Tailwind CSS</span>
+            </div>
+          </li>
+          <li>
+            <div class="svc-tech__cat-title" data-i18n="services.tech.cat.motion">Motion &amp; 3D</div>
+            <div class="svc-tech__cat-tags">
+              <span>GSAP</span><span>Motion</span><span>Lottie</span><span>SVG</span>
+            </div>
+          </li>
+          <li>
+            <div class="svc-tech__cat-title" data-i18n="services.tech.cat.backend">Backend</div>
+            <div class="svc-tech__cat-tags">
+              <span>Node.js</span><span>Express</span><span>Hono</span><span>Bun</span><span>Go</span><span>Rust</span><span>Python</span><span>GraphQL</span>
+            </div>
+          </li>
+          <li>
+            <div class="svc-tech__cat-title" data-i18n="services.tech.cat.dataCms">Database &amp; CMS</div>
+            <div class="svc-tech__cat-tags">
+              <span>PostgreSQL</span><span>Sanity</span><span>Notion</span><span>Contentful</span>
+            </div>
+          </li>
+          <li>
+            <div class="svc-tech__cat-title" data-i18n="services.tech.cat.ai">AI</div>
+            <div class="svc-tech__cat-tags">
+              <span>Claude</span><span>Anthropic</span><span>OpenAI</span>
+            </div>
+          </li>
+          <li>
+            <div class="svc-tech__cat-title" data-i18n="services.tech.cat.commerce">E-commerce</div>
+            <div class="svc-tech__cat-tags">
+              <span>Shopify</span><span>Stripe</span>
+            </div>
+          </li>
+          <li>
+            <div class="svc-tech__cat-title" data-i18n="services.tech.cat.automation">Automation</div>
+            <div class="svc-tech__cat-tags">
+              <span>Zapier</span><span>n8n</span><span>Make</span>
+            </div>
+          </li>
+          <li>
+            <div class="svc-tech__cat-title" data-i18n="services.tech.cat.deploy">Deploy</div>
+            <div class="svc-tech__cat-tags">
+              <span>Netlify</span><span>Vercel</span><span>Cloudflare</span><span>AWS</span><span>Docker</span>
+            </div>
+          </li>
+          <li>
+            <div class="svc-tech__cat-title" data-i18n="services.tech.cat.tools">Dev Tools</div>
+            <div class="svc-tech__cat-tags">
+              <span>Git</span><span>VS Code</span><span>Cursor</span><span>Figma</span><span>Linear</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <p class="svc-tech__hint" data-i18n="services.tech.hint">
+        Data flows between tools that work together · hover a node to focus its links
+      </p>
+    </section>
+
+    <!-- ====================== CTA ====================== -->
+    <section class="svc-cta" data-theme="dark" id="cta">
+      <h2 class="svc-cta__title" data-i18n="services.cta.title" data-i18n-html>
+        Reserve.<em>your build</em>
+      </h2>
+      <p class="svc-cta__sub" data-i18n="services.cta.sub">
+        Booking open · 4-7 day turnaround · Replies within 24h
+      </p>
+      <div class="svc-cta__row">
+        <div class="svc-cta__price">
+          $500 USD <small data-i18n="services.cta.priceLbl">Starter from</small>
+        </div>
+        <a href="contact.html" class="btn-primary" style="padding: 18px 36px; font-size: 12px;" data-i18n="services.cta.btn">Book Discovery Call</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer data-theme="light">
+    <div class="footer-grid">
+      <div class="footer-col footer-col--brand">
+        <a href="index.html" class="footer-brand">noxus<span class="footer-brand-dot">.</span></a>
+        <p class="footer-tagline" data-i18n="common.footer.tagline">
+          Hand-coded studio · Montréal
+        </p>
+      </div>
+
+      <div class="footer-col footer-col--nav">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.explore">Explore</span>
+        <ul class="footer-nav-list">
+          <li><a href="index.html"    data-i18n="common.nav.home">Home</a></li>
+          <li><a href="about.html"    data-i18n="common.nav.about">About</a></li>
+          <li><a href="services.html" data-i18n="common.nav.services">Services</a></li>
+          <li><a href="work.html"     data-i18n="common.nav.work">Work</a></li>
+          <li><a href="faq.html"      data-i18n="common.nav.faq">FAQ</a></li>
+          <li><a href="contact.html"  data-i18n="common.nav.contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col--contact">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.contact">Contact</span>
+        <a class="footer-contact-link" href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a>
+        <span class="footer-contact-loc" data-i18n="common.footer.location">Montréal, QC, Canada</span>
+        <div class="footer-status-row">
+          <span class="footer-status-dot" aria-hidden="true"></span>
+          <span data-i18n="common.footer.status.bookingOpen">Booking Open</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.replies">Replies within 24h</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-meta">
+      <span class="footer-meta-text" data-i18n="common.footer.copyright">©2026 Noxus Studios · All rights reserved</span>
+      <span class="footer-meta-links">
+        <a class="footer-meta-text footer-meta-link" href="privacy.html" data-i18n="common.footer.privacy">Privacy Policy</a>
+        <span class="footer-meta-sep" aria-hidden="true">·</span>
+        <a class="footer-meta-text footer-meta-link" href="cookies.html" data-i18n="common.footer.cookies">Cookies</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="js/translations.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/hero-paths.js" defer></script>
+  <script src="js/theme-toggle.js" defer></script>
+  <script src="js/title-reveal.js" defer></script>
+  <script src="js/tech-constellation.js" defer></script>
+</body>
+</html>

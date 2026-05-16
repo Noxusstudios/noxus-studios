@@ -1,0 +1,299 @@
+/* ============================================================
+   NOXUS — base.css
+   Variables, reset, typography (per NOXUS_DESIGN_SPEC §2)
+   ============================================================ */
+
+:root {
+  /* Core palette */
+  --orange:          #E8540A;
+  --orange-hover:    #FF6520;
+  --orange-on-light: #B83F00;  /* darker variant for orange TEXT on cream — WCAG AA 4.5:1+ */
+  --black:           #111111;
+  --dark-bg:         #151515;
+  --dark-surface:    #1E1E1E;
+  --dark-surface-2:  #242424;
+
+  /* Hero / light section background */
+  --hero-bg-start:   #E8D5C8;
+  --hero-bg-end:     #F5EDE6;
+  --off-white:       #F2EDE8;
+
+  /* Text on dark backgrounds */
+  --text-on-dark-primary:   #FFFFFF;
+  --text-on-dark-secondary: rgba(255, 255, 255, 0.40);
+  --text-on-dark-muted:     rgba(255, 255, 255, 0.18);
+
+  /* Text on light backgrounds — muted bumped from #999 to #6B to clear
+     WCAG AA (4.5:1) on cream backgrounds; visual hierarchy is now carried
+     by font weight/size rather than color depth. */
+  --text-on-light-primary:   #111111;
+  --text-on-light-secondary: #6B6B6B;
+  --text-on-light-muted:     #6B6B6B;
+  --text-decorative-light:   #999999;
+
+  /* Borders */
+  --border-dark:  rgba(255, 255, 255, 0.07);
+  --border-light: rgba(0, 0, 0, 0.09);
+
+  /* Fonts */
+  --font-display: 'Bebas Neue', 'Arial Black', Impact, sans-serif;
+  --font-body:    'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-ui:      'Space Grotesk', 'DM Sans', sans-serif;
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--off-white);
+  color: var(--text-on-light-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 400; line-height: 1.05; }
+p   { margin: 0; }
+a   { color: inherit; text-decoration: none; }
+img, svg { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; cursor: pointer; }
+
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+/* ============================================================
+   Type primitives — used directly in markup as classes
+   ============================================================ */
+
+/* HERO TITLE */
+.type-hero {
+  font-family: var(--font-display);
+  font-size: clamp(72px, 12vw, 160px);
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+/* DARK SECTION HEADLINE — large, mixed case */
+.type-section-headline {
+  font-family: var(--font-ui);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* SPLIT SECTION HEADLINE — mixed case */
+.type-split-headline {
+  font-family: var(--font-ui);
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* STAT PERCENTAGE */
+.type-stat-number {
+  font-family: var(--font-ui);
+  font-size: clamp(40px, 5vw, 80px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: white;
+}
+
+/* ALL-CAPS LABELS */
+.type-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* BODY COPY */
+.type-body {
+  font-family: var(--font-body);
+  font-size: clamp(10px, 1.1vw, 13px);
+  font-weight: 400;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  line-height: 1.65;
+}
+
+/* HERO SUBTITLE — exception, mixed case */
+.type-hero-sub {
+  font-family: var(--font-ui);
+  font-size: clamp(13px, 1.5vw, 17px);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* VERSION COUNTER */
+.type-version {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: var(--text-on-dark-muted);
+}
+
+/* ============================================================
+   Mixed-emphasis fade headline (per spec §2.2)
+   ============================================================ */
+
+.fade-headline {
+  font-family: var(--font-ui);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.fh-bright { display: block; color: #fff; }
+.fh-mid    { display: block; color: #fff; }
+.fh-dim    { display: block; color: rgba(255, 255, 255, 0.60); }
+.fh-fade   { color: rgba(255, 255, 255, 0.60); }
+.fh-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  background: var(--orange);
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  vertical-align: middle;
+  margin: 0 6px;
+  font-family: var(--font-body);
+}
+
+/* ============================================================
+   Scroll reveal — used by animations.js
+   ============================================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity   0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* prefers-reduced-motion: kill reveal + ticker animation */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   Selection
+   ============================================================ */
+::selection { background: var(--orange); color: #fff; }
+
+/* ============================================================
+   Title reveal — editorial mask-clip slide-up.
+   Driven by js/title-reveal.js, which wraps targeted titles in
+   .anim-title__mask + .anim-title__inner. The mask clips the inner
+   when it sits below at translateY(110%); on .is-revealed, the inner
+   slides up to translateY(0).
+   ============================================================ */
+
+/* Single-block title: outer becomes the mask container, one inner. */
+.anim-title--single .anim-title__mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  /* Tiny extra room so descenders don't get clipped */
+  padding-bottom: 0.04em;
+}
+
+/* Multi-line title: each line element (e.g. .fh-bright, .split-orange)
+   becomes its own clip mask. */
+.anim-title--lines > * {
+  overflow: hidden;
+  padding-bottom: 0.04em;
+}
+
+/* Inner content: starts below the mask, slides up on reveal. */
+.anim-title__inner {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+  transition:
+    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity   0.95s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--t-i, 0) * 90ms);
+  will-change: transform, opacity;
+}
+
+.anim-title.is-revealed .anim-title__inner {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-title__inner {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Global mobile safety net — prevent horizontal scroll regardless
+   of any page section's bleed/overflow. Per-page CSS handles
+   layout reflows; this just guards the viewport edges.
+   ============================================================ */
+
+@media (max-width: 768px) {
+  html, body { overflow-x: hidden; }
+}
+
+/* ============================================================
+   Touch-device guard — neutralize hover lifts on devices that
+   can't actually hover. Modern browsers shouldn't fire :hover
+   on tap, but iOS Safari sometimes sticks the state after a tap
+   until another element is tapped. This prevents the visual jank.
+   ============================================================ */
+@media (hover: none) {
+  .work-card:hover,
+  .work-card:focus-within,
+  .values__card:hover,
+  .values__card:focus-within,
+  .methods__card:hover,
+  .methods__card:focus-within,
+  .methods__card:active,
+  .methods__card:focus-visible,
+  .discipline:hover,
+  .discipline:focus-within,
+  .timeline__item:hover,
+  .svc-tier:hover,
+  .svc-design-item:hover,
+  .bento-cell:hover {
+    transform: none;
+  }
+  /* Timeline: undo the padding shift + accent-stripe reveal on touch */
+  .timeline__item:hover { padding-left: 24px; }
+  .timeline__item:hover::before { opacity: 0; }
+}

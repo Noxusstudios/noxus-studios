@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="cookies.title">Cookie Policy — Noxus</title>
+  <meta name="description" data-i18n="cookies.metaDesc" content="How Noxus uses cookies and similar technologies. We do not use tracking or advertising cookies." />
+<!-- Open Graph / social previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://noxusstudios.com/cookies.html">
+  <meta property="og:title" content="Cookie Policy — Noxus">
+  <meta property="og:description" content="How Noxus uses cookies and similar technologies. We do not use tracking or advertising cookies.">
+  <meta property="og:image" content="https://noxusstudios.com/favicon-512.png">
+  <meta property="og:site_name" content="Noxus Studios">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Cookie Policy — Noxus">
+  <meta name="twitter:description" content="How Noxus uses cookies and similar technologies. We do not use tracking or advertising cookies.">
+  <meta name="twitter:image" content="https://noxusstudios.com/favicon-512.png">
+
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/privacy.css">
+  <link rel="stylesheet" href="css/theme-dark.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('noxus-theme');
+        if (t === 'dark') document.documentElement.classList.add('dark');
+        var l = localStorage.getItem('noxus-lang');
+        if (l === 'fr' || l === 'en') document.documentElement.setAttribute('lang', l);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <header class="site-nav" id="site-nav">
+    <a href="index.html" class="nav-logo">noxus<span class="nav-logo-dot">.</span></a>
+
+    <div class="status-bar" aria-label="Studio availability">
+      <span class="status-bar__dot" aria-hidden="true"></span>
+      <span data-i18n="common.status.booking">Booking Open</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.replies">Replies within 24h</span>
+    </div>
+
+    <button class="lang-toggle" id="lang-toggle" type="button"
+            data-i18n-attr="aria-label=common.lang.aria"
+            aria-label="Switch language">
+      <span class="lang-toggle__opt is-active" data-lang="en" data-i18n="common.nav.lang.en">EN</span>
+      <span class="lang-toggle__sep" aria-hidden="true">|</span>
+      <span class="lang-toggle__opt" data-lang="fr" data-i18n="common.nav.lang.fr">FR</span>
+    </button>
+
+    <button class="theme-toggle" id="theme-toggle" type="button"
+            aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="theme-toggle-icon theme-toggle-moon" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+      <svg class="theme-toggle-icon theme-toggle-sun" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <line x1="12" y1="1" x2="12" y2="3" />
+        <line x1="12" y1="21" x2="12" y2="23" />
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+        <line x1="1" y1="12" x2="3" y2="12" />
+        <line x1="21" y1="12" x2="23" y2="12" />
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+      </svg>
+    </button>
+
+    <nav class="nav-pill is-collapsed" id="nav-pill" aria-label="Main navigation">
+      <div class="nav-pill-inner">
+        <a href="services.html" class="nav-pill-link"><span data-i18n="common.nav.services">Services</span></a>
+        <a href="work.html"     class="nav-pill-link"><span data-i18n="common.nav.work">Work</span></a>
+        <a href="about.html"    class="nav-pill-link"><span data-i18n="common.nav.about">About</span></a>
+        <a href="faq.html"      class="nav-pill-link"><span data-i18n="common.nav.faq">FAQ</span></a>
+        <a href="contact.html"  class="nav-pill-link"><span data-i18n="common.nav.contact">Contact</span></a>
+      </div>
+      <span class="nav-pill-collapsed-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6"  x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </span>
+    </nav>
+  </header>
+
+  <div class="theme-curtain" id="theme-curtain" aria-hidden="true"></div>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">×</button>
+    <nav>
+      <a href="index.html"    class="nav-overlay-link" data-i18n="common.nav.home">Home</a>
+      <a href="services.html" class="nav-overlay-link" data-i18n="common.nav.services">Services</a>
+      <a href="work.html"     class="nav-overlay-link" data-i18n="common.nav.work">Work</a>
+      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
+      <a href="faq.html"      class="nav-overlay-link" data-i18n="common.nav.faq">FAQ</a>
+      <a href="contact.html"  class="nav-overlay-link" data-i18n="common.nav.contact">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+    <section class="privacy-hero" data-theme="light">
+      <div class="privacy-hero__inner">
+        <div class="privacy-hero__eyebrow" data-i18n="cookies.hero.eyebrow">Legal</div>
+        <h1 class="privacy-hero__title" data-i18n="cookies.hero.title">Cookie Policy</h1>
+        <p class="privacy-hero__updated" data-i18n="cookies.hero.updated">Last updated · May 12, 2026</p>
+      </div>
+    </section>
+
+    <section class="privacy-body" data-theme="light">
+      <div class="privacy-body__inner">
+
+        <p class="privacy-intro" data-i18n="cookies.intro.body" data-i18n-html>
+          This Cookie Policy explains how <strong>Noxus</strong> uses cookies and similar storage technologies when you visit this website. We keep it simple: <strong>we do not use tracking, advertising, or analytics cookies</strong>. The only data we store on your device is what you actively set yourself when toggling theme or language.
+        </p>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="cookies.s1.title">1 · What are cookies?</h2>
+          <div class="privacy-section__body" data-i18n="cookies.s1.body" data-i18n-html>
+            <p>Cookies are small text files placed on your device by a website. Similar technologies include <em>localStorage</em> and <em>sessionStorage</em> — small key/value stores that browsers expose to web pages. This policy covers both.</p>
+            <p>Some are essential for a site to function. Others track your behaviour across sessions or across sites. We only use the first kind, and only when you set them yourself.</p>
+          </div>
+        </article>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="cookies.s2.title">2 · What this site stores</h2>
+          <div class="privacy-section__body" data-i18n="cookies.s2.body" data-i18n-html>
+            <p>Noxus stores exactly two values in your browser's <em>localStorage</em>, both controlled by you:</p>
+            <ul>
+              <li><strong><code>noxus-theme</code></strong> — your light/dark mode preference. Written when you click the theme toggle in the top bar. Values: <code>"light"</code> or <code>"dark"</code>.</li>
+              <li><strong><code>noxus-lang</code></strong> — your language preference. Written when you click EN/FR in the top bar. Values: <code>"en"</code> or <code>"fr"</code>.</li>
+            </ul>
+            <p>Both values stay on your device. They are never transmitted to a server, never linked to an identity, and never shared with a third party.</p>
+            <p>We do not set any cookies for analytics, advertising, retargeting, fingerprinting, or session tracking.</p>
+          </div>
+        </article>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="cookies.s3.title">3 · Third-party services</h2>
+          <div class="privacy-section__body" data-i18n="cookies.s3.body" data-i18n-html>
+            <p>Some pages embed or link to third-party services. When you interact with those, the third party may set its own cookies under its own privacy terms:</p>
+            <ul>
+              <li><strong>Calendly</strong> — used when you book a discovery call. May set cookies for session and CSRF protection. <a href="https://calendly.com/privacy" target="_blank" rel="noopener noreferrer">Calendly privacy policy ↗</a></li>
+              <li><strong>Google Fonts</strong> — serves the typography used on this site. Google may log the request (IP, user agent) for service operation. No cookies are set by Google Fonts itself.</li>
+              <li><strong>Netlify</strong> — hosts the site. May set a session cookie for form spam protection when you submit the contact form. <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify privacy policy ↗</a></li>
+            </ul>
+            <p>We have no control over cookies set by these providers. If you want to avoid them, you can decline to interact with those specific features.</p>
+          </div>
+        </article>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="cookies.s4.title">4 · Your choices</h2>
+          <div class="privacy-section__body" data-i18n="cookies.s4.body" data-i18n-html>
+            <p>Because we do not run tracking cookies, there is no consent banner to accept or refuse. You are in control by default.</p>
+            <p>You can clear the two values we store at any time:</p>
+            <ul>
+              <li><strong>In your browser</strong> — clear site data for noxusstudios.com from your browser settings. This will reset theme and language to defaults on your next visit.</li>
+              <li><strong>In the DevTools console</strong> — run <code>localStorage.clear()</code> on this site.</li>
+            </ul>
+            <p>You can also browse this site in private/incognito mode. Theme and language will reset every session, but nothing breaks.</p>
+          </div>
+        </article>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="cookies.s5.title">5 · Changes to this policy</h2>
+          <div class="privacy-section__body" data-i18n="cookies.s5.body" data-i18n-html>
+            <p>If we ever add analytics, advertising, or any other type of cookie to Noxus, we will update this policy and add a consent banner where required by Québec Law 25, PIPEDA, or applicable law. The "Last updated" date at the top reflects the most recent revision.</p>
+          </div>
+        </article>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="cookies.s6.title">6 · Contact</h2>
+          <div class="privacy-section__body" data-i18n="cookies.s6.body" data-i18n-html>
+            <p>Questions about cookies or related storage on this site? Reach out:</p>
+            <p>
+              <strong>Email:</strong> <a href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a><br>
+              <strong>Studio:</strong> Montréal, Québec, Canada
+            </p>
+            <p>See also our <a href="privacy.html">Privacy Policy</a> for the broader picture on how we handle personal information.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer data-theme="light">
+    <div class="footer-grid">
+      <div class="footer-col footer-col--brand">
+        <a href="index.html" class="footer-brand">noxus<span class="footer-brand-dot">.</span></a>
+        <p class="footer-tagline" data-i18n="common.footer.tagline">
+          Hand-coded studio · Montréal
+        </p>
+      </div>
+
+      <div class="footer-col footer-col--nav">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.explore">Explore</span>
+        <ul class="footer-nav-list">
+          <li><a href="index.html"    data-i18n="common.nav.home">Home</a></li>
+          <li><a href="about.html"    data-i18n="common.nav.about">About</a></li>
+          <li><a href="services.html" data-i18n="common.nav.services">Services</a></li>
+          <li><a href="work.html"     data-i18n="common.nav.work">Work</a></li>
+          <li><a href="faq.html"      data-i18n="common.nav.faq">FAQ</a></li>
+          <li><a href="contact.html"  data-i18n="common.nav.contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col--contact">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.contact">Contact</span>
+        <a class="footer-contact-link" href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a>
+        <span class="footer-contact-loc" data-i18n="common.footer.location">Montréal, QC, Canada</span>
+        <div class="footer-status-row">
+          <span class="footer-status-dot" aria-hidden="true"></span>
+          <span data-i18n="common.footer.status.bookingOpen">Booking Open</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.replies">Replies within 24h</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-meta">
+      <span class="footer-meta-text" data-i18n="common.footer.copyright">©2026 Noxus Studios · All rights reserved</span>
+      <span class="footer-meta-links">
+        <a class="footer-meta-text footer-meta-link" href="privacy.html" data-i18n="common.footer.privacy">Privacy Policy</a>
+        <span class="footer-meta-sep" aria-hidden="true">·</span>
+        <a class="footer-meta-text footer-meta-link" href="cookies.html" data-i18n="common.footer.cookies">Cookies</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="js/translations.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/theme-toggle.js" defer></script>
+</body>
+</html>

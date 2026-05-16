@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="about.title">About — Noxus</title>
+  <meta name="description" data-i18n="about.metaDesc" content="The studio behind Noxus. Founder-led. Montréal-based. Built by Joseph." />
+<!-- Open Graph / social previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://noxusstudios.com/about.html">
+  <meta property="og:title" content="About — Noxus">
+  <meta property="og:description" content="The studio behind Noxus. Founder-led. Montréal-based. Built by Joseph.">
+  <meta property="og:image" content="https://noxusstudios.com/favicon-512.png">
+  <meta property="og:site_name" content="Noxus Studios">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="About — Noxus">
+  <meta name="twitter:description" content="The studio behind Noxus. Founder-led. Montréal-based. Built by Joseph.">
+  <meta name="twitter:image" content="https://noxusstudios.com/favicon-512.png">
+
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/about.css">
+  <link rel="stylesheet" href="css/theme-dark.css">
+  <script>
+    // Apply persisted theme + lang before paint to avoid FOUC.
+    (function () {
+      try {
+        var t = localStorage.getItem('noxus-theme');
+        if (t === 'dark') document.documentElement.classList.add('dark');
+        var l = localStorage.getItem('noxus-lang');
+        if (l === 'fr' || l === 'en') document.documentElement.setAttribute('lang', l);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <header class="site-nav" id="site-nav">
+    <a href="index.html" class="nav-logo">noxus<span class="nav-logo-dot">.</span></a>
+
+    <div class="status-bar" aria-label="Studio availability">
+      <span class="status-bar__dot" aria-hidden="true"></span>
+      <span data-i18n="common.status.booking">Booking Open</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.replies">Replies within 24h</span>
+    </div>
+
+    <button class="lang-toggle" id="lang-toggle" type="button"
+            data-i18n-attr="aria-label=common.lang.aria"
+            aria-label="Switch language">
+      <span class="lang-toggle__opt is-active" data-lang="en" data-i18n="common.nav.lang.en">EN</span>
+      <span class="lang-toggle__sep" aria-hidden="true">|</span>
+      <span class="lang-toggle__opt" data-lang="fr" data-i18n="common.nav.lang.fr">FR</span>
+    </button>
+
+    <button class="theme-toggle" id="theme-toggle" type="button"
+            aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="theme-toggle-icon theme-toggle-moon" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+      <svg class="theme-toggle-icon theme-toggle-sun" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <line x1="12" y1="1" x2="12" y2="3" />
+        <line x1="12" y1="21" x2="12" y2="23" />
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+        <line x1="1" y1="12" x2="3" y2="12" />
+        <line x1="21" y1="12" x2="23" y2="12" />
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+      </svg>
+    </button>
+
+    <nav class="nav-pill is-collapsed" id="nav-pill" aria-label="Main navigation">
+      <div class="nav-pill-inner">
+        <a href="services.html" class="nav-pill-link"><span data-i18n="common.nav.services">Services</span></a>
+        <a href="work.html"     class="nav-pill-link"><span data-i18n="common.nav.work">Work</span></a>
+        <a href="about.html"    class="nav-pill-link is-active"><span data-i18n="common.nav.about">About</span></a>
+        <a href="faq.html"      class="nav-pill-link"><span data-i18n="common.nav.faq">FAQ</span></a>
+        <a href="contact.html"  class="nav-pill-link"><span data-i18n="common.nav.contact">Contact</span></a>
+      </div>
+      <span class="nav-pill-collapsed-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6"  x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </span>
+    </nav>
+  </header>
+
+  <div class="theme-curtain" id="theme-curtain" aria-hidden="true"></div>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">×</button>
+    <nav>
+      <a href="index.html"    class="nav-overlay-link" data-i18n="common.nav.home">Home</a>
+      <a href="services.html" class="nav-overlay-link" data-i18n="common.nav.services">Services</a>
+      <a href="work.html"     class="nav-overlay-link" data-i18n="common.nav.work">Work</a>
+      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
+      <a href="faq.html"      class="nav-overlay-link" data-i18n="common.nav.faq">FAQ</a>
+      <a href="contact.html"  class="nav-overlay-link" data-i18n="common.nav.contact">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- ================ HERO ================ -->
+    <section class="about-hero has-grain" data-theme="light" style="--grain-opacity: 0.085;">
+      <div class="hero-paths" aria-hidden="true"></div>
+      <div class="about-hero__inner">
+        <div>
+          <h1 class="about-hero__title" data-i18n="about.hero.title">ABOUT.</h1>
+          <div class="about-hero__sub">
+            <span class="about-hero__rule"></span>
+            <span class="about-hero__sub-text" data-i18n="about.hero.subtitle">One operator. One studio. Hand-coded, end to end.</span>
+          </div>
+          <div class="about-hero__double-slash">//</div>
+          <p class="about-hero__desc" data-i18n="about.hero.desc" data-i18n-html>
+            Designer. Developer.<br>
+            Hand-coded studio,<br>
+            out of Montréal.
+          </p>
+        </div>
+        <div class="about-hero__meta">
+          <div class="about-hero__meta-row">
+            <div class="about-hero__meta-cell">
+              <div class="about-hero__meta-num" data-i18n="about.hero.meta.opNum">01</div>
+              <div class="about-hero__meta-lbl" data-i18n="about.hero.meta.opLbl">Operator</div>
+            </div>
+            <div class="about-hero__meta-cell">
+              <div class="about-hero__meta-num" data-i18n="about.hero.meta.dsNum">UI/UX</div>
+              <div class="about-hero__meta-lbl" data-i18n="about.hero.meta.dsLbl">Design</div>
+            </div>
+            <div class="about-hero__meta-cell">
+              <div class="about-hero__meta-num" data-i18n="about.hero.meta.mtlNum">MTL</div>
+              <div class="about-hero__meta-lbl" data-i18n="about.hero.meta.mtlLbl">Based in</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="contact.html" class="btn-bar hero-cta-bar" data-i18n="common.reserveBuild">Reserve Your Build</a>
+    </section>
+
+    <!-- ================ STUDIO POLICY (pull-quote) ================ -->
+    <section class="studio-policy" data-theme="dark">
+      <div class="studio-policy__inner reveal">
+        <div class="studio-policy__mark" aria-hidden="true">
+          <span class="studio-policy__mark-arrow">⌘</span>
+          <span class="studio-policy__mark-plus">+</span>
+        </div>
+        <blockquote class="studio-policy__quote" data-i18n="about.policy.quote">
+          Every site is hand-coded — no templates, no AI bloat, no surprises in the bill. Just the build.
+        </blockquote>
+        <div class="studio-policy__attrib">
+          <span class="studio-policy__attrib-name" data-i18n="about.policy.attrib.name">Studio policy</span>
+          <span class="studio-policy__attrib-role" data-i18n="about.policy.attrib.role">Every project · every tier</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ FOUNDER ================ -->
+    <section data-theme="dark" id="founder">
+      <div class="founder">
+        <div class="founder__visual reveal" style="transition-delay: 0ms">
+          <span class="founder__visual-corner founder__visual-corner--tl" aria-hidden="true"></span>
+          <span class="founder__visual-corner founder__visual-corner--tr" aria-hidden="true"></span>
+          <span class="founder__visual-corner founder__visual-corner--bl" aria-hidden="true"></span>
+          <span class="founder__visual-corner founder__visual-corner--br" aria-hidden="true"></span>
+          <span class="founder__visual-tag" data-i18n="about.founder.visualTag">Founder · Operator</span>
+          <div class="founder__photo-placeholder">
+            <span class="founder__photo-letter">J</span>
+            <span class="founder__photo-mark" aria-hidden="true">.</span>
+          </div>
+          <span class="founder__visual-no">01</span>
+          <span class="founder__visual-meta" aria-hidden="true">
+            <span class="founder__visual-meta-row">MTL · 2026</span>
+            <span class="founder__visual-meta-row">SOLO · OPERATOR</span>
+          </span>
+        </div>
+
+        <div class="founder__copy reveal" style="transition-delay: 80ms">
+          <div class="founder__eyebrow" data-i18n="about.founder.eyebrow">Hi · I'm Joseph</div>
+          <h2 class="founder__title">
+            <span class="founder__title-orange" data-i18n="about.founder.titleOrange">Designer.</span>
+            <span class="founder__title-white" data-i18n="about.founder.titleWhite">Developer. Builder.</span>
+          </h2>
+          <div class="founder__body">
+            <p data-i18n="about.founder.body1">
+              Noxus is a hand-coded studio out of Montréal. One operator from discovery to launch — design, code, ship.
+            </p>
+            <p data-i18n="about.founder.body2">
+              We deliver sites that load fast, look intentional, and convert. No templates, no plugin bloat, no agency relays.
+            </p>
+          </div>
+          <div class="founder__sig">
+            <span data-i18n="about.founder.sigName">Joseph</span>
+            <small data-i18n="about.founder.sigRole">Founder · Operator · Noxus</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ TICKER ================ -->
+    <div class="ticker-strip" aria-hidden="true">
+      <div class="ticker-track">
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+      </div>
+    </div>
+
+    <!-- ================ TIMELINE — chapter 04 ================ -->
+    <section class="timeline" data-theme="light" id="timeline">
+      <div class="timeline__inner">
+        <div class="timeline__num reveal">04<em>/</em></div>
+
+        <dl class="timeline__sidebar reveal" style="transition-delay: 60ms">
+          <dt data-i18n="about.timeline.sidebarDt1">About</dt>
+          <dd data-i18n="about.timeline.sidebarDd1">Four chapters that built the operator behind Noxus.</dd>
+          <dt data-i18n="about.timeline.sidebarDt2">Tags</dt>
+          <dd data-i18n="about.timeline.sidebarDd2">Design · UI/UX · Code · AI · Studio</dd>
+        </dl>
+
+        <ol class="timeline__list reveal" style="transition-delay: 120ms">
+          <li class="timeline__item">
+            <span class="timeline__item-year" data-i18n="about.timeline.item1.year">Chapter 01</span>
+            <span class="timeline__item-name" data-i18n="about.timeline.item1.name">Graphic Design</span>
+            <span class="timeline__item-tag" data-i18n="about.timeline.item1.tag">Foundation</span>
+            <p class="timeline__item-desc" data-i18n="about.timeline.item1.desc">Studied visual communication and brand identity. Where the eye for layout, type, and contrast comes from.</p>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__item-year" data-i18n="about.timeline.item2.year">Chapter 02</span>
+            <span class="timeline__item-name" data-i18n="about.timeline.item2.name">UI / UX Design</span>
+            <span class="timeline__item-tag" data-i18n="about.timeline.item2.tag">Designer</span>
+            <p class="timeline__item-desc" data-i18n="about.timeline.item2.desc">From print thinking to screen thinking. Layouts and flows built for browsers — hierarchy, intent, conversion.</p>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__item-year" data-i18n="about.timeline.item3.year">Chapter 03</span>
+            <span class="timeline__item-name" data-i18n="about.timeline.item3.name">Code &amp; AI</span>
+            <span class="timeline__item-tag" data-i18n="about.timeline.item3.tag">Builder</span>
+            <p class="timeline__item-desc" data-i18n="about.timeline.item3.desc">Picked up HTML, CSS, and JS to ship projects without waiting on a dev. Now every design I make, I can build.</p>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__item-year" data-i18n="about.timeline.item4.year">Chapter 04</span>
+            <span class="timeline__item-name" data-i18n="about.timeline.item4.name">The Studio</span>
+            <span class="timeline__item-tag" data-i18n="about.timeline.item4.tag">Today</span>
+            <p class="timeline__item-desc" data-i18n="about.timeline.item4.desc">Everything above, packaged into Noxus. One operator. One standard: hand-coded, fast, intentional.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================ VALUES — Three rules ================ -->
+    <section class="values" data-theme="light" id="values">
+      <div class="values__top">
+        <div class="values__eyebrow" data-i18n="about.values.eyebrow">What Noxus stands on</div>
+        <h2 class="values__heading" data-i18n="about.values.heading" data-i18n-html>
+          Three rules. <em>Every build, every time.</em>
+        </h2>
+      </div>
+
+      <div class="values__grid">
+        <article class="values__card values__card--1 reveal" style="transition-delay: 0ms">
+          <div class="values__card-head">
+            <div class="values__card-num">01</div>
+            <div class="values__card-illus" aria-hidden="true">
+              <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M22 18 L12 30 L22 42" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M38 18 L48 30 L38 42" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="34" y1="14" x2="26" y2="46" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="values__card-name" data-i18n="about.values.card1.name" data-i18n-html><em>Hand-coded.</em> Always.</h3>
+          <p class="values__card-desc" data-i18n="about.values.card1.desc">Custom HTML, CSS, JS. No templates, no page builders, no plugin bloat. You own clean code at the end.</p>
+        </article>
+
+        <article class="values__card values__card--2 reveal" style="transition-delay: 80ms">
+          <div class="values__card-head">
+            <div class="values__card-num">02</div>
+            <div class="values__card-illus" aria-hidden="true">
+              <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.4">
+                <circle cx="30" cy="22" r="8"/>
+                <path d="M14 48 C 14 38, 20 33, 30 33 C 40 33, 46 38, 46 48" stroke-linecap="round"/>
+                <circle cx="30" cy="22" r="2.4" fill="currentColor" stroke="none"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="values__card-name" data-i18n="about.values.card2.name" data-i18n-html>Founder-led <em>end to end.</em></h3>
+          <p class="values__card-desc" data-i18n="about.values.card2.desc">One person from discovery to launch. No account managers. No Slack relays. No offshore hand-offs.</p>
+        </article>
+
+        <article class="values__card values__card--3 reveal" style="transition-delay: 160ms">
+          <div class="values__card-head">
+            <div class="values__card-num">03</div>
+            <div class="values__card-illus" aria-hidden="true">
+              <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.4">
+                <circle cx="30" cy="30" r="18"/>
+                <circle cx="30" cy="30" r="11"/>
+                <circle cx="30" cy="30" r="3.5" fill="currentColor" stroke="none"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="values__card-name" data-i18n="about.values.card3.name" data-i18n-html><em>Built</em> to convert.</h3>
+          <p class="values__card-desc" data-i18n="about.values.card3.desc">Every section earns its place. Reverse-engineered from the action you want a visitor to take.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================ CTA ================ -->
+    <section class="about-cta" data-theme="dark" id="cta">
+      <h2 class="about-cta__title" data-i18n="about.cta.title" data-i18n-html>
+        Let's.<em>build it</em>
+      </h2>
+      <p class="about-cta__sub" data-i18n="about.cta.sub">
+        Discovery call · 15 minutes · No pitch deck
+      </p>
+      <a href="contact.html" class="btn-primary" style="padding: 18px 36px; font-size: 12px;" data-i18n="about.cta.btn">Get In Touch</a>
+    </section>
+  </main>
+
+  <footer data-theme="light">
+    <div class="footer-grid">
+      <div class="footer-col footer-col--brand">
+        <a href="index.html" class="footer-brand">noxus<span class="footer-brand-dot">.</span></a>
+        <p class="footer-tagline" data-i18n="common.footer.tagline">
+          Hand-coded studio · Montréal
+        </p>
+      </div>
+
+      <div class="footer-col footer-col--nav">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.explore">Explore</span>
+        <ul class="footer-nav-list">
+          <li><a href="index.html"    data-i18n="common.nav.home">Home</a></li>
+          <li><a href="about.html"    data-i18n="common.nav.about">About</a></li>
+          <li><a href="services.html" data-i18n="common.nav.services">Services</a></li>
+          <li><a href="work.html"     data-i18n="common.nav.work">Work</a></li>
+          <li><a href="faq.html"      data-i18n="common.nav.faq">FAQ</a></li>
+          <li><a href="contact.html"  data-i18n="common.nav.contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col--contact">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.contact">Contact</span>
+        <a class="footer-contact-link" href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a>
+        <span class="footer-contact-loc" data-i18n="common.footer.location">Montréal, QC, Canada</span>
+        <div class="footer-status-row">
+          <span class="footer-status-dot" aria-hidden="true"></span>
+          <span data-i18n="common.footer.status.bookingOpen">Booking Open</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.replies">Replies within 24h</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-meta">
+      <span class="footer-meta-text" data-i18n="common.footer.copyright">©2026 Noxus Studios · All rights reserved</span>
+      <span class="footer-meta-links">
+        <a class="footer-meta-text footer-meta-link" href="privacy.html" data-i18n="common.footer.privacy">Privacy Policy</a>
+        <span class="footer-meta-sep" aria-hidden="true">·</span>
+        <a class="footer-meta-text footer-meta-link" href="cookies.html" data-i18n="common.footer.cookies">Cookies</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="js/translations.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/hero-paths.js" defer></script>
+  <script src="js/theme-toggle.js" defer></script>
+  <script src="js/title-reveal.js" defer></script>
+</body>
+</html>

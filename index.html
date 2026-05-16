@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="home.title">Noxus — Hand-coded studio. Built in 4-7 days. Starting at $500 USD.</title>
+  <meta name="description" data-i18n="home.metaDesc" content="Noxus is a hand-coded web studio for brands that need to convert. Founder-led. Montréal-based. Starter builds from $500 USD." />
+<!-- Open Graph / social previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://noxusstudios.com/">
+  <meta property="og:title" content="Noxus — Hand-coded studio. Built in 4-7 days. Starting at $500 USD.">
+  <meta property="og:description" content="Noxus is a hand-coded web studio for brands that need to convert. Founder-led. Montréal-based. Starter builds from $500 USD.">
+  <meta property="og:image" content="https://noxusstudios.com/favicon-512.png">
+  <meta property="og:site_name" content="Noxus Studios">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Noxus — Hand-coded studio. Built in 4-7 days. Starting at $500 USD.">
+  <meta name="twitter:description" content="Noxus is a hand-coded web studio for brands that need to convert. Founder-led. Montréal-based. Starter builds from $500 USD.">
+  <meta name="twitter:image" content="https://noxusstudios.com/favicon-512.png">
+
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+  <link rel="stylesheet" href="css/theme-dark.css">
+  <script>
+    // Apply persisted theme + lang before paint to avoid FOUC.
+    (function () {
+      try {
+        var t = localStorage.getItem('noxus-theme');
+        if (t === 'dark') document.documentElement.classList.add('dark');
+        var l = localStorage.getItem('noxus-lang');
+        if (l === 'fr' || l === 'en') document.documentElement.setAttribute('lang', l);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ====================== NAV ====================== -->
+  <header class="site-nav" id="site-nav">
+    <a href="index.html" class="nav-logo">noxus<span class="nav-logo-dot">.</span></a>
+
+    <div class="status-bar" aria-label="Studio availability">
+      <span class="status-bar__dot" aria-hidden="true"></span>
+      <span data-i18n="common.status.booking">Booking Open</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.replies">Replies within 24h</span>
+    </div>
+
+    <button class="lang-toggle" id="lang-toggle" type="button"
+            data-i18n-attr="aria-label=common.lang.aria"
+            aria-label="Switch language">
+      <span class="lang-toggle__opt is-active" data-lang="en" data-i18n="common.nav.lang.en">EN</span>
+      <span class="lang-toggle__sep" aria-hidden="true">|</span>
+      <span class="lang-toggle__opt" data-lang="fr" data-i18n="common.nav.lang.fr">FR</span>
+    </button>
+
+    <button class="theme-toggle" id="theme-toggle" type="button"
+            aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="theme-toggle-icon theme-toggle-moon" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+      <svg class="theme-toggle-icon theme-toggle-sun" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <line x1="12" y1="1" x2="12" y2="3" />
+        <line x1="12" y1="21" x2="12" y2="23" />
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+        <line x1="1" y1="12" x2="3" y2="12" />
+        <line x1="21" y1="12" x2="23" y2="12" />
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+      </svg>
+    </button>
+
+    <nav class="nav-pill is-collapsed" id="nav-pill" aria-label="Main navigation">
+      <div class="nav-pill-inner">
+        <a href="services.html" class="nav-pill-link"><span data-i18n="common.nav.services">Services</span></a>
+        <a href="work.html"     class="nav-pill-link"><span data-i18n="common.nav.work">Work</span></a>
+        <a href="about.html"    class="nav-pill-link"><span data-i18n="common.nav.about">About</span></a>
+        <a href="faq.html"      class="nav-pill-link"><span data-i18n="common.nav.faq">FAQ</span></a>
+        <a href="contact.html"  class="nav-pill-link"><span data-i18n="common.nav.contact">Contact</span></a>
+      </div>
+      <span class="nav-pill-collapsed-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6"  x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </span>
+    </nav>
+  </header>
+
+  <div class="theme-curtain" id="theme-curtain" aria-hidden="true"></div>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">×</button>
+    <nav>
+      <a href="index.html"    class="nav-overlay-link" data-i18n="common.nav.home">Home</a>
+      <a href="services.html" class="nav-overlay-link" data-i18n="common.nav.services">Services</a>
+      <a href="work.html"     class="nav-overlay-link" data-i18n="common.nav.work">Work</a>
+      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
+      <a href="faq.html"      class="nav-overlay-link" data-i18n="common.nav.faq">FAQ</a>
+      <a href="contact.html"  class="nav-overlay-link" data-i18n="common.nav.contact">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- ====================== HERO (light) ====================== -->
+    <section class="hero-section has-grain" data-theme="light" style="--grain-opacity: 0.085;">
+      <div class="hero-paths" aria-hidden="true"></div>
+      <div class="hero-title-block">
+        <h1 class="hero-title">NOXUS.</h1>
+        <div class="hero-subtitle">
+          <span class="hero-subtitle-rule"></span>
+          <span class="hero-subtitle-text" data-i18n="home.hero.subtitle">The Hand-coded Studio</span>
+        </div>
+      </div>
+
+
+      <div class="hero-desc-block">
+        <div class="hero-double-slash">//</div>
+        <div class="hero-desc-text" data-i18n="home.hero.desc" data-i18n-html>
+          Hand-coded websites for clinics,<br>
+          studios, boutiques and operators<br>
+          who can't afford a slow site.
+        </div>
+      </div>
+
+      <div class="hero-price-block">
+        <div class="hero-price-large">$500.00<sup class="hero-price-cur">USD</sup></div>
+        <div class="hero-type-row">
+          <span class="hero-type-label" data-i18n="home.hero.priceLabel">Web Build</span>
+        </div>
+      </div>
+
+      <div class="hero-info-bar">
+        <div class="hero-info-cell">
+          <div class="hero-info-val-large" data-i18n="home.hero.info.starterValue">$500 USD</div>
+          <div class="hero-info-val-muted" data-i18n="home.hero.info.starterLbl">Starter</div>
+        </div>
+        <div class="hero-info-cell">
+          <div class="hero-info-val-bold" data-i18n="home.hero.info.bookingValue">NOW TAKING BUILDS</div>
+          <div class="hero-info-val-muted" data-i18n="home.hero.info.bookingLbl">Next slot open</div>
+        </div>
+        <div class="hero-info-cell">
+          <div class="hero-info-val-bold" data-i18n="home.hero.info.handcodedValue">HAND-CODED</div>
+          <div class="hero-info-val-muted" data-i18n="home.hero.info.handcodedLbl">No templates</div>
+        </div>
+        <div class="hero-info-cell">
+          <div class="hero-info-val-bold" data-i18n="home.hero.info.studioValue">FULL STUDIO</div>
+          <div class="hero-info-val-muted" data-i18n="home.hero.info.studioLbl">Builds · Design · Retainers</div>
+        </div>
+      </div>
+
+      <a href="contact.html" class="btn-bar hero-cta-bar" data-i18n="common.reserveBuild">Reserve Your Build</a>
+    </section>
+
+    <!-- ====================== STATS (dark) ====================== -->
+    <section class="stats-section" data-theme="dark" id="stats">
+      <div class="stats-section-top">
+        <div class="stats-tag" data-i18n="home.stats.tag" data-i18n-html>Build sites that<br>convert differently</div>
+        <div class="stats-avatars">
+          <div class="stats-avatar">J</div>
+          <div class="stats-avatar">N</div>
+        </div>
+        <a href="about.html" class="btn-ghost-pill" data-i18n="home.stats.aboutBtn">About Us</a>
+      </div>
+
+      <h2 class="fade-headline reveal">
+        <span class="fh-bright" data-i18n="home.stats.headlineA">YOUR WEBSITE IS YOUR BEST</span>
+        <span class="fh-mid" data-i18n="home.stats.headlineB">SALESPERSON. NOXUS BUILDS IT</span>
+        <span class="fh-dim" data-i18n="home.stats.headlineC">BY HAND, IN 4-7 DAYS.</span>
+      </h2>
+
+      <div class="stats-grid">
+        <div class="stat-card is-orange reveal" style="transition-delay: 0ms">
+          <div class="stat-card-head">
+            <div class="stat-card-name" data-i18n="home.stats.card1.name">Avg. turnaround</div>
+            <div class="stat-card-denom">/4d</div>
+          </div>
+          <p class="stat-card-desc" data-i18n="home.stats.card1.desc">Starter shipped in days, not months</p>
+          <div class="stat-card-body">
+            <div class="stat-number"><span data-target="4" data-suffix="">4</span><sup>d</sup></div>
+          </div>
+        </div>
+
+        <div class="stat-card reveal" style="transition-delay: 80ms">
+          <div class="stat-card-head">
+            <div class="stat-card-name" data-i18n="home.stats.card2.name">Lighthouse target</div>
+            <div class="stat-card-denom">/100</div>
+          </div>
+          <p class="stat-card-desc" data-i18n="home.stats.card2.desc">Speed equals conversion</p>
+          <div class="stat-card-body">
+            <div class="stat-number"><span data-target="95" data-suffix="">95</span><sup>+</sup></div>
+          </div>
+          <div class="stat-card-bar"><div class="stat-card-bar-fill" style="width: 95%;"></div></div>
+        </div>
+
+        <div class="stat-card reveal" style="transition-delay: 160ms">
+          <div class="stat-card-head">
+            <div class="stat-card-name" data-i18n="home.stats.card3.name">Hand-coded</div>
+            <div class="stat-card-denom">/100</div>
+          </div>
+          <p class="stat-card-desc" data-i18n="home.stats.card3.desc">No templates, no page builders</p>
+          <div class="stat-card-body">
+            <div class="stat-number"><span data-target="100" data-suffix="">100</span><sup>%</sup></div>
+          </div>
+          <div class="stat-card-bar"><div class="stat-card-bar-fill" style="width: 100%;"></div></div>
+        </div>
+
+        <div class="stat-card reveal" style="transition-delay: 240ms">
+          <div class="stat-card-head">
+            <div class="stat-card-name" data-i18n="home.stats.card4.name">Solo operator</div>
+            <div class="stat-card-denom">/1</div>
+          </div>
+          <p class="stat-card-desc" data-i18n="home.stats.card4.desc">From discovery to launch, no relays</p>
+          <div class="stat-card-body">
+            <div class="stat-number"><span data-target="1" data-suffix="">1</span><sup>/1</sup></div>
+          </div>
+          <div class="stat-card-bar"><div class="stat-card-bar-fill" style="width: 100%;"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== TICKER ====================== -->
+    <div class="ticker-strip" aria-hidden="true">
+      <div class="ticker-track">
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+      </div>
+    </div>
+
+    <!-- ====================== SPLIT × 3 (dark) ====================== -->
+
+    <div class="splits-stack">
+    <!-- Split 1 -->
+    <section class="split-section" data-theme="dark" id="split-1">
+      <div class="split-section__inner">
+      <div class="split-left reveal" style="transition-delay: 0ms">
+        <p class="split-helper-text" data-i18n="home.split1.helper">
+          Sites built to convert — bookings, sales, sign-ups. Every section earns its place.
+        </p>
+        <div class="split-image">
+          <div class="split-image-mock split-image-mock--code" aria-hidden="true">
+            <div class="mock-code__tabs">
+              <span class="mock-code__tab is-active">index.html</span>
+              <span class="mock-code__tab">style.css</span>
+              <span class="mock-code__live"><span class="mock-code__live-dot"></span>live</span>
+            </div>
+            <div class="mock-code__body">
+              <div class="mock-code__row" style="--idx: 0;"><span class="mock-code__ln">1</span><span class="mock-code__type"><span class="c-mute">// 12 lines. 0 dependencies.</span></span></div>
+              <div class="mock-code__row" style="--idx: 1;"><span class="mock-code__ln">2</span><span class="mock-code__type"><span class="c-tag">&lt;section</span> <span class="c-attr">class</span><span class="c-op">=</span><span class="c-str">"hero"</span><span class="c-tag">&gt;</span></span></div>
+              <div class="mock-code__row" style="--idx: 2;"><span class="mock-code__ln">3</span><span class="mock-code__type">  <span class="c-tag">&lt;h1&gt;</span><span class="c-text">Built.</span><span class="c-tag">&lt;/h1&gt;</span></span></div>
+              <div class="mock-code__row" style="--idx: 3;"><span class="mock-code__ln">4</span><span class="mock-code__type">  <span class="c-tag">&lt;p&gt;</span><span class="c-text">By hand. From scratch.</span><span class="c-tag">&lt;/p&gt;</span></span></div>
+              <div class="mock-code__row" style="--idx: 4;"><span class="mock-code__ln">5</span><span class="mock-code__type"><span class="c-tag">&lt;/section&gt;</span></span><span class="mock-code__caret"></span></div>
+            </div>
+          </div>
+        </div>
+        <a href="services.html" class="btn-tag">
+          <span class="btn-tag-icon">⌘</span>
+          <span data-i18n="home.split1.tag">Conversion</span>
+        </a>
+      </div>
+
+      <div class="split-right reveal" style="transition-delay: 100ms">
+        <div class="split-plus-icon">✦</div>
+        <h3 class="split-headline" data-i18n="home.split1.headlineA" data-i18n-html>
+          <span class="split-orange">Hand-coded</span><br>
+          <span class="split-white">by default.</span>
+        </h3>
+        <p class="split-body-text" data-i18n="home.split1.body">
+          Every site is written line by line — no Webflow, no Wix, no Shopify theme, no AI bloat. The code is the proof.
+        </p>
+        <p class="split-outcome" data-i18n="home.split1.outcome">
+          Pages that load in milliseconds, indexable from line one, no template fingerprints in your source.
+        </p>
+        <div class="split-counter">
+          <span class="split-counter-num">01</span>
+          <span class="split-counter-denom">/03</span>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- Split 2 -->
+    <section class="split-section" data-theme="dark" id="split-2">
+      <div class="split-section__inner">
+      <div class="split-left reveal" style="transition-delay: 0ms">
+        <p class="split-helper-text" data-i18n="home.split2.helper">
+          One operator from discovery to launch. No account managers, no Slack relays.
+        </p>
+        <div class="split-image">
+          <div class="split-image-mock split-image-mock--chat" aria-hidden="true">
+            <div class="mock-chat__head">
+              <span class="mock-chat__avatar">J</span>
+              <div class="mock-chat__id">
+                <div class="mock-chat__name">Joseph · Noxus</div>
+                <div class="mock-chat__status"><span class="mock-chat__dot"></span> online · Montréal</div>
+              </div>
+            </div>
+            <div class="mock-chat__body">
+              <div class="mock-chat__bubble mock-chat__bubble--in">Hey — saw your work. Quote for a clinic landing page?</div>
+              <div class="mock-chat__bubble mock-chat__bubble--out">$500 starter. Hand-coded. Shipped in 4–7 days.</div>
+              <div class="mock-chat__bubble mock-chat__bubble--out">You'll talk to me the whole way through.</div>
+              <div class="mock-chat__typing"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+        <a href="about.html" class="btn-tag">
+          <span class="btn-tag-icon">⌘</span>
+          <span data-i18n="home.split2.tag">Process</span>
+        </a>
+      </div>
+
+      <div class="split-right reveal" style="transition-delay: 100ms">
+        <div class="split-plus-icon">✦</div>
+        <h3 class="split-headline" data-i18n="home.split2.headlineA" data-i18n-html>
+          <span class="split-orange">Founder-led</span><br>
+          <span class="split-white">end to end</span>
+        </h3>
+        <p class="split-body-text" data-i18n="home.split2.body">
+          You talk to the person building your site. Discovery, design, code, launch — all me, all the way through.
+        </p>
+        <p class="split-outcome" data-i18n="home.split2.outcome">
+          No handoffs means no miscommunication, no scope creep, no surprise invoices.
+        </p>
+        <div class="split-counter">
+          <span class="split-counter-num">02</span>
+          <span class="split-counter-denom">/03</span>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- Split 3 -->
+    <section class="split-section" data-theme="dark" id="split-3">
+      <div class="split-section__inner">
+      <div class="split-left reveal" style="transition-delay: 0ms">
+        <p class="split-helper-text" data-i18n="home.split3.helper">
+          Brief on Monday, live by Friday. Most agencies measure builds in weeks — Noxus measures them in days.
+        </p>
+        <div class="split-image">
+          <div class="split-image-mock split-image-mock--turn" aria-hidden="true">
+            <span class="mock-type__rule" aria-hidden="true"></span>
+            <span class="mock-turn__from">brief</span>
+            <span class="mock-turn__num">04</span>
+            <span class="mock-turn__unit">days.</span>
+            <span class="mock-turn__to">live.</span>
+            <span class="mock-turn__week">
+              <span class="mock-turn__dot mock-turn__dot--seq" style="--seq: 0;"></span>
+              <span class="mock-turn__dot mock-turn__dot--seq" style="--seq: 1;"></span>
+              <span class="mock-turn__dot mock-turn__dot--seq" style="--seq: 2;"></span>
+              <span class="mock-turn__dot mock-turn__dot--seq" style="--seq: 3;"></span>
+              <span class="mock-turn__dot mock-turn__dot--last"></span>
+            </span>
+            <span class="mock-type__corner">AVG<span class="mock-type__corner-sep">/</span>TURN</span>
+          </div>
+        </div>
+        <a href="services.html" class="btn-tag">
+          <span class="btn-tag-icon">⌘</span>
+          <span data-i18n="home.split3.tag">Speed</span>
+        </a>
+      </div>
+
+      <div class="split-right reveal" style="transition-delay: 100ms">
+        <div class="split-plus-icon">✦</div>
+        <h3 class="split-headline" data-i18n="home.split3.headlineA" data-i18n-html>
+          <span class="split-orange">Shipped</span> in<br>
+          <span class="split-white">four days flat.</span>
+        </h3>
+        <p class="split-body-text" data-i18n="home.split3.body">
+          Briefed Monday, coded by Wednesday, live by Friday. Where most studios book months, Noxus books a week.
+        </p>
+        <p class="split-outcome" data-i18n="home.split3.outcome">
+          Faster to market means faster to revenue. You pay for shipped work, not for someone's calendar.
+        </p>
+        <div class="split-counter">
+          <span class="split-counter-num">03</span>
+          <span class="split-counter-denom">/03</span>
+        </div>
+      </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ====================== PROCESS (dark) ====================== -->
+    <section class="process" data-theme="dark" id="process">
+      <div class="process-top">
+        <div class="process-eyebrow" data-i18n="home.process.eyebrow">How we build</div>
+        <h2 class="process-heading" data-i18n="home.process.heading" data-i18n-html>From first call <em>to live site.</em></h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-card reveal" style="transition-delay: 0ms">
+          <div class="process-num">01</div>
+          <h3 class="process-title" data-i18n="home.process.step1.title">Discovery.</h3>
+          <p class="process-desc" data-i18n="home.process.step1.desc">15-min call · Free</p>
+          <div class="process-card__ctas">
+            <a href="contact.html#form" class="process-card__cta" data-i18n="home.process.step1.msg">Send a message →</a>
+            <a href="https://calendly.com/jojoseph462/30min" target="_blank" rel="noopener noreferrer" class="process-card__cta is-orange" data-i18n="home.process.step1.book">Book a call →</a>
+          </div>
+        </div>
+        <div class="process-card reveal" style="transition-delay: 100ms">
+          <div class="process-num">02</div>
+          <h3 class="process-title" data-i18n="home.process.step2.title">Build.</h3>
+          <p class="process-desc" data-i18n="home.process.step2.desc">4-7 days</p>
+        </div>
+        <div class="process-card reveal" style="transition-delay: 200ms">
+          <div class="process-num">03</div>
+          <h3 class="process-title" data-i18n="home.process.step3.title">Launch.</h3>
+          <p class="process-desc" data-i18n="home.process.step3.desc">Handoff + training</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================== DISCIPLINES — what we build (light) ====================== -->
+    <section class="disciplines" data-theme="light" id="disciplines">
+      <div class="disciplines__top">
+        <div class="disciplines__eyebrow" data-i18n="home.disciplines.eyebrow">Disciplines</div>
+        <h2 class="disciplines__heading" data-i18n="home.disciplines.heading" data-i18n-html>Three things. <em>One operator.</em></h2>
+      </div>
+
+      <div class="disciplines__grid">
+
+        <article class="discipline discipline--1 reveal" style="transition-delay: 0ms">
+          <div class="discipline__head">
+            <div class="discipline__num">/ 01</div>
+            <svg class="discipline__illus" viewBox="0 0 80 80" aria-hidden="true">
+              <circle class="d1-ripple-out" cx="34" cy="44" r="22" fill="none" stroke="currentColor" stroke-width="0.8" />
+              <circle class="d1-ripple-mid" cx="34" cy="44" r="14" fill="none" stroke="currentColor" stroke-width="0.8" />
+              <circle class="d1-target"     cx="34" cy="44" r="6"  fill="currentColor" />
+              <path class="d1-cursor"
+                    d="M48 22 L66 32 L56 36 L60 50 L53 52 L49 39 L41 46 Z"
+                    fill="currentColor"
+                    stroke="var(--off-white)" stroke-width="0.9" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 class="discipline__title" data-i18n="home.disciplines.d1.title">Sites that convert</h3>
+          <p class="discipline__body" data-i18n="home.disciplines.d1.body">Hand-coded conversion pages designed around a single action — book, buy, sign up, request. No template fingerprints, no slow JavaScript dragging the first paint. Starter live in 4-7 business days; multi-page builds in 2-3 weeks.</p>
+          <div class="discipline__tags">
+            <span class="discipline__tag" data-i18n="home.disciplines.d1.t1">Custom design</span>
+            <span class="discipline__tag" data-i18n="home.disciplines.d1.t2">Mobile-first</span>
+            <span class="discipline__tag" data-i18n="home.disciplines.d1.t3">95+ Lighthouse</span>
+            <span class="discipline__tag" data-i18n="home.disciplines.d1.t4">Hand-coded</span>
+          </div>
+        </article>
+
+        <article class="discipline discipline--2 reveal" style="transition-delay: 100ms">
+          <div class="discipline__head">
+            <div class="discipline__num">/ 02</div>
+            <svg class="discipline__illus" viewBox="0 0 80 80" aria-hidden="true">
+              <rect class="d2-panel d2-panel--back" x="18" y="18" width="44" height="30" rx="2.5"
+                    fill="none" stroke="currentColor" stroke-width="0.8" />
+              <rect class="d2-panel d2-panel--mid"  x="24" y="24" width="44" height="30" rx="2.5"
+                    fill="none" stroke="currentColor" stroke-width="0.8" />
+              <rect class="d2-panel d2-panel--front" x="30" y="30" width="36" height="26" rx="2.5"
+                    stroke="currentColor" stroke-width="1.2" />
+              <polyline class="d2-chart" points="34,50 41,44 47,47 53,40 60,42"
+                        fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+              <circle class="d2-chart-end" cx="60" cy="42" r="2" fill="currentColor" />
+            </svg>
+          </div>
+          <h3 class="discipline__title" data-i18n="home.disciplines.d2.title">Apps &amp; platforms</h3>
+          <p class="discipline__body" data-i18n="home.disciplines.d2.body">SaaS dashboards, headless commerce on Shopify, custom internal tools, member portals. Built on React, Next.js, or vanilla — picked per workload, not per resume. The architectural decisions most studios punt on are decided upfront.</p>
+          <div class="discipline__tags">
+            <span class="discipline__tag" data-i18n="home.disciplines.d2.t1">React + Next.js</span>
+            <span class="discipline__tag" data-i18n="home.disciplines.d2.t2">Headless Shopify</span>
+            <span class="discipline__tag" data-i18n="home.disciplines.d2.t3">SaaS dashboards</span>
+            <span class="discipline__tag" data-i18n="home.disciplines.d2.t4">Custom platforms</span>
+          </div>
+        </article>
+
+        <article class="discipline discipline--3 reveal" style="transition-delay: 200ms">
+          <div class="discipline__head">
+            <div class="discipline__num">/ 03</div>
+            <svg class="discipline__illus" viewBox="0 0 80 80" aria-hidden="true">
+              <path class="d3-arc-bg" d="M14,56 A26,26 0 0,1 66,56"
+                    fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                    opacity="0.18" />
+              <path class="d3-arc-fg" d="M14,56 A26,26 0 0,1 62,33"
+                    fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+              <line class="d3-needle" x1="40" y1="56" x2="60" y2="36"
+                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              <circle class="d3-needle-pin" cx="40" cy="56" r="2.6" fill="currentColor" />
+              <text class="d3-score" x="40" y="68" text-anchor="middle" font-family="Bebas Neue, Impact, sans-serif" font-size="11" fill="currentColor">95+</text>
+            </svg>
+          </div>
+          <h3 class="discipline__title" data-i18n="home.disciplines.d3.title">Speed &amp; search</h3>
+          <p class="discipline__body" data-i18n="home.disciplines.d3.body">Every 100ms of load time costs conversion. We audit Core Web Vitals on your existing site, fix the loaders dragging your rankings, then ship the rebuild with technical SEO baked into the code — not bolted on by a plugin.</p>
+          <div class="discipline__tags">
+            <span class="discipline__tag" data-i18n="home.disciplines.d3.t1">Core Web Vitals</span>
+            <span class="discipline__tag" data-i18n="home.disciplines.d3.t2">Technical SEO</span>
+            <span class="discipline__tag" data-i18n="home.disciplines.d3.t3">Schema markup</span>
+            <span class="discipline__tag" data-i18n="home.disciplines.d3.t4">Image pipeline</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- ====================== BENTO — pricing teaser (dark) ====================== -->
+    <section data-theme="dark" id="bento">
+      <div class="bento-section-top">
+        <div class="bento-eyebrow" data-i18n="home.bento.eyebrow">Pricing</div>
+        <h2 class="bento-heading" data-i18n="home.bento.heading" data-i18n-html>The menu. <em>Every price upfront.</em></h2>
+      </div>
+
+      <div class="bento-grid">
+
+        <!-- Starter -->
+        <a class="bento-cell bento-cell-price reveal" style="transition-delay: 0ms" href="services.html#builds">
+          <div class="bento-price-eyebrow" data-i18n="home.bento.starter.label">/ 01 Starter</div>
+          <div class="bento-price-amount">$500 USD</div>
+          <div class="bento-price-unit" data-i18n="home.bento.starter.unit">one-time</div>
+          <div class="bento-tags">
+            <span class="bento-tag" data-i18n="home.bento.starter.tag1">Hand-coded landing page</span>
+          </div>
+          <span class="bento-meta" data-i18n="home.bento.starter.delivery">4-7 days delivery</span>
+          <span class="bento-price-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <!-- Custom Build -->
+        <a class="bento-cell bento-cell-price is-featured reveal" style="transition-delay: 80ms" href="services.html#builds">
+          <span class="bento-badge" data-i18n="home.bento.custom.badge">Most Popular</span>
+          <div class="bento-price-eyebrow" data-i18n="home.bento.custom.label">/ 02 Custom Build</div>
+          <div class="bento-price-amount">$2.5K–$7.5K USD</div>
+          <div class="bento-price-unit" data-i18n="home.bento.custom.unit">project</div>
+          <div class="bento-tags">
+            <span class="bento-tag" data-i18n="home.bento.custom.tag1">Full website</span>
+            <span class="bento-tag" data-i18n="home.bento.custom.tag2">Shopify store</span>
+          </div>
+          <span class="bento-price-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <!-- Enterprise -->
+        <a class="bento-cell bento-cell-price reveal" style="transition-delay: 160ms" href="services.html#builds">
+          <div class="bento-price-eyebrow" data-i18n="home.bento.enterprise.label">/ 03 Enterprise</div>
+          <div class="bento-price-amount">$10K+ USD</div>
+          <div class="bento-price-unit" data-i18n="home.bento.enterprise.unit">project</div>
+          <div class="bento-tags">
+            <span class="bento-tag" data-i18n="home.bento.enterprise.tag1">Web apps</span>
+            <span class="bento-tag" data-i18n="home.bento.enterprise.tag2">Complex platforms</span>
+          </div>
+          <span class="bento-price-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <!-- Retainers -->
+        <a class="bento-cell bento-cell-price reveal" style="transition-delay: 240ms" href="services.html#retainers">
+          <div class="bento-price-eyebrow" data-i18n="home.bento.retainers.label">/ Retainers</div>
+          <div class="bento-price-amount">$500–$3K USD</div>
+          <div class="bento-price-unit" data-i18n="home.bento.retainers.unit">/mo</div>
+          <div class="bento-tags">
+            <span class="bento-tag" data-i18n="home.bento.retainers.tag1">Maintenance</span>
+            <span class="bento-tag" data-i18n="home.bento.retainers.tag2">Growth</span>
+            <span class="bento-tag" data-i18n="home.bento.retainers.tag3">Scale</span>
+          </div>
+          <span class="bento-price-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <!-- Design Services — wide cell spanning 2 cols -->
+        <a class="bento-cell bento-cell-price bento-cell-wide reveal" style="transition-delay: 320ms" href="services.html#design">
+          <span class="bento-wide-motif" aria-hidden="true">+</span>
+          <div class="bento-wide-head">
+            <div class="bento-price-eyebrow" data-i18n="home.bento.design.label">/ Design Services</div>
+            <div class="bento-wide-meta" data-i18n="home.bento.design.meta">05 disciplines · scoped on call</div>
+          </div>
+          <h3 class="bento-wide-headline" data-i18n="home.bento.design.headline" data-i18n-html>
+            Scoped <em>per project.</em>
+          </h3>
+          <div class="bento-tags bento-tags--wide">
+            <span class="bento-tag" data-i18n="home.bento.design.tag1">UI/UX</span>
+            <span class="bento-tag" data-i18n="home.bento.design.tag2">Brand &amp; Graphic</span>
+            <span class="bento-tag" data-i18n="home.bento.design.tag3">Mobile App</span>
+            <span class="bento-tag" data-i18n="home.bento.design.tag4">Pitch Deck</span>
+            <span class="bento-tag" data-i18n="home.bento.design.tag5">Dashboard</span>
+          </div>
+          <span class="bento-wide-cta" aria-hidden="true" data-i18n="home.bento.design.cta">Book a call →</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ====================== TICKER ====================== -->
+    <div class="ticker-strip" aria-hidden="true">
+      <div class="ticker-track">
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer data-theme="light">
+    <div class="footer-grid">
+      <!-- Brand mark + tagline + socials -->
+      <div class="footer-col footer-col--brand">
+        <a href="index.html" class="footer-brand">noxus<span class="footer-brand-dot">.</span></a>
+        <p class="footer-tagline" data-i18n="common.footer.tagline">
+          Hand-coded studio · Montréal
+        </p>
+      </div>
+
+      <!-- Explore (nav) -->
+      <div class="footer-col footer-col--nav">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.explore">Explore</span>
+        <ul class="footer-nav-list">
+          <li><a href="index.html"    data-i18n="common.nav.home">Home</a></li>
+          <li><a href="about.html"    data-i18n="common.nav.about">About</a></li>
+          <li><a href="services.html" data-i18n="common.nav.services">Services</a></li>
+          <li><a href="work.html"     data-i18n="common.nav.work">Work</a></li>
+          <li><a href="faq.html"      data-i18n="common.nav.faq">FAQ</a></li>
+          <li><a href="contact.html"  data-i18n="common.nav.contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact + Status -->
+      <div class="footer-col footer-col--contact">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.contact">Contact</span>
+        <a class="footer-contact-link" href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a>
+        <span class="footer-contact-loc" data-i18n="common.footer.location">Montréal, QC, Canada</span>
+        <div class="footer-status-row">
+          <span class="footer-status-dot" aria-hidden="true"></span>
+          <span data-i18n="common.footer.status.bookingOpen">Booking Open</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.replies">Replies within 24h</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thin meta strip -->
+    <div class="footer-meta">
+      <span class="footer-meta-text" data-i18n="common.footer.copyright">©2026 Noxus Studios · All rights reserved</span>
+      <span class="footer-meta-links">
+        <a class="footer-meta-text footer-meta-link" href="privacy.html" data-i18n="common.footer.privacy">Privacy Policy</a>
+        <span class="footer-meta-sep" aria-hidden="true">·</span>
+        <a class="footer-meta-text footer-meta-link" href="cookies.html" data-i18n="common.footer.cookies">Cookies</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="js/translations.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/hero-paths.js" defer></script>
+  <script src="js/theme-toggle.js" defer></script>
+  <script src="js/splits-rotate.js" defer></script>
+  <script src="js/title-reveal.js" defer></script>
+</body>
+</html>

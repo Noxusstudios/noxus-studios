@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="faq.title">FAQ — Noxus</title>
+  <meta name="description" data-i18n="faq.metaDesc" content="The questions Noxus clients actually ask: pricing transparency, why hand-coded over builders, the 4-7 day timeline, what we need from you, ownership, bilingual EN/FR, post-launch support." />
+<!-- Open Graph / social previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://noxusstudios.com/faq.html">
+  <meta property="og:title" content="FAQ — Noxus">
+  <meta property="og:description" content="The questions Noxus clients actually ask: pricing transparency, why hand-coded over builders, the 4-7 day timeline, what we need from you, ownership, bilingual EN/FR, post-launch support.">
+  <meta property="og:image" content="https://noxusstudios.com/favicon-512.png">
+  <meta property="og:site_name" content="Noxus Studios">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="FAQ — Noxus">
+  <meta name="twitter:description" content="The questions Noxus clients actually ask: pricing transparency, why hand-coded over builders, the 4-7 day timeline, what we need from you, ownership, bilingual EN/FR, post-launch support.">
+  <meta name="twitter:image" content="https://noxusstudios.com/favicon-512.png">
+
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/faq.css">
+  <link rel="stylesheet" href="css/theme-dark.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('noxus-theme');
+        if (t === 'dark') document.documentElement.classList.add('dark');
+        var l = localStorage.getItem('noxus-lang');
+        if (l === 'fr' || l === 'en') document.documentElement.setAttribute('lang', l);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <header class="site-nav" id="site-nav">
+    <a href="index.html" class="nav-logo">noxus<span class="nav-logo-dot">.</span></a>
+
+    <div class="status-bar" aria-label="Studio availability">
+      <span class="status-bar__dot" aria-hidden="true"></span>
+      <span data-i18n="common.status.booking">Booking Open</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.replies">Replies within 24h</span>
+    </div>
+
+    <button class="lang-toggle" id="lang-toggle" type="button"
+            data-i18n-attr="aria-label=common.lang.aria"
+            aria-label="Switch language">
+      <span class="lang-toggle__opt is-active" data-lang="en" data-i18n="common.nav.lang.en">EN</span>
+      <span class="lang-toggle__sep" aria-hidden="true">|</span>
+      <span class="lang-toggle__opt" data-lang="fr" data-i18n="common.nav.lang.fr">FR</span>
+    </button>
+
+    <button class="theme-toggle" id="theme-toggle" type="button"
+            aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="theme-toggle-icon theme-toggle-moon" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+      <svg class="theme-toggle-icon theme-toggle-sun" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <line x1="12" y1="1" x2="12" y2="3" />
+        <line x1="12" y1="21" x2="12" y2="23" />
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+        <line x1="1" y1="12" x2="3" y2="12" />
+        <line x1="21" y1="12" x2="23" y2="12" />
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+      </svg>
+    </button>
+
+    <nav class="nav-pill is-collapsed" id="nav-pill" aria-label="Main navigation">
+      <div class="nav-pill-inner">
+        <a href="services.html" class="nav-pill-link"><span data-i18n="common.nav.services">Services</span></a>
+        <a href="work.html"     class="nav-pill-link"><span data-i18n="common.nav.work">Work</span></a>
+        <a href="about.html"    class="nav-pill-link"><span data-i18n="common.nav.about">About</span></a>
+        <a href="faq.html"      class="nav-pill-link is-active"><span data-i18n="common.nav.faq">FAQ</span></a>
+        <a href="contact.html"  class="nav-pill-link"><span data-i18n="common.nav.contact">Contact</span></a>
+      </div>
+      <span class="nav-pill-collapsed-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6"  x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </span>
+    </nav>
+  </header>
+
+  <div class="theme-curtain" id="theme-curtain" aria-hidden="true"></div>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">×</button>
+    <nav>
+      <a href="index.html"    class="nav-overlay-link" data-i18n="common.nav.home">Home</a>
+      <a href="services.html" class="nav-overlay-link" data-i18n="common.nav.services">Services</a>
+      <a href="work.html"     class="nav-overlay-link" data-i18n="common.nav.work">Work</a>
+      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
+      <a href="faq.html"      class="nav-overlay-link" data-i18n="common.nav.faq">FAQ</a>
+      <a href="contact.html"  class="nav-overlay-link" data-i18n="common.nav.contact">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="faq-hero" data-theme="light">
+      <div class="faq-hero__inner">
+        <div class="faq-hero__eyebrow" data-i18n="faq.hero.eyebrow">Help</div>
+        <h1 class="faq-hero__title" data-i18n="faq.hero.title">Frequently asked questions</h1>
+        <p class="faq-hero__lede" data-i18n="faq.hero.lede">
+          The straight answers — pricing, turnaround, what's actually included, what happens after launch.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== FAQ LIST ===== -->
+    <section class="faq-body" data-theme="light">
+      <div class="faq-body__inner">
+
+        <p class="faq-meta" data-i18n="faq.meta">10 Entries · Click to expand</p>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <div class="faq-item__meta">
+              <span class="faq-item__num">01</span>
+              <span class="faq-item__total">/ 10</span>
+              <span class="faq-item__cat" data-i18n="faq.cat.pricing">Pricing</span>
+            </div>
+            <span class="faq-item__qtext" data-i18n="faq.q1.q">Is $500 really the full price, or are there hidden costs?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-item__a" data-i18n="faq.q1.a" data-i18n-html>
+            <p><strong>Yes — $500 USD covers the entire Starter build.</strong> Design, code, mobile-responsive layout, SEO essentials, contact form, 14-day post-launch fine-tuning, walkthrough video on handoff. Every line item is in writing before you sign.</p>
+            <p>What's <em>not</em> bundled in: domain registration (~$15/yr paid directly to a registrar), hosting (free on Netlify at Starter scale), brand identity work, and commercial-licensed stock assets. Each one is quoted separately, never glued in as a surprise mid-project.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <div class="faq-item__meta">
+              <span class="faq-item__num">02</span>
+              <span class="faq-item__total">/ 10</span>
+              <span class="faq-item__cat" data-i18n="faq.cat.stack">Stack</span>
+            </div>
+            <span class="faq-item__qtext" data-i18n="faq.q2.q">Why hand-coded? What's wrong with Webflow, Wix, or Squarespace?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-item__a" data-i18n="faq.q2.a" data-i18n-html>
+            <p>Builders are great for hobby pages and personal portfolios. They start to hurt the moment you need three things at once: real performance (95+ Lighthouse without bolting on five "optimizer" apps), a design that doesn't look templated, and the freedom to move hosts without rebuilding from scratch.</p>
+            <p>Hand-coded files give you actual ownership — they run anywhere, they don't slow down because the platform pushed a new tracker to every account on it, and they don't get more expensive as the vendor raises monthly fees. The trade-off: builders are easier to edit yourself with zero knowledge. Hand-coded means a short walkthrough on common edits, or a quick message to me. Justified when the site is a real revenue channel — overkill for a 3-page hobby project.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <div class="faq-item__meta">
+              <span class="faq-item__num">03</span>
+              <span class="faq-item__total">/ 10</span>
+              <span class="faq-item__cat" data-i18n="faq.cat.timeline">Timeline</span>
+            </div>
+            <span class="faq-item__qtext" data-i18n="faq.q3.q">How does a 4-7 day build actually unfold?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-item__a" data-i18n="faq.q3.a" data-i18n-html>
+            <p>A typical Starter, day by day:</p>
+            <ul>
+              <li><strong>Day 1:</strong> structure and wireframe locked from the discovery call</li>
+              <li><strong>Day 2-3:</strong> visual design — typography, color, layout, your review and sign-off</li>
+              <li><strong>Day 4-5:</strong> code build, mobile-responsive, performance-tuned</li>
+              <li><strong>Day 6:</strong> polish, copy refinement, SEO setup, form wiring, cross-browser checks</li>
+              <li><strong>Day 7:</strong> deploy, walkthrough video, handoff</li>
+            </ul>
+            <p>Honest dependency: the timeline holds if you can review and respond inside 24 hours at each checkpoint. Three days of silence mid-build means three extra days at the end. Most clients hit the rhythm — the few who can't, we plan around upfront.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <div class="faq-item__meta">
+              <span class="faq-item__num">04</span>
+              <span class="faq-item__total">/ 10</span>
+              <span class="faq-item__cat" data-i18n="faq.cat.process">Process</span>
+            </div>
+            <span class="faq-item__qtext" data-i18n="faq.q4.q">What do you need from me before we start?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-item__a" data-i18n="faq.q4.a" data-i18n-html>
+            <p>Three things:</p>
+            <ol>
+              <li><strong>A clear conversion goal</strong> — what visitors should DO on the site (book a call, buy a product, request a quote)</li>
+              <li><strong>Brand basics</strong> — logo if you have one, color preferences, reference sites you love or hate</li>
+              <li><strong>Content</strong> — either you draft the copy, or give me bullet points and I draft, or we pull it from the discovery call transcript</li>
+            </ol>
+            <p>Not required to start: a finished logo, professional photography, or a full content marketing plan. Those run in parallel or post-launch. If you're starting from a fully blank brand, scope a separate identity sprint first — trying to do brand and site inside one Starter compromises both.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <div class="faq-item__meta">
+              <span class="faq-item__num">05</span>
+              <span class="faq-item__total">/ 10</span>
+              <span class="faq-item__cat" data-i18n="faq.cat.process">Process</span>
+            </div>
+            <span class="faq-item__qtext" data-i18n="faq.q5.q">Can I edit the site myself after launch?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-item__a" data-i18n="faq.q5.a" data-i18n-html>
+            <p>Yes. <strong>Default Starter</strong> is static HTML, CSS, and JS — simple edits (a copy change, swapping an image, updating a price) take 5 minutes in any code editor. Handoff includes a walkthrough video covering the 6-8 most common edit patterns.</p>
+            <p>If you want a no-code editor layer (drag-and-drop text and images without touching code), a Sanity, Decap, or similar CMS integration runs $300-$600 USD on top, depending on how many sections need to be editable. What I never do: lock the site behind a proprietary editor only I can access. Every project is yours to take elsewhere if you ever need to.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <div class="faq-item__meta">
+              <span class="faq-item__num">06</span>
+              <span class="faq-item__total">/ 10</span>
+              <span class="faq-item__cat" data-i18n="faq.cat.stack">Stack</span>
+            </div>
+            <span class="faq-item__qtext" data-i18n="faq.q6.q">How does bilingual EN/FR actually work?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-item__a" data-i18n="faq.q6.a" data-i18n-html>
+            <p>One site, two languages, switchable via a button in the nav. Same URL path, same SEO weight — content swaps based on the visitor's choice, and their preference is remembered across visits.</p>
+            <p>Every line is <strong>natively written</strong>, never machine-translated. Either you supply both languages, or I draft in EN and a native FR writer reviews — billed at $1 per word of source text on top of the base build. Default for Montréal businesses serving both markets. Google specifically deprioritizes machine-translated content in its rankings, so cutting this corner costs you traffic.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <div class="faq-item__meta">
+              <span class="faq-item__num">07</span>
+              <span class="faq-item__total">/ 10</span>
+              <span class="faq-item__cat" data-i18n="faq.cat.logistics">Logistics</span>
+            </div>
+            <span class="faq-item__qtext" data-i18n="faq.q7.q">Who owns the code and design files after handoff?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-item__a" data-i18n="faq.q7.a" data-i18n-html>
+            <p>You. Full stop. On handoff you get:</p>
+            <ul>
+              <li>The full Git repository (or a zip if you don't use Git)</li>
+              <li>All Figma design files with editing access</li>
+              <li>Hosting account ownership transferred to your name</li>
+              <li>Domain registrar access in your name</li>
+              <li>Every credential, API key, and configuration documented</li>
+            </ul>
+            <p>No license, no usage limits, no "you're paying for the right to use it." The site is yours the same way a hand-painted sign is yours after the painter walks away. I keep a backup copy for 90 days post-launch in case you need a rollback — deleted after that.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <div class="faq-item__meta">
+              <span class="faq-item__num">08</span>
+              <span class="faq-item__total">/ 10</span>
+              <span class="faq-item__cat" data-i18n="faq.cat.logistics">Logistics</span>
+            </div>
+            <span class="faq-item__qtext" data-i18n="faq.q8.q">One-person studio — what if you're sick, overbooked, or disappear?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-item__a" data-i18n="faq.q8.a" data-i18n-html>
+            <p>Real answer: the schedule is capped to make this almost never happen. Two builds in parallel max. New starts are quoted with the next available slot, not "we'll start whenever."</p>
+            <p>If a real emergency hits mid-build — illness, family event — you get an immediate update with a revised timeline, the option to pause and refund the unbuilt portion of the deposit, and a referral to one of two trusted Montréal front-end devs I've worked with (with my project notes handed over so they don't start from scratch). No pretending to be a multi-person team. The upside: no PM relay, no juniors, no contractor in another time zone learning your project mid-build.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <div class="faq-item__meta">
+              <span class="faq-item__num">09</span>
+              <span class="faq-item__total">/ 10</span>
+              <span class="faq-item__cat" data-i18n="faq.cat.support">Support</span>
+            </div>
+            <span class="faq-item__qtext" data-i18n="faq.q9.q">What if I want a new feature six months from now?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-item__a" data-i18n="faq.q9.a" data-i18n-html>
+            <p>Three paths:</p>
+            <ol>
+              <li><strong>One-off add-on</strong> — quoted hourly or flat depending on size. Most small additions (a new section, a new form, an extra page) run $200-$800 USD.</li>
+              <li><strong>Retainer</strong> — $500/mo USD (5 hrs), $1,500/mo USD (15 hrs), or $3,000/mo USD (30 hrs). Cheaper per hour, predictable, cancellable any month.</li>
+              <li><strong>Take it elsewhere</strong> — you own the code, hand it to any developer, in-house or external. The codebase is documented for exactly this reason.</li>
+            </ol>
+            <p>I'll never gatekeep your own site to force you onto a retainer. The retainer exists because some clients actively want a recurring relationship — not because it's the only way to keep the site alive.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__q">
+            <div class="faq-item__meta">
+              <span class="faq-item__num">10</span>
+              <span class="faq-item__total">/ 10</span>
+              <span class="faq-item__cat" data-i18n="faq.cat.support">Support</span>
+            </div>
+            <span class="faq-item__qtext" data-i18n="faq.q10.q">What if the site isn't bringing in traffic or leads?</span>
+            <span class="faq-item__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-item__a" data-i18n="faq.q10.a" data-i18n-html>
+            <p>"No leads" usually hides one of three different problems:</p>
+            <ol>
+              <li><strong>No traffic</strong> — the site is fine, no one is finding it. SEO foundation is in every build, but SEO compounds over 3-6 months. Paid ads, content, social, or partnerships fill the gap.</li>
+              <li><strong>Traffic but no conversions</strong> — visitors land but don't act. Usually a copy or positioning issue, or friction in the conversion path. Fixable with targeted edits to the CTA, headline, or form.</li>
+              <li><strong>Conversions but no revenue</strong> — leads come in but don't buy. That's a sales-process problem more than a site problem, but the site can do more to pre-qualify.</li>
+            </ol>
+            <p>I run a free diagnostic at the 30-day mark for any Starter or higher to identify which of the three is happening. What I won't promise: a specific number of leads per month. Anyone promising that without seeing your industry, offer, traffic source, and conversion rate is making it up.</p>
+          </div>
+        </details>
+
+        <!-- Closing CTA -->
+        <div class="faq-cta">
+          <p class="faq-cta__lede" data-i18n="faq.cta.lede">Didn't find your question?</p>
+          <a href="contact.html" class="faq-cta__btn" data-i18n="faq.cta.btn">Get in touch</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer data-theme="light">
+    <div class="footer-grid">
+      <div class="footer-col footer-col--brand">
+        <a href="index.html" class="footer-brand">noxus<span class="footer-brand-dot">.</span></a>
+        <p class="footer-tagline" data-i18n="common.footer.tagline">
+          Hand-coded studio · Montréal
+        </p>
+      </div>
+
+      <div class="footer-col footer-col--nav">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.explore">Explore</span>
+        <ul class="footer-nav-list">
+          <li><a href="index.html"    data-i18n="common.nav.home">Home</a></li>
+          <li><a href="about.html"    data-i18n="common.nav.about">About</a></li>
+          <li><a href="services.html" data-i18n="common.nav.services">Services</a></li>
+          <li><a href="work.html"     data-i18n="common.nav.work">Work</a></li>
+          <li><a href="faq.html"      data-i18n="common.nav.faq">FAQ</a></li>
+          <li><a href="contact.html"  data-i18n="common.nav.contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col--contact">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.contact">Contact</span>
+        <a class="footer-contact-link" href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a>
+        <span class="footer-contact-loc" data-i18n="common.footer.location">Montréal, QC, Canada</span>
+        <div class="footer-status-row">
+          <span class="footer-status-dot" aria-hidden="true"></span>
+          <span data-i18n="common.footer.status.bookingOpen">Booking Open</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.replies">Replies within 24h</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-meta">
+      <span class="footer-meta-text" data-i18n="common.footer.copyright">©2026 Noxus Studios · All rights reserved</span>
+      <span class="footer-meta-links">
+        <a class="footer-meta-text footer-meta-link" href="privacy.html" data-i18n="common.footer.privacy">Privacy Policy</a>
+        <span class="footer-meta-sep" aria-hidden="true">·</span>
+        <a class="footer-meta-text footer-meta-link" href="cookies.html" data-i18n="common.footer.cookies">Cookies</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="js/translations.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/theme-toggle.js" defer></script>
+</body>
+</html>

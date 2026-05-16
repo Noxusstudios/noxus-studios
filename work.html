@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="work.title">Work — Noxus</title>
+  <meta name="description" data-i18n="work.metaDesc" content="Selected projects from Noxus — hand-coded sites for Montréal businesses, clinics, and creators." />
+<!-- Open Graph / social previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://noxusstudios.com/work.html">
+  <meta property="og:title" content="Work — Noxus">
+  <meta property="og:description" content="Selected projects from Noxus — hand-coded sites for Montréal businesses, clinics, and creators.">
+  <meta property="og:image" content="https://noxusstudios.com/favicon-512.png">
+  <meta property="og:site_name" content="Noxus Studios">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Work — Noxus">
+  <meta name="twitter:description" content="Selected projects from Noxus — hand-coded sites for Montréal businesses, clinics, and creators.">
+  <meta name="twitter:image" content="https://noxusstudios.com/favicon-512.png">
+
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/work.css">
+  <link rel="stylesheet" href="css/theme-dark.css">
+  <script>
+    // Apply persisted theme + lang before paint to avoid FOUC.
+    (function () {
+      try {
+        var t = localStorage.getItem('noxus-theme');
+        if (t === 'dark') document.documentElement.classList.add('dark');
+        var l = localStorage.getItem('noxus-lang');
+        if (l === 'fr' || l === 'en') document.documentElement.setAttribute('lang', l);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <header class="site-nav" id="site-nav">
+    <a href="index.html" class="nav-logo">noxus<span class="nav-logo-dot">.</span></a>
+
+    <div class="status-bar" aria-label="Studio availability">
+      <span class="status-bar__dot" aria-hidden="true"></span>
+      <span data-i18n="common.status.booking">Booking Open</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.replies">Replies within 24h</span>
+    </div>
+
+    <button class="lang-toggle" id="lang-toggle" type="button"
+            data-i18n-attr="aria-label=common.lang.aria"
+            aria-label="Switch language">
+      <span class="lang-toggle__opt is-active" data-lang="en" data-i18n="common.nav.lang.en">EN</span>
+      <span class="lang-toggle__sep" aria-hidden="true">|</span>
+      <span class="lang-toggle__opt" data-lang="fr" data-i18n="common.nav.lang.fr">FR</span>
+    </button>
+
+    <button class="theme-toggle" id="theme-toggle" type="button"
+            aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="theme-toggle-icon theme-toggle-moon" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+      <svg class="theme-toggle-icon theme-toggle-sun" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <line x1="12" y1="1" x2="12" y2="3" />
+        <line x1="12" y1="21" x2="12" y2="23" />
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+        <line x1="1" y1="12" x2="3" y2="12" />
+        <line x1="21" y1="12" x2="23" y2="12" />
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+      </svg>
+    </button>
+
+    <nav class="nav-pill is-collapsed" id="nav-pill" aria-label="Main navigation">
+      <div class="nav-pill-inner">
+        <a href="services.html" class="nav-pill-link"><span data-i18n="common.nav.services">Services</span></a>
+        <a href="work.html"     class="nav-pill-link is-active"><span data-i18n="common.nav.work">Work</span></a>
+        <a href="about.html"    class="nav-pill-link"><span data-i18n="common.nav.about">About</span></a>
+        <a href="faq.html"      class="nav-pill-link"><span data-i18n="common.nav.faq">FAQ</span></a>
+        <a href="contact.html"  class="nav-pill-link"><span data-i18n="common.nav.contact">Contact</span></a>
+      </div>
+      <span class="nav-pill-collapsed-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6"  x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </span>
+    </nav>
+  </header>
+
+  <div class="theme-curtain" id="theme-curtain" aria-hidden="true"></div>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">×</button>
+    <nav>
+      <a href="index.html"    class="nav-overlay-link" data-i18n="common.nav.home">Home</a>
+      <a href="services.html" class="nav-overlay-link" data-i18n="common.nav.services">Services</a>
+      <a href="work.html"     class="nav-overlay-link" data-i18n="common.nav.work">Work</a>
+      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
+      <a href="faq.html"      class="nav-overlay-link" data-i18n="common.nav.faq">FAQ</a>
+      <a href="contact.html"  class="nav-overlay-link" data-i18n="common.nav.contact">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- ================ HERO ================ -->
+    <section class="work-hero has-grain" data-theme="light" style="--grain-opacity: 0.085;">
+      <div class="hero-paths" aria-hidden="true"></div>
+      <div class="work-hero__inner">
+        <div>
+          <h1 class="work-hero__title" data-i18n="work.hero.title">WORK.</h1>
+          <div class="work-hero__sub">
+            <span class="work-hero__rule"></span>
+            <span class="work-hero__sub-text" data-i18n="work.hero.subtitle">Selected projects. Live and forthcoming.</span>
+          </div>
+          <div class="work-hero__double-slash">//</div>
+          <p class="work-hero__desc" data-i18n="work.hero.desc" data-i18n-html>
+            One case study live. Two slots open.<br>
+            Engineered for fast launches.
+          </p>
+        </div>
+        <div class="work-hero__meta">
+          <div class="work-hero__meta-row">
+            <div class="work-hero__meta-cell">
+              <div class="work-hero__meta-num" data-i18n="work.hero.meta.feat">01</div>
+              <div class="work-hero__meta-lbl" data-i18n="work.hero.meta.featLbl">Featured</div>
+            </div>
+            <div class="work-hero__meta-cell">
+              <div class="work-hero__meta-num" data-i18n="work.hero.meta.slots">02</div>
+              <div class="work-hero__meta-lbl" data-i18n="work.hero.meta.slotsLbl">Open slots</div>
+            </div>
+            <div class="work-hero__meta-cell">
+              <div class="work-hero__meta-num" data-i18n="work.hero.meta.year">2026</div>
+              <div class="work-hero__meta-lbl" data-i18n="work.hero.meta.yearLbl">Edition</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="contact.html" class="btn-bar hero-cta-bar" data-i18n="common.reserveBuild">Reserve Your Build</a>
+    </section>
+
+    <!-- ================ FEATURED CASE STUDY ================ -->
+    <section class="case-feature" data-theme="dark" id="case-study">
+      <div class="case-feature__top">
+        <div>
+          <div class="case-feature__eyebrow" data-i18n="work.case.eyebrow">Featured · Coming Soon</div>
+          <h2 class="case-feature__heading" data-i18n="work.case.heading" data-i18n-html>
+            A 1985 medical clinic, <em>rebuilt for 2026.</em>
+          </h2>
+        </div>
+        <div class="case-feature__corner">
+          <small data-i18n="work.case.cornerSmall">Project</small>
+          01<span style="color: var(--text-on-dark-muted);">/01</span>
+        </div>
+      </div>
+
+      <div class="case-feature__layout">
+        <div class="case-feature__visual">
+          <div class="case-feature__mock">
+            <div class="case-feature__mock-bar">
+              <span></span><span></span><span></span>
+              <div class="case-feature__mock-url">noxusstudios.com / case-study / clinique-8260</div>
+            </div>
+            <div class="case-feature__mock-content">
+              <div class="case-feature__mock-row">
+                <div class="case-feature__mock-brand" data-i18n="work.case.mockBrand">CLINIQUE 8260</div>
+                <div class="case-feature__mock-pill" data-i18n="work.case.mockPill">Prendre RDV</div>
+              </div>
+              <div>
+                <h3 class="case-feature__mock-hl" data-i18n="work.case.mockHl" data-i18n-html>Votre mieux-être, notre <em>priorité.</em></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-feature__copy">
+          <div>
+            <div class="case-feature__lbl" data-i18n="work.case.lbl">Clinique 8260 · Rivière-des-Prairies</div>
+            <h3 class="case-feature__title" data-i18n="work.case.title" data-i18n-html>CLINIQUE.<em>8260</em></h3>
+          </div>
+
+          <p class="case-feature__body" data-i18n="work.case.body">
+            A real Montréal medical practice, founded 1985. Their current site is from 2014 — not mobile, broken nav, leads with a job posting instead of patient services. Noxus is rebuilding it from scratch: mobile-first, hand-coded, conversion-driven.
+          </p>
+
+          <div class="case-feature__metrics">
+            <div class="case-feature__metric">
+              <div class="case-feature__metric-num" data-i18n="work.case.m1.num">5</div>
+              <div class="case-feature__metric-lbl" data-i18n="work.case.m1.lbl">Pages built</div>
+            </div>
+            <div class="case-feature__metric">
+              <div class="case-feature__metric-num" data-i18n="work.case.m2.num">FR</div>
+              <div class="case-feature__metric-lbl" data-i18n="work.case.m2.lbl">First language</div>
+            </div>
+            <div class="case-feature__metric">
+              <div class="case-feature__metric-num" data-i18n="work.case.m3.num">+12y</div>
+              <div class="case-feature__metric-lbl" data-i18n="work.case.m3.lbl">Site age replaced</div>
+            </div>
+          </div>
+
+          <div class="case-feature__bottom">
+            <div class="case-feature__tags">
+              <span class="case-feature__tag" data-i18n="work.case.tag1">Healthcare</span>
+              <span class="case-feature__tag" data-i18n="work.case.tag2">Mobile-first</span>
+              <span class="case-feature__tag" data-i18n="work.case.tag3">Hand-coded</span>
+            </div>
+            <a href="contact.html" class="btn-primary" data-i18n="work.case.cta">Read case study →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ TICKER ================ -->
+    <div class="ticker-strip" aria-hidden="true">
+      <div class="ticker-track">
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+      </div>
+    </div>
+
+    <!-- ================ WORK GRID — open slots ================ -->
+    <section class="work-grid-section" data-theme="light" id="slots">
+      <div class="work-grid-section__top">
+        <div class="work-grid-section__eyebrow" data-i18n="work.grid.eyebrow">Now booking · Next available</div>
+        <h2 class="work-grid-section__heading" data-i18n="work.grid.heading" data-i18n-html>
+          Two slots open. <em>Yours could be next.</em>
+        </h2>
+      </div>
+
+      <div class="work-grid">
+        <div class="work-card work-card--1 is-orange reveal" style="transition-delay: 0ms">
+          <div class="work-card__head">
+            <div class="work-card__eyebrow">
+              <span class="work-card__status-dot" aria-hidden="true"></span>
+              <span data-i18n="work.card1.slot">Slot 01 ·</span> <span class="work-card__status-tag" data-i18n="work.card1.tag">Open</span>
+            </div>
+            <div class="work-card__num">/01</div>
+          </div>
+          <div class="work-card__illus" aria-hidden="true">
+            <svg viewBox="0 0 96 96" fill="none">
+              <rect x="14" y="14" width="68" height="68" rx="3" stroke="currentColor" stroke-width="1.6"/>
+              <line x1="14" y1="28" x2="82" y2="28" stroke="currentColor" stroke-width="1.4"/>
+              <circle cx="22" cy="21" r="1.4" fill="currentColor"/>
+              <circle cx="28" cy="21" r="1.4" fill="currentColor"/>
+              <circle cx="34" cy="21" r="1.4" fill="currentColor"/>
+              <line x1="22" y1="40" x2="58" y2="40" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+              <line x1="22" y1="50" x2="74" y2="50" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.65"/>
+              <line x1="22" y1="58" x2="66" y2="58" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.45"/>
+              <rect x="22" y="68" width="22" height="8" rx="1.5" fill="currentColor"/>
+            </svg>
+          </div>
+          <span class="work-card__badge" data-i18n="work.card1.badge">Next Up</span>
+          <h3 class="work-card__title" data-i18n="work.card1.title">Your project, here.</h3>
+          <p class="work-card__desc" data-i18n="work.card1.desc">
+            First slot is open. Discovery call this week, build starts next.
+          </p>
+          <div class="work-card__bottom">
+            <div class="work-card__price" data-i18n="work.card1.price">$500+ USD</div>
+            <a href="contact.html" class="work-card__cta" data-i18n="work.card1.cta">Reserve →</a>
+          </div>
+        </div>
+
+        <div class="work-card work-card--2 is-dark reveal" style="transition-delay: 80ms">
+          <div class="work-card__head">
+            <div class="work-card__eyebrow">
+              <span class="work-card__status-dot" aria-hidden="true"></span>
+              <span data-i18n="work.card2.slot">Slot 02 ·</span> <span class="work-card__status-tag" data-i18n="work.card2.tag">Open</span>
+            </div>
+            <div class="work-card__num">/02</div>
+          </div>
+          <div class="work-card__illus" aria-hidden="true">
+            <svg viewBox="0 0 96 96" fill="none">
+              <rect x="14" y="22" width="44" height="32" rx="3" stroke="currentColor" stroke-width="1.4" opacity="0.45"/>
+              <rect x="26" y="34" width="44" height="32" rx="3" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
+              <rect x="38" y="46" width="44" height="32" rx="3" stroke="currentColor" stroke-width="1.8" fill="currentColor" fill-opacity="0.08"/>
+              <line x1="46" y1="56" x2="74" y2="56" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="46" y1="64" x2="66" y2="64" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.65"/>
+            </svg>
+          </div>
+          <h3 class="work-card__title" data-i18n="work.card2.title">Open slot.</h3>
+          <p class="work-card__desc" data-i18n="work.card2.desc">
+            Second slot for a slightly bigger build. Multi-page or stacked services.
+          </p>
+          <div class="work-card__bottom">
+            <div class="work-card__price" data-i18n="work.card2.price">$2.5k+ USD</div>
+            <a href="contact.html" class="work-card__cta" data-i18n="work.card2.cta">Reserve →</a>
+          </div>
+        </div>
+
+        <div class="work-card work-card--3 is-muted reveal" style="transition-delay: 160ms">
+          <div class="work-card__head">
+            <div class="work-card__eyebrow">
+              <span data-i18n="work.card3.slot">Slot 03 ·</span> <span class="work-card__status-tag work-card__status-tag--muted" data-i18n="work.card3.tag">Waitlist</span>
+            </div>
+            <div class="work-card__num">/03</div>
+          </div>
+          <div class="work-card__illus" aria-hidden="true">
+            <svg viewBox="0 0 96 96" fill="none">
+              <circle cx="48" cy="48" r="30" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M48 28 L48 48 L62 56" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="48" cy="48" r="2.5" fill="currentColor"/>
+              <circle cx="48" cy="20" r="1.6" fill="currentColor" opacity="0.45"/>
+              <circle cx="76" cy="48" r="1.6" fill="currentColor" opacity="0.45"/>
+              <circle cx="48" cy="76" r="1.6" fill="currentColor" opacity="0.45"/>
+              <circle cx="20" cy="48" r="1.6" fill="currentColor" opacity="0.45"/>
+            </svg>
+          </div>
+          <h3 class="work-card__title" data-i18n="work.card3.title">Waitlist.</h3>
+          <p class="work-card__desc" data-i18n="work.card3.desc">
+            Get on the waitlist. First-come on the calendar.
+          </p>
+          <div class="work-card__bottom">
+            <div class="work-card__price" data-i18n="work.card3.price">TBD</div>
+            <a href="contact.html" class="work-card__cta" data-i18n="work.card3.cta">Join list →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ IMPACT STATS ================ -->
+    <section class="impact" data-theme="light" id="impact">
+      <div class="impact__top">
+        <div class="impact__eyebrow" data-i18n="work.impact.eyebrow">By the numbers</div>
+        <h2 class="impact__heading" data-i18n="work.impact.heading" data-i18n-html>
+          What every Noxus build aims for, <em>every time.</em>
+        </h2>
+      </div>
+
+      <div class="impact__grid">
+        <div class="impact__cell impact__cell--1">
+          <span class="impact__cell-glyph" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M16 6 A10 10 0 0 1 26 16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              <text x="16" y="20" text-anchor="middle" font-family="var(--font-display)" font-size="9" fill="currentColor">95</text>
+            </svg>
+          </span>
+          <div class="impact__cell-num">95<sup>+</sup></div>
+          <div class="impact__cell-lbl" data-i18n="work.impact.c1.lbl">Lighthouse score</div>
+          <div class="impact__cell-desc" data-i18n="work.impact.c1.desc">Performance target on every page</div>
+        </div>
+        <div class="impact__cell impact__cell--2">
+          <span class="impact__cell-glyph" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <rect x="5" y="6" width="22" height="20" rx="2" stroke="currentColor" stroke-width="1.4"/>
+              <line x1="5" y1="11" x2="27" y2="11" stroke="currentColor" stroke-width="1.4"/>
+              <circle cx="10" cy="8.5" r="0.9" fill="currentColor"/>
+              <circle cx="13" cy="8.5" r="0.9" fill="currentColor"/>
+              <path d="M11 17 L14 20 L21 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <div class="impact__cell-num">4<sup>d</sup></div>
+          <div class="impact__cell-lbl" data-i18n="work.impact.c2.lbl">Avg. turnaround</div>
+          <div class="impact__cell-desc" data-i18n="work.impact.c2.desc">Starter shipped in days</div>
+        </div>
+        <div class="impact__cell impact__cell--3">
+          <span class="impact__cell-glyph" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M10 10 L5 16 L10 22" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22 10 L27 16 L22 22" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="14" y1="24" x2="18" y2="8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <div class="impact__cell-num">100<sup>%</sup></div>
+          <div class="impact__cell-lbl" data-i18n="work.impact.c3.lbl">Hand-coded</div>
+          <div class="impact__cell-desc" data-i18n="work.impact.c3.desc">No templates, no builders</div>
+        </div>
+        <div class="impact__cell impact__cell--4">
+          <span class="impact__cell-glyph" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6 28 C 6 22, 10 19, 16 19 C 22 19, 26 22, 26 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="16" cy="12" r="1.4" fill="currentColor"/>
+            </svg>
+          </span>
+          <div class="impact__cell-num"><span data-target="1">1</span><sup>/1</sup></div>
+          <div class="impact__cell-lbl" data-i18n="work.impact.c4.lbl">Solo operator</div>
+          <div class="impact__cell-desc" data-i18n="work.impact.c4.desc">End-to-end, no relays</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ CTA ================ -->
+    <section class="work-cta" data-theme="dark" id="cta">
+      <h2 class="work-cta__title" data-i18n="work.cta.title" data-i18n-html>
+        Be project.<em>02</em>
+      </h2>
+      <p class="work-cta__sub" data-i18n="work.cta.sub">
+        Discovery call · 15 minutes · No commitment
+      </p>
+      <a href="contact.html" class="btn-primary" style="padding: 18px 36px; font-size: 12px;" data-i18n="work.cta.btn">Book Discovery Call</a>
+    </section>
+  </main>
+
+  <footer data-theme="light">
+    <div class="footer-grid">
+      <div class="footer-col footer-col--brand">
+        <a href="index.html" class="footer-brand">noxus<span class="footer-brand-dot">.</span></a>
+        <p class="footer-tagline" data-i18n="common.footer.tagline">
+          Hand-coded studio · Montréal
+        </p>
+      </div>
+
+      <div class="footer-col footer-col--nav">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.explore">Explore</span>
+        <ul class="footer-nav-list">
+          <li><a href="index.html"    data-i18n="common.nav.home">Home</a></li>
+          <li><a href="about.html"    data-i18n="common.nav.about">About</a></li>
+          <li><a href="services.html" data-i18n="common.nav.services">Services</a></li>
+          <li><a href="work.html"     data-i18n="common.nav.work">Work</a></li>
+          <li><a href="faq.html"      data-i18n="common.nav.faq">FAQ</a></li>
+          <li><a href="contact.html"  data-i18n="common.nav.contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col--contact">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.contact">Contact</span>
+        <a class="footer-contact-link" href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a>
+        <span class="footer-contact-loc" data-i18n="common.footer.location">Montréal, QC, Canada</span>
+        <div class="footer-status-row">
+          <span class="footer-status-dot" aria-hidden="true"></span>
+          <span data-i18n="common.footer.status.bookingOpen">Booking Open</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.replies">Replies within 24h</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-meta">
+      <span class="footer-meta-text" data-i18n="common.footer.copyright">©2026 Noxus Studios · All rights reserved</span>
+      <span class="footer-meta-links">
+        <a class="footer-meta-text footer-meta-link" href="privacy.html" data-i18n="common.footer.privacy">Privacy Policy</a>
+        <span class="footer-meta-sep" aria-hidden="true">·</span>
+        <a class="footer-meta-text footer-meta-link" href="cookies.html" data-i18n="common.footer.cookies">Cookies</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="js/translations.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/hero-paths.js" defer></script>
+  <script src="js/theme-toggle.js" defer></script>
+  <script src="js/title-reveal.js" defer></script>
+</body>
+</html>

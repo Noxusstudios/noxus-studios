@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Noxus Studios">
+  <title>Noxus Studios</title>
+  <rect width="32" height="32" fill="#E8DCCB"/>
+  <g fill="#1A1A1A">
+    <rect x="4" y="4" width="6" height="24"/>
+    <rect x="22" y="4" width="6" height="24"/>
+    <polygon points="10,4 16,4 22,28 16,28"/>
+  </g>
+  <rect x="26" y="26" width="2" height="2" fill="#E8540A"/>
+</svg>

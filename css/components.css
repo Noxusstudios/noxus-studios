@@ -1,0 +1,1021 @@
+/* ============================================================
+   NOXUS — components.css
+   Nav, social rail, ticker, buttons, footer (per spec §2.4–2.6 + §3-E)
+   ============================================================ */
+
+/* ============================================================
+   NAV — transparent, vertical links, hamburger right (§2.4)
+   ============================================================ */
+
+.site-nav {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 28px 40px;
+  background: transparent;
+  pointer-events: none;
+  transition: color 300ms ease;
+}
+.site-nav > * { pointer-events: all; }
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  text-transform: lowercase;
+  color: var(--text-on-light-primary);
+  text-decoration: none;
+  line-height: 1;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  transition:
+    color 250ms ease,
+    opacity 280ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-logo-dot {
+  color: var(--text-on-light-primary);
+  transition: color 250ms ease;
+}
+
+/* On dark sections */
+.site-nav.on-dark .nav-logo { color: white; }
+.site-nav.on-dark .nav-logo-dot { color: var(--orange); }
+
+/* On dark sections — theme-toggle inverts, pill flips to cream-glass to read
+   on dark backdrops. Mirrors the dark-theme treatment but only when scrolled
+   over a [data-theme="dark"] section. */
+.site-nav.on-dark .theme-toggle {
+  background: #E8DCCB;
+  color: #14100B;
+  box-shadow: 0 0 0 1.5px rgba(0, 0, 0, 0.25);
+}
+.site-nav.on-dark .lang-toggle {
+  color: #E8DCCB;
+}
+.site-nav.on-dark .status-bar {
+  color: rgba(232, 220, 203, 0.70);
+}
+/* Mobile container pill stays glassy on dark; desktop per-link pills
+   recolor below (see @media min-width: 769px block at the bottom). */
+.site-nav.on-dark .nav-pill {
+  background: rgba(232, 220, 203, 0.10);
+  border-color: rgba(232, 220, 203, 0.18);
+  box-shadow: 0 6px 20px -10px rgba(0, 0, 0, 0.55);
+}
+.site-nav.on-dark .nav-pill-link { color: #E8DCCB; }
+.site-nav.on-dark .nav-pill-collapsed-icon { color: #E8DCCB; }
+
+/* Desktop on-dark — each link pill flips to glassy cream-on-dark to
+   read against the dark hero / split / bento sections without losing
+   its rounded shape. */
+@media (min-width: 769px) {
+  .site-nav.on-dark .nav-pill,
+  .site-nav.on-dark .nav-pill.is-collapsed {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+  .site-nav.on-dark .nav-pill .nav-pill-link {
+    background: rgba(232, 220, 203, 0.10);
+    border-color: rgba(232, 220, 203, 0.20);
+    color: #E8DCCB;
+  }
+  .site-nav.on-dark .nav-pill .nav-pill-link:hover,
+  .site-nav.on-dark .nav-pill .nav-pill-link:focus-visible {
+    border-color: rgba(232, 220, 203, 0.35);
+    color: #E8DCCB;
+  }
+  .site-nav.on-dark .nav-pill .nav-pill-link.is-active {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: #FFFFFF;
+  }
+}
+
+/* Scrolled past hero — entire nav fades out. Navigate by scrolling back. */
+.site-nav.is-scrolled .nav-logo,
+.site-nav.is-scrolled .theme-toggle,
+.site-nav.is-scrolled .lang-toggle {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+}
+
+/* ============================================================
+   Theme toggle button (curtain trigger)
+   ============================================================ */
+
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--black);
+  color: var(--off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 0 0 1.5px rgba(0, 0, 0, 0.10);
+  transition:
+    background 300ms ease,
+    color 300ms ease,
+    transform 150ms ease,
+    box-shadow 300ms ease,
+    opacity 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   Language toggle (EN / FR)
+   ============================================================ */
+
+/* Bare-text language toggle (no pill chrome) — sits between the
+   nav-pill links and the theme toggle on desktop. Inherits page
+   text color; only the EN/FR opt + sep glyph carry visual style. */
+.lang-toggle {
+  margin-left: auto;
+  height: 36px;
+  padding: 0 6px;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-on-light-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1;
+  transition:
+    color 300ms ease,
+    transform 150ms ease,
+    opacity 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lang-toggle:hover { transform: scale(1.04); }
+.lang-toggle:active { transform: scale(0.97); }
+.lang-toggle:focus-visible { box-shadow: 0 0 0 2px var(--orange); }
+.lang-toggle[disabled] { pointer-events: none; }
+
+.lang-toggle__opt {
+  opacity: 0.45;
+  transition: opacity 220ms ease, color 220ms ease;
+}
+.lang-toggle__opt.is-active {
+  opacity: 1;
+  color: var(--orange);
+}
+.lang-toggle__sep {
+  opacity: 0.3;
+  font-weight: 400;
+}
+
+/* ============================================================
+   Status bar — center-pinned in nav, shows live booking status
+   ============================================================ */
+
+.status-bar {
+  margin-left: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-on-light-secondary);
+  white-space: nowrap;
+  pointer-events: none;
+  transition:
+    opacity 280ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 280ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms ease;
+}
+
+.status-bar__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22C55E;
+  flex-shrink: 0;
+  animation: status-pulse 2.2s ease-in-out infinite;
+}
+
+.status-bar__sep {
+  opacity: 0.4;
+  font-weight: 400;
+}
+
+@keyframes status-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.45);
+  }
+  50% {
+    transform: scale(1.12);
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-bar__dot { animation: none; }
+}
+
+/* Hide on narrower viewports where the nav controls would crowd it. */
+@media (max-width: 1100px) {
+  .status-bar { display: none; }
+}
+
+/* When scrolled, fade with the rest of the nav. */
+.site-nav.is-scrolled .status-bar {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.theme-toggle:hover { transform: scale(1.10); }
+.theme-toggle:active { transform: scale(0.96); }
+.theme-toggle:focus-visible { box-shadow: 0 0 0 2px var(--orange); }
+.theme-toggle[disabled] { pointer-events: none; }
+
+.theme-toggle-icon { display: none; }
+.theme-toggle .theme-toggle-moon { display: block; }   /* light theme: show moon */
+:root.dark .theme-toggle .theme-toggle-moon { display: none; }
+:root.dark .theme-toggle .theme-toggle-sun  { display: block; }
+
+/* ============================================================
+   Theme curtain — full-screen wipe used during theme transition
+   ============================================================ */
+
+.theme-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  background: var(--off-white);
+  transform-origin: top;
+  transform: scaleY(0);
+  pointer-events: none;
+  will-change: transform;
+}
+.theme-curtain.is-animating {
+  transition: transform 160ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+.theme-curtain.is-falling { transform: scaleY(1); }
+
+/* ============================================================
+   Hero floating-paths layer — drifting orange contour paths.
+   Used on every page hero. SMIL <animate> elements are injected
+   by js/hero-paths.js once the SVG is in the DOM.
+   ============================================================ */
+
+.hero-paths {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  color: var(--orange);
+  /* Strengthen path visibility on cream backgrounds. The default
+     orange-on-cream can wash out; mix-blend-multiply pushes the
+     strokes into the gradient so they read as etched, not faded. */
+  mix-blend-mode: multiply;
+}
+:root.dark .hero-paths {
+  mix-blend-mode: normal;
+}
+.hero-paths svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ============================================================
+   Grain / film-noise overlay utility.
+   Add class `has-grain` to any container; it gets a subtle
+   SVG-noise overlay above the background and below content.
+   Tuneable via --grain-opacity (default 0.06).
+   ============================================================ */
+
+.has-grain { position: relative; isolation: isolate; }
+.has-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: var(--grain-opacity, 0.06);
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 220px 220px;
+}
+:root.dark .has-grain::before {
+  mix-blend-mode: screen;
+  opacity: calc(var(--grain-opacity, 0.06) * 0.9);
+}
+
+/* Ensure each page hero's inner content renders above the paths layer.
+   (Absolutely-positioned siblings outrank static ones in the stacking
+   order regardless of DOM order, so the inner needs an explicit z-index.) */
+.services-hero__inner,
+.work-hero__inner,
+.about-hero__inner,
+.contact-hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   Nav pill — animated hamburger replacement (index.html only)
+   ============================================================ */
+
+/* Shared smooth ease for the whole expand/collapse motion. No overshoot.
+   Matched durations across width/padding/inner/links/icon so the pill
+   reads as one fluid object instead of separate parts catching up. */
+.nav-pill {
+  --pill-ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --pill-dur: 620ms;
+
+  position: relative;
+  margin-left: 14px;
+  display: flex;
+  align-items: center;
+  height: 36px;
+  width: auto;
+  padding: 0 16px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 6px 20px -10px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  cursor: default;
+  transition:
+    width var(--pill-dur) var(--pill-ease),
+    padding var(--pill-dur) var(--pill-ease),
+    background 300ms ease,
+    border-color 300ms ease;
+}
+.nav-pill.is-collapsed {
+  width: 36px;
+  padding: 0;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.nav-pill-inner {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  white-space: nowrap;
+  transition: opacity calc(var(--pill-dur) * 0.55) var(--pill-ease);
+}
+.nav-pill.is-collapsed .nav-pill-inner {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-pill-link {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-on-light-primary);
+  text-decoration: none;
+  opacity: 1;
+  line-height: 1.4;
+  /* iOS Safari quirk: :active on <a> is unreliable, and the global
+     -webkit-tap-highlight-color: transparent in base.css kills the native
+     tap flash. Restore a tinted version here so taps always show feedback. */
+  -webkit-tap-highlight-color: rgba(232, 84, 10, 0.35);
+  transition:
+    opacity calc(var(--pill-dur) * 0.55) var(--pill-ease),
+    transform var(--pill-dur) var(--pill-ease),
+    color 220ms ease;
+}
+.nav-pill-link:hover,
+.nav-pill-link:active,
+.nav-pill-link:focus-visible,
+.nav-pill-link.is-active,
+.nav-pill-link.is-pressed { color: var(--orange); }
+/* Snap to orange instantly on press — the 220ms fade-in let users lift
+   their finger before the color visibly changed. Going OUT of :active /
+   .is-pressed still uses the slow transition for a soft release. */
+.nav-pill-link:active,
+.nav-pill-link.is-pressed { transition: color 0ms; }
+
+/* Inner span owns the hover-scale transform so it doesn't collide with the
+   parent link's slow collapse-related transform transition. */
+.nav-pill-link > span {
+  display: inline-block;
+  transform-origin: center;
+  transition: transform 240ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.nav-pill-link:hover > span,
+.nav-pill-link:active > span,
+.nav-pill-link:focus-visible > span { transform: scale(1.18); }
+
+/* Light stagger: 50ms steps, sub-perceptible but adds organic feel. */
+.nav-pill .nav-pill-link:nth-child(1) { transition-delay: 0.00s, 0.00s, 0s; }
+.nav-pill .nav-pill-link:nth-child(2) { transition-delay: 0.04s, 0.04s, 0s; }
+.nav-pill .nav-pill-link:nth-child(3) { transition-delay: 0.08s, 0.08s, 0s; }
+.nav-pill .nav-pill-link:nth-child(4) { transition-delay: 0.12s, 0.12s, 0s; }
+
+/* Collapsed: links slide left + scale; reverse stagger so last fades first. */
+.nav-pill.is-collapsed .nav-pill-link {
+  transform: translateX(-14px) scale(0.95);
+}
+.nav-pill.is-collapsed .nav-pill-link:nth-child(1) { transition-delay: 0.12s, 0.12s, 0s; }
+.nav-pill.is-collapsed .nav-pill-link:nth-child(2) { transition-delay: 0.08s, 0.08s, 0s; }
+.nav-pill.is-collapsed .nav-pill-link:nth-child(3) { transition-delay: 0.04s, 0.04s, 0s; }
+.nav-pill.is-collapsed .nav-pill-link:nth-child(4) { transition-delay: 0.00s, 0.00s, 0s; }
+
+.nav-pill-collapsed-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.85);
+  color: var(--text-on-light-primary);
+  transition:
+    opacity calc(var(--pill-dur) * 0.55) var(--pill-ease),
+    transform var(--pill-dur) var(--pill-ease);
+}
+.nav-pill.is-collapsed .nav-pill-collapsed-icon {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: calc(var(--pill-dur) * 0.35);
+}
+
+/* On desktop (≥769px) the pill is permanently expanded — the hamburger
+   icon and collapsed state only exist on mobile. Each .nav-pill-link
+   becomes its own rounded pill (the style we previously used for the
+   lang-toggle), and the right-group is visually reordered so the
+   primary nav appears BEFORE the language and theme toggles:
+
+     [logo] [status-bar] ............... [nav-pill] [lang] [theme]
+
+   We use flex `order` for the visual reorder so the HTML stays the same
+   across all 8 pages. Tab order still follows DOM, which is fine — these
+   are all interactive on the same horizontal band. */
+@media (min-width: 769px) {
+  /* Right-group visual order */
+  .nav-pill     { order: 1; margin-left: auto; }
+  .lang-toggle  { order: 2; margin-left: 14px; }
+  .theme-toggle { order: 3; }
+
+  /* Container is transparent on desktop — the individual links are the
+     chrome. We force the collapsed visual state off since there are no
+     hamburgers on desktop. */
+  .nav-pill,
+  .nav-pill.is-collapsed {
+    width: auto;
+    padding: 0;
+    cursor: default;
+    justify-content: flex-start;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    overflow: visible;
+  }
+  .nav-pill .nav-pill-inner,
+  .nav-pill.is-collapsed .nav-pill-inner {
+    opacity: 1;
+    pointer-events: auto;
+    gap: 6px;
+  }
+  /* Each link is its own rounded pill — height matches the theme toggle
+     (36px) so the entire right-group sits on a single visual baseline. */
+  .nav-pill .nav-pill-link,
+  .nav-pill.is-collapsed .nav-pill-link {
+    transform: none;
+    height: 36px;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    border: 1.5px solid rgba(0, 0, 0, 0.10);
+    background: var(--off-white);
+    color: var(--text-on-light-primary);
+    transition:
+      background 300ms ease,
+      color 250ms ease,
+      border-color 300ms ease,
+      transform 150ms ease,
+      box-shadow 300ms ease,
+      opacity 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  /* Hover lifts the pill slightly and warms the border. The previous
+     scale-up of the inner <span> is no longer wanted here — the whole
+     pill is the affordance now, not the bare text. */
+  .nav-pill .nav-pill-link:hover,
+  .nav-pill .nav-pill-link:focus-visible {
+    transform: scale(1.04);
+    border-color: rgba(0, 0, 0, 0.20);
+    color: var(--text-on-light-primary);
+  }
+  .nav-pill .nav-pill-link:hover > span,
+  .nav-pill .nav-pill-link:focus-visible > span,
+  .nav-pill .nav-pill-link:active > span {
+    transform: none;
+  }
+  /* Active page: filled orange pill, white text. Strongest "you are
+     here" signal in the whole nav, matches the orange primary button
+     language used elsewhere on the site. */
+  .nav-pill .nav-pill-link.is-active {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: #FFFFFF;
+  }
+  .nav-pill .nav-pill-link.is-active:hover,
+  .nav-pill .nav-pill-link.is-active:focus-visible {
+    background: var(--orange-hover);
+    border-color: var(--orange-hover);
+    color: #FFFFFF;
+  }
+  .nav-pill .nav-pill-collapsed-icon,
+  .nav-pill.is-collapsed .nav-pill-collapsed-icon {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+}
+
+/* ============================================================
+   Mobile overlay
+   ============================================================ */
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms, visibility 300ms;
+}
+.nav-overlay.open { opacity: 1; visibility: visible; }
+
+.nav-overlay nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.nav-overlay-link {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 8vw, 64px);
+  color: white;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  line-height: 1;
+  transition: color 200ms, opacity 200ms;
+}
+.nav-overlay-link:hover,
+.nav-overlay-link:active { color: var(--orange); opacity: 1; }
+.nav-overlay-link { -webkit-tap-highlight-color: rgba(232, 84, 10, 0.25); }
+.nav-overlay-close {
+  position: absolute;
+  top: 28px; right: 40px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ============================================================
+   Orange ticker (§2.5)
+   ============================================================ */
+
+.ticker-strip {
+  background: var(--orange);
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  height: 38px;
+  display: flex;
+  align-items: center;
+}
+.ticker-track {
+  display: inline-block;
+  animation: ticker-move 22s linear infinite;
+  will-change: transform;
+}
+@keyframes ticker-move {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.tw {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #111111;
+  padding: 0 18px;
+}
+.ts {
+  display: inline-block;
+  color: rgba(17, 17, 17, 0.55);
+  font-size: 10px;
+  padding: 0 4px;
+}
+
+/* ============================================================
+   Buttons (§2.6)
+   ============================================================ */
+
+.btn-primary {
+  display: inline-block;
+  background: var(--orange);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 80ms;
+}
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus-visible { background: var(--orange-hover); }
+.btn-primary { -webkit-tap-highlight-color: transparent; }
+
+.btn-ghost-pill {
+  display: inline-block;
+  background: transparent;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 150ms;
+}
+.btn-ghost-pill:hover,
+.btn-ghost-pill:active,
+.btn-ghost-pill:focus-visible { border-color: rgba(255, 255, 255, 0.75); }
+.btn-ghost-pill { -webkit-tap-highlight-color: transparent; }
+
+.btn-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  text-decoration: none;
+}
+.btn-tag-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px; height: 22px;
+  background: rgba(255, 255, 255, 0.10);
+  border-radius: 50%;
+  font-size: 12px;
+  color: white;
+}
+
+.btn-bar {
+  display: block;
+  width: 100%;
+  background: var(--black);
+  color: white;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 18px;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 80ms;
+}
+.btn-bar:hover,
+.btn-bar:active,
+.btn-bar:focus-visible { background: #1c1c1c; }
+.btn-bar { -webkit-tap-highlight-color: transparent; }
+
+/* Hero CTA bar — pinned to bottom of any hero section to bridge cream → dark */
+.hero-cta-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 10;
+}
+
+/* ============================================================
+   FOOTER (§3-E)
+   ============================================================ */
+
+/* ============================================================
+   FOOTER — compact 3-column structured layout
+   ============================================================ */
+
+footer {
+  background: var(--off-white);
+  padding: 40px 40px 0;
+  color: var(--text-on-light-primary);
+}
+
+/* Top: brand | nav | contact */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.6fr;
+  gap: 48px;
+  padding-bottom: 28px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Column heading (small caps tag above lists) */
+.footer-col-title {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-on-light-muted);
+  margin-bottom: 2px;
+}
+
+/* --- Brand column ----------------------------------------- */
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--black);
+  text-decoration: none;
+  text-transform: lowercase;
+  align-self: flex-start;
+  -webkit-tap-highlight-color: rgba(232, 84, 10, 0.20);
+}
+.footer-brand:hover,
+.footer-brand:active { color: var(--orange); }
+.footer-brand-dot { color: var(--orange); }
+
+.footer-tagline {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-on-light-secondary);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 240px;
+}
+
+/* --- Nav column ------------------------------------------- */
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer-nav-list a {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-on-light-secondary);
+  text-decoration: none;
+  line-height: 1.4;
+  transition: color 180ms ease;
+  -webkit-tap-highlight-color: rgba(232, 84, 10, 0.20);
+}
+.footer-nav-list a:hover,
+.footer-nav-list a:active,
+.footer-nav-list a:focus-visible { color: var(--orange); }
+
+/* --- Contact column --------------------------------------- */
+.footer-contact-link {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-on-light-primary);
+  text-decoration: none;
+  line-height: 1.3;
+  transition: color 180ms ease;
+  -webkit-tap-highlight-color: rgba(232, 84, 10, 0.20);
+}
+.footer-contact-link:hover,
+.footer-contact-link:active,
+.footer-contact-link:focus-visible { color: var(--orange); }
+
+.footer-contact-loc {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-on-light-secondary);
+  line-height: 1.4;
+}
+
+/* Status pill — sized to fit inside contact column without bleed */
+.footer-status-row {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border-light);
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-on-light-primary);
+  line-height: 1.3;
+  margin-top: 4px;
+  align-self: flex-start;
+}
+.footer-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22C55E;
+  flex-shrink: 0;
+  animation: status-pulse 2.2s ease-in-out infinite;
+}
+.footer-status-sep {
+  opacity: 0.40;
+  margin: 0 2px;
+}
+
+/* --- Bottom meta strip ------------------------------------ */
+.footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border-light);
+}
+.footer-meta-text {
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-on-light-muted);
+  line-height: 1.4;
+  text-decoration: none;
+}
+.footer-meta-link {
+  transition: color 180ms ease;
+  -webkit-tap-highlight-color: rgba(232, 84, 10, 0.20);
+}
+.footer-meta-link:hover,
+.footer-meta-link:active,
+.footer-meta-link:focus-visible { color: var(--orange); }
+.footer-meta-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer-meta-sep {
+  color: var(--text-on-light-muted);
+  opacity: 0.5;
+  font-size: 9px;
+}
+
+/* Mobile responsive (per spec §5) */
+@media (max-width: 768px) {
+  .site-nav { padding: 20px 20px; gap: 10px; }
+  .nav-links { display: none; }
+
+  /* Footer collapses to single-column stack on mobile. Each column gets
+     centered alignment so the layout reads as a clean vertical card. */
+  footer { padding: 36px 24px 0; }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 24px;
+    text-align: center;
+  }
+  .footer-col { align-items: center; gap: 10px; }
+  .footer-brand { align-self: center; font-size: 36px; }
+  .footer-tagline { max-width: none; }
+  .footer-status-row {
+    align-self: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .footer-meta {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 6px;
+    padding: 14px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-nav { padding: 16px 16px; gap: 8px; }
+
+  /* Nav pill at ≤480px — desktop gap:22 + padding:16 lets "Contact" render
+     past the pill's overflow:hidden boundary, clipping the last ~30px.
+     Tighten spacing so all four links fit cleanly at 430-480px viewports.
+     Collapsed state is unaffected since .is-collapsed pins width:36px. */
+  .nav-pill {
+    margin-left: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .nav-pill-inner {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* At all common phone widths (360-480px) the horizontal pill gets
+     squeezed by flex-shrink and can't reliably fit 4 links — at 414px
+     specifically (iPhone 11 / XR) "Contact" clips by 3px. Switch the
+     expanded state to a vertical dropdown that drops out of the nav flow
+     so it can size to its content. The collapsed (icon) state is unchanged. */
+  .nav-pill:not(.is-collapsed) {
+    position: absolute;
+    top: 52px;
+    right: 16px;
+    width: auto;
+    min-width: 140px;
+    height: auto;
+    padding: 10px 14px;
+    border-radius: 16px;
+    overflow: visible;
+    box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.30);
+  }
+  .nav-pill:not(.is-collapsed) .nav-pill-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    width: 100%;
+  }
+  .nav-pill:not(.is-collapsed) .nav-pill-link {
+    /* Larger tap target in the dropdown — 10px vertical padding brings each
+       link to ~38px tall, close to the recommended 44px touch minimum. */
+    padding: 10px 4px;
+    width: 100%;
+  }
+}

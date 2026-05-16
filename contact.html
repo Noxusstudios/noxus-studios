@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="contact.title">Contact — Noxus</title>
+  <meta name="description" data-i18n="contact.metaDesc" content="Get in touch with Noxus. Email, Calendly, Discord, or Instagram. Replies within 24 hours." />
+<!-- Open Graph / social previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://noxusstudios.com/contact.html">
+  <meta property="og:title" content="Contact — Noxus">
+  <meta property="og:description" content="Get in touch with Noxus. Email, Calendly, Discord, or Instagram. Replies within 24 hours.">
+  <meta property="og:image" content="https://noxusstudios.com/favicon-512.png">
+  <meta property="og:site_name" content="Noxus Studios">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Contact — Noxus">
+  <meta name="twitter:description" content="Get in touch with Noxus. Email, Calendly, Discord, or Instagram. Replies within 24 hours.">
+  <meta name="twitter:image" content="https://noxusstudios.com/favicon-512.png">
+
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/contact.css">
+  <link rel="stylesheet" href="css/theme-dark.css">
+  <script>
+    // Apply persisted theme + lang before paint to avoid FOUC.
+    (function () {
+      try {
+        var t = localStorage.getItem('noxus-theme');
+        if (t === 'dark') document.documentElement.classList.add('dark');
+        var l = localStorage.getItem('noxus-lang');
+        if (l === 'fr' || l === 'en') document.documentElement.setAttribute('lang', l);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <header class="site-nav" id="site-nav">
+    <a href="index.html" class="nav-logo">noxus<span class="nav-logo-dot">.</span></a>
+
+    <div class="status-bar" aria-label="Studio availability">
+      <span class="status-bar__dot" aria-hidden="true"></span>
+      <span data-i18n="common.status.booking">Booking Open</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.replies">Replies within 24h</span>
+    </div>
+
+    <button class="lang-toggle" id="lang-toggle" type="button"
+            data-i18n-attr="aria-label=common.lang.aria"
+            aria-label="Switch language">
+      <span class="lang-toggle__opt is-active" data-lang="en" data-i18n="common.nav.lang.en">EN</span>
+      <span class="lang-toggle__sep" aria-hidden="true">|</span>
+      <span class="lang-toggle__opt" data-lang="fr" data-i18n="common.nav.lang.fr">FR</span>
+    </button>
+
+    <button class="theme-toggle" id="theme-toggle" type="button"
+            aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="theme-toggle-icon theme-toggle-moon" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+      <svg class="theme-toggle-icon theme-toggle-sun" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <line x1="12" y1="1" x2="12" y2="3" />
+        <line x1="12" y1="21" x2="12" y2="23" />
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+        <line x1="1" y1="12" x2="3" y2="12" />
+        <line x1="21" y1="12" x2="23" y2="12" />
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+      </svg>
+    </button>
+
+    <nav class="nav-pill is-collapsed" id="nav-pill" aria-label="Main navigation">
+      <div class="nav-pill-inner">
+        <a href="services.html" class="nav-pill-link"><span data-i18n="common.nav.services">Services</span></a>
+        <a href="work.html"     class="nav-pill-link"><span data-i18n="common.nav.work">Work</span></a>
+        <a href="about.html"    class="nav-pill-link"><span data-i18n="common.nav.about">About</span></a>
+        <a href="faq.html"      class="nav-pill-link"><span data-i18n="common.nav.faq">FAQ</span></a>
+        <a href="contact.html"  class="nav-pill-link is-active"><span data-i18n="common.nav.contact">Contact</span></a>
+      </div>
+      <span class="nav-pill-collapsed-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6"  x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </span>
+    </nav>
+  </header>
+
+  <div class="theme-curtain" id="theme-curtain" aria-hidden="true"></div>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">×</button>
+    <nav>
+      <a href="index.html"    class="nav-overlay-link" data-i18n="common.nav.home">Home</a>
+      <a href="services.html" class="nav-overlay-link" data-i18n="common.nav.services">Services</a>
+      <a href="work.html"     class="nav-overlay-link" data-i18n="common.nav.work">Work</a>
+      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
+      <a href="faq.html"      class="nav-overlay-link" data-i18n="common.nav.faq">FAQ</a>
+      <a href="contact.html"  class="nav-overlay-link" data-i18n="common.nav.contact">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- ================ HERO ================ -->
+    <section class="contact-hero has-grain" data-theme="light" style="--grain-opacity: 0.085;">
+      <div class="hero-paths" aria-hidden="true"></div>
+      <div class="contact-hero__inner">
+        <div>
+          <h1 class="contact-hero__title" data-i18n="contact.hero.title">CONTACT.</h1>
+          <div class="contact-hero__sub">
+            <span class="contact-hero__rule"></span>
+            <span class="contact-hero__sub-text" data-i18n="contact.hero.subtitle">Discovery call, email, or DM. Pick one.</span>
+          </div>
+          <div class="contact-hero__double-slash">//</div>
+          <p class="contact-hero__desc" data-i18n="contact.hero.desc" data-i18n-html>
+            One operator. One inbox.<br>
+            Replies within 24 hours, usually faster.
+          </p>
+        </div>
+        <div class="contact-hero__meta">
+          <div class="contact-hero__meta-row">
+            <div class="contact-hero__meta-cell">
+              <div class="contact-hero__meta-num" data-i18n="contact.hero.meta.replyNum">24h</div>
+              <div class="contact-hero__meta-lbl" data-i18n="contact.hero.meta.replyLbl">Reply window</div>
+            </div>
+            <div class="contact-hero__meta-cell">
+              <div class="contact-hero__meta-num" data-i18n="contact.hero.meta.callNum">15m</div>
+              <div class="contact-hero__meta-lbl" data-i18n="contact.hero.meta.callLbl">Discovery call</div>
+            </div>
+            <div class="contact-hero__meta-cell">
+              <div class="contact-hero__meta-num" data-i18n="contact.hero.meta.langNum">MTL</div>
+              <div class="contact-hero__meta-lbl" data-i18n="contact.hero.meta.langLbl">Based in</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#form" class="btn-bar hero-cta-bar" data-i18n="common.reserveBuild">Reserve Your Build</a>
+    </section>
+
+    <!-- ================ METHODS ================ -->
+    <section class="methods" data-theme="dark" id="methods">
+      <div class="methods__top">
+        <div class="methods__eyebrow" data-i18n="contact.methods.eyebrow" data-i18n-html>How to reach me<br>fastest</div>
+        <h2 class="methods__heading" data-i18n="contact.methods.heading" data-i18n-html>
+          Four channels. <em>One operator on the other side.</em>
+        </h2>
+      </div>
+
+      <div class="methods__grid">
+        <a href="mailto:joseph@noxusstudios.com" class="methods__card methods__card--1 is-orange is-featured">
+          <div class="methods__card-head">
+            <div class="methods__card-num">/01</div>
+            <div class="methods__card-illus" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none">
+                <rect x="6" y="14" width="52" height="36" rx="3" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M6 18 L32 36 L58 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="50" cy="44" r="3" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+          <div class="methods__card-eyebrow" data-i18n="contact.methods.email.eyebrow">Best for projects</div>
+          <p class="methods__card-desc" data-i18n="contact.methods.email.desc">
+            Drop a line about your project, budget, and target launch date.
+          </p>
+          <div class="methods__card-name" data-i18n="contact.methods.email.name">Email →</div>
+          <span class="methods__card-badge" data-i18n="contact.methods.email.badge">Recommended</span>
+        </a>
+
+        <a href="https://calendly.com/jojoseph462/30min" target="_blank" rel="noopener noreferrer" class="methods__card methods__card--2">
+          <div class="methods__card-head">
+            <div class="methods__card-num">/02</div>
+            <div class="methods__card-illus" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none">
+                <rect x="8" y="12" width="48" height="44" rx="3" stroke="currentColor" stroke-width="1.6"/>
+                <line x1="8" y1="22" x2="56" y2="22" stroke="currentColor" stroke-width="1.6"/>
+                <line x1="18" y1="8" x2="18" y2="16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <line x1="46" y1="8" x2="46" y2="16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <rect x="18" y="30" width="10" height="8" rx="1" fill="currentColor" opacity="0.45"/>
+                <rect x="32" y="30" width="10" height="8" rx="1" stroke="currentColor" stroke-width="1.2" opacity="0.6"/>
+                <rect x="18" y="42" width="10" height="8" rx="1" stroke="currentColor" stroke-width="1.2" opacity="0.6"/>
+              </svg>
+            </div>
+          </div>
+          <div class="methods__card-eyebrow" data-i18n="contact.methods.cal.eyebrow">15-min slot</div>
+          <p class="methods__card-desc" data-i18n="contact.methods.cal.desc">
+            Book directly on the calendar. Zoom or phone, your call.
+          </p>
+          <div class="methods__card-name" data-i18n="contact.methods.cal.name">Calendly →</div>
+        </a>
+
+        <a href="#" class="methods__card methods__card--3">
+          <div class="methods__card-head">
+            <div class="methods__card-num">/03</div>
+            <div class="methods__card-illus" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none">
+                <path d="M14 16 C 14 13, 16 11, 19 11 L 45 11 C 48 11, 50 13, 50 16 L 50 38 C 50 41, 48 43, 45 43 L 28 43 L 18 51 L 18 43 L 19 43 C 16 43, 14 41, 14 38 Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <circle cx="24" cy="27" r="2.6" fill="currentColor"/>
+                <circle cx="40" cy="27" r="2.6" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+          <div class="methods__card-eyebrow" data-i18n="contact.methods.dc.eyebrow">Live community</div>
+          <p class="methods__card-desc" data-i18n="contact.methods.dc.desc">
+            Join the Noxus server. Fastest for quick questions and project chatter.
+          </p>
+          <div class="methods__card-name" data-i18n="contact.methods.dc.name">Discord →</div>
+        </a>
+
+        <a href="#" class="methods__card methods__card--4">
+          <div class="methods__card-head">
+            <div class="methods__card-num">/04</div>
+            <div class="methods__card-illus" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none">
+                <rect x="10" y="10" width="44" height="44" rx="10" stroke="currentColor" stroke-width="1.8"/>
+                <circle cx="32" cy="32" r="10" stroke="currentColor" stroke-width="1.8"/>
+                <circle cx="46" cy="18" r="2.2" fill="currentColor"/>
+              </svg>
+            </div>
+          </div>
+          <div class="methods__card-eyebrow" data-i18n="contact.methods.ig.eyebrow">DMs open</div>
+          <p class="methods__card-desc" data-i18n="contact.methods.ig.desc">
+            Slide into IG. Best for portfolio scroll + visual references.
+          </p>
+          <div class="methods__card-name" data-i18n="contact.methods.ig.name">Instagram →</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================ TICKER ================ -->
+    <div class="ticker-strip" aria-hidden="true">
+      <div class="ticker-track">
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+      </div>
+    </div>
+
+    <!-- ================ FORM ================ -->
+    <section class="contact-form-section" data-theme="dark" id="form">
+      <div class="contact-form-section__top">
+        <div>
+          <div class="contact-form-section__eyebrow" data-i18n="contact.form.eyebrow">Or send the brief</div>
+          <h2 class="contact-form-section__heading" data-i18n="contact.form.heading" data-i18n-html>
+            Project. <em>Budget. Date.</em>
+          </h2>
+        </div>
+      </div>
+
+      <div class="contact-form-section__layout">
+        <form class="contact-form"
+              id="contact-form"
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field">
+          <!-- Netlify needs this hidden field to identify the form on submission -->
+          <input type="hidden" name="form-name" value="contact">
+          <!-- Honeypot: bots tend to fill every visible input; legit users never see this -->
+          <p hidden aria-hidden="true">
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+          </p>
+
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label class="contact-form__label" for="cf-name" data-i18n="contact.form.lbl.name">Name</label>
+              <input class="contact-form__input" type="text" id="cf-name" name="name" required>
+            </div>
+            <div class="contact-form__field">
+              <label class="contact-form__label" for="cf-email" data-i18n="contact.form.lbl.email">Email</label>
+              <input class="contact-form__input" type="email" id="cf-email" name="email" required>
+            </div>
+          </div>
+
+          <div class="contact-form__row">
+            <div class="contact-form__field">
+              <label class="contact-form__label" for="cf-service" data-i18n="contact.form.lbl.service">Service</label>
+              <select class="contact-form__select" id="cf-service" name="service">
+                <option data-i18n="contact.form.service.web">Web build (Starter / Custom / Pro / Enterprise)</option>
+                <option data-i18n="contact.form.service.design">Design (UI/UX, Brand, Mobile, Pitch Deck, Dashboard)</option>
+                <option data-i18n="contact.form.service.retainer">Retainer (Maintenance / Growth / Scale)</option>
+                <option data-i18n="contact.form.service.multiple">Multiple services</option>
+                <option data-i18n="contact.form.service.notSure">Not sure yet</option>
+              </select>
+            </div>
+            <div class="contact-form__field">
+              <label class="contact-form__label" for="cf-budget" data-i18n="contact.form.lbl.budget">Budget</label>
+              <select class="contact-form__select" id="cf-budget" name="budget">
+                <option data-i18n="contact.form.budget.starter">Starter ($500 USD)</option>
+                <option data-i18n="contact.form.budget.custom">Custom ($2.5k–$7.5k USD)</option>
+                <option data-i18n="contact.form.budget.pro">Pro ($5,000 USD)</option>
+                <option data-i18n="contact.form.budget.enterprise">Enterprise ($10,000+ USD)</option>
+                <option data-i18n="contact.form.budget.notSure">Not sure yet</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="contact-form__field" style="margin-bottom: 14px;">
+            <label class="contact-form__label" for="cf-message" data-i18n="contact.form.lbl.details">Project details</label>
+            <textarea class="contact-form__textarea" id="cf-message" name="message"
+                      data-i18n-attr="placeholder=contact.form.placeholder.details"
+                      placeholder="What are you trying to ship, and by when?"></textarea>
+          </div>
+
+          <div class="contact-form__bottom">
+            <span class="contact-form__hint" data-i18n="contact.form.hint">Reply within 24 hours · usually faster</span>
+            <button class="contact-form__submit" type="submit" data-i18n="contact.form.submit">Send Brief →</button>
+          </div>
+        </form>
+
+        <div class="contact-form__success" id="contact-success" hidden>
+          <div class="contact-form__success-mark" aria-hidden="true">✓</div>
+          <div class="contact-form__success-title" data-i18n="contact.form.success.title">Brief received.</div>
+          <div class="contact-form__success-sub" data-i18n="contact.form.success.sub">Reply within 24 hours · usually faster</div>
+        </div>
+
+        <div class="contact-side">
+          <div class="contact-side__card">
+            <div class="contact-side__lbl" data-i18n="contact.side.email.lbl">Email</div>
+            <div class="contact-side__val" data-i18n="contact.side.email.val" data-i18n-html>joseph<em>@noxusstudios.com</em></div>
+          </div>
+          <div class="contact-side__card">
+            <div class="contact-side__lbl" data-i18n="contact.side.studio.lbl">Studio</div>
+            <div class="contact-side__val" data-i18n="contact.side.studio.val" data-i18n-html>Montréal<em>QC, Canada</em></div>
+          </div>
+          <div class="contact-side__card">
+            <div class="contact-side__lbl" data-i18n="contact.side.hours.lbl">Hours</div>
+            <div class="contact-side__val" data-i18n="contact.side.hours.val" data-i18n-html>Mon–Fri<em>9 AM – 6 PM ET</em></div>
+            <p class="contact-side__sub" data-i18n="contact.side.hours.sub">Async outside those windows. Reply within 24h.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ WHAT TO EXPECT ================ -->
+    <section class="expect" data-theme="light" id="expect">
+      <div class="expect__top">
+        <div class="expect__eyebrow" data-i18n="contact.expect.eyebrow">What happens next</div>
+        <h2 class="expect__heading" data-i18n="contact.expect.heading" data-i18n-html>
+          Three steps. <em>From inbox to live site.</em>
+        </h2>
+      </div>
+
+      <div class="expect__steps">
+        <div class="expect__step expect__step--1">
+          <div class="expect__step-head">
+            <div class="expect__step-num">01</div>
+            <span class="expect__step-glyph" aria-hidden="true">
+              <svg viewBox="0 0 28 28" fill="none">
+                <rect x="3" y="6" width="22" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 8 L14 16 L25 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+          <h3 class="expect__step-name" data-i18n="contact.expect.s1.name" data-i18n-html><em>Reply.</em> Within 24h.</h3>
+          <p class="expect__step-desc" data-i18n="contact.expect.s1.desc">
+            I read every brief personally. You get a written reply within a day, often within hours.
+          </p>
+          <div class="expect__step-time" data-i18n="contact.expect.s1.time">Day 0 → Day 1</div>
+        </div>
+        <div class="expect__step expect__step--2">
+          <div class="expect__step-head">
+            <div class="expect__step-num">02</div>
+            <span class="expect__step-glyph" aria-hidden="true">
+              <svg viewBox="0 0 28 28" fill="none">
+                <path d="M6 6 L6 19 C 6 21, 8 22, 9 22 L 14 22 L 9 25 L 12 22 L 22 22 C 24 22, 26 20, 26 18 L 26 8 C 26 6, 24 4, 22 4 L 10 4 C 8 4, 6 6, 6 8 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <circle cx="12" cy="13" r="1.2" fill="currentColor"/>
+                <circle cx="17" cy="13" r="1.2" fill="currentColor"/>
+                <circle cx="22" cy="13" r="1.2" fill="currentColor"/>
+              </svg>
+            </span>
+          </div>
+          <h3 class="expect__step-name" data-i18n="contact.expect.s2.name" data-i18n-html>Discovery <em>call.</em></h3>
+          <p class="expect__step-desc" data-i18n="contact.expect.s2.desc">
+            15-minute call. We map the goal, the audience, the conversion action, and timeline.
+          </p>
+          <div class="expect__step-time" data-i18n="contact.expect.s2.time">Day 1 → Day 3</div>
+        </div>
+        <div class="expect__step expect__step--3">
+          <div class="expect__step-head">
+            <div class="expect__step-num">03</div>
+            <span class="expect__step-glyph" aria-hidden="true">
+              <svg viewBox="0 0 28 28" fill="none">
+                <path d="M14 4 L24 9 L24 19 L14 24 L4 19 L4 9 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M4 9 L14 14 L24 9" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" opacity="0.5"/>
+                <line x1="14" y1="14" x2="14" y2="24" stroke="currentColor" stroke-width="1.3" opacity="0.5"/>
+              </svg>
+            </span>
+          </div>
+          <h3 class="expect__step-name" data-i18n="contact.expect.s3.name" data-i18n-html>Build <em>starts.</em></h3>
+          <p class="expect__step-desc" data-i18n="contact.expect.s3.desc">
+            Quote + start date confirmed. Starter builds ship in 4-7 days from kickoff.
+          </p>
+          <div class="expect__step-time" data-i18n="contact.expect.s3.time">Day 3 → Live</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================ TICKER ================ -->
+    <div class="ticker-strip" aria-hidden="true">
+      <div class="ticker-track">
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.noxus">NOXUS</span><span class="ts">✦</span>
+        <span class="tw" data-i18n="common.ticker.reserve">RESERVE YOUR BUILD</span><span class="ts">✦</span>
+      </div>
+    </div>
+  </main>
+
+  <footer data-theme="light">
+    <div class="footer-grid">
+      <div class="footer-col footer-col--brand">
+        <a href="index.html" class="footer-brand">noxus<span class="footer-brand-dot">.</span></a>
+        <p class="footer-tagline" data-i18n="common.footer.tagline">
+          Hand-coded studio · Montréal
+        </p>
+      </div>
+
+      <div class="footer-col footer-col--nav">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.explore">Explore</span>
+        <ul class="footer-nav-list">
+          <li><a href="index.html"    data-i18n="common.nav.home">Home</a></li>
+          <li><a href="about.html"    data-i18n="common.nav.about">About</a></li>
+          <li><a href="services.html" data-i18n="common.nav.services">Services</a></li>
+          <li><a href="work.html"     data-i18n="common.nav.work">Work</a></li>
+          <li><a href="faq.html"      data-i18n="common.nav.faq">FAQ</a></li>
+          <li><a href="contact.html"  data-i18n="common.nav.contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col--contact">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.contact">Contact</span>
+        <a class="footer-contact-link" href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a>
+        <span class="footer-contact-loc" data-i18n="common.footer.location">Montréal, QC, Canada</span>
+        <div class="footer-status-row">
+          <span class="footer-status-dot" aria-hidden="true"></span>
+          <span data-i18n="common.footer.status.bookingOpen">Booking Open</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.replies">Replies within 24h</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-meta">
+      <span class="footer-meta-text" data-i18n="common.footer.copyright">©2026 Noxus Studios · All rights reserved</span>
+      <span class="footer-meta-links">
+        <a class="footer-meta-text footer-meta-link" href="privacy.html" data-i18n="common.footer.privacy">Privacy Policy</a>
+        <span class="footer-meta-sep" aria-hidden="true">·</span>
+        <a class="footer-meta-text footer-meta-link" href="cookies.html" data-i18n="common.footer.cookies">Cookies</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="js/translations.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/hero-paths.js" defer></script>
+  <script src="js/theme-toggle.js" defer></script>
+  <script src="js/title-reveal.js" defer></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const submitBtn = form.querySelector('.contact-form__submit');
+      const success = document.getElementById('contact-success');
+
+      // Disable submit to prevent double-fires while the request is in flight
+      submitBtn.disabled = true;
+      const originalLabel = submitBtn.textContent;
+      submitBtn.textContent = 'Sending…';
+
+      try {
+        // Netlify Forms accepts urlencoded POST to the page itself.
+        const formData = new FormData(form);
+        const body = new URLSearchParams(formData).toString();
+
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body,
+        });
+
+        if (!res.ok) throw new Error('Form submit failed: ' + res.status);
+
+        form.hidden = true;
+        success.hidden = false;
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+        // Local dev fallback: Netlify Forms only works on deployed Netlify sites,
+        // so locally the POST will 404. Show the in-page success state anyway
+        // so the local UX matches production.
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+          form.hidden = true;
+          success.hidden = false;
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+        alert('Something went wrong sending your brief. Please email joseph@noxusstudios.com directly.');
+      }
+    });
+  </script>
+</body>
+</html>

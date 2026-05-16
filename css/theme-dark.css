@@ -1,0 +1,781 @@
+/* ============================================================
+   NOXUS — theme-dark.css
+   Surgical overrides applied when <html> has class="dark".
+   Only darkens previously-cream surfaces; already-dark sections
+   (stats, bento, footer) stay as designed.
+   ============================================================ */
+
+/* Page-level surfaces ---------------------------------------- */
+
+:root.dark body {
+  background: #14100B;
+  color: #E8DCCB;
+}
+
+/* Hero section: cream gradient → warm dark gradient ---------- */
+
+:root.dark .hero-section {
+  background:
+    radial-gradient(ellipse at 15% 85%, #2A1F18 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 15%, #1F1810 0%, transparent 50%),
+    #14100B;
+}
+:root.dark .hero-title { color: #E8DCCB; }
+:root.dark .hero-subtitle-text { color: rgba(232, 220, 203, 0.65); }
+:root.dark .hero-subtitle-rule { background: rgba(232, 220, 203, 0.30); }
+
+/* Hero info bar (bottom strip with $500, NOW TAKING BUILDS, etc.) */
+:root.dark .hero-info-bar {
+  border-top-color: rgba(232, 220, 203, 0.10);
+}
+:root.dark .hero-info-cell {
+  border-right-color: rgba(232, 220, 203, 0.08);
+}
+:root.dark .hero-info-val-large,
+:root.dark .hero-info-val-bold {
+  color: #E8DCCB;
+}
+:root.dark .hero-info-val-muted {
+  color: rgba(232, 220, 203, 0.62);
+}
+
+/* Hero bottom-left description + bottom-right price block */
+:root.dark .hero-double-slash { color: rgba(232, 220, 203, 0.65); }
+:root.dark .hero-desc-text    { color: rgba(232, 220, 203, 0.85); }
+:root.dark .services-hero__double-slash,
+:root.dark .work-hero__double-slash,
+:root.dark .about-hero__double-slash,
+:root.dark .contact-hero__double-slash { color: rgba(232, 220, 203, 0.65); }
+:root.dark .hero-price-large  { color: #E8DCCB; }
+:root.dark .hero-type-label   { color: rgba(232, 220, 203, 0.55); }
+
+/* Nav: cream-on-dark across the whole page when in dark mode -- */
+
+:root.dark .nav-logo {
+  color: #E8DCCB;
+}
+:root.dark .nav-logo-dot { color: var(--orange); }
+
+/* Theme-toggle button inverts: cream circle with dark icon ---- */
+:root.dark .theme-toggle {
+  background: #E8DCCB;
+  color: #14100B;
+  box-shadow: 0 0 0 1.5px rgba(0, 0, 0, 0.25);
+}
+:root.dark .lang-toggle {
+  color: #E8DCCB;
+}
+:root.dark .status-bar { color: rgba(232, 220, 203, 0.70); }
+
+/* Hero floating-paths layer: keep orange but slightly bolder so
+   it reads against the new warm-dark backdrop.                   */
+:root.dark .hero-paths { color: var(--orange-hover); }
+
+/* ============================================================
+   Page heroes — services / work / about / contact share the same
+   cream gradient and text-on-light treatment in light mode. In
+   dark mode we mirror the index hero so all four pages feel
+   harmonious with home.
+   ============================================================ */
+
+:root.dark .services-hero,
+:root.dark .work-hero,
+:root.dark .about-hero,
+:root.dark .contact-hero {
+  background:
+    radial-gradient(ellipse at 15% 85%, #2A1F18 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 15%, #1F1810 0%, transparent 50%),
+    #14100B;
+}
+
+/* Titles + descriptive text recolor to cream */
+:root.dark .services-hero__title,
+:root.dark .work-hero__title,
+:root.dark .about-hero__title,
+:root.dark .contact-hero__title { color: #E8DCCB; }
+
+:root.dark .services-hero__sub-text,
+:root.dark .work-hero__sub-text,
+:root.dark .about-hero__sub-text,
+:root.dark .contact-hero__sub-text { color: rgba(232, 220, 203, 0.65); }
+
+:root.dark .services-hero__rule,
+:root.dark .work-hero__rule,
+:root.dark .about-hero__rule,
+:root.dark .contact-hero__rule { background: rgba(232, 220, 203, 0.30); }
+
+:root.dark .services-hero__desc,
+:root.dark .work-hero__desc,
+:root.dark .about-hero__desc,
+:root.dark .contact-hero__desc { color: rgba(232, 220, 203, 0.88); }
+
+/* Inner-page hero stat blocks — numbers + labels recolor to cream on dark */
+:root.dark .services-hero__meta-num,
+:root.dark .work-hero__meta-num,
+:root.dark .about-hero__meta-num,
+:root.dark .contact-hero__meta-num { color: #E8DCCB; }
+
+:root.dark .services-hero__meta-lbl,
+:root.dark .work-hero__meta-lbl,
+:root.dark .about-hero__meta-lbl,
+:root.dark .contact-hero__meta-lbl { color: rgba(232, 220, 203, 0.62); }
+
+/* The // decoration stays orange; no override needed unless its
+   default uses a hardcoded dark color. Same for any side-info
+   stats — those are handled per-page if needed. */
+
+/* Nav pill — mobile (collapsed/dropdown) container stays glassy in dark.
+   Desktop per-link pills are recolored separately below so they read
+   against the warm-dark page background. */
+:root.dark .nav-pill {
+  background: rgba(232, 220, 203, 0.10);
+  border-color: rgba(232, 220, 203, 0.18);
+  box-shadow: 0 6px 20px -10px rgba(0, 0, 0, 0.55);
+}
+:root.dark .nav-pill-link { color: #E8DCCB; }
+:root.dark .nav-pill-collapsed-icon { color: #E8DCCB; }
+
+@media (min-width: 769px) {
+  /* Desktop dark mode — the container goes transparent (each link is
+     its own pill), and per-link pill chrome recolors to cream-on-dark. */
+  :root.dark .nav-pill,
+  :root.dark .nav-pill.is-collapsed {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+  :root.dark .nav-pill .nav-pill-link {
+    background: rgba(232, 220, 203, 0.08);
+    border-color: rgba(232, 220, 203, 0.20);
+    color: #E8DCCB;
+  }
+  :root.dark .nav-pill .nav-pill-link:hover,
+  :root.dark .nav-pill .nav-pill-link:focus-visible {
+    border-color: rgba(232, 220, 203, 0.35);
+    color: #E8DCCB;
+  }
+  :root.dark .nav-pill .nav-pill-link.is-active {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: #FFFFFF;
+  }
+  :root.dark .nav-pill .nav-pill-link.is-active:hover,
+  :root.dark .nav-pill .nav-pill-link.is-active:focus-visible {
+    background: var(--orange-hover);
+    border-color: var(--orange-hover);
+    color: #FFFFFF;
+  }
+}
+
+/* ============================================================
+   Footer — recolor cream surface to dark with cream typography.
+   Applies on every page (footer markup is shared).
+   ============================================================ */
+
+:root.dark footer {
+  background: #14100B;
+  color: #E8DCCB;
+}
+
+/* Compact footer — dark mode */
+:root.dark .footer-brand,
+:root.dark .footer-contact-link {
+  color: #E8DCCB;
+}
+:root.dark .footer-col-title,
+:root.dark .footer-tagline,
+:root.dark .footer-nav-list a,
+:root.dark .footer-contact-loc,
+:root.dark .footer-meta-text {
+  color: rgba(232, 220, 203, 0.55);
+}
+:root.dark .footer-nav-list a:hover,
+:root.dark .footer-nav-list a:active,
+:root.dark .footer-contact-link:hover,
+:root.dark .footer-contact-link:active,
+:root.dark .footer-meta-link:hover,
+:root.dark .footer-meta-link:active,
+:root.dark .footer-brand:hover,
+:root.dark .footer-brand:active {
+  color: var(--orange);
+}
+
+:root.dark .footer-status-row {
+  background: rgba(232, 220, 203, 0.06);
+  border-color: rgba(232, 220, 203, 0.18);
+  color: #E8DCCB;
+}
+
+:root.dark .footer-meta {
+  border-top-color: rgba(232, 220, 203, 0.10);
+}
+
+/* ============================================================
+   .values — about.html "Three rules" section
+   ============================================================ */
+
+:root.dark .values {
+  background: #14100B;
+}
+
+:root.dark .values__eyebrow {
+  color: rgba(232, 220, 203, 0.70);
+}
+
+:root.dark .values__heading,
+:root.dark .values__card-name {
+  color: #E8DCCB;
+}
+
+:root.dark .values__grid,
+:root.dark .values__card {
+  border-color: rgba(232, 220, 203, 0.10);
+}
+
+:root.dark .values__card-desc {
+  color: rgba(232, 220, 203, 0.72);
+}
+
+/* ============================================================
+   .expect — contact.html "Three steps. From inbox to live site."
+   ============================================================ */
+
+:root.dark .expect {
+  background: #14100B;
+}
+
+:root.dark .expect__eyebrow {
+  color: rgba(232, 220, 203, 0.70);
+}
+
+:root.dark .expect__heading,
+:root.dark .expect__step-name {
+  color: #E8DCCB;
+}
+
+:root.dark .expect__steps,
+:root.dark .expect__step {
+  border-color: rgba(232, 220, 203, 0.10);
+}
+
+:root.dark .expect__step-desc {
+  color: rgba(232, 220, 203, 0.72);
+}
+
+/* ============================================================
+   .impact — work.html "What every Noxus build aims for"
+   ============================================================ */
+
+:root.dark .impact {
+  background: #14100B;
+  color: #E8DCCB;
+}
+
+:root.dark .impact__eyebrow {
+  color: rgba(232, 220, 203, 0.70);
+}
+
+:root.dark .impact__heading,
+:root.dark .impact__cell-num,
+:root.dark .impact__cell-lbl {
+  color: #E8DCCB;
+}
+
+:root.dark .impact__grid,
+:root.dark .impact__cell {
+  border-color: rgba(232, 220, 203, 0.10);
+}
+
+:root.dark .impact__cell-desc {
+  color: rgba(232, 220, 203, 0.72);
+}
+
+/* ============================================================
+   LIGHT MODE OVERRIDES — flip the always-dark home sections
+   (stats / splits / process / bento) to cream when light mode
+   is active. Selector :root:not(.dark) matches the default
+   page state where the toggle has not added the .dark class.
+   ============================================================ */
+
+/* ---- Stats section (.stats-section + stat cards) ---- */
+
+:root:not(.dark) .stats-section {
+  background: var(--off-white);
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .stats-tag {
+  color: var(--text-on-light-secondary);
+}
+:root:not(.dark) .stats-avatar {
+  border-color: var(--off-white);
+}
+:root:not(.dark) .fade-headline,
+:root:not(.dark) .fh-bright {
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .fh-mid {
+  color: rgba(0, 0, 0, 0.70);
+}
+:root:not(.dark) .fh-dim,
+:root:not(.dark) .fh-fade {
+  color: rgba(0, 0, 0, 0.50);
+}
+:root:not(.dark) .stats-grid {
+  border-top-color: var(--border-light);
+}
+:root:not(.dark) .stat-card {
+  border-right-color: var(--border-light);
+}
+:root:not(.dark) .stat-card-name,
+:root:not(.dark) .stat-number {
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .stat-card-denom {
+  color: var(--text-on-light-secondary);
+}
+:root:not(.dark) .stat-card-desc {
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .stat-card-bar {
+  background: rgba(0, 0, 0, 0.08);
+}
+:root:not(.dark) .stat-card-bar-fill {
+  background: rgba(0, 0, 0, 0.30);
+}
+/* The orange stat card keeps its orange interior — text stays white */
+
+/* ---- Split sections (3-up: hand-coded / founder-led / bilingual) ---- */
+
+:root:not(.dark) .split-section__inner {
+  background: #E2D2C0;
+}
+:root:not(.dark) .split-left {
+  background: radial-gradient(ellipse at 30% 70%, rgba(232, 84, 10, 0.10) 0%, transparent 55%);
+}
+:root:not(.dark) .split-right {
+  background: radial-gradient(ellipse at 70% 60%, rgba(232, 84, 10, 0.08) 0%, transparent 55%);
+}
+:root:not(.dark) .split-left {
+  background:
+    radial-gradient(ellipse at 30% 70%, rgba(232, 84, 10, 0.08) 0%, transparent 55%),
+    var(--off-white);
+}
+:root:not(.dark) .split-helper-text {
+  color: var(--text-on-light-secondary);
+}
+:root:not(.dark) .split-white {
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .split-body-text {
+  color: var(--text-on-light-secondary);
+}
+:root:not(.dark) .split-outcome {
+  color: rgba(0, 0, 0, 0.72);
+}
+:root:not(.dark) .split-counter-num {
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .split-counter-denom {
+  color: var(--text-on-light-secondary);
+}
+:root:not(.dark) .split-diamond.inactive {
+  background: rgba(0, 0, 0, 0.18);
+}
+:root:not(.dark) .split-plus-icon {
+  border-color: rgba(0, 0, 0, 0.30);
+  color: rgba(0, 0, 0, 0.45);
+}
+/* Split-right has its own dark gradient/background in home.css —
+   flip it independently from .split-section / .split-left */
+:root:not(.dark) .split-right {
+  background:
+    radial-gradient(ellipse at 70% 60%, rgba(232, 84, 10, 0.06) 0%, transparent 55%),
+    var(--off-white);
+}
+/* Divider rules between split-left and split-right */
+:root:not(.dark) .split-divider {
+  border-left-color: var(--border-light);
+  border-right-color: var(--border-light);
+}
+/* Pill button on the left side (Conversion / Process / Bilingual) */
+:root:not(.dark) .btn-tag {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .btn-tag-icon {
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--text-on-light-primary);
+}
+/* Browser mockup inside split-left stays dark — it's an interior screen
+   illustration, intentional contrast against the cream backdrop */
+
+/* ---- Process section (How we build / 01 / 02 / 03) ---- */
+
+:root:not(.dark) .process {
+  background: var(--off-white);
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .process-eyebrow {
+  color: var(--text-on-light-secondary);
+}
+:root:not(.dark) .process-heading {
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .process-card {
+  background: #F8F1EA;
+  border-color: var(--border-light);
+}
+/* Light-mode glow on press/hover — cream card absorbs translucent
+   orange more than dark surfaces, so bump intensity higher than the
+   dark-mode counterpart. Fires transiently on hover (desktop) and
+   on :active (touch tap), then fades back via the box-shadow
+   transition defined on .process-card. */
+:root:not(.dark) .process-card:hover,
+:root:not(.dark) .process-card:active,
+:root:not(.dark) .process-card:focus-visible {
+  border-color: rgba(232, 84, 10, 0.65);
+  box-shadow:
+    0 0 0 1px  rgba(232, 84, 10, 0.50),
+    0 0 24px 8px  rgba(232, 84, 10, 0.22),
+    0 0 48px 16px rgba(232, 84, 10, 0.10);
+}
+:root:not(.dark) .process-title {
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .process-desc {
+  color: var(--text-on-light-secondary);
+}
+:root:not(.dark) .process-card__ctas {
+  border-top-color: var(--border-light);
+}
+:root:not(.dark) .process-card__cta {
+  color: var(--text-on-light-secondary);
+}
+:root:not(.dark) .process-card__cta:hover,
+:root:not(.dark) .process-card__cta:active,
+:root:not(.dark) .process-card__cta:focus-visible {
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .process-card__cta.is-orange {
+  color: var(--orange-on-light);
+}
+:root:not(.dark) .process-card__cta.is-orange:hover,
+:root:not(.dark) .process-card__cta.is-orange:active,
+:root:not(.dark) .process-card__cta.is-orange:focus-visible {
+  color: var(--orange);
+}
+
+/* ---- Bento grid (THE MENU pricing teaser) ---- */
+
+:root:not(.dark) #bento {
+  background: var(--off-white);
+}
+:root:not(.dark) .bento-grid {
+  background: var(--border-light);
+}
+:root:not(.dark) .bento-eyebrow {
+  color: var(--text-on-light-secondary);
+}
+:root:not(.dark) .bento-heading {
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .bento-cell {
+  background: #F8F1EA;
+}
+:root:not(.dark) .bento-cell-price:hover,
+:root:not(.dark) .bento-cell-price:active,
+:root:not(.dark) .bento-cell-price:focus-visible {
+  background: #FFFFFF;
+  box-shadow:
+    0 18px 38px -22px rgba(0, 0, 0, 0.18),
+    0 6px 18px -8px rgba(232, 84, 10, 0.18);
+}
+/* Featured cell — light-mode elevation treatment */
+:root:not(.dark) .bento-cell-price.is-featured {
+  background:
+    radial-gradient(80% 60% at 100% 0%, rgba(232, 84, 10, 0.10), transparent 60%),
+    #FFFFFF;
+  box-shadow:
+    inset 0 0 0 1px rgba(232, 84, 10, 0.28),
+    0 22px 44px -22px rgba(0, 0, 0, 0.16),
+    0 10px 24px -8px rgba(232, 84, 10, 0.16);
+}
+:root:not(.dark) .bento-cell-price.is-featured:hover,
+:root:not(.dark) .bento-cell-price.is-featured:focus-visible {
+  background:
+    radial-gradient(80% 60% at 100% 0%, rgba(232, 84, 10, 0.14), transparent 60%),
+    #FFFFFF;
+  box-shadow:
+    inset 0 0 0 1px rgba(232, 84, 10, 0.40),
+    0 26px 52px -22px rgba(0, 0, 0, 0.20),
+    0 14px 30px -8px rgba(232, 84, 10, 0.24);
+}
+:root:not(.dark) .bento-wide-motif { color: var(--orange); opacity: 0.06; }
+:root:not(.dark) .bento-price-amount,
+:root:not(.dark) .bento-wide-headline {
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .bento-price-unit {
+  color: var(--text-on-light-muted);
+}
+:root:not(.dark) .bento-price-desc {
+  color: var(--text-on-light-secondary);
+}
+:root:not(.dark) .bento-tag {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .bento-meta {
+  color: var(--text-on-light-muted);
+}
+:root:not(.dark) .bento-price-eyebrow,
+:root:not(.dark) .bento-wide-cta {
+  color: var(--orange-on-light);
+}
+:root:not(.dark) .bento-wide-cta {
+  border-color: rgba(184, 63, 0, 0.40);
+  background: rgba(184, 63, 0, 0.06);
+}
+
+/* ============================================================
+   SERVICES — light-mode overrides (svc-tiers / svc-design / svc-retainers)
+   .svc-cta stays dark (CTA contrast band).
+   ============================================================ */
+
+:root:not(.dark) .svc-tiers,
+:root:not(.dark) .svc-retainers { background: #E8DCCB; }
+:root:not(.dark) .svc-design { background: #F5EDE6; border-top-color: var(--border-light); }
+
+:root:not(.dark) .svc-tiers__eyebrow,
+:root:not(.dark) .svc-retainers__eyebrow,
+:root:not(.dark) .svc-design__eyebrow { color: var(--text-on-light-secondary); }
+
+:root:not(.dark) .svc-tiers__heading,
+:root:not(.dark) .svc-retainers__heading,
+:root:not(.dark) .svc-design__heading { color: var(--text-on-light-primary); }
+
+:root:not(.dark) .svc-tier {
+  background: #F5EDE6;
+  border-color: var(--border-light);
+}
+:root:not(.dark) .svc-tier.is-featured {
+  background: #F5EDE6;
+  border-color: rgba(232, 84, 10, 0.6);
+}
+:root:not(.dark) .svc-tier__price {
+  border-bottom-color: var(--border-light);
+}
+:root:not(.dark) .svc-tier__price-amount { color: var(--text-on-light-primary); }
+:root:not(.dark) .svc-tier__price-unit  { color: var(--text-on-light-muted); }
+:root:not(.dark) .svc-tier__tag         { color: var(--text-on-light-secondary); }
+:root:not(.dark) .svc-tier__features li { color: rgba(0, 0, 0, 0.65); }
+
+:root:not(.dark) .svc-design-item {
+  background: #FFFFFF;
+  border-color: var(--border-light);
+}
+:root:not(.dark) .svc-design-item__name { color: var(--text-on-light-primary); }
+:root:not(.dark) .svc-design-item__desc { color: var(--text-on-light-secondary); }
+
+:root:not(.dark) .svc-tiers__disclaimer,
+:root:not(.dark) .svc-design__disclaimer { color: var(--text-on-light-muted); }
+
+/* ============================================================
+   WORK — light-mode overrides (work-grid-section + cards).
+   .case-feature and .work-cta stay dark.
+   ============================================================ */
+
+:root:not(.dark) .work-grid-section { background: #E8DCCB; }
+:root:not(.dark) .work-grid-section__eyebrow { color: var(--text-on-light-secondary); }
+:root:not(.dark) .work-grid-section__heading { color: var(--text-on-light-primary); }
+
+/* Card 1 (.is-orange) keeps its orange fill in both modes */
+
+/* Card 2 (.is-dark) — flip to cream surface, dark text */
+:root:not(.dark) .work-card.is-dark {
+  background: #F5EDE6;
+  border-color: var(--border-light);
+}
+:root:not(.dark) .work-card.is-dark .work-card__eyebrow { color: var(--text-on-light-primary); }
+:root:not(.dark) .work-card.is-dark .work-card__num     { color: var(--text-on-light-secondary); }
+:root:not(.dark) .work-card.is-dark .work-card__title   { color: var(--text-on-light-primary); }
+:root:not(.dark) .work-card.is-dark .work-card__desc    { color: var(--text-on-light-secondary); }
+:root:not(.dark) .work-card.is-dark .work-card__price   { color: var(--text-on-light-primary); }
+:root:not(.dark) .work-card.is-dark .work-card__cta     { color: var(--orange); }
+
+/* Card 3 (.is-muted) — flip to muted cream surface, muted text */
+:root:not(.dark) .work-card.is-muted {
+  background: #EDE6DE;
+  border-color: var(--border-light);
+}
+:root:not(.dark) .work-card.is-muted .work-card__eyebrow { color: var(--text-on-light-muted); }
+:root:not(.dark) .work-card.is-muted .work-card__num     { color: var(--text-on-light-muted); }
+:root:not(.dark) .work-card.is-muted .work-card__title   { color: var(--text-on-light-muted); }
+:root:not(.dark) .work-card.is-muted .work-card__desc    { color: var(--text-on-light-muted); }
+:root:not(.dark) .work-card.is-muted .work-card__price   { color: var(--text-on-light-muted); }
+:root:not(.dark) .work-card.is-muted .work-card__cta     { color: var(--text-on-light-muted); }
+:root:not(.dark) .work-card.is-muted .work-card__status-tag--muted {
+  color: var(--text-on-light-muted);
+}
+
+/* ============================================================
+   ABOUT — light-mode overrides (founder + timeline).
+   .studio-policy and .about-cta stay dark.
+   ============================================================ */
+
+:root:not(.dark) #founder,
+:root:not(.dark) .founder { background: #EDE6DE; }
+:root.dark #founder { background: var(--dark-bg); }
+:root:not(.dark) .founder__visual-tag { color: var(--text-on-light-secondary); }
+:root:not(.dark) .founder__visual-no  { color: rgba(0, 0, 0, 0.45); }
+:root:not(.dark) .founder__eyebrow    { color: var(--orange); }
+:root:not(.dark) .founder__title      { color: var(--text-on-light-primary); }
+:root:not(.dark) .founder__title-white { color: var(--text-on-light-primary); }
+:root:not(.dark) .founder__body       { color: var(--text-on-light-secondary); }
+:root:not(.dark) .founder__sig        { color: var(--text-on-light-primary); }
+:root:not(.dark) .founder__sig small  { color: var(--text-on-light-muted); }
+:root:not(.dark) .founder__photo-placeholder {
+  border-color: var(--border-light);
+}
+
+:root:not(.dark) .timeline { background: #E8DCCB; }
+:root:not(.dark) .timeline__num         { color: var(--text-on-light-primary); }
+:root:not(.dark) .timeline__sidebar dt  { color: var(--text-on-light-secondary); }
+:root:not(.dark) .timeline__sidebar dd  { color: var(--text-on-light-primary); }
+:root:not(.dark) .timeline__item {
+  border-bottom-color: var(--border-light);
+}
+:root:not(.dark) .timeline__item-year { color: var(--text-on-light-secondary); }
+:root:not(.dark) .timeline__item-name { color: var(--text-on-light-primary); }
+:root:not(.dark) .timeline__item-tag  { color: var(--text-on-light-muted); }
+:root:not(.dark) .timeline__item-desc { color: var(--text-on-light-secondary); }
+
+/* ============================================================
+   CONTACT — light-mode overrides (methods + form).
+   ============================================================ */
+
+:root:not(.dark) .methods { background: #E8DCCB; }
+:root:not(.dark) .methods__eyebrow { color: var(--text-on-light-secondary); }
+:root:not(.dark) .methods__heading { color: var(--text-on-light-primary); }
+:root:not(.dark) .methods__card {
+  background: var(--off-white);
+  border-color: var(--border-light);
+}
+/* .methods__card.is-orange keeps its orange fill */
+:root:not(.dark) .methods__card:hover,
+:root:not(.dark) .methods__card:active,
+:root:not(.dark) .methods__card:focus-visible {
+  border-color: rgba(232, 84, 10, 0.5);
+  box-shadow:
+    0 16px 32px -22px rgba(0, 0, 0, 0.25),
+    0 8px 22px -10px rgba(232, 84, 10, 0.38);
+}
+:root:not(.dark) .methods__card.is-featured {
+  box-shadow: 0 22px 44px -22px rgba(232, 84, 10, 0.45);
+}
+:root:not(.dark) .methods__card-num     { color: var(--orange); }
+:root:not(.dark) .methods__card.is-orange .methods__card-num { color: white; }
+:root:not(.dark) .methods__card-eyebrow { color: var(--text-on-light-secondary); }
+:root:not(.dark) .methods__card-name    { color: var(--text-on-light-primary); }
+:root:not(.dark) .methods__card-desc    { color: var(--text-on-light-secondary); }
+
+:root:not(.dark) .contact-form-section { background: #EDE6DE; }
+:root:not(.dark) .contact-form-section__eyebrow { color: var(--text-on-light-secondary); }
+:root:not(.dark) .contact-form-section__heading { color: var(--text-on-light-primary); }
+
+:root:not(.dark) .contact-form {
+  background: #F5EDE6;
+  border-color: var(--border-light);
+}
+:root:not(.dark) .contact-form__label { color: var(--text-on-light-primary); }
+:root:not(.dark) .contact-form__input,
+:root:not(.dark) .contact-form__textarea,
+:root:not(.dark) .contact-form__select {
+  background: #FFFFFF;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .contact-form__hint { color: var(--text-on-light-muted); }
+
+:root:not(.dark) .contact-form__success {
+  background: #F5EDE6;
+  border-color: var(--border-light);
+}
+:root:not(.dark) .contact-form__success-title { color: var(--text-on-light-primary); }
+:root:not(.dark) .contact-form__success-sub   { color: var(--text-on-light-muted); }
+
+:root:not(.dark) .contact-side__card {
+  background: #F5EDE6;
+  border-color: var(--border-light);
+}
+:root:not(.dark) .contact-side__lbl { color: var(--text-on-light-secondary); }
+:root:not(.dark) .contact-side__val { color: var(--text-on-light-primary); }
+:root:not(.dark) .contact-side__val em { color: var(--text-on-light-secondary); }
+:root:not(.dark) .contact-side__sub { color: var(--text-on-light-muted); }
+
+/* ============================================================
+   CTA bands + Clinique showcase + Studio policy — flip to cream
+   ============================================================ */
+
+/* services .svc-cta */
+:root:not(.dark) .svc-cta {
+  background: #EDE6DE;
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .svc-cta__title { color: var(--text-on-light-primary); }
+:root:not(.dark) .svc-cta__sub { color: var(--text-on-light-secondary); }
+:root:not(.dark) .svc-cta__price { color: var(--text-on-light-primary); }
+:root:not(.dark) .svc-cta__price small { color: var(--text-on-light-secondary); }
+
+/* work .case-feature (Clinique 8260 showcase) — flip background.
+   The interior browser mockup stays dark — illustrative content. */
+:root:not(.dark) .case-feature { background: #EDE6DE; }
+:root:not(.dark) .case-feature__eyebrow { color: var(--text-on-light-secondary); }
+:root:not(.dark) .case-feature__heading { color: var(--text-on-light-primary); }
+:root:not(.dark) .case-feature__corner small { color: var(--text-on-light-secondary); }
+:root:not(.dark) .case-feature__lbl { color: var(--text-on-light-secondary); }
+:root:not(.dark) .case-feature__title { color: var(--text-on-light-primary); }
+:root:not(.dark) .case-feature__body { color: var(--text-on-light-secondary); }
+:root:not(.dark) .case-feature__metrics {
+  background: var(--border-light);
+  border: 1px solid var(--border-light);
+}
+:root:not(.dark) .case-feature__metric {
+  background: #FBF7F1;
+  border-color: var(--border-light);
+}
+:root:not(.dark) .case-feature__metric-num { color: var(--orange); }
+:root:not(.dark) .case-feature__metric-lbl { color: var(--text-on-light-secondary); }
+:root:not(.dark) .case-feature__tag {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-on-light-primary);
+  border-color: var(--border-light);
+}
+
+/* work .work-cta */
+:root:not(.dark) .work-cta {
+  background: #E8DCCB;
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .work-cta__title { color: var(--text-on-light-primary); }
+:root:not(.dark) .work-cta__sub { color: var(--text-on-light-secondary); }
+
+/* about .studio-policy pull-quote */
+:root:not(.dark) .studio-policy { background: #EDE6DE; }
+:root:not(.dark) .studio-policy__quote { color: var(--text-on-light-primary); }
+:root:not(.dark) .studio-policy__attrib-name { color: var(--text-on-light-primary); }
+:root:not(.dark) .studio-policy__attrib-role { color: var(--text-on-light-secondary); }
+:root:not(.dark) .studio-policy__mark-arrow {
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--text-on-light-primary);
+}
+
+/* about .about-cta */
+:root:not(.dark) .about-cta {
+  background: #E8DCCB;
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .about-cta__title { color: var(--text-on-light-primary); }
+:root:not(.dark) .about-cta__sub { color: var(--text-on-light-secondary); }
+

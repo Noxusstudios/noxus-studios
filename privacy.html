@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="privacy.title">Privacy Policy — Noxus</title>
+  <meta name="description" data-i18n="privacy.metaDesc" content="How Noxus collects, uses, and protects your personal information. Compliant with Quebec Law 25 and PIPEDA." />
+<!-- Open Graph / social previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://noxusstudios.com/privacy.html">
+  <meta property="og:title" content="Privacy Policy — Noxus">
+  <meta property="og:description" content="How Noxus collects, uses, and protects your personal information. Compliant with Quebec Law 25 and PIPEDA.">
+  <meta property="og:image" content="https://noxusstudios.com/favicon-512.png">
+  <meta property="og:site_name" content="Noxus Studios">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Privacy Policy — Noxus">
+  <meta name="twitter:description" content="How Noxus collects, uses, and protects your personal information. Compliant with Quebec Law 25 and PIPEDA.">
+  <meta name="twitter:image" content="https://noxusstudios.com/favicon-512.png">
+
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/privacy.css">
+  <link rel="stylesheet" href="css/theme-dark.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('noxus-theme');
+        if (t === 'dark') document.documentElement.classList.add('dark');
+        var l = localStorage.getItem('noxus-lang');
+        if (l === 'fr' || l === 'en') document.documentElement.setAttribute('lang', l);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <header class="site-nav" id="site-nav">
+    <a href="index.html" class="nav-logo">noxus<span class="nav-logo-dot">.</span></a>
+
+    <div class="status-bar" aria-label="Studio availability">
+      <span class="status-bar__dot" aria-hidden="true"></span>
+      <span data-i18n="common.status.booking">Booking Open</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+      <span class="status-bar__sep" aria-hidden="true">·</span>
+      <span data-i18n="common.status.replies">Replies within 24h</span>
+    </div>
+
+    <button class="lang-toggle" id="lang-toggle" type="button"
+            data-i18n-attr="aria-label=common.lang.aria"
+            aria-label="Switch language">
+      <span class="lang-toggle__opt is-active" data-lang="en" data-i18n="common.nav.lang.en">EN</span>
+      <span class="lang-toggle__sep" aria-hidden="true">|</span>
+      <span class="lang-toggle__opt" data-lang="fr" data-i18n="common.nav.lang.fr">FR</span>
+    </button>
+
+    <button class="theme-toggle" id="theme-toggle" type="button"
+            aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="theme-toggle-icon theme-toggle-moon" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+      <svg class="theme-toggle-icon theme-toggle-sun" width="15" height="15" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <line x1="12" y1="1" x2="12" y2="3" />
+        <line x1="12" y1="21" x2="12" y2="23" />
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+        <line x1="1" y1="12" x2="3" y2="12" />
+        <line x1="21" y1="12" x2="23" y2="12" />
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+      </svg>
+    </button>
+
+    <nav class="nav-pill is-collapsed" id="nav-pill" aria-label="Main navigation">
+      <div class="nav-pill-inner">
+        <a href="services.html" class="nav-pill-link"><span data-i18n="common.nav.services">Services</span></a>
+        <a href="work.html"     class="nav-pill-link"><span data-i18n="common.nav.work">Work</span></a>
+        <a href="about.html"    class="nav-pill-link"><span data-i18n="common.nav.about">About</span></a>
+        <a href="faq.html"      class="nav-pill-link"><span data-i18n="common.nav.faq">FAQ</span></a>
+        <a href="contact.html"  class="nav-pill-link"><span data-i18n="common.nav.contact">Contact</span></a>
+      </div>
+      <span class="nav-pill-collapsed-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6"  x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </span>
+    </nav>
+  </header>
+
+  <div class="theme-curtain" id="theme-curtain" aria-hidden="true"></div>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">×</button>
+    <nav>
+      <a href="index.html"    class="nav-overlay-link" data-i18n="common.nav.home">Home</a>
+      <a href="services.html" class="nav-overlay-link" data-i18n="common.nav.services">Services</a>
+      <a href="work.html"     class="nav-overlay-link" data-i18n="common.nav.work">Work</a>
+      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
+      <a href="faq.html"      class="nav-overlay-link" data-i18n="common.nav.faq">FAQ</a>
+      <a href="contact.html"  class="nav-overlay-link" data-i18n="common.nav.contact">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+    <section class="privacy-hero" data-theme="light">
+      <div class="privacy-hero__inner">
+        <div class="privacy-hero__eyebrow" data-i18n="privacy.hero.eyebrow">Legal</div>
+        <h1 class="privacy-hero__title" data-i18n="privacy.hero.title">Privacy Policy</h1>
+        <p class="privacy-hero__updated" data-i18n="privacy.hero.updated">Last updated · May 12, 2026</p>
+      </div>
+    </section>
+
+    <section class="privacy-body" data-theme="light">
+      <div class="privacy-body__inner">
+
+        <p class="privacy-intro" data-i18n="privacy.intro.body" data-i18n-html>
+          This Privacy Policy describes how <strong>Noxus</strong> ("we", "us", "our") collects, uses, and protects your personal information when you visit this website or use our services. We respect your privacy and comply with applicable Canadian and Québec privacy laws, including Québec's <em>Act respecting the protection of personal information in the private sector</em> (Law 25) and the federal <em>Personal Information Protection and Electronic Documents Act</em> (PIPEDA).
+        </p>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="privacy.s1.title">1 · Who we are</h2>
+          <div class="privacy-section__body" data-i18n="privacy.s1.body" data-i18n-html>
+            <p>Noxus is a web design and development studio based in Montréal, Québec, Canada.</p>
+            <p>For privacy-related inquiries, contact our privacy officer:</p>
+            <p><strong>Joseph</strong> — Privacy Officer<br>Email: <a href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a></p>
+          </div>
+        </article>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="privacy.s2.title">2 · Information we collect</h2>
+          <div class="privacy-section__body" data-i18n="privacy.s2.body" data-i18n-html>
+            <p>We collect personal information only when you choose to provide it. This includes:</p>
+            <ul>
+              <li><strong>Contact form submissions</strong> — name, email address, service type, budget range, and project details you share.</li>
+              <li><strong>Direct communications</strong> — anything you send via email, Instagram DM, or Calendly bookings.</li>
+              <li><strong>Browser preferences</strong> — theme (light/dark) and language (EN/FR) saved to your browser's localStorage on your device. This data never leaves your browser and is not transmitted to us.</li>
+            </ul>
+            <p>We do not currently use cookies for tracking, advertising, or analytics.</p>
+          </div>
+        </article>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="privacy.s3.title">3 · How we use your information</h2>
+          <div class="privacy-section__body" data-i18n="privacy.s3.body" data-i18n-html>
+            <p>We use the information you provide solely to:</p>
+            <ul>
+              <li>Respond to your inquiry or service request</li>
+              <li>Schedule and conduct discovery calls</li>
+              <li>Deliver services you have agreed to</li>
+              <li>Send transactional communications (project updates, invoices)</li>
+            </ul>
+            <p>We do not use your information for marketing or send promotional emails without your explicit, prior consent.</p>
+          </div>
+        </article>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="privacy.s4.title">4 · Legal basis</h2>
+          <div class="privacy-section__body" data-i18n="privacy.s4.body" data-i18n-html>
+            <p>Under Québec Law 25 and PIPEDA, we process your information on the following bases:</p>
+            <ul>
+              <li><strong>Consent</strong> — when you submit a form or send us a message, you consent to us using that data to respond.</li>
+              <li><strong>Performance of a contract</strong> — to deliver services we have agreed to provide you.</li>
+              <li><strong>Legitimate business interest</strong> — replying to commercial inquiries directed at us.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="privacy.s5.title">5 · Service providers &amp; international transfers</h2>
+          <div class="privacy-section__body" data-i18n="privacy.s5.body" data-i18n-html>
+            <p>We use the following third-party services to operate our site. Each acts as a data processor on our behalf:</p>
+            <ul>
+              <li><strong>Netlify</strong> (United States) — hosts the site and processes contact form submissions. <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify privacy policy ↗</a></li>
+              <li><strong>Google Workspace</strong> (United States) — used for email correspondence (Gmail), scheduling, and video calls (Google Calendar, Google Meet).</li>
+              <li><strong>Calendly</strong> (United States) — used when you book a discovery call. <a href="https://calendly.com/privacy" target="_blank" rel="noopener noreferrer">Calendly privacy policy ↗</a></li>
+            </ul>
+            <p>Where data is transferred outside of Québec or Canada, we rely on the service providers' contractual safeguards (including standard contractual clauses where applicable). By using this website or our services, you acknowledge that your personal information may be processed in the United States.</p>
+          </div>
+        </article>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="privacy.s6.title">6 · How long we keep your data</h2>
+          <div class="privacy-section__body" data-i18n="privacy.s6.body" data-i18n-html>
+            <ul>
+              <li><strong>Form submissions &amp; inquiries</strong> — up to 24 months after our last interaction, then deleted.</li>
+              <li><strong>Active client data</strong> — duration of the engagement plus 24 months for tax and accounting purposes (or longer where law requires).</li>
+              <li><strong>Browser preferences (localStorage)</strong> — stored on your device until you clear your browser data. We do not have access to or control over this.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="privacy.s7.title">7 · Your rights</h2>
+          <div class="privacy-section__body" data-i18n="privacy.s7.body" data-i18n-html>
+            <p>Under Québec Law 25 and PIPEDA, you have the right to:</p>
+            <ul>
+              <li><strong>Access</strong> — request a copy of the personal information we hold about you.</li>
+              <li><strong>Rectification</strong> — ask us to correct inaccurate or incomplete information.</li>
+              <li><strong>Deletion</strong> — request erasure of your information, subject to legal retention requirements.</li>
+              <li><strong>Withdraw consent</strong> — at any time, for any future processing.</li>
+              <li><strong>Portability</strong> — receive your data in a structured, commonly-used, machine-readable format.</li>
+              <li><strong>De-indexing or cessation of dissemination</strong> — request that we stop using your information for a specific purpose.</li>
+            </ul>
+            <p>To exercise any of these rights, email <a href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a>. We will respond within 30 days, as required by Québec Law 25.</p>
+            <p>If you are not satisfied with our response, you may file a complaint with the <strong>Commission d'accès à l'information du Québec (CAI)</strong>: <a href="https://www.cai.gouv.qc.ca/" target="_blank" rel="noopener noreferrer">cai.gouv.qc.ca ↗</a></p>
+          </div>
+        </article>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="privacy.s8.title">8 · Security</h2>
+          <div class="privacy-section__body" data-i18n="privacy.s8.body" data-i18n-html>
+            <p>We take reasonable measures to protect your information against unauthorized access, alteration, disclosure, or destruction. This includes HTTPS encryption in transit, strong password practices for our accounts, two-factor authentication where supported, and limited access to data within our team.</p>
+            <p>No method of transmission over the Internet is 100% secure. We cannot guarantee absolute security, but we work to minimize risk.</p>
+            <p>In the event of a confidentiality incident presenting a risk of serious injury, we will notify the Commission d'accès à l'information and affected individuals as required under Québec Law 25.</p>
+          </div>
+        </article>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="privacy.s9.title">9 · Children</h2>
+          <div class="privacy-section__body" data-i18n="privacy.s9.body" data-i18n-html>
+            <p>Our services are not directed at children under 14 years of age. We do not knowingly collect personal information from children under 14. If you believe we have collected information about a child, contact us at <a href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a> and we will delete it.</p>
+          </div>
+        </article>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="privacy.s10.title">10 · Changes to this policy</h2>
+          <div class="privacy-section__body" data-i18n="privacy.s10.body" data-i18n-html>
+            <p>We may update this Privacy Policy from time to time. The "Last updated" date at the top reflects the most recent revision. Material changes will be communicated through this website, or by email if you have previously contacted us.</p>
+          </div>
+        </article>
+
+        <article class="privacy-section">
+          <h2 class="privacy-section__title" data-i18n="privacy.s11.title">11 · Contact</h2>
+          <div class="privacy-section__body" data-i18n="privacy.s11.body" data-i18n-html>
+            <p>For any privacy-related questions or to exercise your rights:</p>
+            <p>
+              <strong>Email:</strong> <a href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a><br>
+              <strong>Studio:</strong> Montréal, Québec, Canada
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer data-theme="light">
+    <div class="footer-grid">
+      <div class="footer-col footer-col--brand">
+        <a href="index.html" class="footer-brand">noxus<span class="footer-brand-dot">.</span></a>
+        <p class="footer-tagline" data-i18n="common.footer.tagline">
+          Hand-coded studio · Montréal
+        </p>
+      </div>
+
+      <div class="footer-col footer-col--nav">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.explore">Explore</span>
+        <ul class="footer-nav-list">
+          <li><a href="index.html"    data-i18n="common.nav.home">Home</a></li>
+          <li><a href="about.html"    data-i18n="common.nav.about">About</a></li>
+          <li><a href="services.html" data-i18n="common.nav.services">Services</a></li>
+          <li><a href="work.html"     data-i18n="common.nav.work">Work</a></li>
+          <li><a href="faq.html"      data-i18n="common.nav.faq">FAQ</a></li>
+          <li><a href="contact.html"  data-i18n="common.nav.contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col--contact">
+        <span class="footer-col-title" data-i18n="common.footer.colTitle.contact">Contact</span>
+        <a class="footer-contact-link" href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a>
+        <span class="footer-contact-loc" data-i18n="common.footer.location">Montréal, QC, Canada</span>
+        <div class="footer-status-row">
+          <span class="footer-status-dot" aria-hidden="true"></span>
+          <span data-i18n="common.footer.status.bookingOpen">Booking Open</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.turnaround">4-7 Day Turnaround</span>
+          <span class="footer-status-sep" aria-hidden="true">·</span>
+          <span data-i18n="common.status.replies">Replies within 24h</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-meta">
+      <span class="footer-meta-text" data-i18n="common.footer.copyright">©2026 Noxus Studios · All rights reserved</span>
+      <span class="footer-meta-links">
+        <a class="footer-meta-text footer-meta-link" href="privacy.html" data-i18n="common.footer.privacy">Privacy Policy</a>
+        <span class="footer-meta-sep" aria-hidden="true">·</span>
+        <a class="footer-meta-text footer-meta-link" href="cookies.html" data-i18n="common.footer.cookies">Cookies</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="js/translations.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/theme-toggle.js" defer></script>
+</body>
+</html>

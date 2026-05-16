@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 32" role="img" aria-label="Noxus Studios">
+  <title>Noxus Studios</title>
+  <!-- Square mark on the left -->
+  <rect width="32" height="32" fill="#E8540A"/>
+  <g fill="#E8DCCB">
+    <rect x="4" y="4" width="6" height="24"/>
+    <rect x="22" y="4" width="6" height="24"/>
+    <polygon points="10,4 16,4 22,28 16,28"/>
+  </g>
+  <!-- Wordmark to the right of the mark -->
+  <g font-family="'Bebas Neue', 'Arial Narrow', sans-serif" font-weight="400" letter-spacing="0.5">
+    <text x="44" y="26" font-size="30" fill="#1A1A1A">noxus</text>
+    <text x="135" y="26" font-size="30" fill="#E8540A">.</text>
+  </g>
+</svg>
