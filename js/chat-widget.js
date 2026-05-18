@@ -151,10 +151,13 @@
   root.innerHTML = `
     <button class="nox-chat__toggle" type="button" aria-label="${t().toggle}" aria-expanded="false">
       <span class="nox-chat__toggle-icon" aria-hidden="true">
-        <svg viewBox="0 0 32 32" width="22" height="22">
-          <rect x="4" y="4" width="6" height="24" fill="currentColor"/>
-          <rect x="22" y="4" width="6" height="24" fill="currentColor"/>
-          <polygon points="10,4 16,4 22,28 16,28" fill="currentColor"/>
+        <svg viewBox="0 0 32 32" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+          <line x1="16" y1="3" x2="16" y2="6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="16" cy="2.5" r="1.4" fill="currentColor"/>
+          <rect x="6" y="7" width="20" height="20" rx="3.2" fill="currentColor"/>
+          <rect class="nox-face-eye" x="10" y="12.8" width="3.4" height="3" rx="1" fill="#E8540A"/>
+          <rect class="nox-face-eye" x="18.6" y="12.8" width="3.4" height="3" rx="1" fill="#E8540A"/>
+          <path d="M 11.5 21.5 Q 16 23.4 20.5 21.5" stroke="#E8540A" stroke-width="1.6" stroke-linecap="round" fill="none"/>
         </svg>
       </span>
       <span class="nox-chat__toggle-dot" aria-hidden="true"></span>
@@ -164,10 +167,13 @@
       <header class="nox-chat__header">
         <div class="nox-chat__brand">
           <span class="nox-chat__mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" width="20" height="20">
-              <rect x="4" y="4" width="6" height="24" fill="currentColor"/>
-              <rect x="22" y="4" width="6" height="24" fill="currentColor"/>
-              <polygon points="10,4 16,4 22,28 16,28" fill="currentColor"/>
+            <svg viewBox="0 0 32 32" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
+              <line x1="16" y1="3" x2="16" y2="6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="16" cy="2.5" r="1.4" fill="currentColor"/>
+              <rect x="6" y="7" width="20" height="20" rx="3.2" fill="currentColor"/>
+              <rect class="nox-face-eye" x="10" y="12.8" width="3.4" height="3" rx="1" fill="#E8540A"/>
+              <rect class="nox-face-eye" x="18.6" y="12.8" width="3.4" height="3" rx="1" fill="#E8540A"/>
+              <path d="M 11.5 21.5 Q 16 23.4 20.5 21.5" stroke="#E8540A" stroke-width="1.6" stroke-linecap="round" fill="none"/>
             </svg>
           </span>
           <div class="nox-chat__brand-text">

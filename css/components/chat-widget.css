@@ -69,6 +69,22 @@
   justify-content: center;
 }
 
+/* Robot face — subtle blink every ~6s so Nox feels alive */
+.nox-face-eye {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: noxBlink 6.4s infinite;
+}
+
+@keyframes noxBlink {
+  0%, 93%, 97%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nox-face-eye { animation: none; }
+}
+
 .nox-chat__toggle-dot {
   position: absolute;
   bottom: 4px;
