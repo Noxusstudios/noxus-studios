@@ -29,7 +29,6 @@
       errorOverLimit:
         "We've covered a lot. For anything deeper, [book a call with Joseph](https://calendly.com/noxusstudios/30min).",
       clear: 'Clear chat',
-      poweredBy: 'Powered by Claude AI',
       close: 'Close chat',
     },
     fr: {
@@ -46,7 +45,6 @@
       errorOverLimit:
         "Nous avons fait le tour. Pour aller plus loin, [réservez un appel avec Joseph](https://calendly.com/noxusstudios/30min).",
       clear: 'Effacer la conversation',
-      poweredBy: 'Propulsé par Claude IA',
       close: 'Fermer le clavardage',
     },
   };
@@ -186,7 +184,6 @@
       </form>
 
       <footer class="nox-chat__footer">
-        <span data-nox-i18n="poweredBy">${t().poweredBy}</span>
         <button class="nox-chat__clear" type="button" data-nox-i18n="clear">${t().clear}</button>
       </footer>
     </div>
