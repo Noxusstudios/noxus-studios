@@ -2,6 +2,10 @@
 [build]
   publish = "."
 
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 # Netlify post-processing: auto-minify CSS/JS/HTML and bundle CSS.
 # Saves ~44KB CSS + ~290KB JS at deploy time without a custom build step.
 [build.processing]
