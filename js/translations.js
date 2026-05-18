@@ -36,6 +36,7 @@ window.NOXUS_I18N = {
     'common.nav.faq':           'FAQ',
     'common.footer.copyright':  '©2026 Noxus Studios · All rights reserved',
     'common.footer.privacy':    'Privacy Policy',
+    'common.footer.terms':      'Terms',
     'common.footer.cookies':    'Cookies',
 
     /* -------- HOME (index.html) -------- */
@@ -600,6 +601,44 @@ window.NOXUS_I18N = {
     'cookies.s6.title': '6 · Contact',
     'cookies.s6.body':  '<p>Questions about cookies or related storage on this site? Reach out:</p><p><strong>Email:</strong> <a href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a><br><strong>Studio:</strong> Montréal, Québec, Canada</p><p>See also our <a href="privacy.html">Privacy Policy</a> for the broader picture on how we handle personal information.</p>',
 
+    /* -------- TERMS (terms.html) -------- */
+    'terms.title':           'Terms of Service — Noxus',
+    'terms.metaDesc':        'The terms that govern your use of the Noxus Studios website. Engagements are governed by a separate signed service agreement.',
+    'terms.hero.eyebrow':    'Legal',
+    'terms.hero.title':      'Terms of Service',
+    'terms.hero.updated':    'Last updated · May 18, 2026',
+    'terms.intro.body':      'These Terms of Service ("Terms") govern your use of the <strong>noxusstudios.com</strong> website (the "Site"), operated by <strong>Noxus Studios</strong> ("Noxus", "we", "us"). By browsing, sending a message, or booking a discovery call, you agree to these Terms. If you don\'t agree, please don\'t use the Site. Engagements for paid work are governed by a separate <strong>signed service agreement</strong> — these Terms apply only to your use of the Site itself.',
+
+    'terms.s1.title': '1 · Who we are',
+    'terms.s1.body':  '<p>Noxus Studios is a sole-proprietorship web design and development studio based in Montréal, Québec, Canada. We operate publicly under the brand name <strong>Noxus</strong>.</p><p>Site operator: <strong>Joseph</strong> — Founder<br>Email: <a href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a></p>',
+
+    'terms.s2.title': '2 · Acceptance of these Terms',
+    'terms.s2.body':  '<p>By accessing the Site, you confirm you are at least 14 years old (the threshold for valid consent under Québec Law 25) and have the capacity to enter into this agreement. If you are using the Site on behalf of an organization, you confirm you have the authority to bind that organization to these Terms.</p><p>We may update these Terms from time to time (see Section 10). Continued use of the Site after changes means you accept the updated Terms.</p>',
+
+    'terms.s3.title': '3 · Use of the Site',
+    'terms.s3.body':  '<p>You may use the Site to learn about our services, view our work, send us a message, and book a discovery call. You agree not to:</p><ul><li>Scrape, mirror, or systematically extract content from the Site, except for reasonable, non-commercial referencing</li><li>Attempt to gain unauthorized access to the Site, its server, or related systems</li><li>Submit spam, malicious code, viruses, or fraudulent inquiries via the contact form</li><li>Use the Site to harass, defame, or impersonate any person or organization</li><li>Reverse-engineer, decompile, or attempt to extract source code beyond what is publicly viewable through standard browser tools</li><li>Use any automated system (bots, AI agents, etc.) to interact with the Site in a way that disrupts service for other users</li></ul><p>We reserve the right to block access from any IP address or visitor who violates these rules, without notice.</p>',
+
+    'terms.s4.title': '4 · Intellectual property',
+    'terms.s4.body':  '<p>The Site — including its design, code, copy, images, brand mark, typography choices, and overall presentation — is the intellectual property of Noxus Studios and is protected under Canadian and international copyright and trademark law.</p><p>You may:</p><ul><li>View, browse, and screenshot pages for personal, non-commercial reference</li><li>Link to any public page on the Site, provided the link does not imply false endorsement or affiliation</li><li>Quote short excerpts of copy with proper attribution to <em>noxusstudios.com</em></li></ul><p>You may not copy, republish, or repurpose the Site\'s design or code in another commercial project without prior written permission.</p><p><strong>Client deliverables</strong> — code, designs, and assets we build for paying clients — are governed by the signed service agreement and become the client\'s property upon final payment. Those are separate from the Site itself.</p>',
+
+    'terms.s5.title': '5 · Inquiries are not contracts',
+    'terms.s5.body':  '<p>Submitting the contact form, booking a discovery call, or exchanging emails does <strong>not</strong> create a binding service contract between you and Noxus. No work begins, no deliverable is promised, and no fee is owed until:</p><ol><li>A written service agreement (PDF) is signed by both parties, AND</li><li>The 50% deposit has cleared.</li></ol><p>Pricing displayed on the Site (Starter, Custom Build, Pro, Enterprise) is indicative — final fees, scope, and timeline are confirmed in the signed agreement based on your specific project.</p>',
+
+    'terms.s6.title': '6 · Third-party services &amp; links',
+    'terms.s6.body':  '<p>The Site embeds or links to third-party services (Calendly for scheduling, Google Fonts for typography, Netlify for hosting and form submission). Use of those services is subject to their own terms and privacy policies. Noxus is not responsible for the availability, content, or practices of any third party.</p><p>External links to other websites are provided for convenience. We do not endorse and are not responsible for content hosted on external sites.</p>',
+
+    'terms.s7.title': '7 · Disclaimer &amp; limitation of liability',
+    'terms.s7.body':  '<p>The Site is provided <strong>"as is"</strong> and <strong>"as available"</strong>, without warranties of any kind — express, implied, or statutory — including warranties of merchantability, fitness for a particular purpose, accuracy, or non-infringement.</p><p>We make reasonable efforts to keep the Site online and accurate, but we do not warrant that:</p><ul><li>The Site will be uninterrupted, error-free, or free of malicious code</li><li>Information on the Site is complete, current, or free of typographical errors</li><li>Any specific result will be achieved by following information on the Site</li></ul><p>To the maximum extent permitted by applicable Québec law, Noxus shall not be liable for any indirect, incidental, special, consequential, or punitive damages — including lost profits, lost data, or business interruption — arising from your use of (or inability to use) the Site. Our total aggregate liability arising from your use of the Site is limited to the greater of CAD $100 or the total fees you have paid us in the past twelve months under a separate service agreement.</p><p>Nothing in these Terms excludes any liability that cannot be excluded under applicable Québec or Canadian law (including consumer protection legislation, where it applies).</p>',
+
+    'terms.s8.title': '8 · User submissions',
+    'terms.s8.body':  '<p>When you send us a message — through the contact form, by email, or otherwise — you confirm that:</p><ul><li>You own or have the right to share the content of the message (text, attachments, references)</li><li>The content does not infringe third-party rights, contain malicious code, or violate any law</li><li>You grant us a non-exclusive, royalty-free license to read, store, and respond to the message for the purpose of replying to your inquiry and, if applicable, delivering services</li></ul><p>We treat your submission as confidential and handle it according to our <a href="privacy.html">Privacy Policy</a>. We will not use the substance of your message for marketing without your explicit consent.</p>',
+
+    'terms.s9.title': '9 · Governing law &amp; jurisdiction',
+    'terms.s9.body':  '<p>These Terms are governed by the laws of the <strong>Province of Québec</strong> and the federal laws of Canada applicable therein, without regard to conflict-of-law principles.</p><p>Any dispute arising from your use of the Site will first be addressed through good-faith negotiation. If unresolved within thirty (30) days, both parties agree to attempt mediation in Montréal before pursuing litigation. The courts of the <strong>judicial district of Montréal, Québec</strong> have exclusive jurisdiction, subject to your statutory rights as a consumer where applicable.</p>',
+
+    'terms.s10.title': '10 · Changes &amp; contact',
+    'terms.s10.body':  '<p>We may update these Terms from time to time. The "Last updated" date at the top reflects the most recent revision. Material changes will be announced on this page; substantial changes affecting how we handle your data will also be communicated by email if you have previously contacted us.</p><p>Questions about these Terms?</p><p><strong>Email:</strong> <a href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a><br><strong>Studio:</strong> Montréal, Québec, Canada</p><p>See also our <a href="privacy.html">Privacy Policy</a> and <a href="cookies.html">Cookie Policy</a> for related information.</p>',
+
     /* -------- FAQ (faq.html) -------- */
     'faq.title':           'FAQ — Noxus',
     'faq.metaDesc':        'The questions Noxus clients actually ask: pricing transparency, why hand-coded over builders, the 4-7 day timeline, what we need from you, ownership, bilingual EN/FR, post-launch support.',
@@ -690,6 +729,7 @@ window.NOXUS_I18N = {
     'common.nav.faq':           'FAQ',
     'common.footer.copyright':  '©2026 Noxus Studios · Tous droits réservés',
     'common.footer.privacy':    'Politique de confidentialité',
+    'common.footer.terms':      'Conditions',
     'common.footer.cookies':    'Témoins',
 
     /* -------- HOME -------- */
@@ -1253,6 +1293,44 @@ window.NOXUS_I18N = {
 
     'cookies.s6.title': '6 · Contact',
     'cookies.s6.body':  '<p>Des questions sur les témoins ou le stockage connexe sur ce site? Contactez-nous :</p><p><strong>Courriel :</strong> <a href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a><br><strong>Studio :</strong> Montréal, Québec, Canada</p><p>Consultez aussi notre <a href="privacy.html">politique de confidentialité</a> pour une vue d\'ensemble de notre traitement des renseignements personnels.</p>',
+
+    /* -------- TERMS (terms.html) -------- */
+    'terms.title':           'Conditions d\'utilisation — Noxus',
+    'terms.metaDesc':        'Les conditions qui régissent votre utilisation du site Noxus Studios. Les mandats sont régis par un contrat de services signé séparément.',
+    'terms.hero.eyebrow':    'Légal',
+    'terms.hero.title':      'Conditions d\'utilisation',
+    'terms.hero.updated':    'Mise à jour · 18 mai 2026',
+    'terms.intro.body':      'Les présentes conditions d\'utilisation (les « Conditions ») régissent votre utilisation du site web <strong>noxusstudios.com</strong> (le « Site »), exploité par <strong>Noxus Studios</strong> (« Noxus », « nous »). En naviguant, en envoyant un message ou en réservant un appel-découverte, vous acceptez ces Conditions. Si vous n\'êtes pas d\'accord, veuillez ne pas utiliser le Site. Les mandats payants sont régis par un <strong>contrat de services signé</strong> distinct — les présentes Conditions ne s\'appliquent qu\'à votre utilisation du Site lui-même.',
+
+    'terms.s1.title': '1 · Qui nous sommes',
+    'terms.s1.body':  '<p>Noxus Studios est un studio de conception et de développement web exploité en entreprise individuelle, basé à Montréal, Québec, Canada. Nous opérons publiquement sous le nom de marque <strong>Noxus</strong>.</p><p>Opérateur du Site : <strong>Joseph</strong> — Fondateur<br>Courriel : <a href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a></p>',
+
+    'terms.s2.title': '2 · Acceptation des Conditions',
+    'terms.s2.body':  '<p>En accédant au Site, vous confirmez avoir au moins 14 ans (le seuil pour le consentement valide selon la Loi 25 du Québec) et avoir la capacité de conclure cette entente. Si vous utilisez le Site au nom d\'une organisation, vous confirmez avoir l\'autorité de lier cette organisation aux présentes Conditions.</p><p>Nous pouvons mettre à jour ces Conditions de temps à autre (voir Section 10). L\'utilisation continue du Site après une modification constitue l\'acceptation des Conditions mises à jour.</p>',
+
+    'terms.s3.title': '3 · Utilisation du Site',
+    'terms.s3.body':  '<p>Vous pouvez utiliser le Site pour consulter nos services, voir nos réalisations, nous envoyer un message et réserver un appel-découverte. Vous acceptez de ne pas :</p><ul><li>Aspirer, copier ou extraire systématiquement le contenu du Site, sauf à des fins raisonnables de référencement non commercial</li><li>Tenter d\'accéder sans autorisation au Site, à son serveur ou aux systèmes connexes</li><li>Soumettre du pourriel, du code malveillant, des virus ou des demandes frauduleuses via le formulaire de contact</li><li>Utiliser le Site pour harceler, diffamer ou usurper l\'identité de quiconque</li><li>Faire de l\'ingénierie inverse, décompiler ou tenter d\'extraire le code source au-delà de ce qui est visible par les outils de navigateur standards</li><li>Utiliser tout système automatisé (robots, agents IA, etc.) qui interagit avec le Site d\'une manière perturbant le service pour d\'autres utilisateurs</li></ul><p>Nous nous réservons le droit de bloquer l\'accès depuis toute adresse IP ou tout visiteur qui contrevient à ces règles, sans préavis.</p>',
+
+    'terms.s4.title': '4 · Propriété intellectuelle',
+    'terms.s4.body':  '<p>Le Site — incluant son design, son code, ses textes, ses images, sa marque graphique, ses choix typographiques et sa présentation générale — est la propriété intellectuelle de Noxus Studios et est protégé par les lois canadiennes et internationales sur le droit d\'auteur et les marques de commerce.</p><p>Vous pouvez :</p><ul><li>Consulter, parcourir et capturer des pages d\'écran pour usage personnel et non commercial</li><li>Lier vers toute page publique du Site, à condition que le lien n\'implique pas une fausse approbation ou affiliation</li><li>Citer de courts extraits de texte avec attribution appropriée à <em>noxusstudios.com</em></li></ul><p>Vous ne pouvez pas copier, republier ou réutiliser le design ou le code du Site dans un autre projet commercial sans autorisation écrite préalable.</p><p>Les <strong>livrables client</strong> — code, designs et actifs que nous créons pour des clients payants — sont régis par le contrat de services signé et deviennent la propriété du client au paiement final. Ceux-ci sont distincts du Site lui-même.</p>',
+
+    'terms.s5.title': '5 · Les demandes ne sont pas des contrats',
+    'terms.s5.body':  '<p>L\'envoi du formulaire de contact, la réservation d\'un appel-découverte ou les échanges par courriel ne créent <strong>pas</strong> de contrat de services contraignant entre vous et Noxus. Aucun travail ne débute, aucun livrable n\'est promis et aucuns frais ne sont dus avant que :</p><ol><li>Un contrat de services écrit (PDF) soit signé par les deux parties, ET</li><li>Le dépôt de 50 % soit reçu.</li></ol><p>Les prix affichés sur le Site (Starter, Sur Mesure, Pro, Entreprise) sont indicatifs — les honoraires finaux, la portée et l\'échéancier sont confirmés dans le contrat signé en fonction de votre projet spécifique.</p>',
+
+    'terms.s6.title': '6 · Services tiers et liens externes',
+    'terms.s6.body':  '<p>Le Site intègre ou renvoie à des services tiers (Calendly pour la prise de rendez-vous, Google Fonts pour la typographie, Netlify pour l\'hébergement et la soumission de formulaires). L\'utilisation de ces services est soumise à leurs propres conditions et politiques de confidentialité. Noxus n\'est pas responsable de la disponibilité, du contenu ou des pratiques d\'un tiers.</p><p>Les liens externes vers d\'autres sites sont fournis à titre de commodité. Nous n\'approuvons pas et ne sommes pas responsables du contenu hébergé sur des sites externes.</p>',
+
+    'terms.s7.title': '7 · Avis de non-responsabilité et limitation de responsabilité',
+    'terms.s7.body':  '<p>Le Site est fourni <strong>« tel quel »</strong> et <strong>« selon disponibilité »</strong>, sans garantie d\'aucune sorte — expresse, implicite ou légale — incluant les garanties de qualité marchande, d\'adaptation à un usage particulier, d\'exactitude ou de non-contrefaçon.</p><p>Nous faisons des efforts raisonnables pour maintenir le Site en ligne et exact, mais nous ne garantissons pas que :</p><ul><li>Le Site sera ininterrompu, sans erreur ou exempt de code malveillant</li><li>Les renseignements sur le Site sont complets, à jour ou exempts d\'erreurs typographiques</li><li>Un résultat spécifique sera obtenu en suivant les informations du Site</li></ul><p>Dans la mesure maximale permise par le droit québécois applicable, Noxus ne sera pas responsable des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs — incluant les pertes de profits, pertes de données ou interruption d\'activité — découlant de votre utilisation (ou de l\'impossibilité d\'utiliser) le Site. Notre responsabilité totale globale découlant de votre utilisation du Site est limitée au plus élevé de 100 $ CAD ou du total des honoraires que vous nous avez versés au cours des douze derniers mois en vertu d\'un contrat de services distinct.</p><p>Rien dans les présentes Conditions n\'exclut une responsabilité qui ne peut être exclue en vertu du droit québécois ou canadien applicable (incluant la législation sur la protection du consommateur, lorsqu\'elle s\'applique).</p>',
+
+    'terms.s8.title': '8 · Soumissions de l\'utilisateur',
+    'terms.s8.body':  '<p>Lorsque vous nous envoyez un message — via le formulaire de contact, par courriel ou autrement — vous confirmez que :</p><ul><li>Vous possédez ou avez le droit de partager le contenu du message (textes, pièces jointes, références)</li><li>Le contenu ne porte pas atteinte aux droits de tiers, ne contient pas de code malveillant et ne viole aucune loi</li><li>Vous nous accordez une licence non exclusive et libre de redevances pour lire, conserver et répondre au message dans le but de traiter votre demande et, le cas échéant, de livrer les services</li></ul><p>Nous traitons votre soumission comme confidentielle et la gérons conformément à notre <a href="privacy.html">politique de confidentialité</a>. Nous n\'utiliserons pas le contenu de votre message à des fins de marketing sans votre consentement explicite.</p>',
+
+    'terms.s9.title': '9 · Droit applicable et juridiction',
+    'terms.s9.body':  '<p>Les présentes Conditions sont régies par les lois de la <strong>province de Québec</strong> et les lois fédérales du Canada qui y sont applicables, sans égard aux principes de conflit de lois.</p><p>Tout différend découlant de votre utilisation du Site sera d\'abord traité par négociation de bonne foi. À défaut de résolution dans les trente (30) jours, les deux parties conviennent de tenter une médiation à Montréal avant tout recours judiciaire. Les tribunaux du <strong>district judiciaire de Montréal, Québec</strong> ont compétence exclusive, sous réserve de vos droits statutaires en tant que consommateur le cas échéant.</p>',
+
+    'terms.s10.title': '10 · Modifications et contact',
+    'terms.s10.body':  '<p>Nous pouvons mettre à jour ces Conditions de temps à autre. La date « Mise à jour » en haut reflète la révision la plus récente. Les modifications importantes seront annoncées sur cette page; les modifications substantielles affectant le traitement de vos données seront également communiquées par courriel si vous nous avez déjà contactés.</p><p>Des questions sur ces Conditions?</p><p><strong>Courriel :</strong> <a href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a><br><strong>Studio :</strong> Montréal, Québec, Canada</p><p>Consultez aussi notre <a href="privacy.html">politique de confidentialité</a> et notre <a href="cookies.html">politique sur les témoins</a> pour les informations connexes.</p>',
 
     /* -------- FAQ (faq.html) -------- */
     'faq.title':           'FAQ — Noxus',
