@@ -30,6 +30,12 @@
         "We've covered a lot. For anything deeper, [book a call with Joseph](https://calendly.com/noxusstudios/30min).",
       clear: 'Clear chat',
       close: 'Close chat',
+      suggestions: [
+        'How much for a 5-page bilingual site?',
+        'What makes hand-coded different?',
+        'How long does a Custom Build take?',
+        'Do you do retainers?',
+      ],
     },
     fr: {
       toggle: 'Discuter avec Nox',
@@ -46,6 +52,12 @@
         "Nous avons fait le tour. Pour aller plus loin, [réservez un appel avec Joseph](https://calendly.com/noxusstudios/30min).",
       clear: 'Effacer la conversation',
       close: 'Fermer le clavardage',
+      suggestions: [
+        'Combien pour un site bilingue de 5 pages?',
+        'Pourquoi codé à la main?',
+        'Délai pour un Sur Mesure?',
+        'Forfaits mensuels disponibles?',
+      ],
     },
   };
 
@@ -209,6 +221,7 @@
 
     if (history.length === 0) {
       appendMessage('assistant', t().welcome, { skipStore: true, isWelcome: true });
+      renderSuggestions();
     } else {
       for (const msg of history) {
         appendMessage(msg.role, msg.content, { skipStore: true });
@@ -216,6 +229,32 @@
     }
 
     scrollToBottom();
+  }
+
+  function renderSuggestions() {
+    const dict = t();
+    if (!Array.isArray(dict.suggestions) || dict.suggestions.length === 0) return;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'nox-chat__suggestions';
+
+    for (const text of dict.suggestions) {
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'nox-chat__chip';
+      chip.textContent = text;
+      chip.addEventListener('click', () => {
+        sendMessage(text);
+      });
+      wrap.appendChild(chip);
+    }
+
+    messagesEl.appendChild(wrap);
+  }
+
+  function clearSuggestions() {
+    const wrap = messagesEl.querySelector('.nox-chat__suggestions');
+    if (wrap) wrap.remove();
   }
 
   function appendMessage(role, content, opts = {}) {
@@ -306,6 +345,7 @@
     sendBtn.disabled = true;
     input.disabled = true;
 
+    clearSuggestions();
     appendMessage('user', text.trim());
     input.value = '';
     autoResize();
