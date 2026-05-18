@@ -1,0 +1,11 @@
+# robots.txt — Noxus Studios
+# Allow all well-behaved crawlers; point them at the sitemap.
+
+User-agent: *
+Allow: /
+
+# Block crawling of any cache/temp/build artifacts that might exist.
+Disallow: /.netlify/
+Disallow: /.git/
+
+Sitemap: https://noxusstudios.com/sitemap.xml
