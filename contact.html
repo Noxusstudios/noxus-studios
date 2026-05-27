@@ -280,12 +280,7 @@
       <div class="contact-form-section__layout">
         <form class="contact-form"
               id="contact-form"
-              name="contact"
-              method="POST"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field">
-          <!-- Netlify needs this hidden field to identify the form on submission -->
-          <input type="hidden" name="form-name" value="contact">
+              name="contact">
           <!-- Honeypot: bots tend to fill every visible input; legit users never see this -->
           <p hidden aria-hidden="true">
             <label>Don't fill this out if you're human: <input name="bot-field"></label>
@@ -508,20 +503,24 @@
       const submitBtn = form.querySelector('.contact-form__submit');
       const success = document.getElementById('contact-success');
 
-      // Disable submit to prevent double-fires while the request is in flight
       submitBtn.disabled = true;
       const originalLabel = submitBtn.textContent;
       submitBtn.textContent = 'Sending…';
 
       try {
-        // Netlify Forms accepts urlencoded POST to the page itself.
-        const formData = new FormData(form);
-        const body = new URLSearchParams(formData).toString();
+        const payload = {
+          name: form.elements['name'].value,
+          email: form.elements['email'].value,
+          service: form.elements['service'].value,
+          budget: form.elements['budget'].value,
+          message: form.elements['message'].value,
+          'bot-field': form.elements['bot-field'].value,
+        };
 
-        const res = await fetch('/', {
+        const res = await fetch('/api/contact', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
         });
 
         if (!res.ok) throw new Error('Form submit failed: ' + res.status);
@@ -532,9 +531,6 @@
       } catch (err) {
         submitBtn.disabled = false;
         submitBtn.textContent = originalLabel;
-        // Local dev fallback: Netlify Forms only works on deployed Netlify sites,
-        // so locally the POST will 404. Show the in-page success state anyway
-        // so the local UX matches production.
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
           form.hidden = true;
           success.hidden = false;

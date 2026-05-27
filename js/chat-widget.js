@@ -2,7 +2,7 @@
    NOX — Noxus Studios AI intake assistant (frontend widget)
    ----------------------------------------------------------------
    Self-injects a floating button + panel into every page.
-   Talks to /api/chat (Netlify Function) which proxies Claude.
+   Talks to /api/chat (Cloudflare Pages Function) which proxies Claude.
    Brand-matched, theme-aware (vanilla / brown), bilingual (EN / FR).
    ============================================================ */
 
