@@ -15,6 +15,9 @@
   const STORAGE_KEY = 'noxus-chat-history';
   const MAX_HISTORY_LENGTH = 28; // server caps at 30 — leave headroom
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
+
   const I18N = {
     en: {
       toggle: 'Chat with Nox',
@@ -256,6 +259,19 @@
       chip.addEventListener('click', () => {
         sendMessage(text);
       });
+      // Cursor-follow spotlight (feeds the ::after radial in CSS).
+      // Skipped for reduced-motion / coarse pointers.
+      if (!prefersReducedMotion && !coarsePointer) {
+        chip.addEventListener(
+          'pointermove',
+          (e) => {
+            const r = chip.getBoundingClientRect();
+            chip.style.setProperty('--mx', (((e.clientX - r.left) / r.width) * 100).toFixed(1) + '%');
+            chip.style.setProperty('--my', (((e.clientY - r.top) / r.height) * 100).toFixed(1) + '%');
+          },
+          { passive: true }
+        );
+      }
       wrap.appendChild(chip);
     }
 
