@@ -143,6 +143,117 @@
   margin: 0;
 }
 
+/* ---- Hero CTA cluster (was missing — the hero had no in-view action) ---- */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+.hero-actions__primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  padding: 14px 15px 14px 24px;
+  border-radius: 12px;
+  /* dimensional orange — pops off the flat hero */
+  background: radial-gradient(circle at 50% 18%, #FF6A1F 0%, var(--orange) 68%, #D14908 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.30) inset,
+    0 -1px 2px rgba(0, 0, 0, 0.20) inset,
+    0 14px 30px -12px rgba(232, 84, 10, 0.6),
+    0 2px 6px rgba(0, 0, 0, 0.14);
+  transition:
+    transform 0.32s cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.hero-actions__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.22) inset;
+  transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1), background 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.hero-actions__primary:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 -1px 2px rgba(0, 0, 0, 0.2) inset,
+    0 22px 44px -12px rgba(232, 84, 10, 0.75),
+    0 3px 8px rgba(0, 0, 0, 0.16);
+}
+.hero-actions__primary:hover .hero-actions__arrow {
+  transform: translateX(3px);
+  background: rgba(255, 255, 255, 0.26);
+}
+.hero-actions__primary:active { transform: translateY(0) scale(0.98); }
+.hero-actions__primary:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+.hero-actions__secondary {
+  position: relative;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-on-light-primary);
+  padding: 6px 1px;
+  transition: color 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.hero-actions__secondary::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.36s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.hero-actions__secondary:hover { color: var(--orange-on-light); }
+.hero-actions__secondary:hover::after { transform: scaleX(1); }
+.hero-actions__secondary:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+/* price-from eyebrow */
+.hero-price-from {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-on-light-muted);
+  margin-bottom: 6px;
+}
+
+/* hero entrance: CTA + price eyebrow rise in on load */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-actions,
+  .hero-price-from {
+    opacity: 0;
+    animation: heroActionsRise 0.7s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  }
+  .hero-actions { animation-delay: 0.5s; }
+  .hero-price-from { animation-delay: 0.4s; }
+}
+@keyframes heroActionsRise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* live availability dot on the booking cell */
 .hero-live-dot {
   display: inline-block;
