@@ -134,6 +134,10 @@
 :root.dark .services-hero__cta-secondary:hover { color: var(--orange-hover); }
 :root.dark .services-hero__double-slash { color: var(--orange-hover); }
 
+:root.dark .services-hero__stat { border-top-color: rgba(255, 255, 255, 0.10); }
+:root.dark .services-hero__stat-num { color: #E8DCCB; }
+:root.dark .services-hero__stat-lbl { color: rgba(232, 220, 203, 0.62); }
+
 /* work-hero revamp — eyebrow/status/work-index on dark */
 :root.dark .work-hero__status { color: rgba(232, 220, 203, 0.60); }
 :root.dark .work-hero__index { border-top-color: rgba(232, 220, 203, 0.18); }

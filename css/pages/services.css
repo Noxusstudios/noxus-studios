@@ -93,11 +93,9 @@
 
 /* Stats anchored as a dimensional ledger panel (was floating numbers). */
 .services-hero__meta {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
   align-self: end;
-  padding: 6px 24px 20px;
+  min-width: 280px;
+  padding: 8px 26px;
   border-radius: 16px;
   border: 1px solid rgba(20, 12, 6, 0.12);
   background: linear-gradient(158deg, rgba(255, 255, 255, 0.52) 0%, rgba(255, 255, 255, 0.14) 100%);
@@ -105,32 +103,59 @@
     0 1px 0 rgba(255, 255, 255, 0.65) inset,
     0 22px 48px -30px rgba(20, 12, 6, 0.55);
 }
-.services-hero__meta-row {
+
+/* Stats as bulleted ledger rows, each led by a pulsating dot. */
+.services-hero__stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.services-hero__stat {
   display: flex;
-  gap: 0;
-  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  padding: 15px 0;
+  border-top: 1px solid rgba(20, 12, 6, 0.12);
 }
-.services-hero__meta-cell {
-  text-align: left;
-  padding: 16px 22px 0;
-  border-top: 1px solid rgba(20, 12, 6, 0.22);
+.services-hero__stat:first-child { border-top: 0; }
+
+.services-hero__stat-dot {
+  position: relative;
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 0 0 rgba(232, 84, 10, 0.55);
+  animation: svcStatPulse 2.6s cubic-bezier(0.32, 0.72, 0, 1) infinite;
 }
-.services-hero__meta-cell:first-child { padding-left: 0; }
-.services-hero__meta-cell:last-child { padding-right: 0; }
-.services-hero__meta-num {
+/* offset each ring so they breathe out of sync — feels more alive */
+.services-hero__stat:nth-child(2) .services-hero__stat-dot { animation-delay: 0.55s; }
+.services-hero__stat:nth-child(3) .services-hero__stat-dot { animation-delay: 1.1s; }
+
+.services-hero__stat-num {
   font-family: var(--font-display);
-  font-size: clamp(30px, 3.2vw, 40px);
-  color: var(--black);
+  font-size: clamp(26px, 2.6vw, 34px);
   line-height: 0.95;
   letter-spacing: -0.01em;
+  color: var(--black);
 }
-.services-hero__meta-lbl {
+.services-hero__stat-lbl {
+  margin-left: auto;
   font-family: var(--font-body);
   font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text-on-light-secondary);
-  margin-top: 8px;
+}
+
+@keyframes svcStatPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(232, 84, 10, 0.55); }
+  70%  { box-shadow: 0 0 0 9px rgba(232, 84, 10, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(232, 84, 10, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .services-hero__stat-dot { animation: none !important; }
 }
 
 .services-hero__lede-block { margin-top: 30px; }
@@ -337,10 +362,7 @@
 @media (max-width: 768px) {
   .services-hero { padding: 140px 24px 60px; min-height: auto; }
   .services-hero__inner { grid-template-columns: 1fr; gap: 36px; }
-  .services-hero__meta { text-align: left; align-self: stretch; }
-  .services-hero__meta-row { justify-content: space-between; }
-  .services-hero__meta-cell { text-align: left; padding: 16px 12px 0 0; }
-  .services-hero__meta-cell:last-child { padding-right: 0; }
+  .services-hero__meta { align-self: stretch; min-width: 0; }
 
   .services-hero__cta { gap: 16px; margin-top: 28px; }
   .services-hero__cta-primary {
