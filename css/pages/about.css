@@ -489,6 +489,23 @@
   z-index: -1;
   background: radial-gradient(70% 50% at 100% 0%, rgba(232, 84, 10, 0.13), transparent 65%);
 }
+
+/* cursor spotlight (opt-in; ::after since --1 uses ::before) */
+.values__card[data-spotlight] { isolation: isolate; }
+.values__card[data-spotlight]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(var(--spot-size, 300px) circle at var(--mx, 50%) var(--my, 50%),
+    rgba(232, 84, 10, 0.13), transparent 60%);
+  transition: opacity 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.values__card[data-spotlight]:hover::after { opacity: 1; }
+.values__card[data-spotlight] > * { position: relative; z-index: 1; }
 .values__card-name {
   font-family: var(--font-ui);
   font-size: clamp(20px, 2.2vw, 28px);
