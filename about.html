@@ -69,40 +69,40 @@
 
     <button class="theme-toggle" id="theme-toggle" type="button"
             aria-label="Switch to dark mode" aria-pressed="false">
-      <svg class="theme-toggle-icon theme-toggle-moon" width="15" height="15" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="2"
+      <svg class="theme-toggle-icon theme-toggle-moon" width="16" height="16" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="1.25"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        <path d="M20.5 13.5A8.5 8.5 0 0 1 10.5 3.5 8.5 8.5 0 1 0 20.5 13.5Z" />
       </svg>
-      <svg class="theme-toggle-icon theme-toggle-sun" width="15" height="15" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="2"
+      <svg class="theme-toggle-icon theme-toggle-sun" width="16" height="16" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="1.25"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="4" />
-        <line x1="12" y1="1" x2="12" y2="3" />
-        <line x1="12" y1="21" x2="12" y2="23" />
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-        <line x1="1" y1="12" x2="3" y2="12" />
-        <line x1="21" y1="12" x2="23" y2="12" />
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        <circle cx="12" cy="12" r="3.6" />
+        <line x1="12" y1="2.5" x2="12" y2="4.6" />
+        <line x1="12" y1="19.4" x2="12" y2="21.5" />
+        <line x1="4.7" y1="4.7" x2="6.2" y2="6.2" />
+        <line x1="17.8" y1="17.8" x2="19.3" y2="19.3" />
+        <line x1="2.5" y1="12" x2="4.6" y2="12" />
+        <line x1="19.4" y1="12" x2="21.5" y2="12" />
+        <line x1="4.7" y1="19.3" x2="6.2" y2="17.8" />
+        <line x1="17.8" y1="6.2" x2="19.3" y2="4.7" />
       </svg>
     </button>
 
     <nav class="nav-pill is-collapsed" id="nav-pill" aria-label="Main navigation">
       <div class="nav-pill-inner">
+        <a href="about.html"    class="nav-pill-link is-active"><span data-i18n="common.nav.about">About</span></a>
         <a href="services.html" class="nav-pill-link"><span data-i18n="common.nav.services">Services</span></a>
         <a href="work.html"     class="nav-pill-link"><span data-i18n="common.nav.work">Work</span></a>
-        <a href="about.html"    class="nav-pill-link is-active"><span data-i18n="common.nav.about">About</span></a>
         <a href="faq.html"      class="nav-pill-link"><span data-i18n="common.nav.faq">FAQ</span></a>
         <a href="contact.html"  class="nav-pill-link"><span data-i18n="common.nav.contact">Contact</span></a>
       </div>
       <span class="nav-pill-collapsed-icon" aria-hidden="true">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="6"  x2="21" y2="6" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="18" x2="21" y2="18" />
+             stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" y1="7"  x2="20" y2="7" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="17" x2="20" y2="17" />
         </svg>
       </span>
     </nav>
@@ -114,9 +114,9 @@
     <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">×</button>
     <nav>
       <a href="index.html"    class="nav-overlay-link" data-i18n="common.nav.home">Home</a>
+      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
       <a href="services.html" class="nav-overlay-link" data-i18n="common.nav.services">Services</a>
       <a href="work.html"     class="nav-overlay-link" data-i18n="common.nav.work">Work</a>
-      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
       <a href="faq.html"      class="nav-overlay-link" data-i18n="common.nav.faq">FAQ</a>
       <a href="contact.html"  class="nav-overlay-link" data-i18n="common.nav.contact">Contact</a>
     </nav>
@@ -162,11 +162,7 @@
 
     <!-- ================ STUDIO POLICY (pull-quote) ================ -->
     <section class="studio-policy" data-theme="dark">
-      <div class="studio-policy__inner reveal">
-        <div class="studio-policy__mark" aria-hidden="true">
-          <span class="studio-policy__mark-arrow">⌘</span>
-          <span class="studio-policy__mark-plus">+</span>
-        </div>
+      <div class="studio-policy__inner reveal reveal--scale">
         <blockquote class="studio-policy__quote" data-i18n="about.policy.quote">
           Every site is hand-coded — no templates, no AI bloat, no surprises in the bill. Just the build.
         </blockquote>
@@ -180,7 +176,7 @@
     <!-- ================ FOUNDER ================ -->
     <section data-theme="dark" id="founder">
       <div class="founder">
-        <div class="founder__visual reveal" style="transition-delay: 0ms">
+        <div class="founder__visual reveal reveal--scale" style="transition-delay: 0ms">
           <span class="founder__visual-corner founder__visual-corner--tl" aria-hidden="true"></span>
           <span class="founder__visual-corner founder__visual-corner--tr" aria-hidden="true"></span>
           <span class="founder__visual-corner founder__visual-corner--bl" aria-hidden="true"></span>
@@ -197,7 +193,7 @@
           </span>
         </div>
 
-        <div class="founder__copy reveal" style="transition-delay: 80ms">
+        <div class="founder__copy reveal reveal--rise" style="transition-delay: 80ms">
           <div class="founder__eyebrow" data-i18n="about.founder.eyebrow">Hi · I'm Joseph</div>
           <h2 class="founder__title">
             <span class="founder__title-orange" data-i18n="about.founder.titleOrange">Designer.</span>
@@ -237,44 +233,69 @@
       </div>
     </div>
 
-    <!-- ================ TIMELINE — chapter 04 ================ -->
+    <!-- ================ TIMELINE — four chapters (disciplines-style layout) ================ -->
     <section class="timeline" data-theme="light" id="timeline">
-      <div class="timeline__inner">
-        <div class="timeline__num reveal">04<em>/</em></div>
+      <div class="timeline__layout">
+        <div class="timeline__intro">
+          <div class="timeline__num reveal">04<em>/</em></div>
+          <h2 class="timeline__heading reveal reveal--rise" style="transition-delay: 80ms" data-i18n="about.timeline.heading" data-i18n-html>
+            Four chapters. <em>One operator.</em>
+          </h2>
+        </div>
 
-        <dl class="timeline__sidebar reveal" style="transition-delay: 60ms">
-          <dt data-i18n="about.timeline.sidebarDt1">About</dt>
-          <dd data-i18n="about.timeline.sidebarDd1">Four chapters that built the operator behind Noxus.</dd>
-          <dt data-i18n="about.timeline.sidebarDt2">Tags</dt>
-          <dd data-i18n="about.timeline.sidebarDd2">Design · UI/UX · Code · AI · Studio</dd>
-        </dl>
+        <div class="timeline__list">
+          <article class="timeline__item reveal reveal--rise" style="transition-delay: 0ms">
+            <div class="timeline__item-marker">
+              <span class="timeline__item-num" data-i18n="about.timeline.item1.year">/ 01</span>
+            </div>
+            <div class="timeline__item-content">
+              <h3 class="timeline__item-name" data-i18n="about.timeline.item1.name">Graphic Design</h3>
+              <p class="timeline__item-desc" data-i18n="about.timeline.item1.desc">Studied visual communication and brand identity. Where the eye for layout, type, and contrast comes from.</p>
+              <div class="timeline__item-tags">
+                <span class="timeline__item-tag" data-i18n="about.timeline.item1.tag">Foundation</span>
+              </div>
+            </div>
+          </article>
 
-        <ol class="timeline__list reveal" style="transition-delay: 120ms">
-          <li class="timeline__item">
-            <span class="timeline__item-year" data-i18n="about.timeline.item1.year">Chapter 01</span>
-            <span class="timeline__item-name" data-i18n="about.timeline.item1.name">Graphic Design</span>
-            <span class="timeline__item-tag" data-i18n="about.timeline.item1.tag">Foundation</span>
-            <p class="timeline__item-desc" data-i18n="about.timeline.item1.desc">Studied visual communication and brand identity. Where the eye for layout, type, and contrast comes from.</p>
-          </li>
-          <li class="timeline__item">
-            <span class="timeline__item-year" data-i18n="about.timeline.item2.year">Chapter 02</span>
-            <span class="timeline__item-name" data-i18n="about.timeline.item2.name">UI / UX Design</span>
-            <span class="timeline__item-tag" data-i18n="about.timeline.item2.tag">Designer</span>
-            <p class="timeline__item-desc" data-i18n="about.timeline.item2.desc">From print thinking to screen thinking. Layouts and flows built for browsers — hierarchy, intent, conversion.</p>
-          </li>
-          <li class="timeline__item">
-            <span class="timeline__item-year" data-i18n="about.timeline.item3.year">Chapter 03</span>
-            <span class="timeline__item-name" data-i18n="about.timeline.item3.name">Code &amp; AI</span>
-            <span class="timeline__item-tag" data-i18n="about.timeline.item3.tag">Builder</span>
-            <p class="timeline__item-desc" data-i18n="about.timeline.item3.desc">Picked up HTML, CSS, and JS to ship projects without waiting on a dev. Now every design I make, I can build.</p>
-          </li>
-          <li class="timeline__item">
-            <span class="timeline__item-year" data-i18n="about.timeline.item4.year">Chapter 04</span>
-            <span class="timeline__item-name" data-i18n="about.timeline.item4.name">The Studio</span>
-            <span class="timeline__item-tag" data-i18n="about.timeline.item4.tag">Today</span>
-            <p class="timeline__item-desc" data-i18n="about.timeline.item4.desc">Everything above, packaged into Noxus. One operator. One standard: hand-coded, fast, intentional.</p>
-          </li>
-        </ol>
+          <article class="timeline__item reveal reveal--rise" style="transition-delay: 100ms">
+            <div class="timeline__item-marker">
+              <span class="timeline__item-num" data-i18n="about.timeline.item2.year">/ 02</span>
+            </div>
+            <div class="timeline__item-content">
+              <h3 class="timeline__item-name" data-i18n="about.timeline.item2.name">UI / UX Design</h3>
+              <p class="timeline__item-desc" data-i18n="about.timeline.item2.desc">From print thinking to screen thinking. Layouts and flows built for browsers — hierarchy, intent, conversion.</p>
+              <div class="timeline__item-tags">
+                <span class="timeline__item-tag" data-i18n="about.timeline.item2.tag">Designer</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline__item reveal reveal--rise" style="transition-delay: 200ms">
+            <div class="timeline__item-marker">
+              <span class="timeline__item-num" data-i18n="about.timeline.item3.year">/ 03</span>
+            </div>
+            <div class="timeline__item-content">
+              <h3 class="timeline__item-name" data-i18n="about.timeline.item3.name">Code &amp; AI</h3>
+              <p class="timeline__item-desc" data-i18n="about.timeline.item3.desc">Picked up HTML, CSS, and JS to ship projects without waiting on a dev. Now every design I make, I can build.</p>
+              <div class="timeline__item-tags">
+                <span class="timeline__item-tag" data-i18n="about.timeline.item3.tag">Builder</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline__item reveal reveal--rise" style="transition-delay: 300ms">
+            <div class="timeline__item-marker">
+              <span class="timeline__item-num" data-i18n="about.timeline.item4.year">/ 04</span>
+            </div>
+            <div class="timeline__item-content">
+              <h3 class="timeline__item-name" data-i18n="about.timeline.item4.name">The Studio</h3>
+              <p class="timeline__item-desc" data-i18n="about.timeline.item4.desc">Everything above, packaged into Noxus. One operator. One standard: hand-coded, fast, intentional.</p>
+              <div class="timeline__item-tags">
+                <span class="timeline__item-tag" data-i18n="about.timeline.item4.tag">Today</span>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -288,11 +309,11 @@
       </div>
 
       <div class="values__grid">
-        <article class="values__card values__card--1 reveal" style="transition-delay: 0ms">
+        <article class="values__card depth-card values__card--1 reveal reveal--scale" style="transition-delay: 0ms">
           <div class="values__card-head">
             <div class="values__card-num">01</div>
             <div class="values__card-illus" aria-hidden="true">
-              <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.4">
+              <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.25">
                 <path d="M22 18 L12 30 L22 42" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M38 18 L48 30 L38 42" stroke-linecap="round" stroke-linejoin="round"/>
                 <line x1="34" y1="14" x2="26" y2="46" stroke-linecap="round"/>
@@ -303,11 +324,11 @@
           <p class="values__card-desc" data-i18n="about.values.card1.desc">Custom HTML, CSS, JS. No templates, no page builders, no plugin bloat. You own clean code at the end.</p>
         </article>
 
-        <article class="values__card values__card--2 reveal" style="transition-delay: 80ms">
+        <article class="values__card depth-card values__card--2 reveal reveal--scale" style="transition-delay: 80ms">
           <div class="values__card-head">
             <div class="values__card-num">02</div>
             <div class="values__card-illus" aria-hidden="true">
-              <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.4">
+              <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.25">
                 <circle cx="30" cy="22" r="8"/>
                 <path d="M14 48 C 14 38, 20 33, 30 33 C 40 33, 46 38, 46 48" stroke-linecap="round"/>
                 <circle cx="30" cy="22" r="2.4" fill="currentColor" stroke="none"/>
@@ -318,11 +339,11 @@
           <p class="values__card-desc" data-i18n="about.values.card2.desc">One person from discovery to launch. No account managers. No Slack relays. No offshore hand-offs.</p>
         </article>
 
-        <article class="values__card values__card--3 reveal" style="transition-delay: 160ms">
+        <article class="values__card depth-card values__card--3 reveal reveal--scale" style="transition-delay: 160ms">
           <div class="values__card-head">
             <div class="values__card-num">03</div>
             <div class="values__card-illus" aria-hidden="true">
-              <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.4">
+              <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.25">
                 <circle cx="30" cy="30" r="18"/>
                 <circle cx="30" cy="30" r="11"/>
                 <circle cx="30" cy="30" r="3.5" fill="currentColor" stroke="none"/>
@@ -364,13 +385,11 @@
           <li><a href="services.html" data-i18n="common.nav.services">Services</a></li>
           <li><a href="work.html"     data-i18n="common.nav.work">Work</a></li>
           <li><a href="faq.html"      data-i18n="common.nav.faq">FAQ</a></li>
-          <li><a href="contact.html"  data-i18n="common.nav.contact">Contact</a></li>
         </ul>
       </div>
 
       <div class="footer-col footer-col--contact">
         <span class="footer-col-title" data-i18n="common.footer.colTitle.contact">Contact</span>
-        <a class="footer-contact-link" href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a>
         <span class="footer-contact-loc" data-i18n="common.footer.location">Montréal, QC, Canada</span>
         <div class="footer-status-row">
           <span class="footer-status-dot" aria-hidden="true"></span>

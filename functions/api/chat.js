@@ -1,6 +1,13 @@
+import { checkRateLimit, rateLimitJsonResponse } from '../_lib/rate-limit.js';
+
 const ANTHROPIC_API = 'https://api.anthropic.com/v1/messages';
 const MODEL = 'claude-haiku-4-5-20251001';
 const MAX_TOKENS = 600;
+
+// 20 chat requests per IP per 5 minutes. A normal Nox conversation is
+// 5-10 turns; this allows ~2 full conversations or normal back-and-forth
+// while throttling anyone trying to burn the Anthropic budget.
+const RATE_LIMIT = { max: 20, windowSeconds: 5 * 60 };
 
 const SYSTEM_PROMPT = `You are **Nox**, the AI intake assistant for Noxus Studios — a one-person hand-coded web design studio based in Montréal, Québec, run by Joseph.
 
@@ -131,6 +138,11 @@ export async function onRequestOptions(context) {
 
 export async function onRequestPost(context) {
   const { request, env } = context;
+
+  const limit = await checkRateLimit(env, request, 'chat', RATE_LIMIT);
+  if (!limit.ok) {
+    return rateLimitJsonResponse(limit, corsHeaders(request));
+  }
 
   const apiKey = env.ANTHROPIC_API_KEY;
   if (!apiKey) {

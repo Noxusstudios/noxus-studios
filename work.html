@@ -30,6 +30,7 @@
 
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/components/slot-card.css">
   <link rel="stylesheet" href="css/pages/work.css">
   <link rel="stylesheet" href="css/theme-dark.css">
   <link rel="stylesheet" href="css/components/chat-widget.css">
@@ -69,40 +70,40 @@
 
     <button class="theme-toggle" id="theme-toggle" type="button"
             aria-label="Switch to dark mode" aria-pressed="false">
-      <svg class="theme-toggle-icon theme-toggle-moon" width="15" height="15" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="2"
+      <svg class="theme-toggle-icon theme-toggle-moon" width="16" height="16" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="1.25"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        <path d="M20.5 13.5A8.5 8.5 0 0 1 10.5 3.5 8.5 8.5 0 1 0 20.5 13.5Z" />
       </svg>
-      <svg class="theme-toggle-icon theme-toggle-sun" width="15" height="15" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="2"
+      <svg class="theme-toggle-icon theme-toggle-sun" width="16" height="16" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="1.25"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="4" />
-        <line x1="12" y1="1" x2="12" y2="3" />
-        <line x1="12" y1="21" x2="12" y2="23" />
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-        <line x1="1" y1="12" x2="3" y2="12" />
-        <line x1="21" y1="12" x2="23" y2="12" />
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        <circle cx="12" cy="12" r="3.6" />
+        <line x1="12" y1="2.5" x2="12" y2="4.6" />
+        <line x1="12" y1="19.4" x2="12" y2="21.5" />
+        <line x1="4.7" y1="4.7" x2="6.2" y2="6.2" />
+        <line x1="17.8" y1="17.8" x2="19.3" y2="19.3" />
+        <line x1="2.5" y1="12" x2="4.6" y2="12" />
+        <line x1="19.4" y1="12" x2="21.5" y2="12" />
+        <line x1="4.7" y1="19.3" x2="6.2" y2="17.8" />
+        <line x1="17.8" y1="6.2" x2="19.3" y2="4.7" />
       </svg>
     </button>
 
     <nav class="nav-pill is-collapsed" id="nav-pill" aria-label="Main navigation">
       <div class="nav-pill-inner">
+        <a href="about.html"    class="nav-pill-link"><span data-i18n="common.nav.about">About</span></a>
         <a href="services.html" class="nav-pill-link"><span data-i18n="common.nav.services">Services</span></a>
         <a href="work.html"     class="nav-pill-link is-active"><span data-i18n="common.nav.work">Work</span></a>
-        <a href="about.html"    class="nav-pill-link"><span data-i18n="common.nav.about">About</span></a>
         <a href="faq.html"      class="nav-pill-link"><span data-i18n="common.nav.faq">FAQ</span></a>
         <a href="contact.html"  class="nav-pill-link"><span data-i18n="common.nav.contact">Contact</span></a>
       </div>
       <span class="nav-pill-collapsed-icon" aria-hidden="true">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="6"  x2="21" y2="6" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="18" x2="21" y2="18" />
+             stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" y1="7"  x2="20" y2="7" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="17" x2="20" y2="17" />
         </svg>
       </span>
     </nav>
@@ -114,9 +115,9 @@
     <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">×</button>
     <nav>
       <a href="index.html"    class="nav-overlay-link" data-i18n="common.nav.home">Home</a>
+      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
       <a href="services.html" class="nav-overlay-link" data-i18n="common.nav.services">Services</a>
       <a href="work.html"     class="nav-overlay-link" data-i18n="common.nav.work">Work</a>
-      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
       <a href="faq.html"      class="nav-overlay-link" data-i18n="common.nav.faq">FAQ</a>
       <a href="contact.html"  class="nav-overlay-link" data-i18n="common.nav.contact">Contact</a>
     </nav>
@@ -128,45 +129,40 @@
     <section class="work-hero has-grain" data-theme="light" style="--grain-opacity: 0.085;">
       <div class="hero-paths" aria-hidden="true"></div>
       <div class="work-hero__inner">
-        <div>
+        <div class="work-hero__lead">
+          <div class="work-hero__eyebrow" data-i18n="work.hero.eyebrow">Selected work · 2026</div>
           <h1 class="work-hero__title" data-i18n="work.hero.title">WORK.</h1>
-          <div class="work-hero__sub">
-            <span class="work-hero__rule"></span>
-            <span class="work-hero__sub-text" data-i18n="work.hero.subtitle">Selected projects. Live and forthcoming.</span>
-          </div>
-          <div class="work-hero__double-slash">//</div>
           <p class="work-hero__desc" data-i18n="work.hero.desc" data-i18n-html>
-            One case study live. Two slots open.<br>
-            Engineered for fast launches.
+            One live concept. Two open slots.<br>Every line hand-coded.
           </p>
-        </div>
-        <div class="work-hero__meta">
-          <div class="work-hero__meta-row">
-            <div class="work-hero__meta-cell">
-              <div class="work-hero__meta-num" data-i18n="work.hero.meta.feat">01</div>
-              <div class="work-hero__meta-lbl" data-i18n="work.hero.meta.featLbl">Featured</div>
-            </div>
-            <div class="work-hero__meta-cell">
-              <div class="work-hero__meta-num" data-i18n="work.hero.meta.slots">02</div>
-              <div class="work-hero__meta-lbl" data-i18n="work.hero.meta.slotsLbl">Open slots</div>
-            </div>
-            <div class="work-hero__meta-cell">
-              <div class="work-hero__meta-num" data-i18n="work.hero.meta.year">2026</div>
-              <div class="work-hero__meta-lbl" data-i18n="work.hero.meta.yearLbl">Edition</div>
-            </div>
+          <div class="work-hero__status">
+            <span class="work-hero__status-dot" aria-hidden="true"></span>
+            <span data-i18n="work.hero.status">Now booking · 2 slots for 2026</span>
           </div>
         </div>
+        <ol class="work-hero__index">
+          <li class="work-hero__index-item">
+            <span class="work-hero__index-num">01</span>
+            <span class="work-hero__index-name" data-i18n="work.hero.idx1.name">Clinique 8260</span>
+            <span class="work-hero__index-tag" data-i18n="work.hero.idx1.tag">Healthcare · Concept</span>
+          </li>
+          <li class="work-hero__index-item is-open">
+            <span class="work-hero__index-num">02</span>
+            <span class="work-hero__index-name" data-i18n="work.hero.idx2.name">Your project</span>
+            <span class="work-hero__index-tag" data-i18n="work.hero.idx2.tag">Open · Now booking</span>
+          </li>
+        </ol>
       </div>
       <a href="contact.html" class="btn-bar hero-cta-bar" data-i18n="common.reserveBuild">Reserve Your Build</a>
     </section>
 
-    <!-- ================ FEATURED CASE STUDY ================ -->
+    <!-- ================ FEATURED CASE STUDY · CLINIQUE 8260 (named concept) ================ -->
     <section class="case-feature" data-theme="dark" id="case-study">
       <div class="case-feature__top">
         <div>
-          <div class="case-feature__eyebrow" data-i18n="work.case.eyebrow">Featured · Coming Soon</div>
+          <div class="case-feature__eyebrow" data-i18n="work.case.eyebrow">Concept · Self-initiated</div>
           <h2 class="case-feature__heading" data-i18n="work.case.heading" data-i18n-html>
-            A Montr&eacute;al medical practice, <em>rebuilt for 2026.</em>
+            Spec redesign of <em>Clinique 8260, Montréal.</em>
           </h2>
         </div>
         <div class="case-feature__corner">
@@ -177,31 +173,24 @@
 
       <div class="case-feature__layout">
         <div class="case-feature__visual">
-          <div class="case-feature__mock">
+          <a class="case-feature__frame" href="https://clinique8260.pages.dev/fr/" target="_blank" rel="noopener noreferrer" aria-label="Open the live Clinique 8260 concept site in a new tab">
             <div class="case-feature__mock-bar">
               <span></span><span></span><span></span>
-              <div class="case-feature__mock-url">noxusstudios.com / case-study / 01</div>
+              <div class="case-feature__mock-url" data-i18n="work.case.mockUrl">clinique8260.pages.dev</div>
             </div>
-            <div class="case-feature__mock-content">
-              <div class="case-feature__mock-row">
-                <div class="case-feature__mock-brand" data-i18n="work.case.mockBrand">[ COMING SOON ]</div>
-                <div class="case-feature__mock-pill" data-i18n="work.case.mockPill">Prendre RDV</div>
-              </div>
-              <div>
-                <h3 class="case-feature__mock-hl" data-i18n="work.case.mockHl" data-i18n-html>Soins modernes, <em>en ligne.</em></h3>
-              </div>
-            </div>
-          </div>
+            <img class="case-feature__shot" src="assets/images/clinique-8260-preview.png" width="2880" height="1800" loading="lazy" decoding="async" alt="Homepage of the Clinique 8260 concept redesign — bilingual family-medicine clinic site">
+            <span class="case-feature__frame-cta" data-i18n="work.case.visit">Visit live site →</span>
+          </a>
         </div>
 
         <div class="case-feature__copy">
           <div>
-            <div class="case-feature__lbl" data-i18n="work.case.lbl">Healthcare &middot; Montr&eacute;al</div>
+            <div class="case-feature__lbl" data-i18n="work.case.lbl">Clinique 8260 · Rivière-des-Prairies</div>
             <h3 class="case-feature__title" data-i18n="work.case.title" data-i18n-html>PROJECT.<em>01</em></h3>
           </div>
 
           <p class="case-feature__body" data-i18n="work.case.body">
-            A Montréal medical practice with a website over a decade out of date — not mobile, broken nav, leads with a job posting instead of patient services. Noxus is rebuilding it from scratch: mobile-first, hand-coded, conversion-driven.
+            A real family-medicine and physio clinic in Rivière-des-Prairies, serving the neighbourhood since 1985 — on a website still built in 2014: not mobile, broken nav, no clear path to care. Rebuilt end-to-end as a self-initiated concept: mobile-first, French-first, hand-coded. Sent to the clinic as a proposal — they agreed a full redesign is overdue.
           </p>
 
           <div class="case-feature__metrics">
@@ -214,18 +203,22 @@
               <div class="case-feature__metric-lbl" data-i18n="work.case.m2.lbl">First language</div>
             </div>
             <div class="case-feature__metric">
-              <div class="case-feature__metric-num" data-i18n="work.case.m3.num">+10y</div>
+              <div class="case-feature__metric-num" data-i18n="work.case.m3.num">+12y</div>
               <div class="case-feature__metric-lbl" data-i18n="work.case.m3.lbl">Site age replaced</div>
             </div>
           </div>
 
           <div class="case-feature__bottom">
             <div class="case-feature__tags">
-              <span class="case-feature__tag" data-i18n="work.case.tag1">Healthcare</span>
-              <span class="case-feature__tag" data-i18n="work.case.tag2">Mobile-first</span>
-              <span class="case-feature__tag" data-i18n="work.case.tag3">Hand-coded</span>
+              <span class="case-feature__tag" data-i18n="work.case.tag1">UI/UX Design</span>
+              <span class="case-feature__tag" data-i18n="work.case.tag2">Frontend Dev</span>
+              <span class="case-feature__tag" data-i18n="work.case.tag3">Bilingual FR/EN</span>
+              <span class="case-feature__tag" data-i18n="work.case.tag4">Mobile-First</span>
             </div>
-            <a href="contact.html" class="btn-primary" data-i18n="work.case.cta">Read case study →</a>
+            <div class="case-feature__actions">
+              <a href="https://clinique8260.pages.dev/fr/" target="_blank" rel="noopener noreferrer" class="btn-primary" data-i18n="work.case.cta">View live site →</a>
+              <a href="https://clinique8260.com" target="_blank" rel="noopener noreferrer" class="case-feature__link" data-i18n="work.case.oldSite">View the old site →</a>
+            </div>
           </div>
         </div>
       </div>
@@ -259,7 +252,7 @@
       </div>
 
       <div class="work-grid">
-        <div class="work-card work-card--1 is-orange reveal" style="transition-delay: 0ms">
+        <div class="work-card work-card--1 is-orange reveal reveal--scale" style="transition-delay: 0ms">
           <div class="work-card__head">
             <div class="work-card__eyebrow">
               <span class="work-card__status-dot" aria-hidden="true"></span>
@@ -269,14 +262,14 @@
           </div>
           <div class="work-card__illus" aria-hidden="true">
             <svg viewBox="0 0 96 96" fill="none">
-              <rect x="14" y="14" width="68" height="68" rx="3" stroke="currentColor" stroke-width="1.6"/>
-              <line x1="14" y1="28" x2="82" y2="28" stroke="currentColor" stroke-width="1.4"/>
+              <rect x="14" y="14" width="68" height="68" rx="3" stroke="currentColor" stroke-width="1.25"/>
+              <line x1="14" y1="28" x2="82" y2="28" stroke="currentColor" stroke-width="1.25"/>
               <circle cx="22" cy="21" r="1.4" fill="currentColor"/>
               <circle cx="28" cy="21" r="1.4" fill="currentColor"/>
               <circle cx="34" cy="21" r="1.4" fill="currentColor"/>
-              <line x1="22" y1="40" x2="58" y2="40" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
-              <line x1="22" y1="50" x2="74" y2="50" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.65"/>
-              <line x1="22" y1="58" x2="66" y2="58" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.45"/>
+              <line x1="22" y1="40" x2="58" y2="40" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+              <line x1="22" y1="50" x2="74" y2="50" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" opacity="0.65"/>
+              <line x1="22" y1="58" x2="66" y2="58" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" opacity="0.45"/>
               <rect x="22" y="68" width="22" height="8" rx="1.5" fill="currentColor"/>
             </svg>
           </div>
@@ -291,7 +284,7 @@
           </div>
         </div>
 
-        <div class="work-card work-card--2 is-dark reveal" style="transition-delay: 80ms">
+        <div class="work-card work-card--2 is-dark depth-surface depth-surface--light reveal reveal--scale" style="transition-delay: 80ms">
           <div class="work-card__head">
             <div class="work-card__eyebrow">
               <span class="work-card__status-dot" aria-hidden="true"></span>
@@ -301,11 +294,11 @@
           </div>
           <div class="work-card__illus" aria-hidden="true">
             <svg viewBox="0 0 96 96" fill="none">
-              <rect x="14" y="22" width="44" height="32" rx="3" stroke="currentColor" stroke-width="1.4" opacity="0.45"/>
-              <rect x="26" y="34" width="44" height="32" rx="3" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
-              <rect x="38" y="46" width="44" height="32" rx="3" stroke="currentColor" stroke-width="1.8" fill="currentColor" fill-opacity="0.08"/>
-              <line x1="46" y1="56" x2="74" y2="56" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-              <line x1="46" y1="64" x2="66" y2="64" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.65"/>
+              <rect x="14" y="22" width="44" height="32" rx="3" stroke="currentColor" stroke-width="1.25" opacity="0.45"/>
+              <rect x="26" y="34" width="44" height="32" rx="3" stroke="currentColor" stroke-width="1.25" opacity="0.7"/>
+              <rect x="38" y="46" width="44" height="32" rx="3" stroke="currentColor" stroke-width="1.25" fill="currentColor" fill-opacity="0.08"/>
+              <line x1="46" y1="56" x2="74" y2="56" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+              <line x1="46" y1="64" x2="66" y2="64" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" opacity="0.65"/>
             </svg>
           </div>
           <h3 class="work-card__title" data-i18n="work.card2.title">Open slot.</h3>
@@ -318,7 +311,7 @@
           </div>
         </div>
 
-        <div class="work-card work-card--3 is-muted reveal" style="transition-delay: 160ms">
+        <div class="work-card work-card--3 is-muted depth-surface depth-surface--light reveal reveal--scale" style="transition-delay: 160ms">
           <div class="work-card__head">
             <div class="work-card__eyebrow">
               <span data-i18n="work.card3.slot">Slot 03 ·</span> <span class="work-card__status-tag work-card__status-tag--muted" data-i18n="work.card3.tag">Waitlist</span>
@@ -327,8 +320,8 @@
           </div>
           <div class="work-card__illus" aria-hidden="true">
             <svg viewBox="0 0 96 96" fill="none">
-              <circle cx="48" cy="48" r="30" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M48 28 L48 48 L62 56" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="48" cy="48" r="30" stroke="currentColor" stroke-width="1.25"/>
+              <path d="M48 28 L48 48 L62 56" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
               <circle cx="48" cy="48" r="2.5" fill="currentColor"/>
               <circle cx="48" cy="20" r="1.6" fill="currentColor" opacity="0.45"/>
               <circle cx="76" cy="48" r="1.6" fill="currentColor" opacity="0.45"/>
@@ -361,8 +354,8 @@
         <div class="impact__cell impact__cell--1">
           <span class="impact__cell-glyph" aria-hidden="true">
             <svg viewBox="0 0 32 32" fill="none">
-              <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.4"/>
-              <path d="M16 6 A10 10 0 0 1 26 16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.25"/>
+              <path d="M16 6 A10 10 0 0 1 26 16" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
               <text x="16" y="20" text-anchor="middle" font-family="var(--font-display)" font-size="9" fill="currentColor">95</text>
             </svg>
           </span>
@@ -373,11 +366,11 @@
         <div class="impact__cell impact__cell--2">
           <span class="impact__cell-glyph" aria-hidden="true">
             <svg viewBox="0 0 32 32" fill="none">
-              <rect x="5" y="6" width="22" height="20" rx="2" stroke="currentColor" stroke-width="1.4"/>
-              <line x1="5" y1="11" x2="27" y2="11" stroke="currentColor" stroke-width="1.4"/>
+              <rect x="5" y="6" width="22" height="20" rx="2" stroke="currentColor" stroke-width="1.25"/>
+              <line x1="5" y1="11" x2="27" y2="11" stroke="currentColor" stroke-width="1.25"/>
               <circle cx="10" cy="8.5" r="0.9" fill="currentColor"/>
               <circle cx="13" cy="8.5" r="0.9" fill="currentColor"/>
-              <path d="M11 17 L14 20 L21 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M11 17 L14 20 L21 14" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
           <div class="impact__cell-num">4<sup>d</sup></div>
@@ -387,9 +380,9 @@
         <div class="impact__cell impact__cell--3">
           <span class="impact__cell-glyph" aria-hidden="true">
             <svg viewBox="0 0 32 32" fill="none">
-              <path d="M10 10 L5 16 L10 22" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M22 10 L27 16 L22 22" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              <line x1="14" y1="24" x2="18" y2="8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M10 10 L5 16 L10 22" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22 10 L27 16 L22 22" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="14" y1="24" x2="18" y2="8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
             </svg>
           </span>
           <div class="impact__cell-num">100<sup>%</sup></div>
@@ -399,8 +392,8 @@
         <div class="impact__cell impact__cell--4">
           <span class="impact__cell-glyph" aria-hidden="true">
             <svg viewBox="0 0 32 32" fill="none">
-              <circle cx="16" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M6 28 C 6 22, 10 19, 16 19 C 22 19, 26 22, 26 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="16" cy="12" r="5" stroke="currentColor" stroke-width="1.25"/>
+              <path d="M6 28 C 6 22, 10 19, 16 19 C 22 19, 26 22, 26 28" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
               <circle cx="16" cy="12" r="1.4" fill="currentColor"/>
             </svg>
           </span>
@@ -440,13 +433,11 @@
           <li><a href="services.html" data-i18n="common.nav.services">Services</a></li>
           <li><a href="work.html"     data-i18n="common.nav.work">Work</a></li>
           <li><a href="faq.html"      data-i18n="common.nav.faq">FAQ</a></li>
-          <li><a href="contact.html"  data-i18n="common.nav.contact">Contact</a></li>
         </ul>
       </div>
 
       <div class="footer-col footer-col--contact">
         <span class="footer-col-title" data-i18n="common.footer.colTitle.contact">Contact</span>
-        <a class="footer-contact-link" href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a>
         <span class="footer-contact-loc" data-i18n="common.footer.location">Montréal, QC, Canada</span>
         <div class="footer-status-row">
           <span class="footer-status-dot" aria-hidden="true"></span>
@@ -479,5 +470,17 @@
   <script src="js/theme-toggle.js" defer></script>
   <script src="js/chat-widget.js" defer></script>
   <script src="js/title-reveal.js" defer></script>
+  <script>
+    // Proof embed: click-to-interact activation. Keeps the iframe inert
+    // until the visitor consciously enables it, preventing scroll-jacking.
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.proof-self__embed-activate').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var embed = btn.closest('.proof-self__embed');
+          if (embed) embed.classList.add('is-active');
+        });
+      });
+    });
+  </script>
 </body>
 </html>

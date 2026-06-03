@@ -210,22 +210,6 @@
   line-height: 1.6;
 }
 
-.stats-avatars {
-  display: flex;
-  align-items: center;
-}
-.stats-avatar {
-  width: 40px; height: 40px;
-  border-radius: 50%;
-  border: 2px solid var(--dark-bg);
-  background: linear-gradient(135deg, #555, #333);
-  display: flex; align-items: center; justify-content: center;
-  color: white;
-  font-family: var(--font-display);
-  font-size: 14px;
-}
-.stats-avatar + .stats-avatar { margin-left: -12px; }
-
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -957,156 +941,129 @@
 }
 
 /* ============================================================
-   PROCESS section — between splits and bento
+   SPLIT — premium choreographed entrance (desktop)
+   The panel introduces itself as a diagonal cascade once it has
+   rolled upright into view. js/splits-rotate.js adds .is-presented
+   to the .split-section at the moment the drum-roll settles (same
+   scroll progress that drives the rotation), so the cascade is
+   actually witnessed instead of firing while the panel is still
+   hidden behind the previous one. Left column leads (helper, mock,
+   tag); right column follows (headline wipe, body, outcome, counter).
+   Hidden state is gated by .splits-ready so no-JS users see content.
+   ============================================================ */
+@media (min-width: 769px) {
+  /* Columns are always present — they host the choreography, not fade as blocks. */
+  .split-left.reveal,
+  .split-right.reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .splits-ready .split-helper-text,
+  .splits-ready .btn-tag,
+  .splits-ready .split-body-text,
+  .splits-ready .split-outcome,
+  .splits-ready .split-counter {
+    opacity: 0;
+    transform: translateY(36px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+  }
+  .splits-ready .split-image-mock {
+    opacity: 0;
+    transform: scale(0.9) translateY(52px);
+    transition:
+      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+  }
+  /* Headline gets a vertical mask-wipe on top of the rise — the centerpiece. */
+  .splits-ready .split-headline {
+    opacity: 0;
+    transform: translateY(52px);
+    clip-path: inset(0 0 100% 0);
+    transition:
+      opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+      clip-path 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity, clip-path;
+  }
+
+  /* Diagonal cascade — left column leads, right follows, finishing on the counter. */
+  .split-section.is-presented .split-helper-text { opacity: 1; transform: none; transition-delay: 0.05s; }
+  .split-section.is-presented .split-image-mock  { opacity: 1; transform: scale(1) translateY(0); transition-delay: 0.12s; }
+  .split-section.is-presented .split-headline    { opacity: 1; transform: none; clip-path: inset(0 0 -0.15em 0); transition-delay: 0.22s; }
+  .split-section.is-presented .split-body-text   { opacity: 1; transform: none; transition-delay: 0.36s; }
+  .split-section.is-presented .btn-tag           { opacity: 1; transform: none; transition-delay: 0.42s; }
+  .split-section.is-presented .split-outcome     { opacity: 1; transform: none; transition-delay: 0.48s; }
+  .split-section.is-presented .split-counter     { opacity: 1; transform: none; transition-delay: 0.58s; }
+}
+
+@media (min-width: 769px) and (prefers-reduced-motion: reduce) {
+  .splits-ready .split-helper-text,
+  .splits-ready .btn-tag,
+  .splits-ready .split-headline,
+  .splits-ready .split-body-text,
+  .splits-ready .split-outcome,
+  .splits-ready .split-counter,
+  .splits-ready .split-image-mock {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+   PROCESS section — uses the shared .work-card / .work-grid
+   component (see css/components/slot-card.css). This file only
+   defines the section wrapper (background, padding, section-top
+   heading) — every card inside matches the work page slots for
+   visual harmony across the site.
    ============================================================ */
 
 .process {
   background: var(--dark-bg);
-  padding: 80px 40px;
+  padding: 96px 40px;
   color: white;
 }
 
-.process-top {
+.process__top {
+  max-width: 1280px;
+  margin: 0 auto 40px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  max-width: 1280px;
-  margin: 0 auto 48px;
+  gap: 32px;
   flex-wrap: wrap;
-  gap: 20px;
 }
-
-.process-eyebrow {
+.process__eyebrow {
   font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.30em;
+  font-size: 10px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text-on-dark-secondary);
 }
-
 .process-heading {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 5vw, 64px);
-  font-weight: 400;
+  font-family: var(--font-ui);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.05;
+  line-height: 1.1;
   color: white;
-  margin: 0;
-  max-width: 800px;
+  max-width: 26ch;
+  margin: 12px 0 0;
 }
 .process-heading em {
   font-style: italic;
   color: var(--orange);
 }
 
-.process-grid {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 4px;
-}
-
-.process-card {
-  background: var(--dark-surface);
-  border: 1px solid var(--border-dark);
-  border-radius: 12px;
-  padding: 36px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  transition:
-    box-shadow 400ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 400ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.process-card:hover,
-.process-card:active,
-.process-card:focus-visible {
-  border-color: rgba(232, 84, 10, 0.5);
-  box-shadow:
-    0 0 0 1px rgba(232, 84, 10, 0.3),
-    0 0 20px 4px rgba(232, 84, 10, 0.15),
-    0 0 40px 8px rgba(232, 84, 10, 0.06);
-}
-.process-card { -webkit-tap-highlight-color: transparent; }
-
-@media (prefers-reduced-motion: reduce) {
-  .process-card { transition: none; }
-}
-
-.process-num {
-  font-family: var(--font-display);
-  font-size: clamp(40px, 5vw, 56px);
-  color: var(--orange);
-  line-height: 1;
-}
-
-.process-title {
-  font-family: var(--font-ui);
-  font-size: clamp(20px, 2.5vw, 28px);
-  font-weight: 700;
-  color: white;
-  letter-spacing: -0.01em;
-  margin: 0;
-}
-
-.process-desc {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--text-on-dark-muted);
-  margin: 0;
-}
-
-.process-card__ctas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 22px;
-  margin-top: auto;
-  padding-top: 18px;
-  border-top: 1px solid var(--border-dark);
-}
-
-.process-card__cta {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.20em;
-  text-transform: uppercase;
-  color: var(--text-on-dark-muted);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  transition:
-    color 250ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 250ms cubic-bezier(0.32, 0.72, 0, 1);
-}
-
-.process-card__cta:hover,
-.process-card__cta:active,
-.process-card__cta:focus-visible {
-  color: white;
-  transform: translateX(2px);
-}
-
-.process-card__cta.is-orange { color: var(--orange); }
-.process-card__cta.is-orange:hover,
-.process-card__cta.is-orange:active,
-.process-card__cta.is-orange:focus-visible { color: var(--orange-hover); }
-.process-card__cta { -webkit-tap-highlight-color: transparent; }
-
-@media (prefers-reduced-motion: reduce) {
-  .process-card__cta { transition: none; }
-}
-
 @media (max-width: 900px) {
-  .process { padding: 56px 24px; }
-  .process-grid { grid-template-columns: 1fr; }
-  .process-top { flex-direction: column; align-items: flex-start; }
+  .process { padding: 64px 24px; }
+  .process__top { flex-direction: column; align-items: flex-start; gap: 16px; }
 }
 
 /* ============================================================
@@ -1475,10 +1432,15 @@
   .split-left, .split-right { padding: 32px 24px; }
   .split-headline { font-size: clamp(28px, 7vw, 44px); }
 
-  /* Process card CTAs stack vertically so they breathe on narrow screens */
+  /* Process now uses .work-card layout — mobile rules live in slot-card.css */
   .process { padding: 56px 20px; }
-  .process-card { padding: 28px 22px; }
-  .process-card__ctas { flex-direction: column; align-items: flex-start; gap: 12px; }
+
+  /* btn-tag (hero "Hand-coded / Process / Speed" chips): 35px → 44px */
+  .btn-tag {
+    min-height: 44px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1511,7 +1473,7 @@
 
 
 /* ============================================================
-   DISCIPLINES — what we build, 3 categories (light)
+   DISCIPLINES — editorial asymmetric (light)
    ============================================================ */
 
 .disciplines {
@@ -1519,68 +1481,87 @@
   padding: 100px 40px;
   border-top: 1px solid var(--border-light);
 }
-.disciplines__top {
-  max-width: 1280px;
-  margin: 0 auto 56px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
+
+/* ============================================================
+   DISCIPLINES — "falls down" entry choreography.
+   When the section enters the viewport (right after the process
+   carousel completes), it drops in from above with a gravity-like
+   ease — slow start, accelerating middle, soft landing. Reads as
+   the next slide dropping into place.
+   ============================================================ */
+.disciplines.js-ready {
+  opacity: 0;
+  transform: translateY(-80px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.95s cubic-bezier(0.55, 0.05, 0.30, 1);
+  will-change: transform, opacity;
 }
-.disciplines__eyebrow {
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--orange-on-light);
-  flex: 0 0 auto;
-  padding-top: 12px;
+.disciplines.is-entering {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .disciplines.js-ready {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+.disciplines__layout {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 4fr 7fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.disciplines__intro {
+  position: sticky;
+  top: 120px;
 }
 .disciplines__heading {
-  flex: 1;
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(36px, 5vw, 64px);
+  font-size: clamp(40px, 5.5vw, 76px);
   font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
   text-transform: uppercase;
   color: var(--text-on-light-primary);
-  max-width: 800px;
 }
 .disciplines__heading em {
   font-style: italic;
   color: var(--orange);
 }
 
-.disciplines__grid {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border-light);
-  border: 1px solid var(--border-light);
-}
-.discipline {
-  position: relative;
-  background: var(--off-white);
-  padding: 40px 32px;
+.disciplines__list {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  isolation: isolate;
-  transition: background-color 220ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 
-/* Head row — number + concept illustration on right */
-.discipline__head {
+/* Editorial rows — hairline rules between, no card boxes */
+.discipline {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  padding: 40px 0;
+  border-top: 1px solid var(--border-light);
+}
+.discipline:first-child { padding-top: 0; border-top: none; }
+.discipline:last-child { padding-bottom: 0; }
+
+.discipline__marker {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 24px;
+  gap: 16px;
+  width: 88px;
+  flex-shrink: 0;
 }
 .discipline__num {
   font-family: var(--font-body);
@@ -1588,57 +1569,129 @@
   font-weight: 700;
   letter-spacing: 0.22em;
   color: var(--orange-on-light);
-  padding-top: 6px;
-  margin: 0;
 }
 .discipline__illus {
   width: 76px;
   height: 76px;
-  flex-shrink: 0;
   color: var(--orange);
   transition: transform 420ms cubic-bezier(0.32, 0.72, 0, 1);
   transform-origin: center;
 }
 .discipline:hover .discipline__illus {
-  transform: scale(1.10) rotate(-3deg);
+  transform: scale(1.08) rotate(-3deg);
 }
 
-/* Light-mode hover: lift + orange shadow that's actually visible on cream. */
-.discipline {
-  transition:
-    background-color 220ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform        360ms cubic-bezier(0.32, 0.72, 0, 1),
-    box-shadow       360ms cubic-bezier(0.32, 0.72, 0, 1);
+.discipline__content { min-width: 0; }
+.discipline__title {
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.0;
+  text-transform: uppercase;
+  color: var(--text-on-light-primary);
 }
-.discipline:hover,
-.discipline:focus-within {
-  transform: translateY(-3px);
-  box-shadow:
-    0 16px 32px -22px rgba(0, 0, 0, 0.25),
-    0 6px 18px -8px rgba(232, 84, 10, 0.38);
+.discipline__body {
+  margin: 0 0 20px;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-on-light-secondary);
+  max-width: 60ch;
+}
+.discipline__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.discipline__tag {
+  font-family: var(--font-body);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #5A5A5A;
+  padding: 6px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.035);
+}
+
+/* ============================================================
+   DISCIPLINE — premium hover treatment.
+   Whole row tints orange-warm, the /NN number scales, the title
+   slides right + tightens its tracking, and the tags lift in a
+   staggered cascade. Reads as a "this row is alive" beat without
+   adding a permanent boxed treatment that would break the
+   editorial rhythm.
+   ============================================================ */
+.discipline__marker,
+.discipline__content {
+  position: relative;
   z-index: 1;
 }
-:root.dark .discipline:hover,
-:root.dark .discipline:focus-within {
-  box-shadow:
-    0 16px 32px -22px rgba(0, 0, 0, 0.6),
-    0 6px 18px -8px rgba(232, 84, 10, 0.30);
+.discipline__num {
+  display: inline-block;
+  transform-origin: left center;
+  transition:
+    transform 460ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 280ms;
+  will-change: transform;
+}
+.discipline__title {
+  display: inline-block;
+  transition:
+    transform 480ms cubic-bezier(0.16, 1, 0.3, 1),
+    letter-spacing 480ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 280ms;
+  will-change: transform;
+}
+.discipline__tag {
+  transition:
+    transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 280ms,
+    border-color 280ms,
+    background 280ms;
+  will-change: transform;
 }
 
-/* Surface accents — subtle, single-orange, varied per card.
-   Tuned stronger in light mode where cream backgrounds mute orange. */
-.discipline--1::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(70% 50% at 100% 0%, rgba(232, 84, 10, 0.13), transparent 65%);
+.discipline:hover .discipline__num {
+  transform: scale(1.10);
+  color: var(--orange);
 }
-/* Dark mode: tone back since orange is more visible on dark surfaces */
-:root.dark .discipline--1::before { background: radial-gradient(70% 50% at 100% 0%, rgba(232, 84, 10, 0.10), transparent 65%); }
+.discipline:hover .discipline__title {
+  transform: translateX(10px);
+  letter-spacing: -0.02em;
+}
+.discipline:hover .discipline__tag {
+  transform: translateY(-2px);
+  border-color: rgba(232, 84, 10, 0.45);
+  color: var(--orange-on-light);
+  background: rgba(232, 84, 10, 0.06);
+}
+.discipline:hover .discipline__tag:nth-of-type(2) { transition-delay: 50ms; }
+.discipline:hover .discipline__tag:nth-of-type(3) { transition-delay: 100ms; }
+.discipline:hover .discipline__tag:nth-of-type(4) { transition-delay: 150ms; }
 
-/* Per-variant illustration micro-motion */
+/* Dark theme: tag treatment shifts so hover colors read well against
+   the dark surface. No row-level background tint. */
+:root.dark .discipline:hover .discipline__tag {
+  border-color: rgba(232, 84, 10, 0.45);
+  color: var(--orange);
+  background: rgba(232, 84, 10, 0.09);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .discipline__num,
+  .discipline__title,
+  .discipline__tag { transition: none !important; }
+  .discipline:hover .discipline__num,
+  .discipline:hover .discipline__title,
+  .discipline:hover .discipline__tag { transform: none !important; }
+}
+
+/* Per-variant illustration micro-motion (preserved) */
 .d1-ripple-mid { transform-origin: 34px 44px; animation: d1-pulse-a 2.8s ease-in-out infinite; }
 .d1-ripple-out { transform-origin: 34px 44px; animation: d1-pulse-b 2.8s ease-in-out infinite; }
 @keyframes d1-pulse-a {
@@ -1674,56 +1727,18 @@
   }
   .d3-arc-fg    { stroke-dashoffset: 0; }
   .d3-needle, .d3-needle-pin { transform: rotate(0); }
-}
-.discipline__title {
-  margin: 0 0 16px;
-  font-family: var(--font-display);
-  font-size: clamp(24px, 2.4vw, 32px);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
-  text-transform: uppercase;
-  color: var(--text-on-light-primary);
-}
-.discipline__body {
-  margin: 0 0 24px;
-  font-family: var(--font-ui);
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--text-on-light-secondary);
-  flex: 1;
-}
-.discipline__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: auto;
-}
-.discipline__tag {
-  font-family: var(--font-body);
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #5A5A5A;
-  padding: 6px 10px;
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.035);
+  .discipline__illus { transition: none; }
 }
 
 /* Responsive */
-@media (max-width: 1100px) {
-  .disciplines__grid { grid-template-columns: 1fr; }
-  .discipline { border-bottom: 1px solid var(--border-light); }
-  .discipline:last-child { border-bottom: none; }
-}
 @media (max-width: 900px) {
   .disciplines { padding: 64px 24px; }
-  .disciplines__top { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .disciplines__layout { grid-template-columns: 1fr; gap: 40px; }
+  .disciplines__intro { position: static; }
 }
 @media (max-width: 600px) {
-  .discipline { padding: 32px 24px; }
+  .discipline { grid-template-columns: 1fr; gap: 18px; padding: 32px 0; }
+  .discipline__marker { flex-direction: row; align-items: center; width: auto; }
 }
 
 /* Dark mode override */
@@ -1732,11 +1747,7 @@
   border-top-color: var(--border-dark);
 }
 :root.dark .disciplines__heading { color: var(--text-on-dark-primary); }
-:root.dark .disciplines__grid {
-  background: var(--border-dark);
-  border-color: var(--border-dark);
-}
-:root.dark .discipline { background: var(--dark-bg); }
+:root.dark .discipline { border-top-color: var(--border-dark); }
 :root.dark .discipline__title { color: var(--text-on-dark-primary); }
 :root.dark .discipline__body { color: rgba(232, 220, 203, 0.65); }
 :root.dark .discipline__tag {

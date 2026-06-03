@@ -120,6 +120,14 @@
 :root.dark .about-hero__meta-lbl,
 :root.dark .contact-hero__meta-lbl { color: rgba(232, 220, 203, 0.62); }
 
+/* work-hero revamp — eyebrow/status/work-index on dark */
+:root.dark .work-hero__status { color: rgba(232, 220, 203, 0.60); }
+:root.dark .work-hero__index { border-top-color: rgba(232, 220, 203, 0.18); }
+:root.dark .work-hero__index-item { border-bottom-color: rgba(232, 220, 203, 0.10); }
+:root.dark .work-hero__index-name { color: #E8DCCB; }
+:root.dark .work-hero__index-tag,
+:root.dark .work-hero__index-item.is-open .work-hero__index-name { color: rgba(232, 220, 203, 0.60); }
+
 /* The // decoration stays orange; no override needed unless its
    default uses a hardcoded dark color. Same for any side-info
    stats — those are handled per-page if needed. */
@@ -232,6 +240,47 @@
   border-color: rgba(232, 220, 203, 0.10);
 }
 
+/* Dark card surface in brown mode — light cream text on cream cards
+   was unreadable. Flip to a dark warm surface so the cream text reads. */
+:root.dark .values__card {
+  background: linear-gradient(160deg, #241A14 0%, #1A130C 100%);
+}
+
+/* ============================================================
+   .timeline — about.html four-chapters editorial layout
+   ============================================================ */
+
+:root.dark .timeline {
+  background: #14100B;
+  color: #E8DCCB;
+  border-top-color: rgba(232, 220, 203, 0.08);
+}
+
+:root.dark .timeline__num {
+  color: #E8DCCB;
+}
+
+:root.dark .timeline__heading,
+:root.dark .timeline__item-name {
+  color: #E8DCCB;
+}
+
+:root.dark .timeline__item {
+  border-top-color: rgba(232, 220, 203, 0.10);
+}
+:root.dark .timeline__item:first-child {
+  border-top: none;
+}
+
+:root.dark .timeline__item-desc {
+  color: rgba(232, 220, 203, 0.72);
+}
+
+:root.dark .timeline__item-tag {
+  color: rgba(232, 220, 203, 0.70);
+  border-color: rgba(232, 220, 203, 0.18);
+}
+
 :root.dark .values__card-desc {
   color: rgba(232, 220, 203, 0.72);
 }
@@ -258,6 +307,10 @@
   border-color: rgba(232, 220, 203, 0.10);
 }
 
+:root.dark .expect__step {
+  background: linear-gradient(160deg, #241A14 0%, #1A130C 100%);
+}
+
 :root.dark .expect__step-desc {
   color: rgba(232, 220, 203, 0.72);
 }
@@ -282,9 +335,21 @@
 }
 
 :root.dark .impact__grid,
+:root.dark .impact__cell-lbl {
+  border-color: rgba(232, 220, 203, 0.16);
+}
+
 :root.dark .impact__cell {
+  background: transparent;
+}
+
+/* svc-cap (Six things ship every month) — same cream-in-dark fix */
+:root.dark .svc-cap {
+  background: linear-gradient(160deg, #241A14 0%, #1A130C 100%);
   border-color: rgba(232, 220, 203, 0.10);
 }
+:root.dark .svc-cap__title { color: #E8DCCB; }
+:root.dark .svc-cap__body  { color: rgba(232, 220, 203, 0.72); }
 
 :root.dark .impact__cell-desc {
   color: rgba(232, 220, 203, 0.72);
@@ -747,6 +812,7 @@
 :root:not(.dark) .case-feature__lbl { color: var(--text-on-light-secondary); }
 :root:not(.dark) .case-feature__title { color: var(--text-on-light-primary); }
 :root:not(.dark) .case-feature__body { color: var(--text-on-light-secondary); }
+:root:not(.dark) .case-feature__link { color: var(--text-on-light-secondary); }
 :root:not(.dark) .case-feature__metrics {
   background: var(--border-light);
   border: 1px solid var(--border-light);
@@ -788,4 +854,177 @@
 }
 :root:not(.dark) .about-cta__title { color: var(--text-on-light-primary); }
 :root:not(.dark) .about-cta__sub { color: var(--text-on-light-secondary); }
+
+/* ============================================================
+   UNIFIED SECTION EYEBROWS — single visual language for every
+   section-level eyebrow across all pages, both light + brown
+   themes. Card-level eyebrows (inside .work-card, .bento-cell,
+   .svc-tier, .methods__card) keep their local styling — only
+   section-level rails are unified here.
+
+   Visual: 11px / 700 / 0.24em tracking / uppercase / orange
+   color, with a 32px orange hairline prefix.
+   Block-level + absolute hairline so existing <br> line breaks
+   inside the eyebrow text still wrap naturally.
+   ============================================================ */
+
+.process__eyebrow,
+.bento-eyebrow,
+.svc-tiers__eyebrow,
+.svc-retainers__eyebrow,
+.svc-design__eyebrow,
+.svc-caps__eyebrow,
+.svc-tech__eyebrow,
+.svc-payment__eyebrow,
+.svc-addon__eyebrow,
+.methods__eyebrow,
+.contact-form-section__eyebrow,
+.expect__eyebrow,
+.founder__eyebrow,
+.values__eyebrow,
+.proof-self__eyebrow,
+.case-study-self__eyebrow,
+.case-feature__eyebrow,
+.work-grid-section__eyebrow,
+.impact__eyebrow,
+.faq-hero__eyebrow,
+.privacy-hero__eyebrow,
+.error-404__eyebrow,
+:root.dark .process__eyebrow,
+:root.dark .bento-eyebrow,
+:root.dark .svc-tiers__eyebrow,
+:root.dark .svc-retainers__eyebrow,
+:root.dark .svc-design__eyebrow,
+:root.dark .svc-caps__eyebrow,
+:root.dark .svc-tech__eyebrow,
+:root.dark .svc-payment__eyebrow,
+:root.dark .svc-addon__eyebrow,
+:root.dark .methods__eyebrow,
+:root.dark .contact-form-section__eyebrow,
+:root.dark .expect__eyebrow,
+:root.dark .founder__eyebrow,
+:root.dark .values__eyebrow,
+:root.dark .proof-self__eyebrow,
+:root.dark .case-study-self__eyebrow,
+:root.dark .case-feature__eyebrow,
+:root.dark .work-grid-section__eyebrow,
+:root.dark .impact__eyebrow,
+:root.dark .faq-hero__eyebrow,
+:root.dark .privacy-hero__eyebrow,
+:root.dark .error-404__eyebrow,
+:root:not(.dark) .process__eyebrow,
+:root:not(.dark) .bento-eyebrow,
+:root:not(.dark) .svc-tiers__eyebrow,
+:root:not(.dark) .svc-retainers__eyebrow,
+:root:not(.dark) .svc-design__eyebrow,
+:root:not(.dark) .svc-caps__eyebrow,
+:root:not(.dark) .svc-tech__eyebrow,
+:root:not(.dark) .svc-payment__eyebrow,
+:root:not(.dark) .svc-addon__eyebrow,
+:root:not(.dark) .methods__eyebrow,
+:root:not(.dark) .contact-form-section__eyebrow,
+:root:not(.dark) .expect__eyebrow,
+:root:not(.dark) .founder__eyebrow,
+:root:not(.dark) .values__eyebrow,
+:root:not(.dark) .proof-self__eyebrow,
+:root:not(.dark) .case-study-self__eyebrow,
+:root:not(.dark) .case-feature__eyebrow,
+:root:not(.dark) .work-grid-section__eyebrow,
+:root:not(.dark) .impact__eyebrow,
+:root:not(.dark) .faq-hero__eyebrow,
+:root:not(.dark) .privacy-hero__eyebrow,
+:root:not(.dark) .error-404__eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--orange);
+  line-height: 1.45;
+  position: relative;
+  padding-left: 46px;
+  display: inline-block;
+  align-items: initial;
+  gap: 0;
+  vertical-align: top;
+}
+
+.process__eyebrow::before,
+.bento-eyebrow::before,
+.svc-tiers__eyebrow::before,
+.svc-retainers__eyebrow::before,
+.svc-design__eyebrow::before,
+.svc-caps__eyebrow::before,
+.svc-tech__eyebrow::before,
+.svc-payment__eyebrow::before,
+.svc-addon__eyebrow::before,
+.methods__eyebrow::before,
+.contact-form-section__eyebrow::before,
+.expect__eyebrow::before,
+.founder__eyebrow::before,
+.values__eyebrow::before,
+.proof-self__eyebrow::before,
+.case-study-self__eyebrow::before,
+.case-feature__eyebrow::before,
+.work-grid-section__eyebrow::before,
+.impact__eyebrow::before,
+.faq-hero__eyebrow::before,
+.privacy-hero__eyebrow::before,
+.error-404__eyebrow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 32px;
+  height: 1px;
+  background: var(--orange);
+}
+
+/* Mobile: shorten the hairline so the eyebrow text doesn't crowd. */
+@media (max-width: 480px) {
+  .process__eyebrow,
+  .bento-eyebrow,
+  .svc-tiers__eyebrow,
+  .svc-retainers__eyebrow,
+  .svc-design__eyebrow,
+  .svc-caps__eyebrow,
+  .svc-tech__eyebrow,
+  .svc-payment__eyebrow,
+  .svc-addon__eyebrow,
+  .methods__eyebrow,
+  .contact-form-section__eyebrow,
+  .expect__eyebrow,
+  .founder__eyebrow,
+  .values__eyebrow,
+  .proof-self__eyebrow,
+  .case-study-self__eyebrow,
+  .case-feature__eyebrow,
+  .work-grid-section__eyebrow,
+  .impact__eyebrow,
+  .faq-hero__eyebrow,
+  .privacy-hero__eyebrow,
+  .error-404__eyebrow { padding-left: 38px; }
+  .process__eyebrow::before,
+  .bento-eyebrow::before,
+  .svc-tiers__eyebrow::before,
+  .svc-retainers__eyebrow::before,
+  .svc-design__eyebrow::before,
+  .svc-caps__eyebrow::before,
+  .svc-tech__eyebrow::before,
+  .svc-payment__eyebrow::before,
+  .svc-addon__eyebrow::before,
+  .methods__eyebrow::before,
+  .contact-form-section__eyebrow::before,
+  .expect__eyebrow::before,
+  .founder__eyebrow::before,
+  .values__eyebrow::before,
+  .proof-self__eyebrow::before,
+  .case-study-self__eyebrow::before,
+  .case-feature__eyebrow::before,
+  .work-grid-section__eyebrow::before,
+  .impact__eyebrow::before,
+  .faq-hero__eyebrow::before,
+  .privacy-hero__eyebrow::before,
+  .error-404__eyebrow::before { width: 24px; }
+}
 

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Noxus — GBP cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #E8540A;
+    --cream: #F2EDE8;
+    --cream-deep: #EBE3D9;
+    --ink: #151515;
+    --muted: #6B6B6B;
+  }
+  html, body { margin: 0; padding: 0; }
+  body {
+    width: 1080px;
+    height: 608px;
+    background: var(--cream);
+    font-family: 'Barlow Condensed', sans-serif;
+    position: relative;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Atmospheric orange wave pattern — echoes site hero */
+  .bg-waves {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 90% 50%, rgba(232,84,10,0.18), transparent 55%),
+      radial-gradient(circle at 10% 100%, rgba(232,84,10,0.12), transparent 55%);
+    pointer-events: none;
+  }
+  .bg-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(118deg,
+        transparent 0,
+        transparent 36px,
+        rgba(232,84,10,0.08) 36px,
+        rgba(232,84,10,0.08) 37px);
+    mask-image: linear-gradient(120deg, transparent 0%, black 30%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(120deg, transparent 0%, black 30%, black 90%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* Top corner mark */
+  .corner-mark {
+    position: absolute;
+    top: 44px;
+    right: 56px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .corner-mark__square {
+    width: 44px;
+    height: 44px;
+    background: var(--orange);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .corner-mark__square svg {
+    width: 28px;
+    height: 28px;
+  }
+  .corner-mark__label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.2;
+  }
+
+  /* Hero block */
+  .hero {
+    position: absolute;
+    left: 56px;
+    top: 50%;
+    transform: translateY(-52%);
+    z-index: 5;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin: 0 0 18px 0;
+  }
+  .eyebrow__line {
+    width: 32px;
+    height: 1px;
+    background: var(--orange);
+  }
+
+  .title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 200px;
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .title__dot { color: var(--orange); }
+
+  .subtitle {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 26px 0 0 0;
+  }
+  .subtitle__rule {
+    width: 56px;
+    height: 1px;
+    background: var(--ink);
+    opacity: 0.4;
+  }
+  .subtitle__text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+  }
+  .subtitle__text em {
+    font-style: italic;
+    color: var(--orange);
+  }
+
+  /* Bottom strip — matches site nav status */
+  .strip {
+    position: absolute;
+    left: 56px;
+    right: 56px;
+    bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(21, 21, 21, 0.12);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .strip__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.78;
+  }
+  .strip__dot {
+    width: 8px;
+    height: 8px;
+    background: #1AB967;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(26,185,103,0.18);
+  }
+  .strip__sep {
+    width: 4px;
+    height: 4px;
+    background: var(--ink);
+    opacity: 0.35;
+    border-radius: 50%;
+  }
+
+  /* Decorative N glyph echo, very subtle, behind hero */
+  .ghost-n {
+    position: absolute;
+    right: -120px;
+    bottom: -80px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 720px;
+    line-height: 0.8;
+    color: var(--orange);
+    opacity: 0.08;
+    letter-spacing: -0.04em;
+    pointer-events: none;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+  <div class="bg-waves"></div>
+  <div class="bg-lines"></div>
+  <div class="ghost-n">N.</div>
+
+  <div class="corner-mark">
+    <div class="corner-mark__square">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="4" width="6" height="24" fill="#F2EDE8"/>
+        <rect x="22" y="4" width="6" height="24" fill="#F2EDE8"/>
+        <polygon points="10,4 16,4 22,28 16,28" fill="#F2EDE8"/>
+      </svg>
+    </div>
+    <div class="corner-mark__label">Noxus Studios<br>Est. 2026 · MTL</div>
+  </div>
+
+  <div class="hero">
+    <p class="eyebrow"><span class="eyebrow__line"></span>The Hand-Coded Studio</p>
+    <h1 class="title">NOXUS<span class="title__dot">.</span></h1>
+    <div class="subtitle">
+      <span class="subtitle__rule"></span>
+      <span class="subtitle__text">Web design <em>·</em> Built in Montréal</span>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="strip__item"><span class="strip__dot"></span>Booking Open</div>
+    <span class="strip__sep"></span>
+    <div class="strip__item">4–7 Day Turnaround</div>
+    <span class="strip__sep"></span>
+    <div class="strip__item">Replies within 24h</div>
+    <span class="strip__sep"></span>
+    <div class="strip__item">noxusstudios.com</div>
+  </div>
+</body>
+</html>

@@ -31,6 +31,34 @@
     }, 2500);
   }
 
+  /* ---- Section entry choreography ----
+     Specific sections (`.process`, `.disciplines`) get a distinct
+     "entering" choreography on top of the generic reveal: process
+     steps carousel-slide in from the right, disciplines drops in
+     from above with a gravity ease. The `.js-ready` class lets the
+     CSS know JS is live (so no-JS users see content immediately). */
+  const entrySections = document.querySelectorAll('.process, .disciplines');
+  if (entrySections.length) {
+    entrySections.forEach((s) => s.classList.add('js-ready'));
+    const entryObs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-entering');
+          entryObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+    entrySections.forEach((s) => entryObs.observe(s));
+
+    // Safety net: if any section never crosses the threshold (deep-link,
+    // very tall viewport, etc.) reveal it after 2.5s so nothing stays stuck.
+    setTimeout(() => {
+      document.querySelectorAll(
+        '.process.js-ready:not(.is-entering), .disciplines.js-ready:not(.is-entering)'
+      ).forEach((el) => el.classList.add('is-entering'));
+    }, 2500);
+  }
+
   /* ---- Stat counter (easeOut cubic) ---- */
   function countUp(el) {
     const target   = parseFloat(el.dataset.target);

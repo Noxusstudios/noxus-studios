@@ -18,9 +18,21 @@
 
   const ROLL_FROM = 30;        // degrees at entry start
   const ROLL_END_PROGRESS = 0.75; // when (in entry phase) rotation reaches 0
+  // Presentation hysteresis: the content cascade fires when a panel has
+  // (mostly) settled upright in front of the viewer, and resets once the
+  // panel has rolled well back out — so scrolling up/down replays it.
+  const PRESENT_ON = 0.66;
+  const PRESENT_OFF = 0.42;
 
   const inners = Array.from(document.querySelectorAll('.split-section__inner'));
   if (inners.length === 0) return;
+
+  // Signal that the choreography driver is live, so the hidden initial state
+  // only applies when JS can actually reveal it (no-JS users see content).
+  document.documentElement.classList.add('splits-ready');
+
+  // Pair each inner with its sticky section once (avoids per-frame closest()).
+  const pairs = inners.map((el) => ({ inner: el, section: el.closest('.split-section') }));
 
   // Respect reduced-motion: leave everything at 0deg and bail.
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -42,8 +54,8 @@
       return;
     }
     const vh = window.innerHeight;
-    for (const el of inners) {
-      const rect = el.getBoundingClientRect();
+    for (const { inner, section } of pairs) {
+      const rect = inner.getBoundingClientRect();
       // Entry progress: 0 when top is at viewport bottom; 1 when top is at viewport top.
       const progress = 1 - rect.top / vh;
       let p = progress;
@@ -51,7 +63,15 @@
       else if (p > 1) p = 1;
       const ratio = p < ROLL_END_PROGRESS ? p / ROLL_END_PROGRESS : 1;
       const rotation = ROLL_FROM * (1 - ratio);
-      el.style.setProperty('--roll', `${rotation.toFixed(2)}deg`);
+      inner.style.setProperty('--roll', `${rotation.toFixed(2)}deg`);
+
+      // Drive the content cascade off the same scroll progress as the roll,
+      // so it plays exactly when the panel arrives — not when it first
+      // crosses the viewport edge while still hidden behind the prior panel.
+      if (section) {
+        if (p >= PRESENT_ON) section.classList.add('is-presented');
+        else if (p < PRESENT_OFF) section.classList.remove('is-presented');
+      }
     }
   };
 
@@ -67,6 +87,9 @@
   // Live updates.
   window.addEventListener('scroll', schedule, { passive: true });
   window.addEventListener('resize', schedule, { passive: true });
+  // Re-check after full load (late fonts/images shift layout; covers anchor
+  // deep-links landing mid-stack) so no panel can stay stuck pre-presentation.
+  window.addEventListener('load', schedule);
   reducedMotion.addEventListener('change', () => {
     if (reducedMotion.matches) {
       inners.forEach((el) => el.style.setProperty('--roll', '0deg'));

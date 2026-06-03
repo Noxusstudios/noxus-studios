@@ -587,6 +587,30 @@
     width: 52px;
     height: 52px;
   }
+
+  /* Mobile touch targets — global rule: 44px minimum.
+     Account for border-box rounding by going 1px above the threshold. */
+  .nox-chat__close {
+    width: 46px;
+    height: 46px;
+  }
+  .nox-chat__send {
+    width: 46px;
+    height: 46px;
+  }
+  .nox-chat__clear {
+    min-height: 46px;
+    padding: 13px 14px;
+  }
+  .nox-chat__chip {
+    min-height: 46px;
+    padding: 14px 14px;
+    line-height: 1.3;
+  }
+  .nox-chat__input {
+    min-height: 46px;
+    padding: 12px 14px;
+  }
 }
 
 /* ============================================================

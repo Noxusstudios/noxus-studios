@@ -70,40 +70,40 @@
 
     <button class="theme-toggle" id="theme-toggle" type="button"
             aria-label="Switch to dark mode" aria-pressed="false">
-      <svg class="theme-toggle-icon theme-toggle-moon" width="15" height="15" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="2"
+      <svg class="theme-toggle-icon theme-toggle-moon" width="16" height="16" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="1.25"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        <path d="M20.5 13.5A8.5 8.5 0 0 1 10.5 3.5 8.5 8.5 0 1 0 20.5 13.5Z" />
       </svg>
-      <svg class="theme-toggle-icon theme-toggle-sun" width="15" height="15" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="2"
+      <svg class="theme-toggle-icon theme-toggle-sun" width="16" height="16" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="1.25"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="4" />
-        <line x1="12" y1="1" x2="12" y2="3" />
-        <line x1="12" y1="21" x2="12" y2="23" />
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-        <line x1="1" y1="12" x2="3" y2="12" />
-        <line x1="21" y1="12" x2="23" y2="12" />
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        <circle cx="12" cy="12" r="3.6" />
+        <line x1="12" y1="2.5" x2="12" y2="4.6" />
+        <line x1="12" y1="19.4" x2="12" y2="21.5" />
+        <line x1="4.7" y1="4.7" x2="6.2" y2="6.2" />
+        <line x1="17.8" y1="17.8" x2="19.3" y2="19.3" />
+        <line x1="2.5" y1="12" x2="4.6" y2="12" />
+        <line x1="19.4" y1="12" x2="21.5" y2="12" />
+        <line x1="4.7" y1="19.3" x2="6.2" y2="17.8" />
+        <line x1="17.8" y1="6.2" x2="19.3" y2="4.7" />
       </svg>
     </button>
 
     <nav class="nav-pill is-collapsed" id="nav-pill" aria-label="Main navigation">
       <div class="nav-pill-inner">
+        <a href="about.html"    class="nav-pill-link"><span data-i18n="common.nav.about">About</span></a>
         <a href="services.html" class="nav-pill-link is-active"><span data-i18n="common.nav.services">Services</span></a>
         <a href="work.html"     class="nav-pill-link"><span data-i18n="common.nav.work">Work</span></a>
-        <a href="about.html"    class="nav-pill-link"><span data-i18n="common.nav.about">About</span></a>
         <a href="faq.html"      class="nav-pill-link"><span data-i18n="common.nav.faq">FAQ</span></a>
         <a href="contact.html"  class="nav-pill-link"><span data-i18n="common.nav.contact">Contact</span></a>
       </div>
       <span class="nav-pill-collapsed-icon" aria-hidden="true">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="6"  x2="21" y2="6" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="18" x2="21" y2="18" />
+             stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" y1="7"  x2="20" y2="7" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="17" x2="20" y2="17" />
         </svg>
       </span>
     </nav>
@@ -115,9 +115,9 @@
     <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">×</button>
     <nav>
       <a href="index.html"    class="nav-overlay-link" data-i18n="common.nav.home">Home</a>
+      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
       <a href="services.html" class="nav-overlay-link" data-i18n="common.nav.services">Services</a>
       <a href="work.html"     class="nav-overlay-link" data-i18n="common.nav.work">Work</a>
-      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
       <a href="faq.html"      class="nav-overlay-link" data-i18n="common.nav.faq">FAQ</a>
       <a href="contact.html"  class="nav-overlay-link" data-i18n="common.nav.contact">Contact</a>
     </nav>
@@ -176,7 +176,7 @@
 
       <div class="svc-tier-grid">
 
-        <article class="svc-tier reveal" style="transition-delay: 0ms">
+        <article class="svc-tier depth-surface depth-surface--light reveal reveal--scale" style="transition-delay: 0ms">
           <div class="svc-tier__eyebrow" data-i18n="services.tier1.label">/ 01 Starter</div>
           <div class="svc-tier__price">
             <span class="svc-tier__price-amount" data-i18n="services.tier1.amount">$500 USD</span>
@@ -196,7 +196,7 @@
           <a href="contact.html" class="svc-tier__cta" data-i18n="services.tier1.cta">Reserve Starter →</a>
         </article>
 
-        <article class="svc-tier is-featured reveal" style="transition-delay: 100ms">
+        <article class="svc-tier is-featured depth-surface depth-surface--light reveal reveal--scale" style="transition-delay: 100ms">
           <div class="svc-tier__badge" data-i18n="services.tier2.badge">Most Popular</div>
           <div class="svc-tier__eyebrow" data-i18n="services.tier2.label">/ 02 Custom Build</div>
           <div class="svc-tier__price">
@@ -218,7 +218,7 @@
           <a href="contact.html" class="svc-tier__cta" data-i18n="services.tier2.cta">Reserve Custom →</a>
         </article>
 
-        <article class="svc-tier reveal" style="transition-delay: 200ms">
+        <article class="svc-tier depth-surface depth-surface--light reveal reveal--scale" style="transition-delay: 200ms">
           <div class="svc-tier__eyebrow" data-i18n="services.tier3.label">/ 03 Pro</div>
           <div class="svc-tier__price">
             <span class="svc-tier__price-amount" data-i18n="services.tier3.amount">$5,000 USD</span>
@@ -238,7 +238,7 @@
           <a href="contact.html" class="svc-tier__cta" data-i18n="services.tier3.cta">Reserve Pro →</a>
         </article>
 
-        <article class="svc-tier reveal" style="transition-delay: 300ms">
+        <article class="svc-tier depth-surface depth-surface--light reveal reveal--scale" style="transition-delay: 300ms">
           <div class="svc-tier__eyebrow" data-i18n="services.tier4.label">/ 04 Enterprise</div>
           <div class="svc-tier__price">
             <span class="svc-tier__price-amount" data-i18n="services.tier4.amount">$10K+ USD</span>
@@ -294,7 +294,7 @@
         </div>
 
         <div class="svc-addon-grid">
-          <article class="svc-addon-item reveal" style="transition-delay: 360ms">
+          <article class="svc-addon-item depth-card reveal" style="transition-delay: 360ms">
             <div class="svc-addon-item__size" data-i18n="services.addon.t1.size">Up to 5 pages</div>
             <div class="svc-addon-item__price">
               <span class="svc-addon-item__price-plus">+</span>$500
@@ -303,7 +303,7 @@
             <div class="svc-addon-item__use" data-i18n="services.addon.t1.use">Starter · small Custom Build</div>
           </article>
 
-          <article class="svc-addon-item is-featured reveal" style="transition-delay: 460ms">
+          <article class="svc-addon-item is-featured depth-card reveal" style="transition-delay: 460ms">
             <div class="svc-addon-item__badge" data-i18n="services.addon.t2.badge">Most projects</div>
             <div class="svc-addon-item__size" data-i18n="services.addon.t2.size">6–10 pages</div>
             <div class="svc-addon-item__price">
@@ -313,7 +313,7 @@
             <div class="svc-addon-item__use" data-i18n="services.addon.t2.use">Custom Build · Pro</div>
           </article>
 
-          <article class="svc-addon-item reveal" style="transition-delay: 560ms">
+          <article class="svc-addon-item depth-card reveal" style="transition-delay: 560ms">
             <div class="svc-addon-item__size" data-i18n="services.addon.t3.size">11+ pages</div>
             <div class="svc-addon-item__price">
               <span class="svc-addon-item__price-plus">+</span>$1,200
@@ -341,7 +341,7 @@
       </div>
 
       <div class="svc-design-grid">
-        <article class="svc-design-item svc-design-item--1 reveal" style="transition-delay: 0ms">
+        <article class="svc-design-item depth-card svc-design-item--1 reveal reveal--scale" style="transition-delay: 0ms">
           <div class="svc-design-item__head">
             <div class="svc-design-item__num" data-i18n="services.design.item1.num">/ 01</div>
             <svg class="svc-design-item__illus" viewBox="0 0 60 60" aria-hidden="true">
@@ -358,13 +358,13 @@
           <a href="contact.html" class="svc-design-item__cta" data-i18n="services.design.itemCta">Book a call →</a>
         </article>
 
-        <article class="svc-design-item svc-design-item--2 reveal" style="transition-delay: 80ms">
+        <article class="svc-design-item depth-card svc-design-item--2 reveal reveal--scale" style="transition-delay: 80ms">
           <div class="svc-design-item__head">
             <div class="svc-design-item__num" data-i18n="services.design.item2.num">/ 02</div>
             <svg class="svc-design-item__illus" viewBox="0 0 60 60" aria-hidden="true">
               <circle cx="20" cy="22" r="11" fill="currentColor" opacity="0.85"/>
-              <rect x="28" y="14" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4"/>
-              <polygon points="14,52 30,28 46,52" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+              <rect x="28" y="14" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.25"/>
+              <polygon points="14,52 30,28 46,52" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/>
             </svg>
           </div>
           <div class="svc-design-item__name" data-i18n="services.design.item2.name">Brand &amp; Graphic Design</div>
@@ -372,11 +372,11 @@
           <a href="contact.html" class="svc-design-item__cta" data-i18n="services.design.itemCta">Book a call →</a>
         </article>
 
-        <article class="svc-design-item svc-design-item--3 reveal" style="transition-delay: 160ms">
+        <article class="svc-design-item depth-card svc-design-item--3 reveal reveal--scale" style="transition-delay: 160ms">
           <div class="svc-design-item__head">
             <div class="svc-design-item__num" data-i18n="services.design.item3.num">/ 03</div>
             <svg class="svc-design-item__illus" viewBox="0 0 60 60" aria-hidden="true">
-              <rect x="20" y="6" width="22" height="48" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+              <rect x="20" y="6" width="22" height="48" rx="3" fill="none" stroke="currentColor" stroke-width="1.25"/>
               <rect x="27" y="9" width="8" height="1.5" rx="0.75" fill="currentColor" opacity="0.55"/>
               <rect x="23" y="14" width="16" height="3"  rx="1" fill="currentColor" opacity="0.85"/>
               <rect x="23" y="20" width="16" height="14" rx="1.5" fill="currentColor" opacity="0.25"/>
@@ -390,14 +390,14 @@
           <a href="contact.html" class="svc-design-item__cta" data-i18n="services.design.itemCta">Book a call →</a>
         </article>
 
-        <article class="svc-design-item svc-design-item--4 reveal" style="transition-delay: 240ms">
+        <article class="svc-design-item depth-card svc-design-item--4 reveal reveal--scale" style="transition-delay: 240ms">
           <div class="svc-design-item__head">
             <div class="svc-design-item__num" data-i18n="services.design.item4.num">/ 04</div>
             <svg class="svc-design-item__illus" viewBox="0 0 60 60" aria-hidden="true">
-              <rect x="6" y="14" width="44" height="30" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+              <rect x="6" y="14" width="44" height="30" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.25"/>
               <rect x="10" y="18" width="18" height="3" rx="1" fill="currentColor" opacity="0.7"/>
               <polyline points="10,38 18,30 24,34 32,26 40,28 46,22"
-                        fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
               <circle cx="46" cy="22" r="2.2" fill="currentColor"/>
               <rect x="22" y="48" width="16" height="2" rx="1" fill="currentColor" opacity="0.4"/>
             </svg>
@@ -407,7 +407,7 @@
           <a href="contact.html" class="svc-design-item__cta" data-i18n="services.design.itemCta">Book a call →</a>
         </article>
 
-        <article class="svc-design-item svc-design-item--5 reveal" style="transition-delay: 320ms">
+        <article class="svc-design-item depth-card svc-design-item--5 reveal reveal--scale" style="transition-delay: 320ms">
           <div class="svc-design-item__head">
             <div class="svc-design-item__num" data-i18n="services.design.item5.num">/ 05</div>
             <svg class="svc-design-item__illus" viewBox="0 0 60 60" aria-hidden="true">
@@ -461,7 +461,7 @@
       </div>
 
       <div class="svc-tier-grid">
-        <article class="svc-tier reveal" style="transition-delay: 0ms">
+        <article class="svc-tier depth-surface depth-surface--light reveal reveal--scale" style="transition-delay: 0ms">
           <div class="svc-tier__eyebrow" data-i18n="services.ret1.label">5 hrs · Maintenance</div>
           <div class="svc-tier__price">
             <span class="svc-tier__price-amount" data-i18n="services.ret1.amount">$500 USD</span>
@@ -479,7 +479,7 @@
           <a href="contact.html" class="svc-tier__cta" data-i18n="services.retCta">Book a call →</a>
         </article>
 
-        <article class="svc-tier is-featured reveal" style="transition-delay: 100ms">
+        <article class="svc-tier is-featured depth-surface depth-surface--light reveal reveal--scale" style="transition-delay: 100ms">
           <div class="svc-tier__badge" data-i18n="services.ret2.badge">Most Popular</div>
           <div class="svc-tier__eyebrow" data-i18n="services.ret2.label">15 hrs · Growth</div>
           <div class="svc-tier__price">
@@ -499,7 +499,7 @@
           <a href="contact.html" class="svc-tier__cta" data-i18n="services.retCta">Book a call →</a>
         </article>
 
-        <article class="svc-tier reveal" style="transition-delay: 200ms">
+        <article class="svc-tier depth-surface depth-surface--light reveal reveal--scale" style="transition-delay: 200ms">
           <div class="svc-tier__eyebrow" data-i18n="services.ret3.label">30 hrs · Scale</div>
           <div class="svc-tier__price">
             <span class="svc-tier__price-amount" data-i18n="services.ret3.amount">$3,000 USD</span>
@@ -531,32 +531,32 @@
       </div>
 
       <div class="svc-caps__grid">
-        <article class="svc-cap reveal" style="transition-delay: 0ms">
+        <article class="svc-cap depth-card reveal reveal--scale" style="transition-delay: 0ms">
           <div class="svc-cap__num">/ 01</div>
           <h3 class="svc-cap__title" data-i18n="services.caps.c1.title">Design iteration</h3>
           <p class="svc-cap__body" data-i18n="services.caps.c1.body">Surgical layout, nav, and styling adjustments. New conversion frames without tearing out the foundation. The page evolves; the brand stays consistent.</p>
         </article>
-        <article class="svc-cap reveal" style="transition-delay: 60ms">
+        <article class="svc-cap depth-card reveal reveal--scale" style="transition-delay: 60ms">
           <div class="svc-cap__num">/ 02</div>
           <h3 class="svc-cap__title" data-i18n="services.caps.c2.title">Bug fixes, same day</h3>
           <p class="svc-cap__body" data-i18n="services.caps.c2.body">Broken cart? Glitchy nav? Form silently failing? Diagnosed same-day, fixed before the day's out — not parked in a ticket queue.</p>
         </article>
-        <article class="svc-cap reveal" style="transition-delay: 120ms">
+        <article class="svc-cap depth-card reveal reveal--scale" style="transition-delay: 120ms">
           <div class="svc-cap__num">/ 03</div>
           <h3 class="svc-cap__title" data-i18n="services.caps.c3.title">New features, shipped</h3>
           <p class="svc-cap__body" data-i18n="services.caps.c3.body">Conversion sections, quizzes, calculators, filters, gated content, sticky CTAs. If you can describe the behaviour, it ships inside the month.</p>
         </article>
-        <article class="svc-cap reveal" style="transition-delay: 180ms">
+        <article class="svc-cap depth-card reveal reveal--scale" style="transition-delay: 180ms">
           <div class="svc-cap__num">/ 04</div>
           <h3 class="svc-cap__title" data-i18n="services.caps.c4.title">Stack integrations</h3>
           <p class="svc-cap__body" data-i18n="services.caps.c4.body">Hooking your site into the rest of the stack: HubSpot, Notion, Klaviyo, Stripe, Plausible — whatever your ops actually run on. Wired up, tested end-to-end, documented.</p>
         </article>
-        <article class="svc-cap reveal" style="transition-delay: 240ms">
+        <article class="svc-cap depth-card reveal reveal--scale" style="transition-delay: 240ms">
           <div class="svc-cap__num">/ 05</div>
           <h3 class="svc-cap__title" data-i18n="services.caps.c5.title">Conversion audits</h3>
           <p class="svc-cap__body" data-i18n="services.caps.c5.body">Monthly look at what visitors are actually doing on the site. Friction points flagged, prioritized, fixed at the source. A/B tests on the highest-leverage pages.</p>
         </article>
-        <article class="svc-cap reveal" style="transition-delay: 300ms">
+        <article class="svc-cap depth-card reveal reveal--scale" style="transition-delay: 300ms">
           <div class="svc-cap__num">/ 06</div>
           <h3 class="svc-cap__title" data-i18n="services.caps.c6.title">AI &amp; automation</h3>
           <p class="svc-cap__body" data-i18n="services.caps.c6.body">Chatbots that actually know your services and pricing. Automations that handle the busy work — lead routing, content sync, scheduled reports. Less hype, more time back.</p>
@@ -821,13 +821,11 @@
           <li><a href="services.html" data-i18n="common.nav.services">Services</a></li>
           <li><a href="work.html"     data-i18n="common.nav.work">Work</a></li>
           <li><a href="faq.html"      data-i18n="common.nav.faq">FAQ</a></li>
-          <li><a href="contact.html"  data-i18n="common.nav.contact">Contact</a></li>
         </ul>
       </div>
 
       <div class="footer-col footer-col--contact">
         <span class="footer-col-title" data-i18n="common.footer.colTitle.contact">Contact</span>
-        <a class="footer-contact-link" href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a>
         <span class="footer-contact-loc" data-i18n="common.footer.location">Montréal, QC, Canada</span>
         <div class="footer-status-row">
           <span class="footer-status-dot" aria-hidden="true"></span>

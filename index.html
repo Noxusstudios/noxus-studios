@@ -30,6 +30,7 @@
 
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/components/slot-card.css">
   <link rel="stylesheet" href="css/pages/home.css">
   <link rel="stylesheet" href="css/theme-dark.css">
   <link rel="stylesheet" href="css/components/chat-widget.css">
@@ -70,40 +71,40 @@
 
     <button class="theme-toggle" id="theme-toggle" type="button"
             aria-label="Switch to dark mode" aria-pressed="false">
-      <svg class="theme-toggle-icon theme-toggle-moon" width="15" height="15" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="2"
+      <svg class="theme-toggle-icon theme-toggle-moon" width="16" height="16" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="1.25"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        <path d="M20.5 13.5A8.5 8.5 0 0 1 10.5 3.5 8.5 8.5 0 1 0 20.5 13.5Z" />
       </svg>
-      <svg class="theme-toggle-icon theme-toggle-sun" width="15" height="15" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="2"
+      <svg class="theme-toggle-icon theme-toggle-sun" width="16" height="16" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="1.25"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="4" />
-        <line x1="12" y1="1" x2="12" y2="3" />
-        <line x1="12" y1="21" x2="12" y2="23" />
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-        <line x1="1" y1="12" x2="3" y2="12" />
-        <line x1="21" y1="12" x2="23" y2="12" />
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        <circle cx="12" cy="12" r="3.6" />
+        <line x1="12" y1="2.5" x2="12" y2="4.6" />
+        <line x1="12" y1="19.4" x2="12" y2="21.5" />
+        <line x1="4.7" y1="4.7" x2="6.2" y2="6.2" />
+        <line x1="17.8" y1="17.8" x2="19.3" y2="19.3" />
+        <line x1="2.5" y1="12" x2="4.6" y2="12" />
+        <line x1="19.4" y1="12" x2="21.5" y2="12" />
+        <line x1="4.7" y1="19.3" x2="6.2" y2="17.8" />
+        <line x1="17.8" y1="6.2" x2="19.3" y2="4.7" />
       </svg>
     </button>
 
     <nav class="nav-pill is-collapsed" id="nav-pill" aria-label="Main navigation">
       <div class="nav-pill-inner">
+        <a href="about.html"    class="nav-pill-link"><span data-i18n="common.nav.about">About</span></a>
         <a href="services.html" class="nav-pill-link"><span data-i18n="common.nav.services">Services</span></a>
         <a href="work.html"     class="nav-pill-link"><span data-i18n="common.nav.work">Work</span></a>
-        <a href="about.html"    class="nav-pill-link"><span data-i18n="common.nav.about">About</span></a>
         <a href="faq.html"      class="nav-pill-link"><span data-i18n="common.nav.faq">FAQ</span></a>
         <a href="contact.html"  class="nav-pill-link"><span data-i18n="common.nav.contact">Contact</span></a>
       </div>
       <span class="nav-pill-collapsed-icon" aria-hidden="true">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="6"  x2="21" y2="6" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="18" x2="21" y2="18" />
+             stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" y1="7"  x2="20" y2="7" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="17" x2="20" y2="17" />
         </svg>
       </span>
     </nav>
@@ -115,9 +116,9 @@
     <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">×</button>
     <nav>
       <a href="index.html"    class="nav-overlay-link" data-i18n="common.nav.home">Home</a>
+      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
       <a href="services.html" class="nav-overlay-link" data-i18n="common.nav.services">Services</a>
       <a href="work.html"     class="nav-overlay-link" data-i18n="common.nav.work">Work</a>
-      <a href="about.html"    class="nav-overlay-link" data-i18n="common.nav.about">About</a>
       <a href="faq.html"      class="nav-overlay-link" data-i18n="common.nav.faq">FAQ</a>
       <a href="contact.html"  class="nav-overlay-link" data-i18n="common.nav.contact">Contact</a>
     </nav>
@@ -147,6 +148,7 @@
       </div>
 
       <div class="hero-price-block">
+        
         <div class="hero-price-large">$500.00<sup class="hero-price-cur">USD</sup></div>
         <div class="hero-type-row">
           <span class="hero-type-label" data-i18n="home.hero.priceLabel">Web Build</span>
@@ -155,16 +157,16 @@
 
       <div class="hero-info-bar">
         <div class="hero-info-cell">
-          <div class="hero-info-val-large" data-i18n="home.hero.info.starterValue">$500 USD</div>
-          <div class="hero-info-val-muted" data-i18n="home.hero.info.starterLbl">Starter</div>
+          <div class="hero-info-val-large" data-i18n="home.hero.info.turnaroundValue">4-7 DAYS</div>
+          <div class="hero-info-val-muted" data-i18n="home.hero.info.turnaroundLbl">Turnaround</div>
         </div>
         <div class="hero-info-cell">
           <div class="hero-info-val-bold" data-i18n="home.hero.info.bookingValue">NOW TAKING BUILDS</div>
           <div class="hero-info-val-muted" data-i18n="home.hero.info.bookingLbl">Next slot open</div>
         </div>
         <div class="hero-info-cell">
-          <div class="hero-info-val-bold" data-i18n="home.hero.info.handcodedValue">HAND-CODED</div>
-          <div class="hero-info-val-muted" data-i18n="home.hero.info.handcodedLbl">No templates</div>
+          <div class="hero-info-val-bold" data-i18n="home.hero.info.ownerValue">YOU OWN IT</div>
+          <div class="hero-info-val-muted" data-i18n="home.hero.info.ownerLbl">No platform lock-in</div>
         </div>
         <div class="hero-info-cell">
           <div class="hero-info-val-bold" data-i18n="home.hero.info.studioValue">FULL STUDIO</div>
@@ -179,10 +181,6 @@
     <section class="stats-section" data-theme="dark" id="stats">
       <div class="stats-section-top">
         <div class="stats-tag" data-i18n="home.stats.tag" data-i18n-html>Build sites that<br>convert differently</div>
-        <div class="stats-avatars">
-          <div class="stats-avatar">J</div>
-          <div class="stats-avatar">N</div>
-        </div>
         <a href="about.html" class="btn-ghost-pill" data-i18n="home.stats.aboutBtn">About Us</a>
       </div>
 
@@ -193,7 +191,7 @@
       </h2>
 
       <div class="stats-grid">
-        <div class="stat-card is-orange reveal" style="transition-delay: 0ms">
+        <div class="stat-card is-orange reveal reveal--scale" style="transition-delay: 0ms">
           <div class="stat-card-head">
             <div class="stat-card-name" data-i18n="home.stats.card1.name">Avg. turnaround</div>
             <div class="stat-card-denom">/4d</div>
@@ -204,7 +202,7 @@
           </div>
         </div>
 
-        <div class="stat-card reveal" style="transition-delay: 80ms">
+        <div class="stat-card reveal reveal--scale" style="transition-delay: 80ms">
           <div class="stat-card-head">
             <div class="stat-card-name" data-i18n="home.stats.card2.name">Lighthouse target</div>
             <div class="stat-card-denom">/100</div>
@@ -216,7 +214,7 @@
           <div class="stat-card-bar"><div class="stat-card-bar-fill" style="width: 95%;"></div></div>
         </div>
 
-        <div class="stat-card reveal" style="transition-delay: 160ms">
+        <div class="stat-card reveal reveal--scale" style="transition-delay: 160ms">
           <div class="stat-card-head">
             <div class="stat-card-name" data-i18n="home.stats.card3.name">Hand-coded</div>
             <div class="stat-card-denom">/100</div>
@@ -228,7 +226,7 @@
           <div class="stat-card-bar"><div class="stat-card-bar-fill" style="width: 100%;"></div></div>
         </div>
 
-        <div class="stat-card reveal" style="transition-delay: 240ms">
+        <div class="stat-card reveal reveal--scale" style="transition-delay: 240ms">
           <div class="stat-card-head">
             <div class="stat-card-name" data-i18n="home.stats.card4.name">Solo operator</div>
             <div class="stat-card-denom">/1</div>
@@ -291,13 +289,11 @@
           </div>
         </div>
         <a href="services.html" class="btn-tag">
-          <span class="btn-tag-icon">⌘</span>
           <span data-i18n="home.split1.tag">Conversion</span>
         </a>
       </div>
 
       <div class="split-right reveal" style="transition-delay: 100ms">
-        <div class="split-plus-icon">✦</div>
         <h3 class="split-headline" data-i18n="home.split1.headlineA" data-i18n-html>
           <span class="split-orange">Hand-coded</span><br>
           <span class="split-white">by default.</span>
@@ -341,13 +337,11 @@
           </div>
         </div>
         <a href="about.html" class="btn-tag">
-          <span class="btn-tag-icon">⌘</span>
           <span data-i18n="home.split2.tag">Process</span>
         </a>
       </div>
 
       <div class="split-right reveal" style="transition-delay: 100ms">
-        <div class="split-plus-icon">✦</div>
         <h3 class="split-headline" data-i18n="home.split2.headlineA" data-i18n-html>
           <span class="split-orange">Founder-led</span><br>
           <span class="split-white">end to end</span>
@@ -391,13 +385,11 @@
           </div>
         </div>
         <a href="services.html" class="btn-tag">
-          <span class="btn-tag-icon">⌘</span>
           <span data-i18n="home.split3.tag">Speed</span>
         </a>
       </div>
 
       <div class="split-right reveal" style="transition-delay: 100ms">
-        <div class="split-plus-icon">✦</div>
         <h3 class="split-headline" data-i18n="home.split3.headlineA" data-i18n-html>
           <span class="split-orange">Shipped</span> in<br>
           <span class="split-white">four days flat.</span>
@@ -417,118 +409,185 @@
     </section>
     </div>
 
-    <!-- ====================== PROCESS (dark) ====================== -->
+    <!-- ====================== PROCESS — slot-card pattern (shared with work page) ====================== -->
     <section class="process" data-theme="dark" id="process">
-      <div class="process-top">
-        <div class="process-eyebrow" data-i18n="home.process.eyebrow">How we build</div>
+      <div class="process__top">
+        <div class="process__eyebrow" data-i18n="home.process.eyebrow">Process · 3 steps</div>
         <h2 class="process-heading" data-i18n="home.process.heading" data-i18n-html>From first call <em>to live site.</em></h2>
       </div>
-      <div class="process-grid">
-        <div class="process-card reveal" style="transition-delay: 0ms">
-          <div class="process-num">01</div>
-          <h3 class="process-title" data-i18n="home.process.step1.title">Discovery.</h3>
-          <p class="process-desc" data-i18n="home.process.step1.desc">15-min call · Free</p>
-          <div class="process-card__ctas">
-            <a href="contact.html#form" class="process-card__cta" data-i18n="home.process.step1.msg">Send a message →</a>
-            <a href="https://calendly.com/noxusstudios/30min" target="_blank" rel="noopener noreferrer" class="process-card__cta is-orange" data-i18n="home.process.step1.book">Book a call →</a>
+
+      <div class="work-grid">
+
+        <!-- Step 01 — Discovery (orange / start here) -->
+        <div class="work-card work-card--1 is-orange reveal reveal--scale" style="transition-delay: 0ms">
+          <div class="work-card__head">
+            <div class="work-card__eyebrow">
+              <span class="work-card__status-dot" aria-hidden="true"></span>
+              <span data-i18n="home.process.step1.label">Step 01 ·</span>
+              <span class="work-card__status-tag" data-i18n="home.process.step1.tag">Free</span>
+            </div>
+            <div class="work-card__num">/01</div>
+          </div>
+          <div class="work-card__illus" aria-hidden="true">
+            <svg viewBox="0 0 96 96" fill="none">
+              <path d="M22 18 h14 l4 14 -8 6 a30 30 0 0 0 18 18 l6 -8 14 4 v14 a6 6 0 0 1 -6 6 c-26 -2 -48 -24 -50 -50 a6 6 0 0 1 6 -6 z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="68" cy="22" r="2" fill="currentColor"/>
+              <circle cx="74" cy="22" r="2" fill="currentColor"/>
+              <circle cx="80" cy="22" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <span class="work-card__badge" data-i18n="home.process.step1.badge">Start here</span>
+          <h3 class="work-card__title" data-i18n="home.process.step1.title">Discovery.</h3>
+          <p class="work-card__desc" data-i18n="home.process.step1.desc">
+            15-min call. We talk goals, scope, fit. No commitment.
+          </p>
+          <div class="work-card__bottom">
+            <div class="work-card__price" data-i18n="home.process.step1.price">15 min</div>
+            <a href="https://calendly.com/noxusstudios/30min" target="_blank" rel="noopener noreferrer" class="work-card__cta" data-i18n="home.process.step1.book">Book a call →</a>
           </div>
         </div>
-        <div class="process-card reveal" style="transition-delay: 100ms">
-          <div class="process-num">02</div>
-          <h3 class="process-title" data-i18n="home.process.step2.title">Build.</h3>
-          <p class="process-desc" data-i18n="home.process.step2.desc">4-7 days</p>
+
+        <!-- Step 02 — Build (cream / dark surface) -->
+        <div class="work-card work-card--2 is-dark reveal reveal--scale" style="transition-delay: 80ms">
+          <div class="work-card__head">
+            <div class="work-card__eyebrow">
+              <span class="work-card__status-dot" aria-hidden="true"></span>
+              <span data-i18n="home.process.step2.label">Step 02 ·</span>
+              <span class="work-card__status-tag" data-i18n="home.process.step2.tag">In Progress</span>
+            </div>
+            <div class="work-card__num">/02</div>
+          </div>
+          <div class="work-card__illus" aria-hidden="true">
+            <svg viewBox="0 0 96 96" fill="none">
+              <path d="M30 28 L14 48 L30 68" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M66 28 L82 48 L66 68" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="55" y1="22" x2="41" y2="74" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="work-card__title" data-i18n="home.process.step2.title">Build.</h3>
+          <p class="work-card__desc" data-i18n="home.process.step2.desc">
+            Hand-coded from scratch. Weekly progress checkpoints with you.
+          </p>
+          <div class="work-card__bottom">
+            <div class="work-card__price" data-i18n="home.process.step2.price">4-7 days</div>
+            <a href="work.html" class="work-card__cta" data-i18n="home.process.step2.see">See past builds →</a>
+          </div>
         </div>
-        <div class="process-card reveal" style="transition-delay: 200ms">
-          <div class="process-num">03</div>
-          <h3 class="process-title" data-i18n="home.process.step3.title">Launch.</h3>
-          <p class="process-desc" data-i18n="home.process.step3.desc">Handoff + training</p>
+
+        <!-- Step 03 — Launch (muted / owned forever) -->
+        <div class="work-card work-card--3 is-muted reveal reveal--scale" style="transition-delay: 160ms">
+          <div class="work-card__head">
+            <div class="work-card__eyebrow">
+              <span data-i18n="home.process.step3.label">Step 03 ·</span>
+              <span class="work-card__status-tag work-card__status-tag--muted" data-i18n="home.process.step3.tag">Yours</span>
+            </div>
+            <div class="work-card__num">/03</div>
+          </div>
+          <div class="work-card__illus" aria-hidden="true">
+            <svg viewBox="0 0 96 96" fill="none">
+              <path d="M48 14 L66 36 L66 70 a4 4 0 0 1 -4 4 H34 a4 4 0 0 1 -4 -4 L30 36 Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="48" cy="42" r="5" stroke="currentColor" stroke-width="1.25"/>
+              <path d="M36 78 L30 86 M60 78 L66 86" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="work-card__title" data-i18n="home.process.step3.title">Launch.</h3>
+          <p class="work-card__desc" data-i18n="home.process.step3.desc">
+            Handoff + training. You own the codebase forever.
+          </p>
+          <div class="work-card__bottom">
+            <div class="work-card__price" data-i18n="home.process.step3.price">Owned</div>
+            <a href="faq.html" class="work-card__cta" data-i18n="home.process.step3.faq">Read the FAQ →</a>
+          </div>
         </div>
+
       </div>
     </section>
 
 
-    <!-- ====================== DISCIPLINES — what we build (light) ====================== -->
+    <!-- ====================== DISCIPLINES (light) — editorial ====================== -->
     <section class="disciplines" data-theme="light" id="disciplines">
-      <div class="disciplines__top">
-        <div class="disciplines__eyebrow" data-i18n="home.disciplines.eyebrow">Disciplines</div>
-        <h2 class="disciplines__heading" data-i18n="home.disciplines.heading" data-i18n-html>Three things. <em>One operator.</em></h2>
-      </div>
+      <div class="disciplines__layout">
+        <div class="disciplines__intro">
+          <h2 class="disciplines__heading" data-i18n="home.disciplines.heading" data-i18n-html>Three things. <em>One operator.</em></h2>
+        </div>
 
-      <div class="disciplines__grid">
+        <div class="disciplines__list">
 
-        <article class="discipline discipline--1 reveal" style="transition-delay: 0ms">
-          <div class="discipline__head">
-            <div class="discipline__num">/ 01</div>
-            <svg class="discipline__illus" viewBox="0 0 80 80" aria-hidden="true">
-              <circle class="d1-ripple-out" cx="34" cy="44" r="22" fill="none" stroke="currentColor" stroke-width="0.8" />
-              <circle class="d1-ripple-mid" cx="34" cy="44" r="14" fill="none" stroke="currentColor" stroke-width="0.8" />
-              <circle class="d1-target"     cx="34" cy="44" r="6"  fill="currentColor" />
-              <path class="d1-cursor"
-                    d="M48 22 L66 32 L56 36 L60 50 L53 52 L49 39 L41 46 Z"
-                    fill="currentColor"
-                    stroke="var(--off-white)" stroke-width="0.9" stroke-linejoin="round" />
-            </svg>
-          </div>
-          <h3 class="discipline__title" data-i18n="home.disciplines.d1.title">Sites that convert</h3>
-          <p class="discipline__body" data-i18n="home.disciplines.d1.body">Hand-coded conversion pages designed around a single action — book, buy, sign up, request. No template fingerprints, no slow JavaScript dragging the first paint. Starter live in 4-7 business days; multi-page builds in 2-3 weeks.</p>
-          <div class="discipline__tags">
-            <span class="discipline__tag" data-i18n="home.disciplines.d1.t1">Custom design</span>
-            <span class="discipline__tag" data-i18n="home.disciplines.d1.t2">Mobile-first</span>
-            <span class="discipline__tag" data-i18n="home.disciplines.d1.t3">95+ Lighthouse</span>
-            <span class="discipline__tag" data-i18n="home.disciplines.d1.t4">Hand-coded</span>
-          </div>
-        </article>
+          <article class="discipline discipline--1 reveal reveal--rise" style="transition-delay: 0ms">
+            <div class="discipline__marker">
+              <span class="discipline__num">/ 01</span>
+              <svg class="discipline__illus" viewBox="0 0 80 80" aria-hidden="true"
+                   fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle class="d1-ripple-out" cx="34" cy="44" r="22" stroke-width="0.8" />
+                <circle class="d1-ripple-mid" cx="34" cy="44" r="14" stroke-width="0.8" />
+                <circle class="d1-target"     cx="34" cy="44" r="5"  fill="currentColor" stroke="none" />
+                <path class="d1-cursor"
+                      d="M48 22 L66 32 L56 36 L60 50 L53 52 L49 39 L41 46 Z"
+                      fill="currentColor"
+                      stroke="var(--off-white)" stroke-width="0.6" />
+              </svg>
+            </div>
+            <div class="discipline__content">
+              <h3 class="discipline__title" data-i18n="home.disciplines.d1.title">Sites that convert</h3>
+              <p class="discipline__body" data-i18n="home.disciplines.d1.body">Hand-coded conversion pages designed around a single action — book, buy, sign up, request. No template fingerprints, no slow JavaScript dragging the first paint. Starter live in 4-7 business days; multi-page builds in 2-3 weeks.</p>
+              <div class="discipline__tags">
+                <span class="discipline__tag" data-i18n="home.disciplines.d1.t1">Custom design</span>
+                <span class="discipline__tag" data-i18n="home.disciplines.d1.t2">Mobile-first</span>
+                <span class="discipline__tag" data-i18n="home.disciplines.d1.t3">95+ Lighthouse</span>
+                <span class="discipline__tag" data-i18n="home.disciplines.d1.t4">Single CTA</span>
+              </div>
+            </div>
+          </article>
 
-        <article class="discipline discipline--2 reveal" style="transition-delay: 100ms">
-          <div class="discipline__head">
-            <div class="discipline__num">/ 02</div>
-            <svg class="discipline__illus" viewBox="0 0 80 80" aria-hidden="true">
-              <rect class="d2-panel d2-panel--back" x="18" y="18" width="44" height="30" rx="2.5"
-                    fill="none" stroke="currentColor" stroke-width="0.8" />
-              <rect class="d2-panel d2-panel--mid"  x="24" y="24" width="44" height="30" rx="2.5"
-                    fill="none" stroke="currentColor" stroke-width="0.8" />
-              <rect class="d2-panel d2-panel--front" x="30" y="30" width="36" height="26" rx="2.5"
-                    stroke="currentColor" stroke-width="1.2" />
-              <polyline class="d2-chart" points="34,50 41,44 47,47 53,40 60,42"
-                        fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
-              <circle class="d2-chart-end" cx="60" cy="42" r="2" fill="currentColor" />
-            </svg>
-          </div>
-          <h3 class="discipline__title" data-i18n="home.disciplines.d2.title">Apps &amp; platforms</h3>
-          <p class="discipline__body" data-i18n="home.disciplines.d2.body">SaaS dashboards, headless commerce on Shopify, custom internal tools, member portals. Built on React, Next.js, or vanilla — picked per workload, not per resume. The architectural decisions most studios punt on are decided upfront.</p>
-          <div class="discipline__tags">
-            <span class="discipline__tag" data-i18n="home.disciplines.d2.t1">React + Next.js</span>
-            <span class="discipline__tag" data-i18n="home.disciplines.d2.t2">Headless Shopify</span>
-            <span class="discipline__tag" data-i18n="home.disciplines.d2.t3">SaaS dashboards</span>
-            <span class="discipline__tag" data-i18n="home.disciplines.d2.t4">Custom platforms</span>
-          </div>
-        </article>
+          <article class="discipline discipline--2 reveal reveal--rise" style="transition-delay: 100ms">
+            <div class="discipline__marker">
+              <span class="discipline__num">/ 02</span>
+              <svg class="discipline__illus" viewBox="0 0 80 80" aria-hidden="true"
+                   fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect class="d2-panel d2-panel--back" x="18" y="18" width="44" height="30" rx="2.5" stroke-width="0.8" />
+                <rect class="d2-panel d2-panel--mid"  x="24" y="24" width="44" height="30" rx="2.5" stroke-width="0.8" />
+                <rect class="d2-panel d2-panel--front" x="30" y="30" width="36" height="26" rx="2.5" stroke-width="1" />
+                <polyline class="d2-chart" points="34,50 41,44 47,47 53,40 60,42" stroke-width="1.25" />
+                <circle class="d2-chart-end" cx="60" cy="42" r="1.6" fill="currentColor" stroke="none" />
+              </svg>
+            </div>
+            <div class="discipline__content">
+              <h3 class="discipline__title" data-i18n="home.disciplines.d2.title">Apps &amp; platforms</h3>
+              <p class="discipline__body" data-i18n="home.disciplines.d2.body">SaaS dashboards, headless commerce on Shopify, custom internal tools, member portals. Built on React, Next.js, or plain HTML/CSS/JS — picked per workload, not per resume. The architectural decisions most studios punt on are decided upfront.</p>
+              <div class="discipline__tags">
+                <span class="discipline__tag" data-i18n="home.disciplines.d2.t1">React + Next.js</span>
+                <span class="discipline__tag" data-i18n="home.disciplines.d2.t2">Headless Shopify</span>
+                <span class="discipline__tag" data-i18n="home.disciplines.d2.t3">SaaS dashboards</span>
+                <span class="discipline__tag" data-i18n="home.disciplines.d2.t4">Custom platforms</span>
+              </div>
+            </div>
+          </article>
 
-        <article class="discipline discipline--3 reveal" style="transition-delay: 200ms">
-          <div class="discipline__head">
-            <div class="discipline__num">/ 03</div>
-            <svg class="discipline__illus" viewBox="0 0 80 80" aria-hidden="true">
-              <path class="d3-arc-bg" d="M14,56 A26,26 0 0,1 66,56"
-                    fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
-                    opacity="0.18" />
-              <path class="d3-arc-fg" d="M14,56 A26,26 0 0,1 62,33"
-                    fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
-              <line class="d3-needle" x1="40" y1="56" x2="60" y2="36"
-                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-              <circle class="d3-needle-pin" cx="40" cy="56" r="2.6" fill="currentColor" />
-              <text class="d3-score" x="40" y="68" text-anchor="middle" font-family="Bebas Neue, Impact, sans-serif" font-size="11" fill="currentColor">95+</text>
-            </svg>
-          </div>
-          <h3 class="discipline__title" data-i18n="home.disciplines.d3.title">Speed &amp; search</h3>
-          <p class="discipline__body" data-i18n="home.disciplines.d3.body">Every 100ms of load time costs conversion. We audit Core Web Vitals on your existing site, fix the loaders dragging your rankings, then ship the rebuild with technical SEO baked into the code — not bolted on by a plugin.</p>
-          <div class="discipline__tags">
-            <span class="discipline__tag" data-i18n="home.disciplines.d3.t1">Core Web Vitals</span>
-            <span class="discipline__tag" data-i18n="home.disciplines.d3.t2">Technical SEO</span>
-            <span class="discipline__tag" data-i18n="home.disciplines.d3.t3">Schema markup</span>
-            <span class="discipline__tag" data-i18n="home.disciplines.d3.t4">Image pipeline</span>
-          </div>
-        </article>
+          <article class="discipline discipline--3 reveal reveal--rise" style="transition-delay: 200ms">
+            <div class="discipline__marker">
+              <span class="discipline__num">/ 03</span>
+              <svg class="discipline__illus" viewBox="0 0 80 80" aria-hidden="true"
+                   fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path class="d3-arc-bg" d="M14,56 A26,26 0 0,1 66,56" stroke-width="1.25" opacity="0.20" />
+                <path class="d3-arc-fg" d="M14,56 A26,26 0 0,1 62,33" stroke-width="1.25" />
+                <line class="d3-needle" x1="40" y1="56" x2="60" y2="36" stroke-width="1.25" />
+                <circle class="d3-needle-pin" cx="40" cy="56" r="2" fill="currentColor" stroke="none" />
+                <text class="d3-score" x="40" y="68" text-anchor="middle" font-family="Bebas Neue, Impact, sans-serif" font-size="11" fill="currentColor" stroke="none">95+</text>
+              </svg>
+            </div>
+            <div class="discipline__content">
+              <h3 class="discipline__title" data-i18n="home.disciplines.d3.title">Speed &amp; search</h3>
+              <p class="discipline__body" data-i18n="home.disciplines.d3.body">Every 100ms of load time costs conversion. We audit Core Web Vitals on your existing site, fix the loaders dragging your rankings, then ship the rebuild with technical SEO baked into the code — not bolted on by a plugin.</p>
+              <div class="discipline__tags">
+                <span class="discipline__tag" data-i18n="home.disciplines.d3.t1">Core Web Vitals</span>
+                <span class="discipline__tag" data-i18n="home.disciplines.d3.t2">Technical SEO</span>
+                <span class="discipline__tag" data-i18n="home.disciplines.d3.t3">Schema markup</span>
+                <span class="discipline__tag" data-i18n="home.disciplines.d3.t4">Image pipeline</span>
+              </div>
+            </div>
+          </article>
 
+        </div>
       </div>
     </section>
 
@@ -543,7 +602,7 @@
       <div class="bento-grid">
 
         <!-- Starter -->
-        <a class="bento-cell bento-cell-price reveal" style="transition-delay: 0ms" href="services.html#builds">
+        <a class="bento-cell bento-cell-price reveal reveal--scale" style="transition-delay: 0ms" href="services.html#builds">
           <div class="bento-price-eyebrow" data-i18n="home.bento.starter.label">/ 01 Starter</div>
           <div class="bento-price-amount">$500 USD</div>
           <div class="bento-price-unit" data-i18n="home.bento.starter.unit">one-time</div>
@@ -555,7 +614,7 @@
         </a>
 
         <!-- Custom Build -->
-        <a class="bento-cell bento-cell-price is-featured reveal" style="transition-delay: 80ms" href="services.html#builds">
+        <a class="bento-cell bento-cell-price is-featured reveal reveal--scale" style="transition-delay: 80ms" href="services.html#builds">
           <span class="bento-badge" data-i18n="home.bento.custom.badge">Most Popular</span>
           <div class="bento-price-eyebrow" data-i18n="home.bento.custom.label">/ 02 Custom Build</div>
           <div class="bento-price-amount">$2.5K–$7.5K USD</div>
@@ -568,7 +627,7 @@
         </a>
 
         <!-- Enterprise -->
-        <a class="bento-cell bento-cell-price reveal" style="transition-delay: 160ms" href="services.html#builds">
+        <a class="bento-cell bento-cell-price reveal reveal--scale" style="transition-delay: 160ms" href="services.html#builds">
           <div class="bento-price-eyebrow" data-i18n="home.bento.enterprise.label">/ 03 Enterprise</div>
           <div class="bento-price-amount">$10K+ USD</div>
           <div class="bento-price-unit" data-i18n="home.bento.enterprise.unit">project</div>
@@ -580,7 +639,7 @@
         </a>
 
         <!-- Retainers -->
-        <a class="bento-cell bento-cell-price reveal" style="transition-delay: 240ms" href="services.html#retainers">
+        <a class="bento-cell bento-cell-price reveal reveal--scale" style="transition-delay: 240ms" href="services.html#retainers">
           <div class="bento-price-eyebrow" data-i18n="home.bento.retainers.label">/ Retainers</div>
           <div class="bento-price-amount">$500–$3K USD</div>
           <div class="bento-price-unit" data-i18n="home.bento.retainers.unit">/mo</div>
@@ -593,7 +652,7 @@
         </a>
 
         <!-- Design Services — wide cell spanning 2 cols -->
-        <a class="bento-cell bento-cell-price bento-cell-wide reveal" style="transition-delay: 320ms" href="services.html#design">
+        <a class="bento-cell bento-cell-price bento-cell-wide reveal reveal--scale" style="transition-delay: 320ms" href="services.html#design">
           <span class="bento-wide-motif" aria-hidden="true">+</span>
           <div class="bento-wide-head">
             <div class="bento-price-eyebrow" data-i18n="home.bento.design.label">/ Design Services</div>
@@ -658,14 +717,12 @@
           <li><a href="services.html" data-i18n="common.nav.services">Services</a></li>
           <li><a href="work.html"     data-i18n="common.nav.work">Work</a></li>
           <li><a href="faq.html"      data-i18n="common.nav.faq">FAQ</a></li>
-          <li><a href="contact.html"  data-i18n="common.nav.contact">Contact</a></li>
         </ul>
       </div>
 
       <!-- Contact + Status -->
       <div class="footer-col footer-col--contact">
         <span class="footer-col-title" data-i18n="common.footer.colTitle.contact">Contact</span>
-        <a class="footer-contact-link" href="mailto:joseph@noxusstudios.com">joseph@noxusstudios.com</a>
         <span class="footer-contact-loc" data-i18n="common.footer.location">Montréal, QC, Canada</span>
         <div class="footer-status-row">
           <span class="footer-status-dot" aria-hidden="true"></span>

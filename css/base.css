@@ -195,6 +195,40 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   transform: translateY(0);
 }
 
+/* Reveal variants — layer on top of .reveal for richer entrances.
+   .reveal--rise   : confident vertical rise (cards, list items)
+   .reveal--scale  : scale-in + rise (pricing cells, feature panels, mocks)
+   .reveal--wipe   : vertical mask-wipe + rise (centerpiece headlines) */
+.reveal--rise {
+  transform: translateY(40px);
+  transition:
+    opacity   0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal--rise.visible { transform: translateY(0); }
+
+.reveal--scale {
+  transform: scale(0.94) translateY(28px);
+  transition:
+    opacity   0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal--scale.visible { transform: scale(1) translateY(0); }
+
+.reveal--wipe {
+  transform: translateY(48px);
+  clip-path: inset(0 0 100% 0);
+  transition:
+    opacity   0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    clip-path 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, clip-path;
+}
+.reveal--wipe.visible {
+  transform: translateY(0);
+  clip-path: inset(0 0 -0.15em 0);
+}
+
 /* prefers-reduced-motion: kill reveal + ticker animation */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -204,6 +238,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     scroll-behavior: auto !important;
   }
   .reveal { opacity: 1; transform: none; }
+  .reveal--wipe { clip-path: none !important; }
 }
 
 /* ============================================================

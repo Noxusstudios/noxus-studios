@@ -28,6 +28,8 @@
       errorGeneric: "Couldn't reach Nox. Try again, or [book a call](https://calendly.com/noxusstudios/30min).",
       errorOverLimit:
         "We've covered a lot. For anything deeper, [book a call with Joseph](https://calendly.com/noxusstudios/30min).",
+      errorRateLimit:
+        "Too many messages too fast. Take a breath, then try again in a few minutes — or [book a call](https://calendly.com/noxusstudios/30min) to talk to Joseph directly.",
       clear: 'Clear chat',
       close: 'Close chat',
       suggestions: [
@@ -50,6 +52,8 @@
         "Impossible de contacter Nox. Réessayez, ou [réservez un appel](https://calendly.com/noxusstudios/30min).",
       errorOverLimit:
         "Nous avons fait le tour. Pour aller plus loin, [réservez un appel avec Joseph](https://calendly.com/noxusstudios/30min).",
+      errorRateLimit:
+        "Trop de messages en peu de temps. Respirez, réessayez dans quelques minutes — ou [réservez un appel](https://calendly.com/noxusstudios/30min) pour parler directement à Joseph.",
       clear: 'Effacer la conversation',
       close: 'Fermer le clavardage',
       suggestions: [
@@ -152,12 +156,12 @@
     <button class="nox-chat__toggle" type="button" aria-label="${t().toggle}" aria-expanded="false">
       <span class="nox-chat__toggle-icon" aria-hidden="true">
         <svg viewBox="0 0 32 32" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
-          <line x1="16" y1="3" x2="16" y2="6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="16" y1="3" x2="16" y2="6.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
           <circle cx="16" cy="2.5" r="1.4" fill="currentColor"/>
           <rect x="6" y="7" width="20" height="20" rx="3.2" fill="currentColor"/>
           <rect class="nox-face-eye" x="10" y="12.8" width="3.4" height="3" rx="1" fill="#E8540A"/>
           <rect class="nox-face-eye" x="18.6" y="12.8" width="3.4" height="3" rx="1" fill="#E8540A"/>
-          <path d="M 11.5 21.5 Q 16 23.4 20.5 21.5" stroke="#E8540A" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          <path d="M 11.5 21.5 Q 16 23.4 20.5 21.5" stroke="#E8540A" stroke-width="1.25" stroke-linecap="round" fill="none"/>
         </svg>
       </span>
       <span class="nox-chat__toggle-dot" aria-hidden="true"></span>
@@ -168,12 +172,12 @@
         <div class="nox-chat__brand">
           <span class="nox-chat__mark" aria-hidden="true">
             <svg viewBox="0 0 32 32" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
-              <line x1="16" y1="3" x2="16" y2="6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="16" y1="3" x2="16" y2="6.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
               <circle cx="16" cy="2.5" r="1.4" fill="currentColor"/>
               <rect x="6" y="7" width="20" height="20" rx="3.2" fill="currentColor"/>
               <rect class="nox-face-eye" x="10" y="12.8" width="3.4" height="3" rx="1" fill="#E8540A"/>
               <rect class="nox-face-eye" x="18.6" y="12.8" width="3.4" height="3" rx="1" fill="#E8540A"/>
-              <path d="M 11.5 21.5 Q 16 23.4 20.5 21.5" stroke="#E8540A" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+              <path d="M 11.5 21.5 Q 16 23.4 20.5 21.5" stroke="#E8540A" stroke-width="1.25" stroke-linecap="round" fill="none"/>
             </svg>
           </span>
           <div class="nox-chat__brand-text">
@@ -182,7 +186,7 @@
           </div>
         </div>
         <button class="nox-chat__close" type="button" aria-label="${t().close}">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round">
             <line x1="6" y1="6" x2="18" y2="18"/>
             <line x1="18" y1="6" x2="6" y2="18"/>
           </svg>
@@ -194,7 +198,7 @@
       <form class="nox-chat__form">
         <textarea class="nox-chat__input" rows="1" placeholder="${t().placeholder}" data-nox-i18n-placeholder="placeholder"></textarea>
         <button class="nox-chat__send" type="submit" aria-label="${t().send}">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
             <line x1="22" y1="2" x2="11" y2="13"/>
             <polygon points="22 2 15 22 11 13 2 9 22 2" fill="currentColor" stroke="none"/>
           </svg>
@@ -374,6 +378,8 @@
         } else {
           appendMessage('assistant', body.error || t().errorGeneric);
         }
+      } else if (res.status === 429) {
+        appendMessage('assistant', t().errorRateLimit);
       } else if (!res.ok) {
         appendMessage('assistant', t().errorGeneric);
       } else {

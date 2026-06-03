@@ -657,7 +657,7 @@
 
 .btn-primary {
   display: inline-block;
-  background: var(--orange);
+  background: linear-gradient(180deg, #FF6520 0%, var(--orange) 50%, #D24A09 100%);
   color: #fff;
   font-family: var(--font-body);
   font-size: 11px;
@@ -665,16 +665,51 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   padding: 14px 32px;
-  border: none;
-  border-radius: 0;
+  border: 1px solid rgba(255, 120, 60, 0.55);
+  border-radius: 10px;
   cursor: pointer;
   text-decoration: none;
-  transition: background 80ms;
+  position: relative;
+  isolation: isolate;
+  /* Layered orange-tinted shadow stack — reads as a real, tangible
+     element you can press, not a flat colored rectangle. */
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.32) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.20) inset,
+    0 2px 4px rgba(132, 38, 0, 0.18),
+    0 8px 18px -4px rgba(232, 84, 10, 0.36),
+    0 18px 36px -10px rgba(232, 84, 10, 0.42),
+    0 32px 64px -16px rgba(132, 38, 0, 0.30);
+  transition:
+    transform 220ms cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 220ms cubic-bezier(0.32, 0.72, 0, 1),
+    background 220ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 .btn-primary:hover,
-.btn-primary:active,
-.btn-primary:focus-visible { background: var(--orange-hover); }
+.btn-primary:focus-visible {
+  background: linear-gradient(180deg, #FF7530 0%, #FF6520 50%, #E5550F 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.42) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.22) inset,
+    0 4px 8px rgba(132, 38, 0, 0.22),
+    0 14px 28px -4px rgba(232, 84, 10, 0.50),
+    0 28px 56px -10px rgba(232, 84, 10, 0.56),
+    0 48px 96px -16px rgba(132, 38, 0, 0.36);
+}
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.22) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.30) inset,
+    0 1px 2px rgba(132, 38, 0, 0.22),
+    0 4px 12px -4px rgba(232, 84, 10, 0.30);
+}
 .btn-primary { -webkit-tap-highlight-color: transparent; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary:hover { transform: none; }
+}
 
 .btn-ghost-pill {
   display: inline-block;
@@ -752,6 +787,274 @@
   position: absolute;
   bottom: 0; left: 0; right: 0;
   z-index: 10;
+}
+
+/* ============================================================
+   CTA-BAR — shared depth treatment for full-width CTA sections
+   (.svc-cta, .about-cta, .work-cta). Adds:
+     - radial warm-orange spotlight glow behind the CTA button
+     - subtle vertical gradient for ambient depth
+     - tighter ::before/::after pseudo-elements that don't
+       interfere with text content
+   These selectors share an identical heading + button structure,
+   so one rule keeps them visually consistent.
+   ============================================================ */
+
+.svc-cta, .about-cta, .work-cta {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.svc-cta::before, .about-cta::before, .work-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* Soft warm orange spotlight centered around where the CTA
+     button typically sits (bottom-center). Reads as ambient
+     light from the button outward. */
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 78%, rgba(232, 84, 10, 0.20), transparent 70%),
+    radial-gradient(ellipse 90% 60% at 50% 100%, rgba(232, 84, 10, 0.10), transparent 75%);
+}
+.svc-cta::after, .about-cta::after, .work-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* Faint vertical depth — lighter at top, slightly darker at
+     bottom. Adds ambient elevation without competing with the
+     spotlight. */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0%, transparent 30%, rgba(0, 0, 0, 0.04) 100%);
+}
+.svc-cta > *, .about-cta > *, .work-cta > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   DEPTH-CARD — premium multi-layered shadow treatment.
+   Adds dimension to flat conversion surfaces (channel cards,
+   stat cells, feature cards, CTA tiles) without the visual
+   noise of radial corner highlights or perimeter rays.
+
+   Just: subtle top edge highlight + 4-layer warm-tinted drop
+   shadow + smooth hover lift. Works in both cream and brown
+   themes via data-theme attribute and :root.dark selectors.
+
+   Apply by adding `depth-card` to any existing card. The card
+   keeps its background/border; this only adds the shadow stack.
+   ============================================================ */
+
+.depth-card {
+  position: relative;
+  transition:
+    transform 420ms cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 420ms cubic-bezier(0.32, 0.72, 0, 1);
+  will-change: transform;
+}
+
+/* Default (cream / light theme) — warm orange-tinted ambient */
+.depth-card,
+[data-theme="light"] .depth-card {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 -1px 0 rgba(28, 21, 14, 0.04) inset,
+    0 2px 4px rgba(28, 21, 14, 0.04),
+    0 8px 18px -6px rgba(28, 21, 14, 0.08),
+    0 22px 44px -14px rgba(28, 21, 14, 0.16),
+    0 36px 72px -18px rgba(232, 84, 10, 0.14);
+}
+.depth-card:hover,
+[data-theme="light"] .depth-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.68) inset,
+    0 -1px 0 rgba(28, 21, 14, 0.05) inset,
+    0 2px 4px rgba(28, 21, 14, 0.05),
+    0 12px 24px -6px rgba(28, 21, 14, 0.14),
+    0 32px 60px -14px rgba(28, 21, 14, 0.26),
+    0 56px 112px -18px rgba(232, 84, 10, 0.28);
+}
+
+/* Dark / brown theme — black shadows alone are invisible on dark
+   surfaces, so cards lift via inset top highlight + warm rim border.
+   No orange ambient halo (cards sit on warm bg — that read as a glow). */
+[data-theme="dark"] .depth-card,
+:root.dark .depth-card {
+  border: 1px solid rgba(232, 220, 203, 0.10);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.14) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.40) inset,
+    0 2px 4px rgba(0, 0, 0, 0.30),
+    0 8px 18px -6px rgba(0, 0, 0, 0.46),
+    0 22px 44px -14px rgba(0, 0, 0, 0.56),
+    0 36px 72px -18px rgba(0, 0, 0, 0.48);
+}
+[data-theme="dark"] .depth-card:hover,
+:root.dark .depth-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(232, 220, 203, 0.16);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.42) inset,
+    0 2px 4px rgba(0, 0, 0, 0.34),
+    0 12px 24px -6px rgba(0, 0, 0, 0.54),
+    0 32px 60px -14px rgba(0, 0, 0, 0.66),
+    0 56px 112px -18px rgba(0, 0, 0, 0.58);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .depth-card:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   DEPTH-SURFACE — premium 3D card treatment.
+   Adds dimension to otherwise-flat cards: a warm radial highlight
+   from the top-left corner, an inset perimeter outline, a soft
+   directional "ray" pseudo-element, and layered orange-tinted
+   shadows. Theme-aware: cream-tinted on dark surfaces, warm
+   orange-tinted on light surfaces. Inspired by the Uiverse
+   "outer/dot/card" pattern but adapted to the Noxus brand palette.
+
+   Usage:
+     <div class="bento-cell bento-cell-price depth-surface">…</div>
+   Optional perimeter dot (signature element — use sparingly):
+     <div class="depth-surface depth-surface--dot">
+       <span class="depth-dot" aria-hidden="true"></span>
+       …
+     </div>
+   ============================================================ */
+
+.depth-surface {
+  position: relative;
+  isolation: isolate;
+  /* Layered tinted shadow — orange undertone reads as "premium brand" */
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,           /* glossy top edge */
+    0 -1px 0 rgba(0, 0, 0, 0.20) inset,                /* bottom contour */
+    0 4px 8px rgba(0, 0, 0, 0.16),                     /* close shadow */
+    0 18px 36px -10px rgba(0, 0, 0, 0.34),             /* mid drop */
+    0 32px 72px -18px rgba(232, 84, 10, 0.22),         /* warm ambient */
+    0 48px 120px -28px rgba(0, 0, 0, 0.40);            /* deep grounding */
+  transition:
+    box-shadow 420ms cubic-bezier(0.32, 0.72, 0, 1),
+    transform 420ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.depth-surface:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.22) inset,
+    0 4px 8px rgba(0, 0, 0, 0.18),
+    0 24px 48px -10px rgba(0, 0, 0, 0.44),
+    0 44px 96px -18px rgba(232, 84, 10, 0.36),
+    0 64px 152px -28px rgba(0, 0, 0, 0.50);
+}
+
+/* Ambient directional ray — soft warm light from upper-left.
+   Sits BEHIND the card content (z-index: 0). */
+.depth-surface::before {
+  content: '';
+  position: absolute;
+  top: -8%;
+  left: -8%;
+  width: 62%;
+  height: 38px;
+  border-radius: 100px;
+  background: radial-gradient(ellipse, rgba(255, 245, 235, 0.12), transparent 70%);
+  filter: blur(14px);
+  transform: rotate(34deg);
+  transform-origin: 0% 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Inset perimeter outline — subtle warm hairline at ~12px inset.
+   Reads as deliberate craft, not a heavy frame. */
+.depth-surface::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(232, 84, 10, 0.06);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Light-theme variant: warm corner highlight + pronounced layered shadows.
+   Intensity is deliberately high — these cards sit on cream backgrounds
+   and need clear elevation to read as "lifted off the page". */
+.depth-surface--light::before {
+  background: radial-gradient(ellipse, rgba(232, 84, 10, 0.18), transparent 70%);
+  opacity: 1;
+  width: 70%;
+  height: 60px;
+  filter: blur(18px);
+}
+.depth-surface--light {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.65) inset,                /* glossy top edge */
+    0 -1px 0 rgba(28, 21, 14, 0.05) inset,                  /* faint bottom shadow */
+    0 2px 4px rgba(28, 21, 14, 0.04),                       /* close hairline */
+    0 14px 28px -10px rgba(28, 21, 14, 0.18),               /* mid drop */
+    0 28px 56px -16px rgba(232, 84, 10, 0.18),              /* warm ambient */
+    0 40px 96px -24px rgba(28, 21, 14, 0.22);               /* deep grounding */
+}
+.depth-surface--light:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.78) inset,
+    0 -1px 0 rgba(28, 21, 14, 0.06) inset,
+    0 2px 4px rgba(28, 21, 14, 0.05),
+    0 20px 40px -10px rgba(28, 21, 14, 0.28),
+    0 40px 80px -16px rgba(232, 84, 10, 0.32),
+    0 56px 128px -24px rgba(28, 21, 14, 0.30);
+}
+.depth-surface--light::after {
+  border-color: rgba(232, 84, 10, 0.10);
+}
+
+/* Ensure children stack above the pseudo-elements */
+.depth-surface > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ----- Perimeter dot (signature element — use on ONE card max) ----- */
+.depth-dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow:
+    0 0 8px var(--orange),
+    0 0 18px rgba(232, 84, 10, 0.55);
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  animation: depth-dot-trace 8s linear infinite;
+  will-change: transform;
+}
+
+@keyframes depth-dot-trace {
+  0%,
+  100% { transform: translate(0, 0); }
+  25%  { transform: translate(calc(-1 * (var(--dot-w, 200px) - 24px)), 0); }
+  50%  { transform: translate(calc(-1 * (var(--dot-w, 200px) - 24px)), calc(var(--dot-h, 200px) - 24px)); }
+  75%  { transform: translate(0, calc(var(--dot-h, 200px) - 24px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .depth-dot {
+    animation: none;
+  }
 }
 
 /* ============================================================
@@ -863,6 +1166,54 @@ footer {
 .footer-contact-link:active,
 .footer-contact-link:focus-visible { color: var(--orange); }
 
+/* Book-a-call CTA replaces the raw mailto: link in the contact column.
+   Funnels footer traffic to the highest-intent action (booked Calendly slot). */
+.footer-contact-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  gap: 8px;
+  padding: 12px 20px;
+  min-height: 44px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  background: linear-gradient(180deg, #FF6520 0%, var(--orange) 50%, #D24A09 100%);
+  border: 1px solid rgba(255, 120, 60, 0.55);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.32) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.20) inset,
+    0 2px 4px rgba(132, 38, 0, 0.18),
+    0 8px 18px -4px rgba(232, 84, 10, 0.36),
+    0 18px 36px -10px rgba(232, 84, 10, 0.32);
+  transition:
+    transform 220ms cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 220ms cubic-bezier(0.32, 0.72, 0, 1),
+    background 220ms cubic-bezier(0.32, 0.72, 0, 1);
+  -webkit-tap-highlight-color: rgba(232, 84, 10, 0.20);
+}
+.footer-contact-cta:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.32) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.20) inset,
+    0 2px 4px rgba(132, 38, 0, 0.20),
+    0 12px 24px -4px rgba(232, 84, 10, 0.44),
+    0 24px 48px -10px rgba(232, 84, 10, 0.40);
+}
+.footer-contact-cta:active { transform: translateY(0) scale(0.98); }
+.footer-contact-cta:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
 .footer-contact-loc {
   font-family: var(--font-body);
   font-size: 10px;
@@ -972,6 +1323,67 @@ footer {
     gap: 6px;
     padding: 14px 0;
   }
+
+  /* MOBILE TOUCH TARGETS — global rule: 44px minimum.
+     On desktop these elements stay compact (text-only). On mobile they
+     grow padding so they're tappable without changing visual style. */
+
+  /* Footer nav links: 13px tall → ~44px via padding */
+  .footer-nav-list { gap: 2px; }
+  .footer-nav-list a {
+    display: inline-block;
+    padding: 12px 18px;
+    min-height: 44px;
+    line-height: 20px;
+    box-sizing: border-box;
+  }
+
+  /* Footer contact link: 17px → 44px */
+  .footer-contact-link {
+    display: inline-block;
+    padding: 12px 16px;
+    min-height: 44px;
+    line-height: 20px;
+    box-sizing: border-box;
+  }
+
+  /* Footer meta strip (Privacy/Terms/Cookies): 13px → 44px */
+  .footer-meta-link {
+    display: inline-block;
+    padding: 12px 14px;
+    min-height: 44px;
+    line-height: 20px;
+    box-sizing: border-box;
+  }
+
+  /* Footer brand wordmark: 36px → 44px */
+  .footer-brand {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  /* Nav logo (top-left): 36px → 44px */
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 4px 6px;
+    margin-left: -6px;
+  }
+
+  /* Language + theme toggles: 36×36 → 46×46 (border-box buffer) */
+  .lang-toggle, .theme-toggle {
+    min-width: 46px;
+    min-height: 46px;
+  }
+
+  /* Ghost pill button ("About Us" on home stats): 39px → 46px */
+  .btn-ghost-pill {
+    padding: 14px 22px;
+    min-height: 46px;
+    box-sizing: border-box;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1016,9 +1428,13 @@ footer {
     width: 100%;
   }
   .nav-pill:not(.is-collapsed) .nav-pill-link {
-    /* Larger tap target in the dropdown — 10px vertical padding brings each
-       link to ~38px tall, close to the recommended 44px touch minimum. */
-    padding: 10px 4px;
+    /* Larger tap target in the dropdown — meets the 44px touch minimum
+       per global CLAUDE.md (was 38px / 4px above, raised to 44+px). */
+    padding: 14px 8px;
+    min-height: 44px;
     width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
   }
 }
