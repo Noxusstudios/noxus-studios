@@ -183,6 +183,8 @@ window.NOXUS_I18N = {
     'services.hero.meta.startLbl':  'Starter',
     'services.hero.meta.turnNum':   '4-7d',
     'services.hero.meta.turnLbl':   'Turnaround',
+    'services.hero.ctaPrimary':     'Start your project',
+    'services.hero.ctaSecondary':   'See pricing & tracks',
 
     'services.tiers.eyebrow': 'One-time<br>builds',
     'services.tiers.heading': 'Pick the depth. <em>Same operator at every tier.</em>',
@@ -970,6 +972,8 @@ window.NOXUS_I18N = {
     'services.hero.meta.startLbl':  'Starter',
     'services.hero.meta.turnNum':   '4-7j',
     'services.hero.meta.turnLbl':   'Délai',
+    'services.hero.ctaPrimary':     'Démarrer votre projet',
+    'services.hero.ctaSecondary':   'Voir les forfaits',
 
     'services.tiers.eyebrow': 'Forfaits<br>uniques',
     'services.tiers.heading': 'Choisissez la profondeur. <em>Le même opérateur à chaque niveau.</em>',

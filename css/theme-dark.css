@@ -122,6 +122,18 @@
 
 :root.dark .services-hero__meta-cell { border-top-color: rgba(255, 255, 255, 0.14); }
 
+/* Hero stats panel + secondary CTA on dark */
+:root.dark .services-hero__meta {
+  border-color: rgba(255, 255, 255, 0.10);
+  background: linear-gradient(158deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.015) 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 24px 50px -32px rgba(0, 0, 0, 0.8);
+}
+:root.dark .services-hero__cta-secondary { color: rgba(232, 220, 203, 0.9); }
+:root.dark .services-hero__cta-secondary:hover { color: var(--orange-hover); }
+:root.dark .services-hero__double-slash { color: var(--orange-hover); }
+
 /* work-hero revamp — eyebrow/status/work-index on dark */
 :root.dark .work-hero__status { color: rgba(232, 220, 203, 0.60); }
 :root.dark .work-hero__index { border-top-color: rgba(232, 220, 203, 0.18); }
