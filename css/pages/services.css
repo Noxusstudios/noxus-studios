@@ -18,23 +18,36 @@
   overflow: hidden;
 }
 
-/* Pseudo-3D depth particle field (js/hero-depth.js) — sits behind the
-   SMIL path layer for parallax dimensionality. */
-.hero-depth {
+/* Layered hero depth stack, deepest first:
+   0  .hero-shader  — GPU flowing contour field (js/hero-shader.js)
+   1  .hero-depth   — pseudo-3D particle field (js/hero-depth.js)
+   2  .hero-paths   — SMIL etched lines
+   3  __inner       — content */
+.hero-shader {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
   pointer-events: none;
+  opacity: 0.85;
+}
+:root:not(.dark) .hero-shader { opacity: 0.5; mix-blend-mode: multiply; }
+.hero-depth {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
   opacity: 0.9;
 }
 :root:not(.dark) .hero-depth { opacity: 0.62; mix-blend-mode: multiply; }
-.services-hero .hero-paths { z-index: 1; will-change: transform; }
+.services-hero .hero-paths { z-index: 2; will-change: transform; }
 
 .services-hero__inner {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   max-width: 1280px;
   margin: 0 auto;
   display: grid;
