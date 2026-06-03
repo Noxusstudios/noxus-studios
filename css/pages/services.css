@@ -1038,78 +1038,98 @@
   max-width: 1280px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 72px;
-  border-top: 1px solid var(--border-light);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
+/* Dimensional slot-style cards — raised dark surface, rounded, depth.
+   Always a dark card (same component language as .work-card) regardless
+   of page light/dark mode, so text stays light-on-dark. */
 .svc-cap {
   position: relative;
   isolation: isolate;
-  padding: 34px 18px 34px 0;
-  border-bottom: 1px solid var(--border-light);
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto 1fr;
-  column-gap: 26px;
-  transition: border-color 360ms cubic-bezier(0.32, 0.72, 0, 1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(160deg, #1f1f21 0%, #131315 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 18px 40px -26px rgba(0, 0, 0, 0.8);
+  transition:
+    transform 360ms cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 360ms cubic-bezier(0.32, 0.72, 0, 1),
+    border-color 360ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 .svc-cap > * { position: relative; z-index: 1; }
 /* cursor-follow spotlight (js/depth.js sets --mx/--my) */
 .svc-cap::after {
   content: "";
   position: absolute;
-  inset: 0 -16px;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
   opacity: 0;
-  border-radius: 10px;
-  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), rgba(232, 84, 10, 0.10), transparent 70%);
+  background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), rgba(232, 84, 10, 0.16), transparent 70%);
   transition: opacity 380ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 .svc-cap:hover::after { opacity: 1; }
-.svc-cap:hover { border-color: rgba(232, 84, 10, 0.4); }
+.svc-cap:hover {
+  transform: translateY(-4px);
+  border-color: rgba(232, 84, 10, 0.45);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 26px 50px -26px rgba(0, 0, 0, 0.85),
+    0 10px 26px -12px rgba(232, 84, 10, 0.40);
+}
+.svc-cap__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.svc-cap__glyph {
+  width: 46px;
+  height: 46px;
+  color: var(--orange);
+  transition: transform 420ms cubic-bezier(0.32, 0.72, 0, 1);
+  transform-origin: left center;
+}
+.svc-cap__glyph svg { width: 100%; height: 100%; display: block; }
+.svc-cap:hover .svc-cap__glyph { transform: scale(1.1) rotate(-4deg); }
 .svc-cap__num {
-  grid-row: 1 / 3;
   font-family: var(--font-display);
-  font-size: clamp(34px, 3.4vw, 46px);
-  font-weight: 400;
+  font-size: clamp(26px, 2.4vw, 34px);
   letter-spacing: -0.01em;
   line-height: 0.85;
-  color: var(--orange);
-  transition:
-    color 320ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 460ms cubic-bezier(0.32, 0.72, 0, 1);
-  transform-origin: left top;
+  color: rgba(255, 255, 255, 0.32);
+  transition: color 320ms cubic-bezier(0.32, 0.72, 0, 1);
 }
-.svc-cap:hover .svc-cap__num {
-  color: var(--orange-hover);
-  transform: scale(1.08) translateY(-2px);
-}
-.svc-cap__title { transition: color 320ms cubic-bezier(0.32, 0.72, 0, 1); }
-.svc-cap:hover .svc-cap__title { color: var(--orange); }
-@media (prefers-reduced-motion: reduce) {
-  .svc-cap, .svc-cap__num, .svc-cap::after { transition: none; }
-  .svc-cap:hover .svc-cap__num { transform: none; }
-}
+.svc-cap:hover .svc-cap__num { color: var(--orange-hover); }
 .svc-cap__title {
-  grid-column: 2;
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   font-family: var(--font-display);
-  font-size: clamp(20px, 2vw, 26px);
+  font-size: clamp(22px, 2.2vw, 28px);
   font-weight: 400;
   letter-spacing: -0.01em;
-  line-height: 1.1;
+  line-height: 1.05;
   text-transform: uppercase;
-  color: var(--text-on-light-primary);
+  color: #fff;
 }
 .svc-cap__body {
-  grid-column: 2;
   margin: 0;
   font-family: var(--font-ui);
   font-size: 13.5px;
   line-height: 1.65;
-  color: var(--text-on-light-secondary);
-  max-width: 46ch;
+  color: rgba(255, 255, 255, 0.66);
+  max-width: 40ch;
+}
+@media (prefers-reduced-motion: reduce) {
+  .svc-cap, .svc-cap__num, .svc-cap::after, .svc-cap__glyph { transition: none; }
+  .svc-cap:hover { transform: none; }
+  .svc-cap:hover .svc-cap__glyph { transform: none; }
 }
 
 /* Dark mode override — flip cream surface to dark cream-on-dark.
@@ -1121,10 +1141,7 @@
   border-top-color: var(--border-dark);
 }
 :root.dark .svc-caps__heading { color: var(--text-on-dark-primary); }
-:root.dark .svc-caps__grid { border-top-color: var(--border-dark); }
-:root.dark .svc-cap { border-bottom-color: var(--border-dark); }
-:root.dark .svc-cap__title { color: var(--text-on-dark-primary); }
-:root.dark .svc-cap__body { color: rgba(232, 220, 203, 0.65); }
+/* Cards are self-contained dark surfaces in both modes — no text flip. */
 
 
 /* ============================================================
@@ -1622,6 +1639,7 @@
 }
 .svc-addon-step {
   position: relative;
+  isolation: isolate;
   padding: 34px 30px;
   display: flex;
   flex-direction: column;
@@ -1634,15 +1652,35 @@
     0 18px 40px -24px rgba(0, 0, 0, 0.85);
   transform-style: preserve-3d;
   transition:
-    transform 240ms cubic-bezier(0.32, 0.72, 0, 1),
-    box-shadow 380ms cubic-bezier(0.32, 0.72, 0, 1);
+    transform 200ms cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 380ms cubic-bezier(0.32, 0.72, 0, 1),
+    border-color 320ms cubic-bezier(0.32, 0.72, 0, 1);
 }
+.svc-addon-step > * { position: relative; z-index: 1; }
+/* cursor-follow spotlight (js/depth.js sets --mx/--my) */
+.svc-addon-step::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  border-radius: 12px;
+  background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), rgba(232, 84, 10, 0.18), transparent 70%);
+  transition: opacity 360ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.svc-addon-step:hover::after { opacity: 1; }
 .svc-addon-step:hover {
-  transform: translateY(-4px);
+  border-color: rgba(232, 84, 10, 0.5);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.10) inset,
-    0 28px 56px -24px rgba(0, 0, 0, 0.95);
+    0 28px 56px -24px rgba(0, 0, 0, 0.95),
+    0 12px 28px -14px rgba(232, 84, 10, 0.4);
 }
+.svc-addon-step__price { transition: color 300ms cubic-bezier(0.32, 0.72, 0, 1); }
+.svc-addon-step:not(.is-featured):hover .svc-addon-step__price { color: var(--orange-hover); }
+.svc-addon-step__size { transition: color 300ms cubic-bezier(0.32, 0.72, 0, 1); }
+.svc-addon-step:hover .svc-addon-step__size { color: rgba(232, 84, 10, 0.9); }
 /* Featured tile lifts forward off the row with an orange glow. */
 .svc-addon-step.is-featured {
   border-color: rgba(232, 84, 10, 0.42);
@@ -1934,6 +1972,8 @@
 }
 :root:not(.dark) .svc-addon-step__size { color: var(--text-on-light-secondary); }
 :root:not(.dark) .svc-addon-step__price { color: var(--text-on-light-primary); }
+:root:not(.dark) .svc-addon-step:not(.is-featured):hover .svc-addon-step__price { color: var(--orange-on-light); }
+:root:not(.dark) .svc-addon-step:hover .svc-addon-step__size { color: var(--orange-on-light); }
 :root:not(.dark) .svc-addon-step.is-featured .svc-addon-step__price { color: var(--orange-on-light); }
 :root:not(.dark) .svc-addon-step__badge { color: var(--orange-on-light); }
 :root:not(.dark) .svc-addon-step__cur { color: var(--text-on-light-secondary); }

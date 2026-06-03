@@ -55,8 +55,8 @@
     let raf = 0;
     const move = (e) => {
       const r = tile.getBoundingClientRect();
-      const rx = -((e.clientY - r.top) / r.height - 0.5) * 9;  // tilt up/down
-      const ry = ((e.clientX - r.left) / r.width - 0.5) * 11;  // tilt left/right
+      const rx = -((e.clientY - r.top) / r.height - 0.5) * 13;  // tilt up/down
+      const ry = ((e.clientX - r.left) / r.width - 0.5) * 16;   // tilt left/right
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
         tile.style.transform =
