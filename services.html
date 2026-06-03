@@ -306,7 +306,40 @@
           <span class="svc-payment__line reveal" style="transition-delay: 260ms"><strong>50%</strong> on delivery.</span>
         </h2>
         <p class="svc-payment__tagline reveal" style="transition-delay: 420ms" data-i18n="services.payment.tagline">No hidden fees or surprises.</p>
-        <p class="svc-payment__note reveal" style="transition-delay: 560ms" data-i18n="services.payment.note" data-i18n-html>
+
+        <div class="svc-pay-track reveal" style="transition-delay: 520ms">
+          <span class="svc-pay-track__rail" aria-hidden="true"><span class="svc-pay-track__fill"></span></span>
+          <ol class="svc-pay-steps">
+            <li class="svc-pay-step">
+              <span class="svc-pay-step__node"><span class="svc-pay-step__dot"></span></span>
+              <div class="svc-pay-step__body">
+                <span class="svc-pay-step__when" data-i18n="services.payment.s1.when">At signature</span>
+                <span class="svc-pay-step__amt" data-i18n="services.payment.s1.amt">50%</span>
+                <span class="svc-pay-step__sub" data-i18n="services.payment.s1.sub">Project kicks off</span>
+              </div>
+            </li>
+            <li class="svc-pay-step">
+              <span class="svc-pay-step__node"><span class="svc-pay-step__dot"></span></span>
+              <div class="svc-pay-step__body">
+                <span class="svc-pay-step__when" data-i18n="services.payment.s2.when">On delivery</span>
+                <span class="svc-pay-step__amt" data-i18n="services.payment.s2.amt">50%</span>
+                <span class="svc-pay-step__sub" data-i18n="services.payment.s2.sub">After you approve staging</span>
+              </div>
+            </li>
+            <li class="svc-pay-step is-handoff">
+              <span class="svc-pay-step__node">
+                <svg class="svc-pay-step__check" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <div class="svc-pay-step__body">
+                <span class="svc-pay-step__when" data-i18n="services.payment.s3.when">Handoff</span>
+                <span class="svc-pay-step__amt" data-i18n="services.payment.s3.amt">Files + access</span>
+                <span class="svc-pay-step__sub" data-i18n="services.payment.s3.sub">Immediately after payment clears</span>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <p class="svc-payment__note reveal" style="transition-delay: 640ms" data-i18n="services.payment.note" data-i18n-html>
           Every build, every tier. The final 50% is invoiced once you've approved the staging site — handoff happens immediately after payment clears. <strong>Retainers</strong> are billed monthly, invoiced before each month begins.
         </p>
       </div>

@@ -1552,6 +1552,9 @@
   background: #1A130C;            /* brown mode default — slightly elevated vs page bg */
   position: relative;
   overflow: hidden;
+  --pay-bg: #1A130C;             /* node knockout colour — matches surface */
+  --pay-node: #241A11;
+  --pay-track: rgba(255, 255, 255, 0.14);
 }
 
 .svc-payment::before {
@@ -1683,6 +1686,123 @@
   transform: scale(1);
 }
 
+/* --- Payment schedule timeline -------------------------------
+   Turns the 50/50 statement into a visual sequence: signature →
+   delivery → handoff. A track fills left-to-right on scroll-in,
+   the two payment nodes pulse, the handoff node checks off. */
+.svc-pay-track {
+  position: relative;
+  margin-top: clamp(10px, 1.6vw, 22px);
+  max-width: 940px;
+}
+.svc-pay-track__rail {
+  position: absolute;
+  top: 16px;                  /* aligns to the node centre (34/2 - rail/2) */
+  left: 16.66%;
+  right: 16.66%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--pay-track);
+  overflow: hidden;
+}
+.svc-pay-track__fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.2s cubic-bezier(0.32, 0.72, 0, 1) 0.25s;
+}
+.svc-pay-track.visible .svc-pay-track__fill { transform: scaleX(1); }
+
+.svc-pay-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.svc-pay-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.svc-pay-step__node {
+  position: relative;
+  z-index: 1;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+  background: radial-gradient(circle at 50% 28%, var(--pay-node) 0%, var(--pay-bg) 100%);
+  border: 1px solid rgba(232, 84, 10, 0.45);
+  /* knockout ring hides the rail behind the node so it reads as connected */
+  box-shadow:
+    0 0 0 5px var(--pay-bg),
+    0 8px 18px -10px rgba(0, 0, 0, 0.55);
+}
+.svc-pay-step__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 0 0 rgba(232, 84, 10, 0.5);
+  animation: svcPayPulse 2.8s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+}
+.svc-pay-step:nth-child(2) .svc-pay-step__dot { animation-delay: 0.7s; }
+.svc-pay-step.is-handoff .svc-pay-step__node { border-color: rgba(232, 84, 10, 0.5); }
+
+.svc-pay-step__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.svc-pay-step__when {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+.svc-pay-step__amt {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--orange);
+}
+.svc-pay-step.is-handoff .svc-pay-step__amt {
+  font-size: clamp(15px, 1.5vw, 19px);
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+.svc-pay-step__sub {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 24ch;
+}
+
+@keyframes svcPayPulse {
+  0%   { box-shadow: 0 0 0 0  rgba(232, 84, 10, 0.5); }
+  70%  { box-shadow: 0 0 0 10px rgba(232, 84, 10, 0); }
+  100% { box-shadow: 0 0 0 0  rgba(232, 84, 10, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .svc-pay-step__dot { animation: none !important; }
+  .svc-pay-track__fill { transition: none !important; }
+}
+
 /* --- Vanilla mode (light page) override ------------------------
    The site convention: data-theme="dark" sections invert their
    surface in vanilla mode. We follow that here so the band feels
@@ -1690,7 +1810,13 @@
 */
 :root:not(.dark) .svc-payment {
   background: #EBE3D9;            /* deeper cream than page bg, gives subtle elevation */
+  --pay-bg: #EBE3D9;
+  --pay-node: #FBF7F1;
+  --pay-track: rgba(20, 12, 6, 0.16);
 }
+:root:not(.dark) .svc-pay-step__when { color: var(--text-on-light-secondary); }
+:root:not(.dark) .svc-pay-step__sub { color: var(--text-on-light-secondary); }
+:root:not(.dark) .svc-pay-step.is-handoff .svc-pay-step__amt { color: var(--text-on-light-primary); }
 
 :root:not(.dark) .svc-payment::before {
   background:
@@ -1716,6 +1842,28 @@
 
 @media (max-width: 600px) {
   .svc-payment__line:last-child { padding-left: 24px; }
+}
+
+/* Payment timeline goes vertical on narrow screens */
+@media (max-width: 680px) {
+  .svc-pay-steps { grid-template-columns: 1fr; gap: 26px; }
+  .svc-pay-step { flex-direction: row; align-items: flex-start; text-align: left; gap: 16px; }
+  .svc-pay-step__node { margin-bottom: 0; flex-shrink: 0; }
+  .svc-pay-step__body { align-items: flex-start; }
+  .svc-pay-track__rail {
+    top: 16px;
+    bottom: 16px;
+    left: 16px;
+    right: auto;
+    width: 2px;
+    height: auto;
+  }
+  .svc-pay-track__fill {
+    width: 100%;
+    transform: scaleY(0);
+    transform-origin: top center;
+  }
+  .svc-pay-track.visible .svc-pay-track__fill { transform: scaleY(1); }
 }
 
 /* ============================================================
