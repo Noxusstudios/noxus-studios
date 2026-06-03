@@ -174,91 +174,107 @@
         <p class="svc-tiers__cur-note" data-i18n="services.tiers.curNote">All prices in USD</p>
       </div>
 
-      <div class="svc-tier-grid">
+      <ol class="svc-ledger">
 
-        <article class="svc-tier depth-surface depth-surface--light reveal reveal--scale" style="transition-delay: 0ms">
-          <div class="svc-tier__eyebrow" data-i18n="services.tier1.label">/ 01 Starter</div>
-          <div class="svc-tier__price">
-            <span class="svc-tier__price-amount" data-i18n="services.tier1.amount">$500 USD</span>
-            <span class="svc-tier__price-unit" data-i18n="services.tier1.unit">one-time</span>
+        <li class="svc-ledger__row reveal" style="transition-delay: 0ms">
+          <div class="svc-ledger__lead">
+            <div class="svc-ledger__eyebrow" data-i18n="services.tier1.label">/ 01 Starter</div>
+            <div class="svc-ledger__price">
+              <span class="svc-ledger__amount" data-i18n="services.tier1.amount">$500 USD</span>
+              <span class="svc-ledger__unit" data-i18n="services.tier1.unit">one-time</span>
+            </div>
+            <p class="svc-ledger__tag" data-i18n="services.tier1.tag">Fast landing page for leads, bookings, or launch validation.</p>
+            <a href="contact.html" class="svc-ledger__cta" data-i18n="services.tier1.cta">Reserve Starter →</a>
           </div>
-          <p class="svc-tier__tag" data-i18n="services.tier1.tag">Fast landing page for leads, bookings, or launch validation.</p>
-          <ul class="svc-tier__features">
-            <li class="is-spec" data-i18n="services.tier1.rounds">1 revision round</li>
-            <li data-i18n="services.tier1.feat1">Hand-coded landing page</li>
-            <li data-i18n="services.tier1.feat2">Mobile-first responsive design</li>
-            <li data-i18n="services.tier1.feat3">SEO-optimized codebase</li>
-            <li data-i18n="services.tier1.feat4">Contact form integration</li>
-            <li data-i18n="services.tier1.feat5">Google Business Profile setup</li>
-            <li data-i18n="services.tier1.feat7">14-day post-launch support</li>
-            <li data-i18n="services.tier1.feat9">Delivered in 4-7 days</li>
-          </ul>
-          <a href="contact.html" class="svc-tier__cta" data-i18n="services.tier1.cta">Reserve Starter →</a>
-        </article>
-
-        <article class="svc-tier is-featured depth-surface depth-surface--light reveal reveal--scale" style="transition-delay: 100ms">
-          <div class="svc-tier__badge" data-i18n="services.tier2.badge">Most Popular</div>
-          <div class="svc-tier__eyebrow" data-i18n="services.tier2.label">/ 02 Custom Build</div>
-          <div class="svc-tier__price">
-            <span class="svc-tier__price-amount" data-i18n="services.tier2.amount">$2,500 – $7,500 USD</span>
-            <span class="svc-tier__price-unit" data-i18n="services.tier2.unit">project</span>
+          <div class="svc-ledger__detail">
+            <span class="svc-ledger__spec" data-i18n="services.tier1.rounds">1 revision round</span>
+            <ul class="svc-ledger__features">
+              <li data-i18n="services.tier1.feat1">Hand-coded landing page</li>
+              <li data-i18n="services.tier1.feat2">Mobile-first responsive design</li>
+              <li data-i18n="services.tier1.feat3">SEO-optimized codebase</li>
+              <li data-i18n="services.tier1.feat4">Contact form integration</li>
+              <li data-i18n="services.tier1.feat5">Google Business Profile setup</li>
+              <li data-i18n="services.tier1.feat7">14-day post-launch support</li>
+              <li data-i18n="services.tier1.feat9">Delivered in 4-7 days</li>
+            </ul>
           </div>
-          <p class="svc-tier__tag" data-i18n="services.tier2.tag">Full websites &amp; Shopify stores.</p>
-          <ul class="svc-tier__features">
-            <li class="is-spec" data-i18n="services.tier2.rounds">2 revision rounds</li>
-            <li data-i18n="services.tier2.feat1">Everything in Starter, plus:</li>
-            <li data-i18n="services.tier2.feat2">5–10+ custom pages</li>
-            <li data-i18n="services.tier2.feat3">CMS or Shopify integration</li>
-            <li data-i18n="services.tier2.feat4">Advanced animations &amp; interactions</li>
-            <li data-i18n="services.tier2.feat5">Analytics &amp; conversion tracking</li>
-            <li data-i18n="services.tier2.feat6">Third-party integrations</li>
-            <li data-i18n="services.tier2.feat7">Performance optimization (95+ Lighthouse)</li>
-            <li data-i18n="services.tier2.feat9">Delivered in 5–7 days</li>
-          </ul>
-          <a href="contact.html" class="svc-tier__cta" data-i18n="services.tier2.cta">Reserve Custom →</a>
-        </article>
+        </li>
 
-        <article class="svc-tier depth-surface depth-surface--light reveal reveal--scale" style="transition-delay: 200ms">
-          <div class="svc-tier__eyebrow" data-i18n="services.tier3.label">/ 03 Pro</div>
-          <div class="svc-tier__price">
-            <span class="svc-tier__price-amount" data-i18n="services.tier3.amount">$5,000 USD</span>
-            <span class="svc-tier__price-unit" data-i18n="services.tier3.unit">launch pack</span>
+        <li class="svc-ledger__row is-featured reveal" style="transition-delay: 100ms">
+          <div class="svc-ledger__lead">
+            <div class="svc-ledger__badge" data-i18n="services.tier2.badge">Most Popular</div>
+            <div class="svc-ledger__eyebrow" data-i18n="services.tier2.label">/ 02 Custom Build</div>
+            <div class="svc-ledger__price">
+              <span class="svc-ledger__amount" data-i18n="services.tier2.amount">$2,500 – $7,500 USD</span>
+              <span class="svc-ledger__unit" data-i18n="services.tier2.unit">project</span>
+            </div>
+            <p class="svc-ledger__tag" data-i18n="services.tier2.tag">Full websites &amp; Shopify stores.</p>
+            <a href="contact.html" class="svc-ledger__cta" data-i18n="services.tier2.cta">Reserve Custom →</a>
           </div>
-          <p class="svc-tier__tag" data-i18n="services.tier3.tag">Launch as a real operator. Site, community, and foundations in one drop.</p>
-          <ul class="svc-tier__features">
-            <li class="is-spec" data-i18n="services.tier3.rounds">3 revision rounds</li>
-            <li data-i18n="services.tier3.feat1">Hand-coded 1–3 page site</li>
-            <li data-i18n="services.tier3.feat2">Discord server setup (roles, channels, bots)</li>
-            <li data-i18n="services.tier3.feat3">SEO foundation + Google Business setup</li>
-            <li data-i18n="services.tier3.feat4">Brand mark + palette + type system</li>
-            <li data-i18n="services.tier3.feat5">1-page brand usage guide</li>
-            <li data-i18n="services.tier3.feat6">Mobile-first responsive</li>
-            <li data-i18n="services.tier3.feat8">Delivered in 7–10 days</li>
-          </ul>
-          <a href="contact.html" class="svc-tier__cta" data-i18n="services.tier3.cta">Reserve Pro →</a>
-        </article>
-
-        <article class="svc-tier depth-surface depth-surface--light reveal reveal--scale" style="transition-delay: 300ms">
-          <div class="svc-tier__eyebrow" data-i18n="services.tier4.label">/ 04 Enterprise</div>
-          <div class="svc-tier__price">
-            <span class="svc-tier__price-amount" data-i18n="services.tier4.amount">$10K+ USD</span>
-            <span class="svc-tier__price-unit" data-i18n="services.tier4.unit">project</span>
+          <div class="svc-ledger__detail">
+            <span class="svc-ledger__spec" data-i18n="services.tier2.rounds">2 revision rounds</span>
+            <ul class="svc-ledger__features">
+              <li data-i18n="services.tier2.feat1">Everything in Starter, plus:</li>
+              <li data-i18n="services.tier2.feat2">5–10+ custom pages</li>
+              <li data-i18n="services.tier2.feat3">CMS or Shopify integration</li>
+              <li data-i18n="services.tier2.feat4">Advanced animations &amp; interactions</li>
+              <li data-i18n="services.tier2.feat5">Analytics &amp; conversion tracking</li>
+              <li data-i18n="services.tier2.feat6">Third-party integrations</li>
+              <li data-i18n="services.tier2.feat7">Performance optimization (95+ Lighthouse)</li>
+              <li data-i18n="services.tier2.feat9">Delivered in 5–7 days</li>
+            </ul>
           </div>
-          <p class="svc-tier__tag" data-i18n="services.tier4.tag">Web apps, SaaS &amp; complex platforms.</p>
-          <ul class="svc-tier__features">
-            <li class="is-spec" data-i18n="services.tier4.rounds">5 revision rounds</li>
-            <li data-i18n="services.tier4.feat1">Everything in Custom Build, plus:</li>
-            <li data-i18n="services.tier4.feat2">Full-stack app development</li>
-            <li data-i18n="services.tier4.feat3">Headless architecture</li>
-            <li data-i18n="services.tier4.feat4">User auth &amp; dashboards</li>
-            <li data-i18n="services.tier4.feat5">Payment processing (Stripe)</li>
-            <li data-i18n="services.tier4.feat6">Database design &amp; API development</li>
-            <li data-i18n="services.tier4.feat8">Custom timeline scoped to project</li>
-          </ul>
-          <a href="contact.html" class="svc-tier__cta" data-i18n="services.tier4.cta">Scope Project →</a>
-        </article>
+        </li>
 
-      </div>
+        <li class="svc-ledger__row reveal" style="transition-delay: 200ms">
+          <div class="svc-ledger__lead">
+            <div class="svc-ledger__eyebrow" data-i18n="services.tier3.label">/ 03 Pro</div>
+            <div class="svc-ledger__price">
+              <span class="svc-ledger__amount" data-i18n="services.tier3.amount">$5,000 USD</span>
+              <span class="svc-ledger__unit" data-i18n="services.tier3.unit">launch pack</span>
+            </div>
+            <p class="svc-ledger__tag" data-i18n="services.tier3.tag">Launch as a real operator. Site, community, and foundations in one drop.</p>
+            <a href="contact.html" class="svc-ledger__cta" data-i18n="services.tier3.cta">Reserve Pro →</a>
+          </div>
+          <div class="svc-ledger__detail">
+            <span class="svc-ledger__spec" data-i18n="services.tier3.rounds">3 revision rounds</span>
+            <ul class="svc-ledger__features">
+              <li data-i18n="services.tier3.feat1">Hand-coded 1–3 page site</li>
+              <li data-i18n="services.tier3.feat2">Discord server setup (roles, channels, bots)</li>
+              <li data-i18n="services.tier3.feat3">SEO foundation + Google Business setup</li>
+              <li data-i18n="services.tier3.feat4">Brand mark + palette + type system</li>
+              <li data-i18n="services.tier3.feat5">1-page brand usage guide</li>
+              <li data-i18n="services.tier3.feat6">Mobile-first responsive</li>
+              <li data-i18n="services.tier3.feat8">Delivered in 7–10 days</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="svc-ledger__row reveal" style="transition-delay: 300ms">
+          <div class="svc-ledger__lead">
+            <div class="svc-ledger__eyebrow" data-i18n="services.tier4.label">/ 04 Enterprise</div>
+            <div class="svc-ledger__price">
+              <span class="svc-ledger__amount" data-i18n="services.tier4.amount">$10K+ USD</span>
+              <span class="svc-ledger__unit" data-i18n="services.tier4.unit">project</span>
+            </div>
+            <p class="svc-ledger__tag" data-i18n="services.tier4.tag">Web apps, SaaS &amp; complex platforms.</p>
+            <a href="contact.html" class="svc-ledger__cta" data-i18n="services.tier4.cta">Scope Project →</a>
+          </div>
+          <div class="svc-ledger__detail">
+            <span class="svc-ledger__spec" data-i18n="services.tier4.rounds">5 revision rounds</span>
+            <ul class="svc-ledger__features">
+              <li data-i18n="services.tier4.feat1">Everything in Custom Build, plus:</li>
+              <li data-i18n="services.tier4.feat2">Full-stack app development</li>
+              <li data-i18n="services.tier4.feat3">Headless architecture</li>
+              <li data-i18n="services.tier4.feat4">User auth &amp; dashboards</li>
+              <li data-i18n="services.tier4.feat5">Payment processing (Stripe)</li>
+              <li data-i18n="services.tier4.feat6">Database design &amp; API development</li>
+              <li data-i18n="services.tier4.feat8">Custom timeline scoped to project</li>
+            </ul>
+          </div>
+        </li>
+
+      </ol>
 
       <p class="svc-tiers__disclaimer" data-i18n="services.tiers.disclaimer">
         // Every project is scoped and quoted individually.

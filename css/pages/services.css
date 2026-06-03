@@ -270,6 +270,156 @@
   }
 }
 
+/* ============================================================
+   SVC-LEDGER — editorial pricing ledger (Builds section)
+   Replaces the 4-up pricing tower with full-width hairline rows.
+   Differentiation by treatment (tint + orange price), not raised cards.
+   ============================================================ */
+.svc-ledger {
+  max-width: 1280px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid var(--border-dark);
+}
+.svc-ledger__row {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) 1.6fr;
+  gap: 56px;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--border-dark);
+}
+.svc-ledger__row.is-featured {
+  background: linear-gradient(180deg, rgba(232, 84, 10, 0.07), rgba(232, 84, 10, 0.02));
+  margin: 0 -32px;
+  padding: 44px 32px;
+}
+.svc-ledger__badge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #151515;
+  background: var(--orange);
+  padding: 4px 10px;
+  border-radius: 2px;
+  margin-bottom: 14px;
+}
+.svc-ledger__eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-on-dark-secondary);
+  margin-bottom: 16px;
+}
+.svc-ledger__price {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.svc-ledger__amount {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 66px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
+  color: white;
+}
+.svc-ledger__row.is-featured .svc-ledger__amount { color: var(--orange-hover); }
+.svc-ledger__unit {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-on-dark-secondary);
+}
+.svc-ledger__tag {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.62);
+  margin: 18px 0 22px;
+  max-width: 34ch;
+}
+.svc-ledger__cta {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 3px;
+  transition: color 320ms cubic-bezier(0.32, 0.72, 0, 1),
+              border-color 320ms cubic-bezier(0.32, 0.72, 0, 1),
+              transform 200ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.svc-ledger__cta:hover,
+.svc-ledger__cta:focus-visible {
+  color: var(--orange-hover);
+  border-color: var(--orange-hover);
+  outline: none;
+}
+.svc-ledger__cta:active { transform: translateY(1px); }
+.svc-ledger__cta { -webkit-tap-highlight-color: transparent; }
+.svc-ledger__detail { padding-top: 2px; }
+.svc-ledger__spec {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange-hover);
+  border: 1px solid rgba(232, 84, 10, 0.35);
+  border-radius: 2px;
+  padding: 5px 11px;
+  margin-bottom: 20px;
+}
+.svc-ledger__features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2;
+  column-gap: 44px;
+}
+.svc-ledger__features li {
+  font-family: var(--font-ui);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.82);
+  padding: 9px 0 9px 20px;
+  position: relative;
+  break-inside: avoid;
+  border-top: 1px solid var(--border-dark);
+}
+.svc-ledger__features li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15px;
+  width: 5px;
+  height: 5px;
+  background: var(--orange);
+}
+@media (prefers-reduced-motion: reduce) {
+  .svc-ledger__cta { transition: none; }
+}
+@media (max-width: 900px) {
+  .svc-ledger__row { grid-template-columns: 1fr; gap: 26px; padding: 36px 0; }
+  .svc-ledger__row.is-featured { margin: 0 -20px; padding: 36px 20px; }
+  .svc-ledger__features { columns: 1; }
+}
+
 .svc-tier-grid {
   max-width: 1280px;
   margin: 0 auto;

@@ -656,6 +656,35 @@
 :root:not(.dark) .svc-tiers__disclaimer,
 :root:not(.dark) .svc-design__disclaimer { color: var(--text-on-light-muted); }
 
+/* svc-ledger (Builds pricing ledger) — light-mode flip on cream */
+:root:not(.dark) .svc-ledger { border-top-color: var(--border-light); }
+:root:not(.dark) .svc-ledger__row { border-bottom-color: var(--border-light); }
+:root:not(.dark) .svc-ledger__row.is-featured {
+  background: linear-gradient(180deg, rgba(232, 84, 10, 0.11), rgba(232, 84, 10, 0.03));
+}
+:root:not(.dark) .svc-ledger__eyebrow { color: var(--text-on-light-secondary); }
+:root:not(.dark) .svc-ledger__amount { color: var(--text-on-light-primary); }
+:root:not(.dark) .svc-ledger__row.is-featured .svc-ledger__amount { color: var(--orange-on-light); }
+:root:not(.dark) .svc-ledger__unit { color: var(--text-on-light-muted); }
+:root:not(.dark) .svc-ledger__tag { color: var(--text-on-light-secondary); }
+:root:not(.dark) .svc-ledger__cta {
+  color: var(--text-on-light-primary);
+  border-bottom-color: rgba(0, 0, 0, 0.25);
+}
+:root:not(.dark) .svc-ledger__cta:hover,
+:root:not(.dark) .svc-ledger__cta:focus-visible {
+  color: var(--orange-on-light);
+  border-bottom-color: var(--orange-on-light);
+}
+:root:not(.dark) .svc-ledger__spec {
+  color: var(--orange-on-light);
+  border-color: rgba(184, 63, 0, 0.4);
+}
+:root:not(.dark) .svc-ledger__features li {
+  color: rgba(0, 0, 0, 0.66);
+  border-top-color: var(--border-light);
+}
+
 /* ============================================================
    WORK — light-mode overrides (work-grid-section + cards).
    .case-feature and .work-cta stay dark.
