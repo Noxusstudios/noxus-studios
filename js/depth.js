@@ -47,4 +47,24 @@
     btn.addEventListener('pointermove', move, { passive: true });
     btn.addEventListener('pointerleave', reset, { passive: true });
   });
+
+  /* ---- 3. Parallax-tilt on the add-on tiles ----------------------- */
+  const tiles = document.querySelectorAll('.svc-addon-step');
+  tiles.forEach((tile) => {
+    const restY = tile.classList.contains('is-featured') ? -10 : 0;
+    let raf = 0;
+    const move = (e) => {
+      const r = tile.getBoundingClientRect();
+      const rx = -((e.clientY - r.top) / r.height - 0.5) * 9;  // tilt up/down
+      const ry = ((e.clientX - r.left) / r.width - 0.5) * 11;  // tilt left/right
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        tile.style.transform =
+          `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(${restY - 6}px)`;
+      });
+    };
+    const reset = () => { cancelAnimationFrame(raf); tile.style.transform = ''; };
+    tile.addEventListener('pointermove', move, { passive: true });
+    tile.addEventListener('pointerleave', reset, { passive: true });
+  });
 })();
