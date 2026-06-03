@@ -348,6 +348,7 @@
 .contact-form__select:focus {
   outline: none;
   border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(232, 84, 10, 0.13);
 }
 .contact-form__textarea {
   resize: vertical;
