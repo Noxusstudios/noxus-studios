@@ -305,11 +305,79 @@
    ============================================================ */
 
 .svc-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   background: var(--black);
   color: white;
-  padding: 100px 40px;
+  padding: clamp(80px, 11vw, 130px) 40px;
   text-align: center;
 }
+/* atmosphere: a low orange spotlight glow so the closing band reads as a
+   lit stage, not a flat colour field */
+.svc-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(62% 80% at 50% 116%, rgba(232, 84, 10, 0.22), transparent 60%),
+    radial-gradient(40% 50% at 50% -10%, rgba(232, 84, 10, 0.08), transparent 60%);
+}
+/* grain overlay (fixed band, never scrolls internally) */
+.svc-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 220px 220px;
+}
+.svc-cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* live availability pill */
+.svc-cta__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: clamp(22px, 3vw, 32px);
+  padding: 8px 16px 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+}
+.svc-cta__status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #34D17F 0%, #1AB967 70%);
+  box-shadow: 0 0 0 0 rgba(26, 185, 103, 0.5);
+  animation: svcCtaPulse 2.6s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+}
+@keyframes svcCtaPulse {
+  0%   { box-shadow: 0 0 0 0  rgba(26, 185, 103, 0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(26, 185, 103, 0); }
+  100% { box-shadow: 0 0 0 0  rgba(26, 185, 103, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .svc-cta__status-dot { animation: none !important; }
+}
+
 .svc-cta__title {
   font-family: var(--font-display);
   font-size: clamp(56px, 9vw, 120px);
@@ -342,23 +410,58 @@
 .svc-cta__row {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 22px;
   flex-wrap: wrap;
   justify-content: center;
 }
 .svc-cta__price {
-  font-family: var(--font-display);
-  font-size: 32px;
-  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  text-align: left;
 }
 .svc-cta__price small {
-  display: block;
   font-family: var(--font-body);
   font-size: 9px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text-on-dark-muted);
-  margin-bottom: 2px;
+}
+.svc-cta__price-num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: white;
+}
+.svc-cta__divider {
+  width: 1px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.16);
+}
+/* button keeps .btn-primary depth; add the trailing-arrow chip + sizing */
+.svc-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 17px 20px 17px 32px;
+  font-size: 12px;
+}
+.svc-cta__btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.22) inset;
+  transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1), background 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.svc-cta__btn:hover .svc-cta__btn-arrow {
+  transform: translateX(3px);
+  background: rgba(255, 255, 255, 0.28);
 }
 
 /* ============================================================
@@ -380,6 +483,10 @@
   .services-hero__cta-secondary { min-height: 44px; }
 
   .svc-cta { padding: 64px 24px; }
+  .svc-cta__row { flex-direction: column; gap: 18px; }
+  .svc-cta__price { align-items: center; text-align: center; }
+  .svc-cta__divider { display: none; }
+  .svc-cta__btn { width: 100%; max-width: 360px; justify-content: space-between; min-height: 52px; box-sizing: border-box; }
 
   /* Mobile touch targets — global rule: 44px minimum.
      The svc-tier CTA was 43px tall (1px under) and the svc-design CTA was

@@ -935,17 +935,32 @@
 
     <!-- ====================== CTA ====================== -->
     <section class="svc-cta" data-theme="dark" id="cta">
-      <h2 class="svc-cta__title" data-i18n="services.cta.title" data-i18n-html>
-        Reserve.<em>your build</em>
-      </h2>
-      <p class="svc-cta__sub" data-i18n="services.cta.sub">
-        Booking open · 4-7 day turnaround · Replies within 24h
-      </p>
-      <div class="svc-cta__row">
-        <div class="svc-cta__price">
-          $500 USD <small data-i18n="services.cta.priceLbl">Starter from</small>
+      <div class="svc-cta__inner">
+        <span class="svc-cta__status reveal" style="transition-delay: 0ms">
+          <span class="svc-cta__status-dot" aria-hidden="true"></span>
+          <span data-i18n="services.cta.status">Booking open</span>
+        </span>
+        <h2 class="svc-cta__title reveal reveal--scale" style="transition-delay: 90ms" data-i18n="services.cta.title" data-i18n-html>
+          Reserve.<em>your build</em>
+        </h2>
+        <p class="svc-cta__sub reveal" style="transition-delay: 200ms" data-i18n="services.cta.sub">
+          4-7 day turnaround · Replies within 24h
+        </p>
+        <div class="svc-cta__row reveal" style="transition-delay: 300ms">
+          <div class="svc-cta__price">
+            <small data-i18n="services.cta.priceLbl">Starter from</small>
+            <span class="svc-cta__price-num">$500 USD</span>
+          </div>
+          <span class="svc-cta__divider" aria-hidden="true"></span>
+          <a href="contact.html" class="btn-primary svc-cta__btn">
+            <span data-i18n="services.cta.btn">Book Discovery Call</span>
+            <span class="svc-cta__btn-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/>
+              </svg>
+            </span>
+          </a>
         </div>
-        <a href="contact.html" class="btn-primary" style="padding: 18px 36px; font-size: 12px;" data-i18n="services.cta.btn">Book Discovery Call</a>
       </div>
     </section>
   </main>

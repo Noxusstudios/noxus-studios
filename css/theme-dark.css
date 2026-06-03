@@ -878,8 +878,15 @@
 }
 :root:not(.dark) .svc-cta__title { color: var(--text-on-light-primary); }
 :root:not(.dark) .svc-cta__sub { color: var(--text-on-light-secondary); }
-:root:not(.dark) .svc-cta__price { color: var(--text-on-light-primary); }
+:root:not(.dark) .svc-cta__price-num { color: var(--text-on-light-primary); }
 :root:not(.dark) .svc-cta__price small { color: var(--text-on-light-secondary); }
+:root:not(.dark) .svc-cta::after { mix-blend-mode: multiply; opacity: 0.06; }
+:root:not(.dark) .svc-cta__status {
+  border-color: rgba(20, 12, 6, 0.14);
+  background: rgba(20, 12, 6, 0.03);
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .svc-cta__divider { background: rgba(20, 12, 6, 0.16); }
 
 /* work .case-feature (Clinique 8260 showcase) — flip background.
    The interior browser mockup stays dark — illustrative content. */

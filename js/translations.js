@@ -365,7 +365,8 @@ window.NOXUS_I18N = {
     'services.tech.cat.tools':      'Dev Tools',
 
     'services.cta.title': 'Reserve.<em>your build</em>',
-    'services.cta.sub':   'Booking open · 4-7 day turnaround · Replies within 24h',
+    'services.cta.status': 'Booking open',
+    'services.cta.sub':   '4-7 day turnaround · Replies within 24h',
     'services.cta.priceLbl': 'Starter from',
     'services.cta.btn':   'Book Discovery Call',
 
@@ -1163,7 +1164,8 @@ window.NOXUS_I18N = {
     'services.tech.cat.tools':      'Outils dev',
 
     'services.cta.title': 'Réservez.<em>votre site</em>',
-    'services.cta.sub':   'Réservation ouverte · Délai 4-7 jours · Réponse sous 24h',
+    'services.cta.status': 'Réservation ouverte',
+    'services.cta.sub':   'Délai 4-7 jours · Réponse sous 24 h',
     'services.cta.priceLbl': 'Starter à partir de',
     'services.cta.btn':   'Réserver l\'Appel',
 
