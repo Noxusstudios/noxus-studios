@@ -115,9 +115,19 @@
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   };
 
-  let raf = 0, running = false;
-  const loop = (ts) => { render(ts); raf = requestAnimationFrame(loop); };
-  const start = () => { if (!running) { running = true; raf = requestAnimationFrame(loop); } };
+  // Drive u_time off an accumulated clock that only advances while the
+  // loop is running. Using the raw rAF timestamp would make the pattern
+  // jump every time the hero pauses offscreen and resumes on scroll-up,
+  // because the timestamp leaps forward by the whole paused duration.
+  let raf = 0, running = false, last = 0, clock = 0;
+  const loop = (ts) => {
+    if (!last) last = ts;        // first frame after (re)start: no delta
+    clock += ts - last;
+    last = ts;
+    render(clock);
+    raf = requestAnimationFrame(loop);
+  };
+  const start = () => { if (!running) { running = true; last = 0; raf = requestAnimationFrame(loop); } };
   const stop = () => { running = false; cancelAnimationFrame(raf); };
 
   window.addEventListener('pointermove', (e) => {

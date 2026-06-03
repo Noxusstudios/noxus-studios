@@ -23,6 +23,14 @@
    1  .hero-depth   — pseudo-3D particle field (js/hero-depth.js)
    2  .hero-paths   — SMIL etched lines
    3  __inner       — content */
+/* Dissolve every hero layer toward the bottom so the field melts into the
+   section boundary instead of crowding it with a hard, busy seam. */
+.hero-shader,
+.hero-depth,
+.services-hero .hero-paths {
+  -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 99%);
+          mask-image: linear-gradient(to bottom, #000 72%, transparent 99%);
+}
 .hero-shader {
   position: absolute;
   inset: 0;
