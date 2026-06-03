@@ -120,6 +120,8 @@
 :root.dark .about-hero__meta-lbl,
 :root.dark .contact-hero__meta-lbl { color: rgba(232, 220, 203, 0.62); }
 
+:root.dark .services-hero__meta-cell { border-top-color: rgba(255, 255, 255, 0.14); }
+
 /* work-hero revamp — eyebrow/status/work-index on dark */
 :root.dark .work-hero__status { color: rgba(232, 220, 203, 0.60); }
 :root.dark .work-hero__index { border-top-color: rgba(232, 220, 203, 0.18); }
