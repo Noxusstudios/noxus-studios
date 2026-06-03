@@ -145,6 +145,8 @@
 :root.dark .work-hero__index-name { color: #E8DCCB; }
 :root.dark .work-hero__index-tag,
 :root.dark .work-hero__index-item.is-open .work-hero__index-name { color: rgba(232, 220, 203, 0.60); }
+:root.dark .work-hero__index-item:hover .work-hero__index-name,
+:root.dark .work-hero__index-item.is-open:hover .work-hero__index-name { color: #E8DCCB; }
 
 /* The // decoration stays orange; no override needed unless its
    default uses a hardcoded dark color. Same for any side-info

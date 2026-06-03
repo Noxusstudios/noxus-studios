@@ -85,19 +85,55 @@
   padding: 0;
   border-top: 1px solid rgba(17, 17, 17, 0.18);
 }
+/* Interactive index rows — dimensional surface on hover, cursor-follow
+   spotlight, a trailing arrow that slides in, the open slot reading as a
+   claimable slot. Links: 01 -> the case below, 02 -> contact. */
 .work-hero__index-item {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: baseline;
-  gap: 16px;
-  padding: 17px 10px;
-  margin: 0 -10px;
+  grid-template-columns: auto 1fr auto 30px;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 14px;
+  margin: 0 -14px;
+  border-radius: 12px;
+  text-decoration: none;
   border-bottom: 1px solid var(--border-light);
-  border-radius: 8px;
-  transition: background-color 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+  transition:
+    transform 0.42s cubic-bezier(0.32, 0.72, 0, 1),
+    background 0.42s cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 0.42s cubic-bezier(0.32, 0.72, 0, 1);
 }
-.work-hero__index-item:hover { background-color: rgba(232, 84, 10, 0.05); }
-/* open slot gets a live pulsing dot on its tag */
+.work-hero__index-item > * { position: relative; z-index: 1; }
+/* cursor-follow spotlight (fed by hover-spotlight.js) */
+.work-hero__index-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(232, 84, 10, 0.14), transparent 60%);
+  transition: opacity 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.work-hero__index-item:hover {
+  transform: translateX(6px);
+  background: linear-gradient(120deg, rgba(232, 84, 10, 0.07) 0%, rgba(255, 255, 255, 0.025) 70%);
+  box-shadow: 0 16px 32px -24px rgba(20, 12, 6, 0.55);
+}
+.work-hero__index-item:hover::after { opacity: 1; }
+.work-hero__index-item:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+/* open slot carries a faint always-on tint + pulsing live dot */
+.work-hero__index-item.is-open {
+  background: linear-gradient(120deg, rgba(232, 84, 10, 0.05) 0%, transparent 72%);
+}
 .work-hero__index-item.is-open .work-hero__index-tag::before {
   content: "";
   display: inline-block;
@@ -114,19 +150,24 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .work-hero__index-item.is-open .work-hero__index-tag::before { animation: none; }
+  .work-hero__index-item:hover { transform: none; }
 }
+
 .work-hero__index-num {
   font-family: var(--font-display);
   font-size: 21px;
   color: var(--orange);
   line-height: 1;
+  transition: transform 0.42s cubic-bezier(0.32, 0.72, 0, 1);
 }
+.work-hero__index-item:hover .work-hero__index-num { transform: scale(1.08); }
 .work-hero__index-name {
   font-family: var(--font-ui);
   font-size: clamp(16px, 1.6vw, 20px);
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--black);
+  transition: color 0.42s cubic-bezier(0.32, 0.72, 0, 1);
 }
 .work-hero__index-tag {
   font-family: var(--font-body);
@@ -138,6 +179,32 @@
 }
 .work-hero__index-item.is-open .work-hero__index-name {
   color: var(--text-on-light-secondary);
+}
+.work-hero__index-item:hover .work-hero__index-name,
+.work-hero__index-item.is-open:hover .work-hero__index-name {
+  color: var(--text-on-light-primary);
+}
+/* trailing arrow chip — hidden at rest, slides in on hover */
+.work-hero__index-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: var(--orange);
+  border: 1px solid rgba(232, 84, 10, 0.32);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    opacity 0.42s cubic-bezier(0.32, 0.72, 0, 1),
+    transform 0.42s cubic-bezier(0.32, 0.72, 0, 1),
+    background 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.work-hero__index-item:hover .work-hero__index-arrow {
+  opacity: 1;
+  transform: translateX(0);
+  background: rgba(232, 84, 10, 0.1);
 }
 @media (max-width: 880px) {
   .work-hero__inner { grid-template-columns: 1fr; gap: 40px; align-items: start; }

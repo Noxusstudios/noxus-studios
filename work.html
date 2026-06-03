@@ -141,15 +141,25 @@
           </div>
         </div>
         <ol class="work-hero__index">
-          <li class="work-hero__index-item">
-            <span class="work-hero__index-num">01</span>
-            <span class="work-hero__index-name" data-i18n="work.hero.idx1.name">Clinique 8260</span>
-            <span class="work-hero__index-tag" data-i18n="work.hero.idx1.tag">Healthcare · Concept</span>
+          <li>
+            <a class="work-hero__index-item" href="#case-study" data-spotlight>
+              <span class="work-hero__index-num">01</span>
+              <span class="work-hero__index-name" data-i18n="work.hero.idx1.name">Clinique 8260</span>
+              <span class="work-hero__index-tag" data-i18n="work.hero.idx1.tag">Healthcare · Concept</span>
+              <span class="work-hero__index-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+              </span>
+            </a>
           </li>
-          <li class="work-hero__index-item is-open">
-            <span class="work-hero__index-num">02</span>
-            <span class="work-hero__index-name" data-i18n="work.hero.idx2.name">Your project</span>
-            <span class="work-hero__index-tag" data-i18n="work.hero.idx2.tag">Open · Now booking</span>
+          <li>
+            <a class="work-hero__index-item is-open" href="contact.html" data-spotlight>
+              <span class="work-hero__index-num">02</span>
+              <span class="work-hero__index-name" data-i18n="work.hero.idx2.name">Your project</span>
+              <span class="work-hero__index-tag" data-i18n="work.hero.idx2.tag">Open · Now booking</span>
+              <span class="work-hero__index-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+              </span>
+            </a>
           </li>
         </ol>
       </div>
@@ -474,6 +484,7 @@
   <script src="js/hero-paths.js" defer></script>
   <script src="js/theme-toggle.js" defer></script>
   <script src="js/chat-widget.js" defer></script>
+  <script src="js/hover-spotlight.js" defer></script>
   <script src="js/title-reveal.js" defer></script>
   <script>
     // Proof embed: click-to-interact activation. Keeps the iframe inert
