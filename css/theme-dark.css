@@ -630,6 +630,20 @@
 :root:not(.dark) .svc-retainers__heading,
 :root:not(.dark) .svc-design__heading { color: var(--text-on-light-primary); }
 
+/* svc-catalog (Design services index) — light-mode flip on cream */
+:root:not(.dark) .svc-catalog { border-top-color: var(--border-light); }
+:root:not(.dark) .svc-catalog__row { border-bottom-color: var(--border-light); }
+:root:not(.dark) .svc-catalog__row:hover,
+:root:not(.dark) .svc-catalog__row:focus-visible { background: rgba(0, 0, 0, 0.02); }
+:root:not(.dark) .svc-catalog__num { color: var(--orange-on-light); }
+:root:not(.dark) .svc-catalog__name { color: var(--text-on-light-primary); }
+:root:not(.dark) .svc-catalog__row:hover .svc-catalog__name,
+:root:not(.dark) .svc-catalog__row:focus-visible .svc-catalog__name { color: var(--orange-on-light); }
+:root:not(.dark) .svc-catalog__desc { color: var(--text-on-light-secondary); }
+:root:not(.dark) .svc-catalog__go { color: rgba(0, 0, 0, 0.4); }
+:root:not(.dark) .svc-catalog__row:hover .svc-catalog__go,
+:root:not(.dark) .svc-catalog__row:focus-visible .svc-catalog__go { color: var(--orange-on-light); }
+
 :root:not(.dark) .svc-tier {
   background: #F5EDE6;
   border-color: var(--border-light);
