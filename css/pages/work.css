@@ -90,8 +90,30 @@
   grid-template-columns: auto 1fr auto;
   align-items: baseline;
   gap: 16px;
-  padding: 17px 2px;
+  padding: 17px 10px;
+  margin: 0 -10px;
   border-bottom: 1px solid var(--border-light);
+  border-radius: 8px;
+  transition: background-color 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.work-hero__index-item:hover { background-color: rgba(232, 84, 10, 0.05); }
+/* open slot gets a live pulsing dot on its tag */
+.work-hero__index-item.is-open .work-hero__index-tag::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  background: var(--orange);
+  box-shadow: 0 0 0 0 rgba(232, 84, 10, 0.5);
+  animation: heroPulse 2.6s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-hero__index-item.is-open .work-hero__index-tag::before { animation: none; }
 }
 .work-hero__index-num {
   font-family: var(--font-display);

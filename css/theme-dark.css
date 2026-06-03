@@ -5,6 +5,12 @@
    (stats, bento, footer) stay as designed.
    ============================================================ */
 
+/* Shared hero stat kit — dark theming ------------------------ */
+:root.dark .hero-stats { --stat-halo: rgba(18, 12, 7, 0.97); }
+:root.dark .hero-stat__dot { --stat-ring: #16110B; }
+:root.dark .hero-stat__num { color: #E8DCCB; }
+:root.dark .hero-stat__lbl { color: rgba(232, 220, 203, 0.62); }
+
 /* Page-level surfaces ---------------------------------------- */
 
 :root.dark body {

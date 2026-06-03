@@ -45,48 +45,28 @@
   font-size: clamp(13px, 1.5vw, 17px);
   color: var(--text-on-light-secondary);
 }
+.about-hero__lede-block { margin-top: 28px; }
 .about-hero__double-slash {
   font-family: var(--font-body);
-  font-size: 11px;
-  color: var(--text-on-light-secondary);
-  margin-top: 28px;
-  margin-bottom: 6px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--orange-on-light);
+  margin-bottom: 8px;
 }
+/* Promoted from 11px fine-print to a readable lede */
 .about-hero__desc {
   font-family: var(--font-body);
-  font-size: 11px;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
+  font-size: clamp(15px, 1.5vw, 18px);
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--text-on-light-primary);
-  line-height: 1.7;
-  max-width: 36ch;
+  line-height: 1.5;
+  max-width: 42ch;
   margin: 0;
 }
 .about-hero__meta {
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
   align-self: end;
-}
-.about-hero__meta-row {
-  display: flex; gap: 28px;
-  justify-content: flex-end;
-}
-.about-hero__meta-cell { text-align: right; }
-.about-hero__meta-num {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 3vw, 36px);
-  color: var(--black);
-  line-height: 1;
-}
-.about-hero__meta-lbl {
-  font-family: var(--font-body);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--text-on-light-secondary);
-  margin-top: 4px;
+  min-width: 248px;
 }
 
 /* ============================================================
@@ -560,10 +540,7 @@
 @media (max-width: 768px) {
   .about-hero { padding: 140px 24px 60px; min-height: auto; }
   .about-hero__inner { grid-template-columns: 1fr; gap: 28px; }
-  .about-hero__meta { text-align: left; }
-  .about-hero__meta-row { justify-content: flex-start; gap: 20px; }
-  .about-hero__meta-cell { text-align: left; }
-  .about-hero__meta-num { font-size: clamp(22px, 6vw, 28px); }
+  .about-hero__meta { align-self: stretch; min-width: 0; }
   .founder { padding: 56px 20px; }
 
   /* Founder visual — shrink dramatically on mobile (was 480px tall, way too much) */

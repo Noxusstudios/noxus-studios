@@ -70,7 +70,10 @@
 /* ---- Item (native <details>) ---- */
 .faq-item {
   border-bottom: 1px solid var(--border-light);
+  border-radius: 8px;
+  transition: background-color 0.32s cubic-bezier(0.32, 0.72, 0, 1);
 }
+.faq-item:hover { background-color: rgba(232, 84, 10, 0.035); }
 .faq-item[open] {
   background: rgba(232, 84, 10, 0.02);
 }

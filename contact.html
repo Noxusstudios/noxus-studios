@@ -129,31 +129,36 @@
       <div class="contact-hero__inner">
         <div>
           <h1 class="contact-hero__title" data-i18n="contact.hero.title">CONTACT.</h1>
-          <div class="contact-hero__sub">
+          <div class="contact-hero__sub reveal" style="transition-delay: 280ms">
             <span class="contact-hero__rule"></span>
             <span class="contact-hero__sub-text" data-i18n="contact.hero.subtitle">Discovery call, email, or DM. Pick one.</span>
           </div>
-          <div class="contact-hero__double-slash">//</div>
-          <p class="contact-hero__desc" data-i18n="contact.hero.desc" data-i18n-html>
-            One operator. One inbox.<br>
-            Replies within 24 hours, usually faster.
-          </p>
-        </div>
-        <div class="contact-hero__meta">
-          <div class="contact-hero__meta-row">
-            <div class="contact-hero__meta-cell">
-              <div class="contact-hero__meta-num" data-i18n="contact.hero.meta.replyNum">24h</div>
-              <div class="contact-hero__meta-lbl" data-i18n="contact.hero.meta.replyLbl">Reply window</div>
-            </div>
-            <div class="contact-hero__meta-cell">
-              <div class="contact-hero__meta-num" data-i18n="contact.hero.meta.callNum">15m</div>
-              <div class="contact-hero__meta-lbl" data-i18n="contact.hero.meta.callLbl">Discovery call</div>
-            </div>
-            <div class="contact-hero__meta-cell">
-              <div class="contact-hero__meta-num" data-i18n="contact.hero.meta.langNum">MTL</div>
-              <div class="contact-hero__meta-lbl" data-i18n="contact.hero.meta.langLbl">Based in</div>
-            </div>
+          <div class="contact-hero__lede-block reveal" style="transition-delay: 400ms">
+            <div class="contact-hero__double-slash">//</div>
+            <p class="contact-hero__desc" data-i18n="contact.hero.desc" data-i18n-html>
+              One operator. One inbox.<br>
+              Replies within 24 hours, usually faster.
+            </p>
           </div>
+        </div>
+        <div class="contact-hero__meta reveal" style="transition-delay: 380ms">
+          <ul class="hero-stats">
+            <li class="hero-stat">
+              <span class="hero-stat__dot" aria-hidden="true"></span>
+              <span class="hero-stat__num" data-i18n="contact.hero.meta.replyNum">24h</span>
+              <span class="hero-stat__lbl" data-i18n="contact.hero.meta.replyLbl">Reply window</span>
+            </li>
+            <li class="hero-stat">
+              <span class="hero-stat__dot" aria-hidden="true"></span>
+              <span class="hero-stat__num" data-i18n="contact.hero.meta.callNum">15m</span>
+              <span class="hero-stat__lbl" data-i18n="contact.hero.meta.callLbl">Discovery call</span>
+            </li>
+            <li class="hero-stat">
+              <span class="hero-stat__dot" aria-hidden="true"></span>
+              <span class="hero-stat__num" data-i18n="contact.hero.meta.langNum">MTL</span>
+              <span class="hero-stat__lbl" data-i18n="contact.hero.meta.langLbl">Based in</span>
+            </li>
+          </ul>
         </div>
       </div>
       <a href="#form" class="btn-bar hero-cta-bar" data-i18n="common.reserveBuild">Reserve Your Build</a>
