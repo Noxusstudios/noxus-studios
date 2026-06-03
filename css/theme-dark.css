@@ -682,6 +682,7 @@
 }
 :root:not(.dark) .svc-ledger__eyebrow { color: var(--text-on-light-secondary); }
 :root:not(.dark) .svc-ledger__amount { color: var(--text-on-light-primary); }
+:root:not(.dark) .svc-ledger__row:not(.is-featured):hover .svc-ledger__amount { color: var(--orange-on-light); }
 :root:not(.dark) .svc-ledger__row.is-featured .svc-ledger__amount { color: var(--orange-on-light); }
 :root:not(.dark) .svc-ledger__unit { color: var(--text-on-light-muted); }
 :root:not(.dark) .svc-ledger__tag { color: var(--text-on-light-secondary); }
