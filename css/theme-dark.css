@@ -687,12 +687,32 @@
 :root:not(.dark) .svc-ledger__tag { color: var(--text-on-light-secondary); }
 :root:not(.dark) .svc-ledger__cta {
   color: var(--text-on-light-primary);
-  border-bottom-color: rgba(0, 0, 0, 0.25);
+  border-color: rgba(0, 0, 0, 0.22);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.45));
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 10px 22px -12px rgba(0, 0, 0, 0.38);
 }
 :root:not(.dark) .svc-ledger__cta:hover,
 :root:not(.dark) .svc-ledger__cta:focus-visible {
   color: var(--orange-on-light);
-  border-bottom-color: var(--orange-on-light);
+  border-color: rgba(232, 84, 10, 0.55);
+  background: rgba(232, 84, 10, 0.07);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 14px 28px -12px rgba(232, 84, 10, 0.35);
+}
+/* Featured stays a filled orange button in light mode too (white label). */
+:root:not(.dark) .svc-ledger__row.is-featured .svc-ledger__cta {
+  color: #fff;
+  border-color: rgba(255, 120, 60, 0.55);
+  background: linear-gradient(180deg, #FF6520 0%, var(--orange) 50%, #D24A09 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.32) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.20) inset,
+    0 2px 4px rgba(132, 38, 0, 0.20),
+    0 10px 22px -6px rgba(232, 84, 10, 0.45),
+    0 22px 44px -12px rgba(132, 38, 0, 0.35);
 }
 :root:not(.dark) .svc-ledger__spec {
   color: var(--orange-on-light);
