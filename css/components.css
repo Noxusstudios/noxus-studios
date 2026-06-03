@@ -1559,3 +1559,30 @@ footer {
   transform: translateX(3px);
   background: rgba(255, 255, 255, 0.28);
 }
+
+/* ============================================================
+   SPOTLIGHT — cursor-follow wash on rows/cards
+   ----------------------------------------------------------------
+   Add `class="spotlight"` + `data-spotlight` to any row/card. A radial
+   wash follows the pointer (fed by js/hover-spotlight.js setting
+   --mx/--my). Uses ::before so it never collides with the slot-card's
+   ::before stripe (slot-cards get their own ::after spotlight). Tune
+   per host with --spot-size / --spot-color. Reduced-motion + coarse
+   pointers simply never get --mx/--my, so the wash stays centred/off.
+   ============================================================ */
+.spotlight { position: relative; isolation: isolate; }
+.spotlight > * { position: relative; z-index: 1; }
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(var(--spot-size, 320px) circle at var(--mx, 50%) var(--my, 50%),
+    var(--spot-color, rgba(232, 84, 10, 0.12)), transparent 60%);
+  transition: opacity 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.spotlight:hover::before,
+.spotlight:focus-within::before { opacity: 1; }

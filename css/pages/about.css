@@ -307,14 +307,22 @@
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 32px;
-  padding: 40px 0;
+  padding: 40px 18px;
   border-top: 1px solid var(--border-light);
-  transition: transform 260ms cubic-bezier(0.32, 0.72, 0, 1);
+  border-radius: 16px;
+  --spot-size: 440px;
+  --spot-color: rgba(232, 84, 10, 0.09);
+  transition:
+    transform 260ms cubic-bezier(0.32, 0.72, 0, 1),
+    background 420ms cubic-bezier(0.32, 0.72, 0, 1);
   will-change: transform;
 }
 .timeline__item:first-child { padding-top: 0; border-top: none; }
 .timeline__item:last-child { padding-bottom: 0; }
-.timeline__item:hover { transform: translateX(8px); }
+.timeline__item:hover {
+  transform: translateX(8px);
+  background: linear-gradient(120deg, rgba(232, 84, 10, 0.045) 0%, transparent 66%);
+}
 
 @media (prefers-reduced-motion: reduce) {
   .timeline__item { transition: none; }

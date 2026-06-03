@@ -1573,8 +1573,15 @@
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 32px;
-  padding: 40px 0;
+  padding: 40px 18px;
   border-top: 1px solid var(--border-light);
+  border-radius: 18px;
+  --spot-size: 460px;
+  --spot-color: rgba(232, 84, 10, 0.09);
+  transition: background 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.discipline:hover {
+  background: linear-gradient(120deg, rgba(232, 84, 10, 0.045) 0%, transparent 66%);
 }
 .discipline:first-child { padding-top: 0; border-top: none; }
 .discipline:last-child { padding-bottom: 0; }

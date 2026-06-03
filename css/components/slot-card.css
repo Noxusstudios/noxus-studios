@@ -112,6 +112,23 @@
     );
 }
 /* Featured card glow */
+/* Cursor spotlight — opt-in via data-spotlight + js/hover-spotlight.js.
+   Uses ::after (the ::before is the variant-1 stripe). */
+.work-card[data-spotlight]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(var(--spot-size, 360px) circle at var(--mx, 50%) var(--my, 50%),
+    var(--spot-color, rgba(232, 84, 10, 0.14)), transparent 60%);
+  transition: opacity 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.work-card[data-spotlight]:hover::after { opacity: 1; }
+.work-card[data-spotlight] > * { position: relative; z-index: 1; }
+
 .work-card.is-featured {
   box-shadow:
     0 0 0 1px rgba(232, 84, 10, 0.0),

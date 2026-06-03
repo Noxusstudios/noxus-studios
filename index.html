@@ -421,7 +421,7 @@
       <div class="work-grid">
 
         <!-- Step 01 — Discovery (orange / start here) -->
-        <div class="work-card work-card--1 is-orange reveal reveal--scale" style="transition-delay: 0ms">
+        <div class="work-card work-card--1 is-orange reveal reveal--scale" style="transition-delay: 0ms" data-spotlight>
           <div class="work-card__head">
             <div class="work-card__eyebrow">
               <span class="work-card__status-dot" aria-hidden="true"></span>
@@ -450,7 +450,7 @@
         </div>
 
         <!-- Step 02 — Build (cream / dark surface) -->
-        <div class="work-card work-card--2 is-dark reveal reveal--scale" style="transition-delay: 80ms">
+        <div class="work-card work-card--2 is-dark reveal reveal--scale" style="transition-delay: 80ms" data-spotlight>
           <div class="work-card__head">
             <div class="work-card__eyebrow">
               <span class="work-card__status-dot" aria-hidden="true"></span>
@@ -477,7 +477,7 @@
         </div>
 
         <!-- Step 03 — Launch (muted / owned forever) -->
-        <div class="work-card work-card--3 is-muted reveal reveal--scale" style="transition-delay: 160ms">
+        <div class="work-card work-card--3 is-muted reveal reveal--scale" style="transition-delay: 160ms" data-spotlight>
           <div class="work-card__head">
             <div class="work-card__eyebrow">
               <span data-i18n="home.process.step3.label">Step 03 ·</span>
@@ -515,7 +515,7 @@
 
         <div class="disciplines__list">
 
-          <article class="discipline discipline--1 reveal reveal--rise" style="transition-delay: 0ms">
+          <article class="discipline discipline--1 spotlight reveal reveal--rise" style="transition-delay: 0ms" data-spotlight>
             <div class="discipline__marker">
               <span class="discipline__num">/ 01</span>
               <svg class="discipline__illus" viewBox="0 0 80 80" aria-hidden="true"
@@ -541,7 +541,7 @@
             </div>
           </article>
 
-          <article class="discipline discipline--2 reveal reveal--rise" style="transition-delay: 100ms">
+          <article class="discipline discipline--2 spotlight reveal reveal--rise" style="transition-delay: 100ms" data-spotlight>
             <div class="discipline__marker">
               <span class="discipline__num">/ 02</span>
               <svg class="discipline__illus" viewBox="0 0 80 80" aria-hidden="true"
@@ -565,7 +565,7 @@
             </div>
           </article>
 
-          <article class="discipline discipline--3 reveal reveal--rise" style="transition-delay: 200ms">
+          <article class="discipline discipline--3 spotlight reveal reveal--rise" style="transition-delay: 200ms" data-spotlight>
             <div class="discipline__marker">
               <span class="discipline__num">/ 03</span>
               <svg class="discipline__illus" viewBox="0 0 80 80" aria-hidden="true"
@@ -604,7 +604,7 @@
       <div class="bento-grid">
 
         <!-- Starter -->
-        <a class="bento-cell bento-cell-price reveal reveal--scale" style="transition-delay: 0ms" href="services.html#builds">
+        <a class="bento-cell bento-cell-price spotlight reveal reveal--scale" style="transition-delay: 0ms" data-spotlight href="services.html#builds">
           <div class="bento-price-eyebrow" data-i18n="home.bento.starter.label">/ 01 Starter</div>
           <div class="bento-price-amount">$500 USD</div>
           <div class="bento-price-unit" data-i18n="home.bento.starter.unit">one-time</div>
@@ -616,7 +616,7 @@
         </a>
 
         <!-- Custom Build -->
-        <a class="bento-cell bento-cell-price is-featured reveal reveal--scale" style="transition-delay: 80ms" href="services.html#builds">
+        <a class="bento-cell bento-cell-price spotlight is-featured reveal reveal--scale" style="transition-delay: 80ms" data-spotlight href="services.html#builds">
           <span class="bento-badge" data-i18n="home.bento.custom.badge">Most Popular</span>
           <div class="bento-price-eyebrow" data-i18n="home.bento.custom.label">/ 02 Custom Build</div>
           <div class="bento-price-amount">$2.5K–$7.5K USD</div>
@@ -629,7 +629,7 @@
         </a>
 
         <!-- Enterprise -->
-        <a class="bento-cell bento-cell-price reveal reveal--scale" style="transition-delay: 160ms" href="services.html#builds">
+        <a class="bento-cell bento-cell-price spotlight reveal reveal--scale" style="transition-delay: 160ms" data-spotlight href="services.html#builds">
           <div class="bento-price-eyebrow" data-i18n="home.bento.enterprise.label">/ 03 Enterprise</div>
           <div class="bento-price-amount">$10K+ USD</div>
           <div class="bento-price-unit" data-i18n="home.bento.enterprise.unit">project</div>
@@ -641,7 +641,7 @@
         </a>
 
         <!-- Retainers -->
-        <a class="bento-cell bento-cell-price reveal reveal--scale" style="transition-delay: 240ms" href="services.html#retainers">
+        <a class="bento-cell bento-cell-price spotlight reveal reveal--scale" style="transition-delay: 240ms" data-spotlight href="services.html#retainers">
           <div class="bento-price-eyebrow" data-i18n="home.bento.retainers.label">/ Retainers</div>
           <div class="bento-price-amount">$500–$3K USD</div>
           <div class="bento-price-unit" data-i18n="home.bento.retainers.unit">/mo</div>
@@ -654,7 +654,7 @@
         </a>
 
         <!-- Design Services — wide cell spanning 2 cols -->
-        <a class="bento-cell bento-cell-price bento-cell-wide reveal reveal--scale" style="transition-delay: 320ms" href="services.html#design">
+        <a class="bento-cell bento-cell-price spotlight bento-cell-wide reveal reveal--scale" style="transition-delay: 320ms" data-spotlight href="services.html#design">
           <span class="bento-wide-motif" aria-hidden="true">+</span>
           <div class="bento-wide-head">
             <div class="bento-price-eyebrow" data-i18n="home.bento.design.label">/ Design Services</div>
@@ -758,6 +758,7 @@
   <script src="js/theme-toggle.js" defer></script>
   <script src="js/chat-widget.js" defer></script>
   <script src="js/splits-rotate.js" defer></script>
+  <script src="js/hover-spotlight.js" defer></script>
   <script src="js/title-reveal.js" defer></script>
 </body>
 </html>

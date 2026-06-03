@@ -131,6 +131,22 @@
     border-color 360ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 .methods__card { -webkit-tap-highlight-color: transparent; }
+
+/* cursor spotlight (opt-in via data-spotlight + hover-spotlight.js) */
+.methods__card[data-spotlight]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(var(--spot-size, 300px) circle at var(--mx, 50%) var(--my, 50%),
+    rgba(232, 84, 10, 0.14), transparent 60%);
+  transition: opacity 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.methods__card[data-spotlight]:hover::after { opacity: 1; }
+.methods__card[data-spotlight] > * { position: relative; z-index: 1; }
 .methods__card:hover,
 .methods__card:active,
 .methods__card:focus-visible {
