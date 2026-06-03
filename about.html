@@ -362,14 +362,19 @@
     </section>
 
     <!-- ================ CTA ================ -->
-    <section class="about-cta" data-theme="dark" id="cta">
-      <h2 class="about-cta__title" data-i18n="about.cta.title" data-i18n-html>
+    <section class="about-cta cta-band" data-theme="dark" id="cta">
+      <h2 class="about-cta__title reveal" data-i18n="about.cta.title" data-i18n-html>
         Let's.<em>build it</em>
       </h2>
-      <p class="about-cta__sub" data-i18n="about.cta.sub">
+      <p class="about-cta__sub reveal" style="transition-delay: 120ms" data-i18n="about.cta.sub">
         Discovery call · 15 minutes · No pitch deck
       </p>
-      <a href="contact.html" class="btn-primary" style="padding: 18px 36px; font-size: 12px;" data-i18n="about.cta.btn">Get In Touch</a>
+      <a href="contact.html" class="btn-primary cta-band__btn reveal" style="transition-delay: 240ms">
+        <span data-i18n="about.cta.btn">Get In Touch</span>
+        <span class="cta-band__arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+        </span>
+      </a>
     </section>
   </main>
 

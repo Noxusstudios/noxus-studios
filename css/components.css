@@ -1502,3 +1502,60 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .hero-stat__dot { animation: none !important; }
 }
+
+/* ============================================================
+   CLOSING CTA BAND — shared lit-stage atmosphere
+   ----------------------------------------------------------------
+   Add `.cta-band` to a closing CTA <section> (rolled out from the
+   Services final CTA): a low orange spotlight glow + grain so the
+   band reads as a lit stage, not a flat colour field. Pair the
+   button with `.cta-band__btn` + a `.cta-band__arrow` chip to match
+   the hero CTA.
+   ============================================================ */
+.cta-band { position: relative; isolation: isolate; overflow: hidden; }
+.cta-band > * { position: relative; z-index: 1; }
+.cta-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(62% 80% at 50% 116%, rgba(232, 84, 10, 0.20), transparent 60%),
+    radial-gradient(40% 50% at 50% -12%, rgba(232, 84, 10, 0.07), transparent 60%);
+}
+.cta-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 220px 220px;
+}
+:root:not(.dark) .cta-band::after { mix-blend-mode: multiply; opacity: 0.06; }
+
+.cta-band__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 17px 20px 17px 32px;
+  font-size: 12px;
+}
+.cta-band__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.22) inset;
+  transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1), background 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.cta-band__btn:hover .cta-band__arrow {
+  transform: translateX(3px);
+  background: rgba(255, 255, 255, 0.28);
+}
