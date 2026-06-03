@@ -127,6 +127,7 @@
 
     <!-- ====================== HERO ====================== -->
     <section class="services-hero has-grain" data-theme="light" style="--grain-opacity: 0.085;">
+      <canvas class="hero-depth" aria-hidden="true"></canvas>
       <div class="hero-paths" aria-hidden="true"></div>
       <div class="services-hero__inner">
         <div>
@@ -163,7 +164,7 @@
     </section>
 
     <!-- ====================== ONE-TIME BUILDS ====================== -->
-    <section class="svc-tiers" data-theme="dark" id="builds">
+    <section class="svc-tiers has-grain" data-theme="dark" id="builds" style="--grain-opacity: 0.05;">
       <div class="svc-tiers__top">
         <div>
           <div class="svc-tiers__eyebrow" data-i18n="services.tiers.eyebrow" data-i18n-html>One-time<br>builds</div>
@@ -337,7 +338,7 @@
     </section>
 
     <!-- ====================== DESIGN SERVICES ====================== -->
-    <section class="svc-design" data-theme="dark" id="design">
+    <section class="svc-design has-grain" data-theme="dark" id="design" style="--grain-opacity: 0.05;">
       <div class="svc-design__top">
         <div>
           <div class="svc-design__eyebrow" data-i18n="services.design.eyebrow" data-i18n-html>Design<br>services</div>
@@ -477,7 +478,7 @@
     </div>
 
     <!-- ====================== MONTHLY RETAINERS ====================== -->
-    <section class="svc-retainers" data-theme="light" id="retainers">
+    <section class="svc-retainers has-grain" data-theme="light" id="retainers" style="--grain-opacity: 0.045;">
       <div class="svc-retainers__top">
         <div>
           <div class="svc-retainers__eyebrow" data-i18n="services.retainers.eyebrow" data-i18n-html>Monthly<br>retainers</div>
@@ -559,7 +560,7 @@
     </section>
 
     <!-- ====================== INSIDE THE RETAINER (capabilities) ====================== -->
-    <section class="svc-caps" data-theme="light" id="caps">
+    <section class="svc-caps has-grain" data-theme="light" id="caps" style="--grain-opacity: 0.045;">
       <div class="svc-caps__top">
         <div>
           <div class="svc-caps__eyebrow" data-i18n="services.caps.eyebrow" data-i18n-html>Inside<br>the retainer</div>
@@ -894,6 +895,8 @@
   <script src="js/nav.js" defer></script>
   <script src="js/animations.js" defer></script>
   <script src="js/hero-paths.js" defer></script>
+  <script src="js/hero-depth.js" defer></script>
+  <script src="js/depth.js" defer></script>
   <script src="js/theme-toggle.js" defer></script>
   <script src="js/chat-widget.js" defer></script>
   <script src="js/title-reveal.js" defer></script>

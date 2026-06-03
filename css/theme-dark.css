@@ -676,7 +676,9 @@
 :root:not(.dark) .svc-ledger { border-top-color: var(--border-light); }
 :root:not(.dark) .svc-ledger__row { border-bottom-color: var(--border-light); }
 :root:not(.dark) .svc-ledger__row.is-featured {
-  background: linear-gradient(180deg, rgba(232, 84, 10, 0.11), rgba(232, 84, 10, 0.03));
+  background:
+    radial-gradient(130% 120% at 0% 0%, rgba(232, 84, 10, 0.16), transparent 58%),
+    linear-gradient(180deg, rgba(232, 84, 10, 0.11), rgba(232, 84, 10, 0.03));
 }
 :root:not(.dark) .svc-ledger__eyebrow { color: var(--text-on-light-secondary); }
 :root:not(.dark) .svc-ledger__amount { color: var(--text-on-light-primary); }
