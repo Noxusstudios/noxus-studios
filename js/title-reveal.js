@@ -17,15 +17,11 @@
 (function () {
   'use strict';
 
-  // Titles to animate. Hero-level titles fire on load; section-level
-  // titles fire on scroll-into-view.
-  const HERO_SELECTORS = [
-    '.hero-title',
-    '.services-hero__title',
-    '.work-hero__title',
-    '.about-hero__title',
-    '.contact-hero__title',
-  ];
+  // Hero titles are the LCP element on every page. The mask-slide reveal
+  // hides them (opacity:0) until it settles, which pushed LCP to ~4s — so
+  // they now render immediately and are NOT animated. Section headings still
+  // reveal on scroll-into-view (they're never the LCP).
+  const HERO_SELECTORS = [];
   const SECTION_SELECTORS = [
     '.fade-headline',
     '.split-headline',

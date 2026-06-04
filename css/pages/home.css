@@ -3,6 +3,19 @@
    Hero + Stats + Split (x3) + Bento + CTA (per spec §3)
    ============================================================ */
 
+/* Perf: skip style/layout/paint for below-the-fold sections until they're
+   scrolled near. The browser otherwise renders the entire (long) page before
+   the first paint, which was the bulk of the ~3.6s of main-thread render work
+   capping FCP/LCP. contain-intrinsic-size reserves space so there's no scroll
+   jump (CLS stays 0). The sticky split carousel is deliberately excluded — it
+   relies on live layout for its pinned-stack scroll. */
+.stats-section,
+.process,
+.disciplines {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
 /* ============================================================
    HERO (§3-A)
    ============================================================ */

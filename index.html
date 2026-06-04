@@ -24,9 +24,10 @@
   <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
+  <link rel="preload" href="fonts/bebas-neue-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
@@ -761,16 +762,39 @@
     </div>
   </footer>
 
-  <script src="js/translations.js" defer></script>
-  <script src="js/i18n.js" defer></script>
-  <script src="js/nav.js" defer></script>
-  <script src="js/animations.js" defer></script>
-  <script src="js/hero-paths.js" defer></script>
-  <script src="js/theme-toggle.js" defer></script>
-  <script src="js/chat-widget.js" defer></script>
-  <script src="js/splits-rotate.js" defer></script>
-  <script src="js/hover-spotlight.js" defer></script>
-  <script src="js/magnetic.js" defer></script>
-  <script src="js/title-reveal.js" defer></script>
+  <!-- Behaviour JS is loaded just after the first paint. None of it is needed
+       to render the hero (plain HTML/CSS), and as `defer` scripts executing
+       during the paint window they were dragging Speed Index ~1.7s. Injected
+       post-paint with async=false they still download in parallel and run in
+       order. Trigger is the first of: double-rAF (post-paint), a setTimeout
+       fallback (fires even in background tabs where rAF is starved), or the
+       load event — so the scripts always run exactly once. -->
+  <script>
+    (function () {
+      var srcs = [
+        'js/translations.js', 'js/i18n.js', 'js/nav.js', 'js/animations.js',
+        'js/hero-paths.js', 'js/theme-toggle.js', 'js/chat-widget.js',
+        'js/splits-rotate.js', 'js/hover-spotlight.js', 'js/magnetic.js',
+        'js/title-reveal.js'
+      ];
+      var done = false;
+      function load() {
+        if (done) return;
+        done = true;
+        for (var i = 0; i < srcs.length; i++) {
+          var s = document.createElement('script');
+          s.src = srcs[i];
+          s.async = false; // preserve execution order, like defer
+          document.body.appendChild(s);
+        }
+      }
+      if ('requestAnimationFrame' in window) {
+        requestAnimationFrame(function () { requestAnimationFrame(load); });
+        setTimeout(load, 4000); // safety net only — rAF is starved in background tabs
+      } else {
+        window.addEventListener('load', load);
+      }
+    })();
+  </script>
 </body>
 </html>

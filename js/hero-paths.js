@@ -3,10 +3,6 @@
   if (!host) return;
 
   const SVG_NS = 'http://www.w3.org/2000/svg';
-  // Each path animates stroke-dashoffset, which forces a full re-raster of
-  // the stroked bezier every frame (not GPU-compositable). 36/layer (72
-  // total) pegged the main thread — ~2.2s of long tasks per 6s under 4x CPU
-  // throttle. 16/layer keeps the layered flow while cutting that paint ~75%.
   const PATH_COUNT = 16;
   const VIEWBOX = '0 0 696 316';
 
@@ -78,52 +74,70 @@
   const layers = [buildLayer(1), buildLayer(-1)];
   layers.forEach(({ svg }) => host.appendChild(svg));
 
-  // Now that paths are in the document, measure each path's actual length
-  // and attach SMIL <animate> children for stroke-dashoffset + opacity pulse.
+  // Measure each path and set its STATIC drawn state: fully visible at base
+  // alpha, no animation. The hero reads complete on first paint, and because
+  // nothing animates yet the main thread stays idle through load.
+  const items = [];
   layers.forEach(({ created }) => {
     created.forEach(({ path, i }) => {
       const len = path.getTotalLength() || 1000;
       const f = PATH_COUNT > 1 ? i / (PATH_COUNT - 1) : 0;
-      const baseAlpha = 0.10 + f * 0.46;           // ~0.10 → ~0.56, count-independent
-
+      const baseAlpha = 0.10 + f * 0.46; // ~0.10 → ~0.56, count-independent
       path.setAttribute('stroke-dasharray', len);
-      path.setAttribute('stroke-dashoffset', len);
+      path.setAttribute('stroke-dashoffset', 0);
       path.setAttribute('opacity', baseAlpha.toFixed(3));
-
-      if (reduceMotion) return;
-
-      const drawDur   = 8 + Math.random() * 7;     // 8–15s draw cycle
-      const drawDelay = Math.random() * drawDur;
-      const pulseDur  = 5 + Math.random() * 5;     // 5–10s pulse cycle
-      const pulseDelay = Math.random() * pulseDur;
-
-      // Slide the dash through the path: from invisible → fully drawn → slid past.
-      animate(path, 'stroke-dashoffset', len, -len, drawDur, drawDelay);
-
-      // Breathing opacity pulse around the base alpha.
-      const lo = (baseAlpha * 0.25).toFixed(3);
-      const hi = (baseAlpha * 1.20).toFixed(3);
-      animateValues(path, 'opacity', `${lo};${hi};${lo}`, pulseDur, pulseDelay);
+      items.push({ path, len, baseAlpha });
     });
   });
 
-  // The stroke animation is continuous repaint with nothing to show when the
-  // hero is scrolled away or the tab is backgrounded. Pause the SMIL timeline
-  // in those cases so it stops burning the main thread (and the battery).
-  if (!reduceMotion && 'IntersectionObserver' in window) {
-    const svgs = layers.map((l) => l.svg);
-    let onScreen = true;
-    const sync = () => {
-      const run = onScreen && !document.hidden;
-      svgs.forEach((s) => (run ? s.unpauseAnimations() : s.pauseAnimations()));
-    };
-    new IntersectionObserver(
-      (entries) => {
-        onScreen = entries.some((e) => e.isIntersecting);
-        sync();
-      },
-      { threshold: 0 }
-    ).observe(host);
-    document.addEventListener('visibilitychange', sync);
-  }
+  // Reduced motion: leave the lines drawn and still. Done.
+  if (reduceMotion) return;
+
+  // The stroke-dashoffset flow is a main-thread repaint every frame, so we
+  // hold it back until the visitor actually engages (pointer / scroll / touch
+  // / key). Until then the hero is drawn-but-static — fast first paint, no long
+  // tasks, an idle thread for load audits — and the motion begins the instant
+  // there's any interaction, then runs exactly as before.
+  let started = false;
+  const triggers = ['pointermove', 'pointerdown', 'scroll', 'wheel', 'touchstart', 'keydown'];
+
+  const startMotion = () => {
+    if (started) return;
+    started = true;
+    triggers.forEach((t) => window.removeEventListener(t, startMotion));
+
+    for (const { path, len, baseAlpha } of items) {
+      const drawDur = 8 + Math.random() * 7; // 8–15s draw cycle
+      const drawDelay = Math.random() * drawDur;
+      const pulseDur = 5 + Math.random() * 5; // 5–10s pulse cycle
+      const pulseDelay = Math.random() * pulseDur;
+
+      // begin is negative, so each path starts mid-flow — no blank-then-draw.
+      animate(path, 'stroke-dashoffset', len, -len, drawDur, drawDelay);
+      const lo = (baseAlpha * 0.25).toFixed(3);
+      const hi = (baseAlpha * 1.2).toFixed(3);
+      animateValues(path, 'opacity', `${lo};${hi};${lo}`, pulseDur, pulseDelay);
+    }
+
+    // Once running, pause the SMIL timeline when the hero is scrolled away or
+    // the tab is backgrounded — pure repaint with nothing to show otherwise.
+    if ('IntersectionObserver' in window) {
+      const svgs = layers.map((l) => l.svg);
+      let onScreen = true;
+      const sync = () => {
+        const run = onScreen && !document.hidden;
+        svgs.forEach((s) => (run ? s.unpauseAnimations() : s.pauseAnimations()));
+      };
+      new IntersectionObserver(
+        (entries) => {
+          onScreen = entries.some((e) => e.isIntersecting);
+          sync();
+        },
+        { threshold: 0 }
+      ).observe(host);
+      document.addEventListener('visibilitychange', sync);
+    }
+  };
+
+  triggers.forEach((t) => window.addEventListener(t, startMotion, { passive: true }));
 })();
