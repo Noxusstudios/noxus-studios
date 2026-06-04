@@ -629,6 +629,7 @@ window.NOXUS_I18N = {
     'contact.side.hours.lbl':  'Hours',
     'contact.side.hours.val':  'Mon–Fri<em>9 AM – 6 PM ET</em>',
     'contact.side.hours.sub':  'Async outside those windows. Reply within 24h.',
+    'contact.side.cta':        'Prefer to talk? Book a 15-min call',
 
     'contact.expect.eyebrow': 'What happens next',
     'contact.expect.heading': 'Three steps. <em>From inbox to live site.</em>',
@@ -1432,6 +1433,7 @@ window.NOXUS_I18N = {
     'contact.side.hours.lbl':  'Heures',
     'contact.side.hours.val':  'Lun–Ven<em>9h – 18h HE</em>',
     'contact.side.hours.sub':  'Asynchrone hors de ces plages. Réponse sous 24h.',
+    'contact.side.cta':        'Préférez parler ? Réservez un appel de 15 min',
 
     'contact.expect.eyebrow': 'Ce qui suit',
     'contact.expect.heading': 'Trois étapes. <em>De la boîte mail au site en ligne.</em>',

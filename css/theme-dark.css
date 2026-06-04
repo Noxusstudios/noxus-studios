@@ -341,6 +341,7 @@
 :root.dark .expect__step-num {
   background: #14100B;
   border-color: rgba(232, 84, 10, 0.45);
+  box-shadow: 0 0 0 6px #14100B;
 }
 :root.dark .expect__step:hover .expect__step-num {
   background: var(--orange);
@@ -902,6 +903,7 @@
 :root:not(.dark) .contact-form {
   background: #F5EDE6;
   border-color: var(--border-light);
+  box-shadow: 0 28px 56px -36px rgba(20, 12, 6, 0.20);
 }
 :root:not(.dark) .contact-form__label { color: var(--text-on-light-primary); }
 :root:not(.dark) .contact-form__input,
@@ -920,9 +922,15 @@
 :root:not(.dark) .contact-form__success-title { color: var(--text-on-light-primary); }
 :root:not(.dark) .contact-form__success-sub   { color: var(--text-on-light-muted); }
 
-:root:not(.dark) .contact-side__card {
+:root:not(.dark) .contact-side {
   background: #F5EDE6;
   border-color: var(--border-light);
+}
+:root:not(.dark) .contact-side__card { background: none; }
+:root:not(.dark) .contact-side__card + .contact-side__card { border-top-color: var(--border-light); }
+:root:not(.dark) .contact-side__cta {
+  border-top-color: var(--border-light);
+  color: var(--text-on-light-primary);
 }
 :root:not(.dark) .contact-side__lbl { color: var(--text-on-light-secondary); }
 :root:not(.dark) .contact-side__val { color: var(--text-on-light-primary); }

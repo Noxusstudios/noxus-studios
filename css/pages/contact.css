@@ -339,8 +339,9 @@
 .contact-form {
   background: var(--dark-surface);
   border: 1px solid var(--border-dark);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 32px;
+  box-shadow: 0 28px 56px -36px rgba(0, 0, 0, 0.55);
 }
 .contact-form__row {
   display: grid;
@@ -573,18 +574,72 @@
   color: var(--text-on-dark-muted);
 }
 
-/* Side panel */
+/* Side panel — one connected info panel (icon + label/value rows), capped
+   with a Calendly CTA. align-self:start so it doesn't stretch into dead space. */
 .contact-side {
+  align-self: start;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-}
-.contact-side__card {
   background: var(--dark-surface);
   border: 1px solid var(--border-dark);
-  border-radius: 12px;
-  padding: 20px 22px;
+  border-radius: 14px;
+  overflow: hidden;
 }
+.contact-side__card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 22px 24px;
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+.contact-side__card + .contact-side__card { border-top: 1px solid var(--border-dark); }
+.contact-side__icon {
+  width: 22px; height: 22px;
+  flex-shrink: 0;
+  color: var(--orange);
+  margin-top: 2px;
+}
+.contact-side__icon svg { width: 100%; height: 100%; }
+.contact-side__body { min-width: 0; flex: 1; }
+
+/* Calendly CTA anchoring the panel */
+.contact-side__cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid var(--border-dark);
+  background: rgba(232, 84, 10, 0.07);
+  text-decoration: none;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 360ms cubic-bezier(0.32, 0.72, 0, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+.contact-side__cta:hover,
+.contact-side__cta:active,
+.contact-side__cta:focus-visible { background: rgba(232, 84, 10, 0.15); }
+.contact-side__cta:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
+.contact-side__cta-dot {
+  width: 8px; height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 0 4px rgba(232, 84, 10, 0.18);
+}
+.contact-side__cta-text { flex: 1; line-height: 1.45; }
+.contact-side__cta-arrow {
+  display: inline-flex;
+  color: var(--orange);
+  transition: transform 360ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.contact-side__cta:hover .contact-side__cta-arrow { transform: translateX(3px); }
 .contact-side__lbl {
   font-family: var(--font-body);
   font-size: 9px;
@@ -666,9 +721,9 @@
 .expect__steps::before {
   content: "";
   position: absolute;
-  top: 27px;
-  left: 27px;
-  right: 27px;
+  top: 28px;
+  left: 28px;
+  right: 28px;
   height: 1px;
   background: linear-gradient(90deg,
     rgba(232, 84, 10, 0.45) 0%,
@@ -677,9 +732,22 @@
     rgba(232, 84, 10, 0.45) 100%);
   z-index: 0;
 }
+/* Arrowhead terminating the line on the right — "inbox -> live site" */
+.expect__steps::after {
+  content: "";
+  position: absolute;
+  top: 23px;
+  right: 18px;
+  width: 0; height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid rgba(232, 84, 10, 0.55);
+  z-index: 0;
+}
 @media (max-width: 820px) {
   .expect__steps { grid-template-columns: 1fr; gap: 36px; }
-  .expect__steps::before { display: none; }
+  .expect__steps::before,
+  .expect__steps::after { display: none; }
 }
 
 .expect__step {
@@ -697,50 +765,38 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 12px;
-}
-/* Faint decorative glyph parked in the top-right, off the connector line */
-.expect__step-glyph {
-  position: absolute;
-  top: 6px;
-  right: 8px;
-  display: inline-flex;
-  width: 34px; height: 34px;
-  color: var(--orange);
-  opacity: 0.16;
-  transition: transform 420ms cubic-bezier(0.32, 0.72, 0, 1), opacity 320ms;
-  transform-origin: center;
-}
-.expect__step-glyph svg { width: 100%; height: 100%; }
-.expect__step:hover .expect__step-glyph {
-  transform: scale(1.10) rotate(-4deg);
-  opacity: 0.34;
+  margin-bottom: 18px;
 }
 
-/* Number becomes a node sitting on the connector line */
+/* Number becomes a node sitting on the connector line. The off-white ring
+   gap (box-shadow spread in the section colour) cleanly breaks the line so
+   the node reads as a station on the track. */
 .expect__step-num {
   position: relative;
   z-index: 1;
-  width: 54px; height: 54px;
+  width: 56px; height: 56px;
   flex-shrink: 0;
   border-radius: 50%;
   border: 1px solid rgba(232, 84, 10, 0.40);
   background: var(--off-white);
+  box-shadow: 0 0 0 6px var(--off-white);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: 27px;
   color: var(--orange);
   line-height: 1;
-  transition: border-color 320ms cubic-bezier(0.32, 0.72, 0, 1),
-              background 320ms cubic-bezier(0.32, 0.72, 0, 1),
-              color 320ms cubic-bezier(0.32, 0.72, 0, 1);
+  transition: border-color 360ms cubic-bezier(0.32, 0.72, 0, 1),
+              background 360ms cubic-bezier(0.32, 0.72, 0, 1),
+              color 360ms cubic-bezier(0.32, 0.72, 0, 1),
+              transform 360ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 .expect__step:hover .expect__step-num {
   border-color: var(--orange);
   background: var(--orange);
   color: #fff;
+  transform: translateY(-2px);
 }
 .expect__step-name {
   font-family: var(--font-ui);
