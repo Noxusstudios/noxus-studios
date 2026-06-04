@@ -60,9 +60,7 @@
       <span data-i18n="common.status.replies">Replies within 24h</span>
     </div>
 
-    <button class="lang-toggle" id="lang-toggle" type="button"
-            data-i18n-attr="aria-label=common.lang.aria"
-            aria-label="Switch language">
+    <button class="lang-toggle" id="lang-toggle" type="button">
       <span class="lang-toggle__opt is-active" data-lang="en" data-i18n="common.nav.lang.en">EN</span>
       <span class="lang-toggle__sep" aria-hidden="true">|</span>
       <span class="lang-toggle__opt" data-lang="fr" data-i18n="common.nav.lang.fr">FR</span>
@@ -144,7 +142,7 @@
             </p>
           </div>
           <div class="services-hero__cta">
-            <a href="contact.html" class="services-hero__cta-primary">
+            <a href="contact.html" class="services-hero__cta-primary" data-magnetic>
               <span data-i18n="services.hero.ctaPrimary">Start your project</span>
               <span class="services-hero__cta-arrow" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -152,7 +150,7 @@
                 </svg>
               </span>
             </a>
-            <a href="#builds" class="services-hero__cta-secondary" data-i18n="services.hero.ctaSecondary">See pricing &amp; tracks</a>
+            <a href="#builds" class="services-hero__cta-secondary" data-magnetic data-i18n="services.hero.ctaSecondary">See pricing &amp; tracks</a>
           </div>
         </div>
         <div class="services-hero__meta">
@@ -952,7 +950,7 @@
             <span class="svc-cta__price-num">$500 USD</span>
           </div>
           <span class="svc-cta__divider" aria-hidden="true"></span>
-          <a href="contact.html" class="btn-primary svc-cta__btn">
+          <a href="contact.html" class="btn-primary svc-cta__btn" data-magnetic>
             <span data-i18n="services.cta.btn">Book Discovery Call</span>
             <span class="svc-cta__btn-arrow" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
@@ -1024,6 +1022,7 @@
   <script src="js/scroll-parallax.js" defer></script>
   <script src="js/theme-toggle.js" defer></script>
   <script src="js/chat-widget.js" defer></script>
+  <script src="js/magnetic.js" defer></script>
   <script src="js/title-reveal.js" defer></script>
   <script src="js/tech-constellation.js" defer></script>
 </body>

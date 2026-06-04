@@ -13,7 +13,13 @@
   const MAX = 14;        // px cap so the pull stays tasteful, not rubbery
   const SPRING = 'transform 0.45s cubic-bezier(0.32, 0.72, 0, 1)';
 
-  document.querySelectorAll('[data-magnetic]').forEach((el) => {
+  // [data-magnetic] is the explicit opt-in (home hero CTAs + split tags,
+  // services hero CTAs). .cta-band__btn is the shared lit-stage closing CTA
+  // that lives on about / work / faq / services — pulled in by class so the
+  // treatment stays consistent everywhere without tagging each one.
+  const SELECTOR = '[data-magnetic], .cta-band__btn';
+
+  document.querySelectorAll(SELECTOR).forEach((el) => {
     let frame = 0;
     let raw = { x: 0, y: 0 };
 
