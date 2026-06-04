@@ -10,10 +10,12 @@
     radial-gradient(ellipse at 75% 15%, #EDD8CC 0%, transparent 50%),
     #F0E6DF;
   padding: 180px 40px 100px;
-  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
 }
 .contact-hero__inner {
+  position: relative;
+  z-index: 3;
   max-width: 1280px;
   margin: 0 auto;
   display: grid;
@@ -108,16 +110,24 @@
   max-width: 1280px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  /* Asymmetric bento: Email is a tall featured tile on the left, the three
+     other channels stack as a compact column on the right. Breaks the
+     four-identical-cards row. */
+  grid-template-columns: 1.15fr 1fr;
+  grid-auto-rows: auto;
+  gap: 16px;
 }
+.methods__card--1 { grid-column: 1; grid-row: 1 / 4; min-height: 340px; }
+.methods__card--2,
+.methods__card--3,
+.methods__card--4 { grid-column: 2; }
 .methods__card {
   position: relative;
   padding: 28px 24px 26px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  min-height: 320px;
+  min-height: 0;
   text-decoration: none;
   color: white;
   overflow: hidden;
@@ -252,14 +262,34 @@
 }
 .methods__card-desc {
   font-family: var(--font-body);
-  font-size: 10px;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  color: var(--text-on-dark-secondary);
-  line-height: 1.7;
+  font-size: 13.5px;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.55;
   margin: 0;
 }
-.methods__card.is-orange .methods__card-desc { color: rgba(255,255,255,0.9); }
+.methods__card.is-orange .methods__card-desc { color: rgba(255,255,255,0.92); }
+
+/* Featured Email tile — bigger illustration + name so it reads as the lead channel */
+.methods__card--1 { padding: 32px 30px 28px; gap: 16px; }
+.methods__card--1 .methods__card-illus { width: 72px; height: 72px; }
+.methods__card--1 .methods__card-name { font-size: clamp(28px, 3vw, 40px); }
+.methods__card--1 .methods__card-desc { font-size: 15px; max-width: 30ch; }
+
+/* Secondary channels — compact stacked rows on the right */
+.methods__card--2,
+.methods__card--3,
+.methods__card--4 {
+  padding: 22px 22px 20px;
+  gap: 8px;
+}
+.methods__card--2 .methods__card-illus,
+.methods__card--3 .methods__card-illus,
+.methods__card--4 .methods__card-illus { width: 44px; height: 44px; }
+.methods__card--2 .methods__card-name,
+.methods__card--3 .methods__card-name,
+.methods__card--4 .methods__card-name { font-size: clamp(19px, 2vw, 23px); }
 
 /* ============================================================
    CONTACT FORM — split: form + side details
@@ -601,15 +631,15 @@
 }
 .expect__top {
   max-width: 1280px;
-  margin: 0 auto 48px;
-  text-align: center;
+  margin: 0 auto 56px;
 }
 .expect__eyebrow {
   font-family: var(--font-body);
   font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--text-on-light-secondary);
+  color: var(--orange-on-light);
+  font-weight: 700;
   margin-bottom: 16px;
 }
 .expect__heading {
@@ -619,59 +649,98 @@
   letter-spacing: -0.02em;
   line-height: 1.1;
   color: var(--black);
-  max-width: 26ch;
-  margin: 0 auto;
+  max-width: 22ch;
+  margin: 0;
 }
 .expect__heading em { font-style: italic; color: var(--orange); }
 
+/* Connected numbered timeline — replaces the three identical boxed cards */
 .expect__steps {
+  position: relative;
   max-width: 1280px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 44px;
 }
-@media (max-width: 820px) { .expect__steps { grid-template-columns: 1fr; } }
+.expect__steps::before {
+  content: "";
+  position: absolute;
+  top: 27px;
+  left: 27px;
+  right: 27px;
+  height: 1px;
+  background: linear-gradient(90deg,
+    rgba(232, 84, 10, 0.45) 0%,
+    rgba(17, 17, 17, 0.14) 45%,
+    rgba(17, 17, 17, 0.14) 55%,
+    rgba(232, 84, 10, 0.45) 100%);
+  z-index: 0;
+}
+@media (max-width: 820px) {
+  .expect__steps { grid-template-columns: 1fr; gap: 36px; }
+  .expect__steps::before { display: none; }
+}
 
 .expect__step {
   position: relative;
-  padding: 36px 28px 32px;
-  background: var(--off-white);
-  border: 1px solid var(--border-light);
-  border-radius: 14px;
+  z-index: 1;
+  padding: 0 12px 0 0;
+  background: none;
+  border: none;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  transition: background 320ms cubic-bezier(0.32, 0.72, 0, 1);
 }
-.expect__step:hover { background: #FFFBF5; }
 
 .expect__step-head {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 4px;
+  gap: 14px;
+  margin-bottom: 12px;
 }
+/* Faint decorative glyph parked in the top-right, off the connector line */
 .expect__step-glyph {
+  position: absolute;
+  top: 6px;
+  right: 8px;
   display: inline-flex;
-  width: 36px; height: 36px;
+  width: 34px; height: 34px;
   color: var(--orange);
-  opacity: 0.75;
+  opacity: 0.16;
   transition: transform 420ms cubic-bezier(0.32, 0.72, 0, 1), opacity 320ms;
   transform-origin: center;
 }
 .expect__step-glyph svg { width: 100%; height: 100%; }
 .expect__step:hover .expect__step-glyph {
   transform: scale(1.10) rotate(-4deg);
-  opacity: 1;
+  opacity: 0.34;
 }
 
+/* Number becomes a node sitting on the connector line */
 .expect__step-num {
+  position: relative;
+  z-index: 1;
+  width: 54px; height: 54px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 84, 10, 0.40);
+  background: var(--off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-display);
-  font-size: 40px;
+  font-size: 26px;
   color: var(--orange);
   line-height: 1;
+  transition: border-color 320ms cubic-bezier(0.32, 0.72, 0, 1),
+              background 320ms cubic-bezier(0.32, 0.72, 0, 1),
+              color 320ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.expect__step:hover .expect__step-num {
+  border-color: var(--orange);
+  background: var(--orange);
+  color: #fff;
 }
 .expect__step-name {
   font-family: var(--font-ui);
@@ -683,11 +752,12 @@
 .expect__step-name em { font-style: italic; color: var(--orange); }
 .expect__step-desc {
   font-family: var(--font-body);
-  font-size: 11px;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  text-transform: none;
   color: var(--text-on-light-secondary);
-  line-height: 1.7;
+  line-height: 1.6;
+  max-width: 34ch;
 }
 .expect__step-time {
   font-family: var(--font-body);
@@ -695,12 +765,18 @@
   font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--orange);
-  margin-top: auto;
+  color: var(--orange-on-light);
+  margin-top: 6px;
 }
 
 @media (max-width: 1024px) {
-  .methods__grid { grid-template-columns: repeat(2, 1fr); }
+  /* Below the bento breakpoint, unwind the explicit placement and stack. */
+  .methods__grid { grid-template-columns: 1fr; }
+  .methods__card--1,
+  .methods__card--2,
+  .methods__card--3,
+  .methods__card--4 { grid-column: auto; grid-row: auto; }
+  .methods__card--1 { min-height: 0; }
 }
 
 @media (max-width: 768px) {

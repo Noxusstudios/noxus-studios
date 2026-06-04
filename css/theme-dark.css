@@ -325,15 +325,28 @@
   color: #E8DCCB;
 }
 
-:root.dark .expect__steps,
+/* Timeline in dark mode: open columns (no card), the number node masks the
+   connector line against the section background. */
 :root.dark .expect__step {
-  border-color: rgba(232, 220, 203, 0.10);
+  background: none;
+  border: none;
 }
-
-:root.dark .expect__step {
-  background: linear-gradient(160deg, #241A14 0%, #1A130C 100%);
+:root.dark .expect__steps::before {
+  background: linear-gradient(90deg,
+    rgba(232, 84, 10, 0.55) 0%,
+    rgba(232, 220, 203, 0.16) 45%,
+    rgba(232, 220, 203, 0.16) 55%,
+    rgba(232, 84, 10, 0.55) 100%);
 }
-
+:root.dark .expect__step-num {
+  background: #14100B;
+  border-color: rgba(232, 84, 10, 0.45);
+}
+:root.dark .expect__step:hover .expect__step-num {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+}
 :root.dark .expect__step-desc {
   color: rgba(232, 220, 203, 0.72);
 }
@@ -849,7 +862,22 @@
   background: var(--off-white);
   border-color: var(--border-light);
 }
-/* .methods__card.is-orange keeps its orange fill */
+/* Featured Email card keeps its orange fill in light mode too (higher
+   specificity than the off-white override above), so it reads as the lead
+   channel and the white number/label stay legible. */
+:root:not(.dark) .methods__card.is-orange {
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent, transparent 5px,
+      rgba(0, 0, 0, 0.06) 5px, rgba(0, 0, 0, 0.06) 6px
+    ),
+    linear-gradient(160deg, var(--orange) 0%, #d24a09 100%);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+:root:not(.dark) .methods__card.is-orange .methods__card-name { color: #fff; }
+:root:not(.dark) .methods__card.is-orange .methods__card-eyebrow { color: rgba(255, 255, 255, 0.9); }
+:root:not(.dark) .methods__card.is-orange .methods__card-desc { color: rgba(255, 255, 255, 0.92); }
 :root:not(.dark) .methods__card:hover,
 :root:not(.dark) .methods__card:active,
 :root:not(.dark) .methods__card:focus-visible {
