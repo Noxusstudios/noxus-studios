@@ -87,8 +87,8 @@
   /* ---------- GL bootstrap ---------- */
   var canvas, gl, prog, loc, buf, geo, tex, raf = 0, started = false, ready = false;
   var inView = false, visible = true, hovering = false;
-  var DIST = 4.15, FOV = 0.62, TILT = 0.32;
-  var angle = 0, lastT = 0;
+  var FOV = 0.62, TILT = 0.32, FIT = 0.66;   // FIT = globe size vs the smaller box dimension
+  var DIST = 5, angle = 0, lastT = 0;
 
   function compile(type, src) {
     var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
@@ -127,8 +127,16 @@
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buf.idx); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, geo.idx, gl.STATIC_DRAW);
 
     // Power-of-two copy of the screenshot so we can REPEAT + mipmap (seamless wrap).
-    var pot = document.createElement('canvas'); pot.width = 2048; pot.height = 1024;
-    pot.getContext('2d').drawImage(img, 0, 0, 2048, 1024);
+    // Cover-fit (preserve aspect — no stretch) + blur so the page reads as an
+    // abstract holographic surface, not a legible screenshot.
+    var pot = document.createElement('canvas'); pot.width = 1024; pot.height = 512;
+    var pctx = pot.getContext('2d');
+    pctx.fillStyle = '#0c0c0e'; pctx.fillRect(0, 0, 1024, 512);
+    pctx.filter = 'blur(7px)';
+    var cov = Math.max(1024 / img.naturalWidth, 512 / img.naturalHeight);
+    var dw = img.naturalWidth * cov, dh = img.naturalHeight * cov;
+    pctx.drawImage(img, (1024 - dw) / 2, (512 - dh) / 2, dw, dh);
+    pctx.filter = 'none';
     tex = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_2D, tex);
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
@@ -153,6 +161,10 @@
     canvas.height = Math.max(1, Math.round(r.height * dpr));
     gl.viewport(0, 0, canvas.width, canvas.height);
     aspect = canvas.width / canvas.height;
+    // Distance so the globe fills FIT of the SMALLER box dimension (no clipping
+    // on a portrait box, and smaller overall).
+    var halfMin = Math.tan(FOV / 2) * Math.min(1, aspect);
+    DIST = 1 / (halfMin * FIT);
   }
 
   function draw() {

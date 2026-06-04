@@ -886,13 +886,18 @@
 @media (max-width: 980px) { .case-feature__layout { grid-template-columns: 1fr; } }
 
 .case-feature__visual {
+  /* No box — a soft circular "space" pool (no hard edges) gives the orb its
+     contrast and lets the atmosphere halo glow. Footprint ~ a booking card. */
   background:
-    radial-gradient(60% 50% at 50% 30%, rgba(232, 84, 10, 0.22), transparent 70%),
-    linear-gradient(160deg, #2a2a2c 0%, #0c0c0c 100%);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 28px;
-  min-height: 480px;
+    radial-gradient(circle at 50% 47%, rgba(232, 84, 10, 0.18), transparent 52%),
+    radial-gradient(circle at 50% 50%, #0d0d11 0%, rgba(13, 13, 17, 0.80) 40%, rgba(13, 13, 17, 0) 70%);
+  border: none;
+  padding: 0;
+  width: 100%;
+  max-width: 426px;
+  aspect-ratio: 426 / 460;
+  margin: 0 auto;
+  justify-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
