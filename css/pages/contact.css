@@ -408,24 +408,36 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 28px;
-  /* Deeper orange so the small (11px) white label clears WCAG AA 4.5:1
+  padding: 17px 38px;
+  /* Deeper orange so the white label clears WCAG AA 4.5:1
      (brand --orange #E8540A only reaches 3.68:1 under white). */
   background: #C9480A;
   color: white;
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   border: none;
-  border-radius: 0;
+  border-radius: 2px;
   cursor: pointer;
-  transition: background 80ms;
+  box-shadow: 0 14px 30px -12px rgba(201, 72, 10, 0.55);
+  transition:
+    transform 280ms cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 280ms cubic-bezier(0.32, 0.72, 0, 1),
+    background 200ms ease-out;
 }
 .contact-form__submit:hover,
-.contact-form__submit:active,
-.contact-form__submit:focus-visible { background: #B5400A; }
+.contact-form__submit:focus-visible {
+  background: #B5400A;
+  transform: translateY(-2px);
+  box-shadow: 0 22px 42px -12px rgba(201, 72, 10, 0.72);
+}
+.contact-form__submit:active {
+  transform: translateY(0) scale(0.985);
+  box-shadow: 0 10px 22px -12px rgba(201, 72, 10, 0.5);
+}
+.contact-form__submit:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
 .contact-form__submit { -webkit-tap-highlight-color: transparent; }
 
 /* ============================================================
@@ -816,13 +828,20 @@
   max-width: 34ch;
 }
 .expect__step-time {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
   font-family: var(--font-body);
-  font-size: 9px;
+  font-size: 10.5px;
   font-weight: 700;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--orange-on-light);
-  margin-top: 6px;
+  background: rgba(232, 84, 10, 0.09);
+  border: 1px solid rgba(232, 84, 10, 0.24);
+  border-radius: 999px;
+  padding: 6px 13px;
+  margin-top: 10px;
 }
 
 @media (max-width: 1024px) {

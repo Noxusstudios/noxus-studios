@@ -351,6 +351,11 @@
 :root.dark .expect__step-desc {
   color: rgba(232, 220, 203, 0.72);
 }
+:root.dark .expect__step-time {
+  color: var(--orange);
+  background: rgba(232, 84, 10, 0.14);
+  border-color: rgba(232, 84, 10, 0.34);
+}
 
 /* ============================================================
    .impact — work.html "What every Noxus build aims for"
