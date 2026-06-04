@@ -1,14 +1,15 @@
 /* ============================================================
    NOXUS — case-orbit.js
-   Renders the case-study screenshot as a slowly-rotating holographic
-   GLOBE: a textured sphere (the screenshot wrapped on its surface)
-   with a fresnel atmosphere halo, spinning like Earth.
+   The case-study screen as a slowly-rotating orb. By default the orb is
+   painted in the CLIENT SITE'S OWN COLOURS (teal + coral + cream, sampled
+   from the screenshot) as smooth longitude bands that sweep around as it
+   spins. Hovering reveals a "sneak peek" of the real screenshot in a soft
+   lens that follows the cursor — the orb keeps turning under it.
 
-   Self-contained raw WebGL — no library, one texture, two draw calls
-   per frame. Lazy: the GL context + render loop only start when the
-   section first scrolls into view, and pause off-screen, on tab-hide,
-   and on hover. Reduced-motion or no-WebGL: the flat fallback
-   screenshot is kept (script bails), so nothing is ever lost.
+   Self-contained raw WebGL — no library, one texture, one draw call/frame.
+   The palette is computed in the shader (no mipmap wash). Lazy: starts only
+   when the section scrolls in; pauses off-screen / on tab-hide. Reduced-
+   motion or no-WebGL keeps the flat fallback screenshot (script bails).
    ============================================================ */
 
 (function () {
@@ -38,7 +39,6 @@
   function transZ(z) { var m = ident(); m[14] = z; return m; }
   function rotY(a) { var c=Math.cos(a), s=Math.sin(a), m=ident(); m[0]=c; m[2]=-s; m[8]=s; m[10]=c; return m; }
   function rotX(a) { var c=Math.cos(a), s=Math.sin(a), m=ident(); m[5]=c; m[6]=s; m[9]=-s; m[10]=c; return m; }
-  function scale(s) { var m=ident(); m[0]=m[5]=m[10]=s; return m; }
 
   /* ---------- sphere geometry ---------- */
   function makeSphere(stacks, slices) {
@@ -62,44 +62,67 @@
   var VERT =
     'attribute vec3 aPos; attribute vec2 aUV;' +
     'uniform mat4 uMVP; uniform mat4 uMV;' +
-    'varying vec2 vUV; varying vec3 vN; varying vec3 vP; varying vec2 vScr;' +
-    'void main(){ vUV=aUV; vN=mat3(uMV)*aPos; vec4 p=uMV*vec4(aPos,1.0); vP=p.xyz;' +
+    'varying vec2 vUV; varying vec3 vN; varying vec3 vP; varying vec2 vScr; varying vec3 vMod;' +
+    'void main(){ vUV=aUV; vMod=aPos; vN=mat3(uMV)*aPos; vec4 p=uMV*vec4(aPos,1.0); vP=p.xyz;' +
     '  vec4 cp=uMVP*vec4(aPos,1.0); vScr=cp.xy/cp.w; gl_Position=cp; }';
 
-  // Frosted by default (uBlur); a soft circular lens at the cursor reveals the
-  // sharp screenshot (uSharp). The orb keeps spinning under the lens.
+  // Default colour = brand palette by sphere longitude (painted on the mesh, so
+  // it sweeps round as the orb turns). Hover = sharp screenshot in a cursor lens.
   var FRAG =
     'precision mediump float;' +
-    'uniform sampler2D uSharp; uniform sampler2D uBlur;' +
-    'uniform vec3 uRimA; uniform vec3 uRimB;' +
+    'uniform sampler2D uShot;' +
+    'uniform vec3 uRimA; uniform vec3 uRimB; uniform vec3 uTeal; uniform vec3 uCoral; uniform vec3 uCream;' +
     'uniform vec2 uMouse; uniform float uAspect; uniform float uHover; uniform float uRadius;' +
-    'varying vec2 vUV; varying vec3 vN; varying vec3 vP; varying vec2 vScr;' +
+    'varying vec2 vUV; varying vec3 vN; varying vec3 vP; varying vec2 vScr; varying vec3 vMod;' +
     'void main(){' +
     '  vec3 N=normalize(vN); vec3 V=normalize(-vP);' +
     '  float ndv=max(dot(N,V),0.0);' +
     '  float fres=pow(1.0-ndv,3.0);' +
+    '  float t=atan(vMod.z,vMod.x)*0.1591549+0.5;' +   // longitude 0..1
+    '  vec3 pal=uTeal;' +
+    '  pal=mix(pal,uCream, smoothstep(0.12,0.28,t));' +
+    '  pal=mix(pal,uCoral, smoothstep(0.34,0.50,t));' +
+    '  pal=mix(pal,uCream, smoothstep(0.56,0.70,t));' +
+    '  pal=mix(pal,uTeal,  smoothstep(0.78,0.94,t));' +
     '  vec2 d=vScr-uMouse; d.x*=uAspect;' +
     '  float lens=smoothstep(uRadius,uRadius*0.42,length(d))*uHover;' +
-    '  vec3 sharp=texture2D(uSharp,vUV).rgb;' +
-    '  vec3 blur=texture2D(uBlur,vUV).rgb;' +
-    '  vec3 tex=mix(blur,sharp,lens);' +
-    '  float scan=0.94+0.06*sin(vUV.y*270.0);' +
-    '  float form=mix(0.66,1.0,ndv);' +
-    '  vec3 rim=mix(uRimA,uRimB,fres)*fres*1.3;' +
-    '  vec3 col=tex*scan*form + rim + sharp*lens*0.10;' +
-    '  gl_FragColor=vec4(col,1.0);' +
+    '  vec3 shot=texture2D(uShot,vUV).rgb;' +
+    '  vec3 base=mix(pal, shot, lens);' +
+    '  float scan=0.96+0.04*sin(vUV.y*260.0);' +
+    '  float form=mix(0.82,1.0,ndv);' +
+    '  gl_FragColor=vec4(base*scan*form, 1.0);' +
     '}';
 
-  /* ---------- GL bootstrap ---------- */
-  var canvas, gl, prog, loc, buf, geo, texSharp, texBlur, raf = 0, started = false, ready = false;
+  /* ---------- state ---------- */
+  var canvas, gl, prog, loc, buf, geo, texShot, raf = 0, started = false, ready = false;
   var inView = false, visible = true;
-  var FOV = 0.62, TILT = 0.32, FIT = 0.66;   // FIT = globe size vs the smaller box dimension
+  var FOV = 0.62, TILT = 0.32, FIT = 0.66;
   var DIST = 5, angle = 0, lastT = 0;
   var mouseX = 0, mouseY = 0, hover = 0, hoverTarget = 0, RADIUS = 0.5;
+  var teal = [0.16, 0.60, 0.55], coral = [0.91, 0.47, 0.35], cream = [0.93, 0.86, 0.78];
 
   function compile(type, src) {
     var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
     return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
+  }
+
+  // Pull the site's two signature hues (a cool teal + a warm coral) from the shot.
+  function samplePalette() {
+    var s = document.createElement('canvas'); s.width = 64; s.height = 40;
+    var sx = s.getContext('2d');
+    var cov = Math.max(64 / img.naturalWidth, 40 / img.naturalHeight);
+    var dw = img.naturalWidth * cov, dh = img.naturalHeight * cov;
+    sx.drawImage(img, (64 - dw) / 2, (40 - dh) / 2, dw, dh);
+    var d = null; try { d = sx.getImageData(0, 0, 64, 40).data; } catch (e) {}
+    var t = [42, 153, 141], c = [232, 119, 90], tS = 0, cS = 0;
+    if (d) for (var i = 0; i < d.length; i += 4) {
+      var r = d[i], g = d[i+1], b = d[i+2], sat = Math.max(r, g, b) - Math.min(r, g, b);
+      if (sat < 45) continue;
+      if (b > r && g > r && sat > tS) { tS = sat; t = [r, g, b]; }
+      if (r > g && r > b && sat > cS) { cS = sat; c = [r, g, b]; }
+    }
+    teal = [t[0]/255, t[1]/255, t[2]/255];
+    coral = [c[0]/255, c[1]/255, c[2]/255];
   }
 
   function initGL() {
@@ -121,10 +144,12 @@
       aUV:  gl.getAttribLocation(prog, 'aUV'),
       uMVP: gl.getUniformLocation(prog, 'uMVP'),
       uMV:  gl.getUniformLocation(prog, 'uMV'),
-      uSharp: gl.getUniformLocation(prog, 'uSharp'),
-      uBlur:  gl.getUniformLocation(prog, 'uBlur'),
+      uShot: gl.getUniformLocation(prog, 'uShot'),
       uRimA: gl.getUniformLocation(prog, 'uRimA'),
       uRimB: gl.getUniformLocation(prog, 'uRimB'),
+      uTeal: gl.getUniformLocation(prog, 'uTeal'),
+      uCoral: gl.getUniformLocation(prog, 'uCoral'),
+      uCream: gl.getUniformLocation(prog, 'uCream'),
       uMouse: gl.getUniformLocation(prog, 'uMouse'),
       uAspect: gl.getUniformLocation(prog, 'uAspect'),
       uHover: gl.getUniformLocation(prog, 'uHover'),
@@ -137,39 +162,30 @@
     gl.bindBuffer(gl.ARRAY_BUFFER, buf.uv);  gl.bufferData(gl.ARRAY_BUFFER, geo.uv,  gl.STATIC_DRAW);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buf.idx); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, geo.idx, gl.STATIC_DRAW);
 
-    // Two POT copies of the screenshot (cover-fit, aspect preserved — no stretch):
-    // a sharp one and a blurred one. The shader mixes between them per-fragment.
-    function coverDraw(W, H, blurPx) {
-      var c = document.createElement('canvas'); c.width = W; c.height = H;
-      var x = c.getContext('2d');
-      x.imageSmoothingEnabled = true; x.imageSmoothingQuality = 'high';
-      x.fillStyle = '#0c0c0e'; x.fillRect(0, 0, W, H);
-      if (blurPx) x.filter = 'blur(' + blurPx + 'px)';
-      var cov = Math.max(W / img.naturalWidth, H / img.naturalHeight);
-      var dw = img.naturalWidth * cov, dh = img.naturalHeight * cov;
-      x.drawImage(img, (W - dw) / 2, (H - dh) / 2, dw, dh);
-      x.filter = 'none';
-      return c;
-    }
-    function makeTex(src) {
-      var t = gl.createTexture();
-      gl.bindTexture(gl.TEXTURE_2D, t);
-      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, src);
-      gl.generateMipmap(gl.TEXTURE_2D);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-      return t;
-    }
-    texSharp = makeTex(coverDraw(2048, 1024, 0));
-    texBlur = makeTex(coverDraw(1024, 512, 9));
+    samplePalette();
+
+    // One POT texture of the screenshot (cover-fit, aspect preserved — no stretch),
+    // sharp + mipmapped for the hover reveal.
+    var pot = document.createElement('canvas'); pot.width = 2048; pot.height = 1024;
+    var pctx = pot.getContext('2d');
+    pctx.imageSmoothingEnabled = true; pctx.imageSmoothingQuality = 'high';
+    pctx.fillStyle = '#0c0c0e'; pctx.fillRect(0, 0, 2048, 1024);
+    var cov = Math.max(2048 / img.naturalWidth, 1024 / img.naturalHeight);
+    var dw = img.naturalWidth * cov, dh = img.naturalHeight * cov;
+    pctx.drawImage(img, (2048 - dw) / 2, (1024 - dh) / 2, dw, dh);
+    texShot = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, texShot);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, pot);
+    gl.generateMipmap(gl.TEXTURE_2D);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
 
     gl.clearColor(0, 0, 0, 0);
     visual.appendChild(canvas);
 
-    // Cursor tracking for the reveal lens (in clip/NDC space).
     canvas.addEventListener('pointermove', function (e) {
       var r = canvas.getBoundingClientRect();
       mouseX = ((e.clientX - r.left) / r.width) * 2 - 1;
@@ -190,10 +206,7 @@
     canvas.height = Math.max(1, Math.round(r.height * dpr));
     gl.viewport(0, 0, canvas.width, canvas.height);
     aspect = canvas.width / canvas.height;
-    // Distance so the globe fills FIT of the SMALLER box dimension (no clipping
-    // on a portrait box, and smaller overall).
-    var halfMin = Math.tan(FOV / 2) * Math.min(1, aspect);
-    DIST = 1 / (halfMin * FIT);
+    DIST = 1 / (Math.tan(FOV / 2) * Math.min(1, aspect) * FIT);
   }
 
   function draw() {
@@ -201,8 +214,7 @@
     var view = transZ(-DIST);
     var bob = Math.sin(angle * 0.9) * 0.03;
     var model = mul(rotX(TILT), rotY(angle));
-    var mv = mul(view, mul(transZ(0), model));
-    mv[13] += bob;
+    var mv = mul(view, model); mv[13] += bob;
     var mvp = mul(proj, mv);
 
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -212,10 +224,12 @@
     gl.enableVertexAttribArray(loc.aUV);
     gl.bindBuffer(gl.ARRAY_BUFFER, buf.uv); gl.vertexAttribPointer(loc.aUV, 2, gl.FLOAT, false, 0, 0);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buf.idx);
-    gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, texSharp); gl.uniform1i(loc.uSharp, 0);
-    gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, texBlur);  gl.uniform1i(loc.uBlur, 1);
-    gl.uniform3f(loc.uRimA, 0.91, 0.33, 0.04);   // orange
-    gl.uniform3f(loc.uRimB, 0.36, 0.78, 0.88);   // cyan
+    gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, texShot); gl.uniform1i(loc.uShot, 0);
+    gl.uniform3f(loc.uRimA, 0.91, 0.33, 0.04);
+    gl.uniform3f(loc.uRimB, 0.36, 0.78, 0.88);
+    gl.uniform3fv(loc.uTeal, teal);
+    gl.uniform3fv(loc.uCoral, coral);
+    gl.uniform3fv(loc.uCream, cream);
     gl.uniform2f(loc.uMouse, mouseX, mouseY);
     gl.uniform1f(loc.uAspect, aspect);
     gl.uniform1f(loc.uHover, hover);
@@ -233,8 +247,8 @@
     raf = 0;
     if (!lastT) lastT = t;
     var dt = Math.min(0.05, (t - lastT) / 1000); lastT = t;
-    angle += dt * 0.34;               // ~18s per turn
-    hover += (hoverTarget - hover) * Math.min(1, dt * 7);   // ease the lens in/out
+    angle += dt * 0.34;                                  // ~18s per turn
+    hover += (hoverTarget - hover) * Math.min(1, dt * 7);
     draw();
     if (running()) raf = requestAnimationFrame(frame);
   }
@@ -247,12 +261,12 @@
 
   function start() {
     if (started) return;
-    if (!(img.complete && img.naturalWidth > 0)) {  // texture source not decoded yet
+    if (!(img.complete && img.naturalWidth > 0)) {
       img.addEventListener('load', start, { once: true });
       return;
     }
     started = true;
-    if (!initGL()) { started = false; return; }   // no WebGL → keep flat fallback
+    if (!initGL()) { started = false; return; }
     ready = true;
     var fb = orbit.querySelector('.case-feature__face');
     if (fb) fb.classList.add('is-sr');
@@ -272,7 +286,6 @@
   }
   if (img.complete) boot();
   else img.addEventListener('load', boot);
-  // safety: if the lazy image never fires load, boot anyway shortly after.
   setTimeout(function () { if (!started && img.complete) boot(); }, 1500);
 
   document.addEventListener('visibilitychange', function () { visible = !document.hidden; tick(); });
