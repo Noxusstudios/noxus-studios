@@ -62,33 +62,40 @@
   var VERT =
     'attribute vec3 aPos; attribute vec2 aUV;' +
     'uniform mat4 uMVP; uniform mat4 uMV;' +
-    'varying vec2 vUV; varying vec3 vN; varying vec3 vP;' +
-    'void main(){ vUV=aUV; vN=mat3(uMV)*aPos; vec4 p=uMV*vec4(aPos,1.0); vP=p.xyz; gl_Position=uMVP*vec4(aPos,1.0); }';
+    'varying vec2 vUV; varying vec3 vN; varying vec3 vP; varying vec2 vScr;' +
+    'void main(){ vUV=aUV; vN=mat3(uMV)*aPos; vec4 p=uMV*vec4(aPos,1.0); vP=p.xyz;' +
+    '  vec4 cp=uMVP*vec4(aPos,1.0); vScr=cp.xy/cp.w; gl_Position=cp; }';
 
+  // Frosted by default (uBlur); a soft circular lens at the cursor reveals the
+  // sharp screenshot (uSharp). The orb keeps spinning under the lens.
   var FRAG =
     'precision mediump float;' +
-    'uniform sampler2D uTex; uniform vec3 uRimA; uniform vec3 uRimB; uniform float uMode;' +
-    'varying vec2 vUV; varying vec3 vN; varying vec3 vP;' +
+    'uniform sampler2D uSharp; uniform sampler2D uBlur;' +
+    'uniform vec3 uRimA; uniform vec3 uRimB;' +
+    'uniform vec2 uMouse; uniform float uAspect; uniform float uHover; uniform float uRadius;' +
+    'varying vec2 vUV; varying vec3 vN; varying vec3 vP; varying vec2 vScr;' +
     'void main(){' +
     '  vec3 N=normalize(vN); vec3 V=normalize(-vP);' +
     '  float ndv=max(dot(N,V),0.0);' +
     '  float fres=pow(1.0-ndv,3.0);' +
-    '  if(uMode>0.5){' +            // atmosphere halo pass
-    '    float a=pow(1.0-ndv,2.5)*1.15; gl_FragColor=vec4(mix(uRimA,uRimB,fres)*a,a); return;' +
-    '  }' +
-    '  vec3 tex=texture2D(uTex,vUV).rgb;' +
+    '  vec2 d=vScr-uMouse; d.x*=uAspect;' +
+    '  float lens=smoothstep(uRadius,uRadius*0.42,length(d))*uHover;' +
+    '  vec3 sharp=texture2D(uSharp,vUV).rgb;' +
+    '  vec3 blur=texture2D(uBlur,vUV).rgb;' +
+    '  vec3 tex=mix(blur,sharp,lens);' +
     '  float scan=0.94+0.06*sin(vUV.y*270.0);' +
-    '  float form=mix(0.66,1.0,ndv);' +        // center-bright shading => reads as a sphere
+    '  float form=mix(0.66,1.0,ndv);' +
     '  vec3 rim=mix(uRimA,uRimB,fres)*fres*1.3;' +
-    '  vec3 col=tex*scan*form + rim;' +
+    '  vec3 col=tex*scan*form + rim + sharp*lens*0.10;' +
     '  gl_FragColor=vec4(col,1.0);' +
     '}';
 
   /* ---------- GL bootstrap ---------- */
-  var canvas, gl, prog, loc, buf, geo, tex, raf = 0, started = false, ready = false;
+  var canvas, gl, prog, loc, buf, geo, texSharp, texBlur, raf = 0, started = false, ready = false;
   var inView = false, visible = true;
   var FOV = 0.62, TILT = 0.32, FIT = 0.66;   // FIT = globe size vs the smaller box dimension
   var DIST = 5, angle = 0, lastT = 0;
+  var mouseX = 0, mouseY = 0, hover = 0, hoverTarget = 0, RADIUS = 0.5;
 
   function compile(type, src) {
     var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
@@ -114,10 +121,14 @@
       aUV:  gl.getAttribLocation(prog, 'aUV'),
       uMVP: gl.getUniformLocation(prog, 'uMVP'),
       uMV:  gl.getUniformLocation(prog, 'uMV'),
-      uTex: gl.getUniformLocation(prog, 'uTex'),
+      uSharp: gl.getUniformLocation(prog, 'uSharp'),
+      uBlur:  gl.getUniformLocation(prog, 'uBlur'),
       uRimA: gl.getUniformLocation(prog, 'uRimA'),
       uRimB: gl.getUniformLocation(prog, 'uRimB'),
-      uMode: gl.getUniformLocation(prog, 'uMode')
+      uMouse: gl.getUniformLocation(prog, 'uMouse'),
+      uAspect: gl.getUniformLocation(prog, 'uAspect'),
+      uHover: gl.getUniformLocation(prog, 'uHover'),
+      uRadius: gl.getUniformLocation(prog, 'uRadius')
     };
 
     geo = makeSphere(window.innerWidth < 600 ? 40 : 56, window.innerWidth < 600 ? 48 : 72);
@@ -126,28 +137,47 @@
     gl.bindBuffer(gl.ARRAY_BUFFER, buf.uv);  gl.bufferData(gl.ARRAY_BUFFER, geo.uv,  gl.STATIC_DRAW);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buf.idx); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, geo.idx, gl.STATIC_DRAW);
 
-    // Power-of-two copy of the screenshot so we can REPEAT + mipmap (seamless
-    // wrap). Cover-fit (preserve aspect — no stretch), sharp + high-res so the
-    // real website reads cleanly on the surface.
-    var pot = document.createElement('canvas'); pot.width = 2048; pot.height = 1024;
-    var pctx = pot.getContext('2d');
-    pctx.imageSmoothingEnabled = true; pctx.imageSmoothingQuality = 'high';
-    pctx.fillStyle = '#0c0c0e'; pctx.fillRect(0, 0, 2048, 1024);
-    var cov = Math.max(2048 / img.naturalWidth, 1024 / img.naturalHeight);
-    var dw = img.naturalWidth * cov, dh = img.naturalHeight * cov;
-    pctx.drawImage(img, (2048 - dw) / 2, (1024 - dh) / 2, dw, dh);
-    tex = gl.createTexture();
-    gl.bindTexture(gl.TEXTURE_2D, tex);
-    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, pot);
-    gl.generateMipmap(gl.TEXTURE_2D);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    // Two POT copies of the screenshot (cover-fit, aspect preserved — no stretch):
+    // a sharp one and a blurred one. The shader mixes between them per-fragment.
+    function coverDraw(W, H, blurPx) {
+      var c = document.createElement('canvas'); c.width = W; c.height = H;
+      var x = c.getContext('2d');
+      x.imageSmoothingEnabled = true; x.imageSmoothingQuality = 'high';
+      x.fillStyle = '#0c0c0e'; x.fillRect(0, 0, W, H);
+      if (blurPx) x.filter = 'blur(' + blurPx + 'px)';
+      var cov = Math.max(W / img.naturalWidth, H / img.naturalHeight);
+      var dw = img.naturalWidth * cov, dh = img.naturalHeight * cov;
+      x.drawImage(img, (W - dw) / 2, (H - dh) / 2, dw, dh);
+      x.filter = 'none';
+      return c;
+    }
+    function makeTex(src) {
+      var t = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, t);
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, src);
+      gl.generateMipmap(gl.TEXTURE_2D);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      return t;
+    }
+    texSharp = makeTex(coverDraw(2048, 1024, 0));
+    texBlur = makeTex(coverDraw(1024, 512, 9));
 
     gl.clearColor(0, 0, 0, 0);
     visual.appendChild(canvas);
+
+    // Cursor tracking for the reveal lens (in clip/NDC space).
+    canvas.addEventListener('pointermove', function (e) {
+      var r = canvas.getBoundingClientRect();
+      mouseX = ((e.clientX - r.left) / r.width) * 2 - 1;
+      mouseY = -(((e.clientY - r.top) / r.height) * 2 - 1);
+    });
+    canvas.addEventListener('pointerenter', function () { hoverTarget = 1; });
+    canvas.addEventListener('pointerleave', function () { hoverTarget = 0; });
+
     resize();
     return true;
   }
@@ -182,21 +212,21 @@
     gl.enableVertexAttribArray(loc.aUV);
     gl.bindBuffer(gl.ARRAY_BUFFER, buf.uv); gl.vertexAttribPointer(loc.aUV, 2, gl.FLOAT, false, 0, 0);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buf.idx);
-    gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, tex);
-    gl.uniform1i(loc.uTex, 0);
+    gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, texSharp); gl.uniform1i(loc.uSharp, 0);
+    gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, texBlur);  gl.uniform1i(loc.uBlur, 1);
     gl.uniform3f(loc.uRimA, 0.91, 0.33, 0.04);   // orange
     gl.uniform3f(loc.uRimB, 0.36, 0.78, 0.88);   // cyan
+    gl.uniform2f(loc.uMouse, mouseX, mouseY);
+    gl.uniform1f(loc.uAspect, aspect);
+    gl.uniform1f(loc.uHover, hover);
+    gl.uniform1f(loc.uRadius, RADIUS);
 
-    // Planet pass: opaque, depth on, cull back.
     gl.enable(gl.DEPTH_TEST); gl.depthMask(true);
     gl.enable(gl.CULL_FACE); gl.cullFace(gl.BACK);
     gl.disable(gl.BLEND);
-    gl.uniform1f(loc.uMode, 0.0);
     gl.uniformMatrix4fv(loc.uMVP, false, mvp);
     gl.uniformMatrix4fv(loc.uMV, false, mv);
     gl.drawElements(gl.TRIANGLES, geo.idx.length, gl.UNSIGNED_SHORT, 0);
-    // (No external atmosphere halo — it reads as a grey ring on the light
-    // section. The in-shader fresnel rim gives the edge its glow instead.)
   }
 
   function frame(t) {
@@ -204,6 +234,7 @@
     if (!lastT) lastT = t;
     var dt = Math.min(0.05, (t - lastT) / 1000); lastT = t;
     angle += dt * 0.34;               // ~18s per turn
+    hover += (hoverTarget - hover) * Math.min(1, dt * 7);   // ease the lens in/out
     draw();
     if (running()) raf = requestAnimationFrame(frame);
   }

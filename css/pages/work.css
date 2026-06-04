@@ -980,8 +980,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 16px;
-  max-width: 420px;
+  gap: 20px;
+  max-width: 440px;
 }
 .case-feature__lbl {
   font-family: var(--font-body);
@@ -992,7 +992,7 @@
 }
 .case-feature__title {
   font-family: var(--font-display);
-  font-size: clamp(28px, 3.2vw, 44px);
+  font-size: clamp(34px, 4vw, 56px);
   letter-spacing: -0.02em;
   line-height: 0.92;
   text-transform: uppercase;
@@ -1011,12 +1011,12 @@
 }
 .case-feature__body {
   font-family: var(--font-body);
-  font-size: clamp(10px, 0.95vw, 11.5px);
-  letter-spacing: 0.08em;
+  font-size: clamp(12px, 1.05vw, 13.5px);
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--text-on-dark-secondary);
-  line-height: 1.6;
-  max-width: 40ch;
+  line-height: 1.65;
+  max-width: 44ch;
   margin: 0;
 }
 
@@ -1030,21 +1030,21 @@
 }
 .case-feature__metric {
   background: var(--dark-surface);
-  padding: 12px 13px;
+  padding: 16px;
 }
 .case-feature__metric-num {
   font-family: var(--font-display);
-  font-size: clamp(20px, 2.2vw, 28px);
+  font-size: clamp(26px, 2.8vw, 36px);
   color: var(--orange);
   line-height: 1;
 }
 .case-feature__metric-lbl {
   font-family: var(--font-body);
-  font-size: 8px;
-  letter-spacing: 0.18em;
+  font-size: 9px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-on-dark-secondary);
-  margin-top: 6px;
+  margin-top: 7px;
 }
 
 .case-feature__bottom {
@@ -1058,13 +1058,13 @@
   display: flex; gap: 6px; flex-wrap: wrap;
 }
 .case-feature__tag {
-  padding: 5px 10px;
+  padding: 6px 11px;
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.10);
   border-radius: 999px;
   font-family: var(--font-body);
-  font-size: 8px;
-  letter-spacing: 0.16em;
+  font-size: 9px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: white;
 }
