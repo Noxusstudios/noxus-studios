@@ -1609,16 +1609,44 @@
 }
 
 @media (max-width: 768px) {
-  .hero-section { min-height: 600px; }
-  .hero-title-block { left: 24px; }
+  /* Mobile hero is a normal flow column — NOT absolute-on-100vh.
+     The old layout anchored the title from the top (top:25%) and the desc
+     from the bottom (bottom:250px); on short / in-app-browser viewports those
+     two collided on load until a scroll recomputed layout. Stacking the blocks
+     in DOM order makes overlap impossible at any viewport height, and 100dvh
+     avoids the iOS URL-bar viewport jump. */
+  .hero-section {
+    height: auto;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 104px 24px 0;
+  }
+  .hero-title-block,
+  .hero-desc-block,
+  .hero-price-block,
+  .hero-info-bar,
+  .hero-cta-bar {
+    position: static;
+    inset: auto;
+    transform: none;
+    max-width: none;
+    width: auto;
+  }
   .hero-title { font-size: clamp(56px, 16vw, 88px); }
-  .hero-image { left: 20%; transform: rotate(4deg); }
-  .hero-info-bar { grid-template-columns: 1fr 1fr; bottom: 80px; }
+  .hero-image { display: none; }
+  .hero-desc-block { margin-top: 30px; }
+  .hero-price-block { margin-top: 22px; text-align: left; }
+  /* info bar + reserve band: full-bleed, pinned to the bottom of the hero */
+  .hero-info-bar {
+    margin: auto -24px 0;
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero-cta-bar { margin: 0 -24px; }
   .hero-info-cell:nth-child(2) { border-right: none; }
   .hero-info-cell:nth-child(1),
   .hero-info-cell:nth-child(2) { border-bottom: 1px solid var(--border-light); }
-  .hero-desc-block { left: 24px; max-width: 200px; }
-  .hero-price-block { right: 24px; }
 
   .stats-section { padding: 40px 20px 0; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
@@ -1670,25 +1698,7 @@
 @media (max-width: 480px) {
   .stats-grid { grid-template-columns: 1fr; }
   .hero-info-bar { grid-template-columns: 1fr 1fr; }
-  .hero-title-block { top: 25%; transform: none; }
-
-  /* Restore conversion-positioning copy + $500 starter signal on phones.
-     Mirror the desktop side-by-side pattern: desc on left, price on right,
-     both anchored just above the info-bar. The info-bar takes the bottom
-     233px of the 100vh hero (80px gap + 153px height), so bottom: 250px
-     gives a clean 17px breathing strip. */
-  .hero-desc-block {
-    bottom: 250px;
-    left: 24px;
-    right: auto;
-    max-width: 56%;
-  }
-  .hero-price-block {
-    bottom: 250px;
-    right: 24px;
-    left: auto;
-    text-align: right;
-  }
+  /* Hero positioning now handled by the flow layout in the 768px query. */
   .hero-desc-text { font-size: 14px; line-height: 1.5; }
   .hero-price-large { font-size: 28px; }
 }
