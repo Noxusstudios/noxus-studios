@@ -170,7 +170,7 @@
       <span class="nox-chat__toggle-dot" aria-hidden="true"></span>
     </button>
 
-    <div class="nox-chat__panel" role="dialog" aria-label="${t().title} chat" aria-hidden="true">
+    <div class="nox-chat__panel" role="dialog" aria-label="${t().title} chat" aria-hidden="true" inert>
       <header class="nox-chat__header">
         <div class="nox-chat__brand">
           <span class="nox-chat__mark" aria-hidden="true">
@@ -327,6 +327,9 @@
     root.dataset.state = 'open';
     toggleBtn.setAttribute('aria-expanded', 'true');
     panel.setAttribute('aria-hidden', 'false');
+    // inert + aria-hidden must move together: a hidden panel whose buttons
+    // stay tabbable is an a11y fault (focus lands on invisible controls).
+    panel.removeAttribute('inert');
     // Focus input after the transition settles
     setTimeout(() => input.focus(), 200);
   }
@@ -335,6 +338,7 @@
     root.dataset.state = 'closed';
     toggleBtn.setAttribute('aria-expanded', 'false');
     panel.setAttribute('aria-hidden', 'true');
+    panel.setAttribute('inert', '');
   }
 
   toggleBtn.addEventListener('click', () => {

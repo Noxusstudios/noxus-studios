@@ -61,9 +61,7 @@
       <span data-i18n="common.status.replies">Replies within 24h</span>
     </div>
 
-    <button class="lang-toggle" id="lang-toggle" type="button"
-            data-i18n-attr="aria-label=common.lang.aria"
-            aria-label="Switch language">
+    <button class="lang-toggle" id="lang-toggle" type="button">
       <span class="lang-toggle__opt is-active" data-lang="en" data-i18n="common.nav.lang.en">EN</span>
       <span class="lang-toggle__sep" aria-hidden="true">|</span>
       <span class="lang-toggle__opt" data-lang="fr" data-i18n="common.nav.lang.fr">FR</span>
@@ -146,13 +144,13 @@
           who can't afford a slow site.
         </div>
         <div class="hero-actions">
-          <a href="contact.html" class="hero-actions__primary">
+          <a href="contact.html" class="hero-actions__primary" data-magnetic>
             <span data-i18n="home.hero.ctaPrimary">Start a project</span>
             <span class="hero-actions__arrow" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
             </span>
           </a>
-          <a href="work.html" class="hero-actions__secondary" data-i18n="home.hero.ctaSecondary">See the work</a>
+          <a href="work.html" class="hero-actions__secondary" data-magnetic data-i18n="home.hero.ctaSecondary">See the work</a>
         </div>
       </div>
 
@@ -299,12 +297,13 @@
             </div>
           </div>
         </div>
-        <a href="services.html" class="btn-tag">
+        <a href="services.html" class="btn-tag" data-magnetic>
           <span data-i18n="home.split1.tag">Conversion</span>
         </a>
       </div>
 
       <div class="split-right reveal" data-index="01" style="transition-delay: 100ms">
+        <span class="split-watermark" aria-hidden="true">01</span>
         <h3 class="split-headline" data-i18n="home.split1.headlineA" data-i18n-html>
           <span class="split-orange">Hand-coded</span><br>
           <span class="split-white">by default.</span>
@@ -347,12 +346,13 @@
             </div>
           </div>
         </div>
-        <a href="about.html" class="btn-tag">
+        <a href="about.html" class="btn-tag" data-magnetic>
           <span data-i18n="home.split2.tag">Process</span>
         </a>
       </div>
 
       <div class="split-right reveal" data-index="02" style="transition-delay: 100ms">
+        <span class="split-watermark" aria-hidden="true">02</span>
         <h3 class="split-headline" data-i18n="home.split2.headlineA" data-i18n-html>
           <span class="split-orange">Founder-led</span><br>
           <span class="split-white">end to end</span>
@@ -395,12 +395,13 @@
             <span class="mock-type__corner">AVG<span class="mock-type__corner-sep">/</span>TURN</span>
           </div>
         </div>
-        <a href="services.html" class="btn-tag">
+        <a href="services.html" class="btn-tag" data-magnetic>
           <span data-i18n="home.split3.tag">Speed</span>
         </a>
       </div>
 
       <div class="split-right reveal" data-index="03" style="transition-delay: 100ms">
+        <span class="split-watermark" aria-hidden="true">03</span>
         <h3 class="split-headline" data-i18n="home.split3.headlineA" data-i18n-html>
           <span class="split-orange">Shipped</span> in<br>
           <span class="split-white">four days flat.</span>
@@ -769,6 +770,7 @@
   <script src="js/chat-widget.js" defer></script>
   <script src="js/splits-rotate.js" defer></script>
   <script src="js/hover-spotlight.js" defer></script>
+  <script src="js/magnetic.js" defer></script>
   <script src="js/title-reveal.js" defer></script>
 </body>
 </html>

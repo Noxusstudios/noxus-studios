@@ -747,6 +747,22 @@
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
   text-decoration: none;
+  transition:
+    background-color 0.3s cubic-bezier(0.32, 0.72, 0, 1),
+    border-color 0.3s cubic-bezier(0.32, 0.72, 0, 1),
+    color 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.btn-tag:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(232, 84, 10, 0.5);
+  color: #fff;
+}
+.btn-tag:active {
+  background: rgba(255, 255, 255, 0.2);
+}
+.btn-tag:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
 }
 .btn-tag-icon {
   display: inline-flex;

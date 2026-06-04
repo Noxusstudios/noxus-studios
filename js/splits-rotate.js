@@ -31,8 +31,17 @@
   // only applies when JS can actually reveal it (no-JS users see content).
   document.documentElement.classList.add('splits-ready');
 
-  // Pair each inner with its sticky section once (avoids per-frame closest()).
-  const pairs = inners.map((el) => ({ inner: el, section: el.closest('.split-section') }));
+  // Pair each inner with its sticky section + watermark host once
+  // (avoids per-frame closest()/querySelector()).
+  const pairs = inners.map((el) => {
+    const section = el.closest('.split-section');
+    return { inner: el, section, right: section ? section.querySelector('.split-right') : null };
+  });
+
+  // Watermark parallax: the ghost 01/02/03 numeral glides vertically as its
+  // panel travels into the pinned position, lagging the content for depth.
+  const WM_FROM = 54;   // px below resting (panel entering from the bottom)
+  const WM_TO = -42;    // px above resting (panel settled / pinned)
 
   // Respect reduced-motion: leave everything at 0deg and bail.
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -54,7 +63,7 @@
       return;
     }
     const vh = window.innerHeight;
-    for (const { inner, section } of pairs) {
+    for (const { inner, section, right } of pairs) {
       const rect = inner.getBoundingClientRect();
       // Entry progress: 0 when top is at viewport bottom; 1 when top is at viewport top.
       const progress = 1 - rect.top / vh;
@@ -64,6 +73,12 @@
       const ratio = p < ROLL_END_PROGRESS ? p / ROLL_END_PROGRESS : 1;
       const rotation = ROLL_FROM * (1 - ratio);
       inner.style.setProperty('--roll', `${rotation.toFixed(2)}deg`);
+
+      // Drift the ghost watermark across the same entry progress.
+      if (right) {
+        const wm = WM_FROM + (WM_TO - WM_FROM) * p;
+        right.style.setProperty('--wm', `${wm.toFixed(1)}px`);
+      }
 
       // Drive the content cascade off the same scroll progress as the roll,
       // so it plays exactly when the panel arrives — not when it first

@@ -530,7 +530,9 @@
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-on-dark-secondary);
+  /* 0.55 white on the dark panel ≈ 6:1 — AA-compliant for this small,
+     tracked microcopy (the 0.40 token falls short at ~3.8:1). */
+  color: rgba(255, 255, 255, 0.55);
   line-height: 1.6;
   max-width: 240px;
   margin: 0;
@@ -1045,13 +1047,17 @@
     var(--dark-bg);
 }
 /* Ghost index numeral — fills the empty right field with depth and
-   echoes the 01/03 counter as an oversized editorial watermark. */
-.split-right::before {
-  content: attr(data-index);
+   echoes the 01/03 counter as an oversized editorial watermark. It is a
+   real aria-hidden element (not ::before content) so screen readers don't
+   double-announce the index alongside the live counter. --wm is driven by
+   splits-rotate.js for a scroll-scrubbed parallax drift. */
+.split-watermark {
   position: absolute;
   top: 50%;
   right: -1.5vw;
-  transform: translateY(-50%);
+  margin: 0;
+  transform: translateY(calc(-50% + var(--wm, 0px)));
+  will-change: transform;
   font-family: var(--font-display);
   font-size: clamp(220px, 28vw, 440px);
   line-height: 0.8;
@@ -1059,10 +1065,10 @@
   color: rgba(255, 255, 255, 0.026);
   pointer-events: none;
   user-select: none;
-  z-index: 0;
 }
 /* Keep real content above the watermark. */
 .split-right > * { position: relative; z-index: 1; }
+.split-right > .split-watermark { z-index: 0; }
 .split-right > .split-counter { margin-top: auto; }
 .split-plus-icon {
   width: 28px; height: 28px;
@@ -1088,7 +1094,8 @@
   font-size: clamp(10px, 1vw, 12px);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-on-dark-secondary);
+  /* AA contrast on dark — see .split-helper-text note. */
+  color: rgba(255, 255, 255, 0.55);
   line-height: 1.7;
   max-width: 38ch;
   text-align: left;

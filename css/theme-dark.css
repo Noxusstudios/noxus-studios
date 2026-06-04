@@ -488,7 +488,7 @@
     radial-gradient(ellipse at 78% 50%, rgba(232, 84, 10, 0.07) 0%, transparent 58%),
     var(--off-white);
 }
-:root:not(.dark) .split-right::before {
+:root:not(.dark) .split-watermark {
   color: rgba(20, 12, 6, 0.045);
 }
 /* Divider rules between split-left and split-right */
@@ -501,6 +501,14 @@
   background: rgba(0, 0, 0, 0.05);
   border-color: rgba(0, 0, 0, 0.12);
   color: var(--text-on-light-primary);
+}
+:root:not(.dark) .btn-tag:hover {
+  background: rgba(0, 0, 0, 0.09);
+  border-color: rgba(184, 63, 0, 0.55);
+  color: var(--text-on-light-primary);
+}
+:root:not(.dark) .btn-tag:active {
+  background: rgba(0, 0, 0, 0.13);
 }
 :root:not(.dark) .btn-tag-icon {
   background: rgba(0, 0, 0, 0.08);
@@ -1058,6 +1066,34 @@
   align-items: initial;
   gap: 0;
   vertical-align: top;
+}
+
+/* A11y: orange eyebrow TEXT on the cream substrate only clears 3.16:1 at
+   #E8540A. Light mode uses the AA-safe --orange-on-light (#B83F00, 4.8:1).
+   The decorative ::before hairline stays bright orange (1px graphic, 3:1). */
+:root:not(.dark) .process__eyebrow,
+:root:not(.dark) .bento-eyebrow,
+:root:not(.dark) .svc-tiers__eyebrow,
+:root:not(.dark) .svc-retainers__eyebrow,
+:root:not(.dark) .svc-design__eyebrow,
+:root:not(.dark) .svc-caps__eyebrow,
+:root:not(.dark) .svc-tech__eyebrow,
+:root:not(.dark) .svc-payment__eyebrow,
+:root:not(.dark) .svc-addon__eyebrow,
+:root:not(.dark) .methods__eyebrow,
+:root:not(.dark) .contact-form-section__eyebrow,
+:root:not(.dark) .expect__eyebrow,
+:root:not(.dark) .founder__eyebrow,
+:root:not(.dark) .values__eyebrow,
+:root:not(.dark) .proof-self__eyebrow,
+:root:not(.dark) .case-study-self__eyebrow,
+:root:not(.dark) .case-feature__eyebrow,
+:root:not(.dark) .work-grid-section__eyebrow,
+:root:not(.dark) .impact__eyebrow,
+:root:not(.dark) .faq-hero__eyebrow,
+:root:not(.dark) .privacy-hero__eyebrow,
+:root:not(.dark) .error-404__eyebrow {
+  color: var(--orange-on-light);
 }
 
 .process__eyebrow::before,
