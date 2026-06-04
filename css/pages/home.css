@@ -348,20 +348,37 @@
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--border-dark);
+  gap: 14px;
 }
 
+/* Rounded dimensional cards (was a flush hairline grid — read as too
+   square/flat). Each card is its own elevated surface with a hover lift. */
 .stat-card {
   position: relative;
-  border-right: 1px solid var(--border-dark);
   display: flex;
   flex-direction: column;
   min-height: 260px;
-  --spot-size: 300px;
-  transition: background-color 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border-dark);
+  background: linear-gradient(168deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.015) 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 20px 44px -30px rgba(0, 0, 0, 0.75);
+  --spot-size: 320px;
+  transition:
+    transform 0.42s cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 0.42s cubic-bezier(0.32, 0.72, 0, 1),
+    border-color 0.42s cubic-bezier(0.32, 0.72, 0, 1);
 }
-.stat-card:last-child { border-right: none; }
-.stat-card:not(.is-orange):hover { background-color: rgba(232, 84, 10, 0.045); }
+.stat-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(232, 84, 10, 0.4);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.07) inset,
+    0 26px 52px -28px rgba(0, 0, 0, 0.8),
+    0 14px 30px -16px rgba(232, 84, 10, 0.3);
+}
 
 .stat-card-head {
   display: flex;
@@ -437,7 +454,7 @@
 .stat-card-bar-fill {
   position: absolute;
   left: 0; top: 0; bottom: 0;
-  background: rgba(255, 255, 255, 0.35);
+  background: var(--orange);
 }
 
 
@@ -1220,18 +1237,27 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto auto;
-  gap: 4px;
-  background: var(--black);
-  padding: 4px;
+  gap: 14px;
+  background: transparent;
+  padding: 0;
 }
 .bento-cell {
-  background: var(--dark-bg);
+  background: linear-gradient(168deg, #1c1614 0%, #141110 100%);
   padding: 28px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 280px;
+  border-radius: 18px;
+  border: 1px solid var(--border-dark);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 22px 48px -30px rgba(0, 0, 0, 0.7);
+}
+.bento-cell-price:hover {
+  transform: translateY(-4px);
+  border-color: rgba(232, 84, 10, 0.4);
 }
 
 /* ============================================================
@@ -1591,8 +1617,6 @@
 
 @media (max-width: 480px) {
   .stats-grid { grid-template-columns: 1fr; }
-  .stat-card { border-right: none; border-bottom: 1px solid var(--border-dark); }
-  .stat-card:last-child { border-bottom: none; }
   .hero-info-bar { grid-template-columns: 1fr 1fr; }
   .hero-title-block { top: 25%; transform: none; }
 

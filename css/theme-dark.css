@@ -408,11 +408,19 @@
 :root:not(.dark) .fh-fade {
   color: rgba(0, 0, 0, 0.50);
 }
-:root:not(.dark) .stats-grid {
-  border-top-color: var(--border-light);
-}
 :root:not(.dark) .stat-card {
-  border-right-color: var(--border-light);
+  border-color: var(--border-light);
+  background: linear-gradient(168deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.32) 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 20px 44px -30px rgba(20, 12, 6, 0.4);
+}
+:root:not(.dark) .stat-card:hover {
+  border-color: rgba(232, 84, 10, 0.4);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 26px 52px -28px rgba(20, 12, 6, 0.45),
+    0 14px 30px -16px rgba(232, 84, 10, 0.28);
 }
 :root:not(.dark) .stat-card-name,
 :root:not(.dark) .stat-number {
@@ -428,7 +436,7 @@
   background: rgba(0, 0, 0, 0.08);
 }
 :root:not(.dark) .stat-card-bar-fill {
-  background: rgba(0, 0, 0, 0.30);
+  background: var(--orange);
 }
 /* The orange stat card keeps its orange interior — text stays white */
 
@@ -560,7 +568,7 @@
   background: var(--off-white);
 }
 :root:not(.dark) .bento-grid {
-  background: var(--border-light);
+  background: transparent;
 }
 :root:not(.dark) .bento-eyebrow {
   color: var(--text-on-light-secondary);
@@ -570,6 +578,10 @@
 }
 :root:not(.dark) .bento-cell {
   background: #F8F1EA;
+  border-color: var(--border-light);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 22px 48px -32px rgba(20, 12, 6, 0.4);
 }
 :root:not(.dark) .bento-cell-price:hover,
 :root:not(.dark) .bento-cell-price:active,
