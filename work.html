@@ -183,14 +183,29 @@
 
       <div class="case-feature__layout">
         <div class="case-feature__visual">
-          <a class="case-feature__frame" href="https://clinique8260.pages.dev/fr/" target="_blank" rel="noopener noreferrer">
-            <div class="case-feature__mock-bar">
-              <span></span><span></span><span></span>
-              <div class="case-feature__mock-url" data-i18n="work.case.mockUrl">clinique8260.pages.dev</div>
+          <div class="case-feature__sphere">
+            <div class="case-feature__orbit" id="case-orbit">
+              <div class="case-feature__face case-feature__face--front">
+                <div class="case-feature__frame">
+                  <div class="case-feature__mock-bar">
+                    <span></span><span></span><span></span>
+                    <div class="case-feature__mock-url" data-i18n="work.case.mockUrl">clinique8260.pages.dev</div>
+                  </div>
+                  <img class="case-feature__shot" src="assets/images/clinique-8260-preview.png" width="2880" height="1800" loading="lazy" decoding="async" alt="Homepage of the Clinique 8260 concept redesign — bilingual family-medicine clinic site">
+                </div>
+              </div>
+              <div class="case-feature__face case-feature__face--back" aria-hidden="true">
+                <div class="case-feature__frame">
+                  <div class="case-feature__mock-bar">
+                    <span></span><span></span><span></span>
+                    <div class="case-feature__mock-url">clinique8260.pages.dev</div>
+                  </div>
+                  <img class="case-feature__shot" src="assets/images/clinique-8260-preview.png" width="2880" height="1800" loading="lazy" decoding="async" alt="">
+                </div>
+              </div>
             </div>
-            <img class="case-feature__shot" src="assets/images/clinique-8260-preview.png" width="2880" height="1800" loading="lazy" decoding="async" alt="Homepage of the Clinique 8260 concept redesign — bilingual family-medicine clinic site">
-            <span class="case-feature__frame-cta" data-i18n="work.case.visit">Visit live site →</span>
-          </a>
+          </div>
+          <div class="case-feature__floor" aria-hidden="true"></div>
         </div>
 
         <div class="case-feature__copy">
@@ -488,6 +503,7 @@
   <script src="js/hover-spotlight.js" defer></script>
   <script src="js/magnetic.js" defer></script>
   <script src="js/title-reveal.js" defer></script>
+  <script src="js/case-orbit.js" defer></script>
   <script>
     // Proof embed: click-to-interact activation. Keeps the iframe inert
     // until the visitor consciously enables it, preventing scroll-jacking.

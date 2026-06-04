@@ -1186,90 +1186,158 @@
 .case-feature__frame-label--after::before { background: var(--orange); }
 
 /* ============================================================
-   CASE-FEATURE — 3D blur reveal interaction
-   The mock sits tilted in 3D space, blurred by default. On hover
-   or focus, the blur clears and the device "leans in" to face the
-   viewer (flatten + scale + deeper shadow). Hover-capable devices
-   only; mobile/touch sees the mock clearly always. Reduced-motion
-   kills both the 3D tilt and the blur.
+   CASE-FEATURE — holographic orbiting screen
+   The framed screenshot is a double-sided 3D card that auto-spins
+   360° around the Y axis on an invisible sphere (perspective + a
+   small Z depth + a gentle float), styled as a projected hologram:
+   translucent glass frame, dual-tone rim glow, a light-pool beneath,
+   scanlines, and a sheen that sweeps once per rotation. Both faces
+   carry the (readable) screenshot, so the screen is visible through
+   the full turn — you never see a blank reverse side.
+
+   Pure CSS transforms (compositor-only — no main-thread/paint cost).
+   js/case-orbit.js pauses it off-screen / on tab-hide / on hover.
+   Reduced motion freezes it front-facing and flat.
    ============================================================ */
 
 .case-feature__visual {
-  perspective: 1400px;
+  perspective: 1600px;
+  perspective-origin: 50% 42%;
   position: relative;
-  outline: none;
-}
-.case-feature__visual:focus-visible {
-  outline: 2px solid var(--orange);
-  outline-offset: 10px;
-  border-radius: 14px;
+  overflow: visible;
 }
 
-.case-feature__mock {
-  transition:
-    filter    0.65s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+.case-feature__sphere {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
   transform-style: preserve-3d;
-  will-change: transform, filter;
+  transform: rotateX(6deg);
+  animation: caseFloat 7s ease-in-out infinite;
 }
 
-/* Reveal hint — small typographic pill, top-center */
-.case-feature__reveal-hint {
+.case-feature__orbit {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  animation: caseSpin 20s linear infinite;
+  will-change: transform;
+}
+
+.case-feature__face {
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.case-feature__face--front { position: relative; transform: translateZ(16px); }
+.case-feature__face--back {
   position: absolute;
-  top: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
-  font-family: var(--font-body);
-  font-size: 10px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
-  background: rgba(0, 0, 0, 0.55);
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  inset: 0;
+  transform: rotateY(180deg) translateZ(16px);
+}
+
+/* Holographic frame treatment (scoped to the orbiting faces only, so the
+   before/after compare frames elsewhere keep their plain styling). */
+.case-feature__face .case-feature__frame {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  transform: none;
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(10, 10, 12, 0.82);
+  box-shadow:
+    0 50px 90px -28px rgba(0, 0, 0, 0.82),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 0 42px -6px rgba(232, 84, 10, 0.38),
+    0 0 64px -12px rgba(96, 196, 222, 0.20);
+}
+.case-feature__face .case-feature__frame:hover { transform: none; }
+.case-feature__face .case-feature__shot { opacity: 0.95; }
+
+/* sheen sweep — one diagonal pass per rotation */
+.case-feature__face .case-feature__frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
   pointer-events: none;
-  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  background: linear-gradient(
+    115deg,
+    transparent 32%,
+    rgba(255, 255, 255, 0.10) 47%,
+    rgba(150, 215, 235, 0.18) 50%,
+    rgba(255, 255, 255, 0.06) 53%,
+    transparent 70%
+  );
+  background-size: 280% 100%;
+  background-position: 120% 0;
+  mix-blend-mode: screen;
+  animation: caseSheen 20s linear infinite;
+}
+/* scanlines */
+.case-feature__face .case-feature__frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05) 0 1px,
+    transparent 1px 3px
+  );
+  opacity: 0.45;
+  mix-blend-mode: overlay;
 }
 
-/* Hover-capable devices: blur + 3D tilt by default; clear on interact */
-@media (hover: hover) and (pointer: fine) {
-  .case-feature__mock {
-    filter: blur(11px) saturate(0.92);
-    transform: rotateY(-9deg) rotateX(4deg);
-    cursor: pointer;
-  }
-  .case-feature__visual:hover .case-feature__mock,
-  .case-feature__visual:focus .case-feature__mock,
-  .case-feature__visual:focus-within .case-feature__mock {
-    filter: blur(0) saturate(1);
-    transform: rotateY(0deg) rotateX(0deg) scale(1.02);
-    box-shadow:
-      0 60px 100px -20px rgba(0, 0, 0, 0.80),
-      0 30px 60px -10px rgba(232, 84, 10, 0.45);
-  }
-  .case-feature__visual:hover .case-feature__reveal-hint,
-  .case-feature__visual:focus .case-feature__reveal-hint,
-  .case-feature__visual:focus-within .case-feature__reveal-hint {
-    opacity: 0;
-  }
+/* projected light-pool beneath the hologram */
+.case-feature__floor {
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  width: 60%;
+  height: 64px;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(ellipse at center, rgba(232, 84, 10, 0.34), transparent 70%),
+    radial-gradient(ellipse at center, rgba(96, 196, 222, 0.14), transparent 62%);
+  filter: blur(11px);
+  z-index: 0;
+  pointer-events: none;
+  animation: caseFloorPulse 7s ease-in-out infinite;
 }
 
-/* Mobile/touch: hide the hint, show mock as-is */
-@media (hover: none), (pointer: coarse) {
-  .case-feature__reveal-hint { display: none; }
+@keyframes caseSpin {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+@keyframes caseFloat {
+  0%, 100% { transform: rotateX(6deg) translateY(0); }
+  50%      { transform: rotateX(6deg) translateY(-11px); }
+}
+@keyframes caseSheen {
+  from { background-position: 120% 0; }
+  to   { background-position: -180% 0; }
+}
+@keyframes caseFloorPulse {
+  0%, 100% { opacity: 0.55; transform: translateX(-50%) scaleX(1); }
+  50%      { opacity: 0.34; transform: translateX(-50%) scaleX(0.84); }
 }
 
-/* Reduced motion: kill 3D and blur entirely */
+/* Tablet / mobile */
+@media (max-width: 980px) {
+  .case-feature__sphere { max-width: 460px; }
+}
+
+/* Reduced motion: freeze flat + front-facing, drop the holo motion */
 @media (prefers-reduced-motion: reduce) {
-  .case-feature__mock {
-    filter: none !important;
-    transform: none !important;
-    transition: none !important;
-  }
-  .case-feature__reveal-hint { display: none; }
+  .case-feature__sphere,
+  .case-feature__orbit,
+  .case-feature__floor,
+  .case-feature__face .case-feature__frame::before { animation: none !important; }
+  .case-feature__sphere { transform: none; }
+  .case-feature__orbit { transform: none; }
 }
 
 /* ============================================================
