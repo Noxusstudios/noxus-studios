@@ -61,9 +61,76 @@
     .error-404__inner {
       position: relative;
       z-index: 1;
-      max-width: 720px;
-      margin: 0 auto;
+      max-width: 760px;
+      margin: 0;
       text-align: left;
+    }
+    .error-404__ghost {
+      position: absolute;
+      right: -2.5vw;
+      bottom: -8vh;
+      font-family: var(--font-display);
+      font-size: clamp(300px, 48vw, 800px);
+      line-height: 0.78;
+      letter-spacing: -0.04em;
+      color: rgba(26, 20, 17, 0.035);
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+    .error-404__jump {
+      margin-top: 52px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-light);
+      max-width: 540px;
+    }
+    .error-404__jump-label {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-on-light-muted);
+      margin-bottom: 15px;
+    }
+    .error-404__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .error-404__links a {
+      position: relative;
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+      color: var(--text-on-light-primary);
+      padding-bottom: 4px;
+      transition: color 200ms cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    .error-404__links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 260ms cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    .error-404__links a:hover,
+    .error-404__links a:focus-visible { color: var(--orange-on-light); }
+    .error-404__links a:hover::after,
+    .error-404__links a:focus-visible::after { transform: scaleX(1); }
+    .error-404__links a:focus-visible {
+      outline: 2px solid var(--orange-on-light);
+      outline-offset: 3px;
     }
     .error-404__eyebrow {
       font-family: var(--font-body);
@@ -158,6 +225,8 @@
       .error-404 { padding: 64px 24px 88px; }
       .error-404__ctas { flex-direction: column; align-items: stretch; }
       .error-404__cta { justify-content: center; }
+      .error-404__ghost { font-size: clamp(220px, 78vw, 360px); right: -6vw; bottom: -4vh; }
+      .error-404__jump { margin-top: 40px; }
     }
 
     /* Dark theme override */
@@ -186,6 +255,13 @@
         radial-gradient(50% 40% at 80% 10%, rgba(232, 84, 10, 0.18), transparent 65%),
         radial-gradient(40% 30% at 10% 90%, rgba(232, 84, 10, 0.10), transparent 70%);
     }
+    :root.dark .error-404__ghost { color: rgba(255, 255, 255, 0.035); }
+    :root.dark .error-404__jump { border-top-color: rgba(255, 255, 255, 0.10); }
+    :root.dark .error-404__jump-label { color: rgba(255, 255, 255, 0.42); }
+    :root.dark .error-404__links a { color: #fff; }
+    :root.dark .error-404__links a:hover,
+    :root.dark .error-404__links a:focus-visible { color: var(--orange); }
+    :root.dark .error-404__links a:focus-visible { outline-color: var(--orange); }
   </style>
 </head>
 <body>
@@ -265,6 +341,7 @@
 
   <main>
     <section class="error-404 has-grain" data-theme="light" style="--grain-opacity: 0.07;">
+      <span class="error-404__ghost" aria-hidden="true">404</span>
       <div class="error-404__inner">
         <div class="error-404__eyebrow" data-i18n="error404.eyebrow">// page not found</div>
         <h1 class="error-404__num" data-i18n="error404.num" data-i18n-html><em>4</em>0<em>4</em>.</h1>
@@ -273,9 +350,18 @@
           The page you were looking for doesn't exist (or moved). Let's get you back to something that does.
         </p>
         <div class="error-404__ctas">
-          <a href="index.html" class="error-404__cta error-404__cta--primary" data-i18n="error404.ctaPrimary">Back to home →</a>
-          <a href="work.html" class="error-404__cta error-404__cta--secondary" data-i18n="error404.ctaSecondary">See the work</a>
+          <a href="index.html" class="error-404__cta error-404__cta--primary" data-magnetic data-i18n="error404.ctaPrimary">Back to home →</a>
+          <a href="work.html" class="error-404__cta error-404__cta--secondary" data-magnetic data-i18n="error404.ctaSecondary">See the work</a>
         </div>
+        <nav class="error-404__jump" aria-label="Quick links">
+          <span class="error-404__jump-label" data-i18n="error404.jumpLabel">Quick links</span>
+          <ul class="error-404__links">
+            <li><a href="services.html" data-i18n="common.nav.services">Services</a></li>
+            <li><a href="work.html"     data-i18n="common.nav.work">Work</a></li>
+            <li><a href="about.html"    data-i18n="common.nav.about">About</a></li>
+            <li><a href="contact.html"  data-i18n="common.nav.contact">Contact</a></li>
+          </ul>
+        </nav>
       </div>
     </section>
   </main>
@@ -316,5 +402,6 @@
   <script src="js/i18n.js" defer></script>
   <script src="js/nav.js" defer></script>
   <script src="js/theme-toggle.js" defer></script>
+  <script src="js/magnetic.js" defer></script>
 </body>
 </html>

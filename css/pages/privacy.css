@@ -155,6 +155,224 @@
   .privacy-body { padding: 36px 20px 48px; }
 }
 
+/* ============================================================
+   DOSSIER REVAMP — built by js/legal.js (progressive enhancement)
+   Hero ghost word + meta chips, two-column grid with a sticky
+   scroll-spy section index, margin section numbers, reading
+   progress bar, on-scroll section reveals. Falls back to the
+   clean single-column document above if JS never runs.
+   ============================================================ */
+
+/* ---- Hero: presence + ghost word + meta chips ---- */
+.privacy-hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: 168px;
+}
+.privacy-hero__inner { position: relative; z-index: 1; }
+
+.privacy-hero__ghost {
+  position: absolute;
+  right: -1.5vw;
+  top: 56%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(150px, 27vw, 440px);
+  line-height: 0.8;
+  letter-spacing: -0.02em;
+  color: rgba(17, 17, 17, 0.035);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.privacy-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 26px;
+}
+.privacy-hero__chip {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.01em;
+  color: var(--text-on-light-secondary);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  padding: 6px 15px;
+  white-space: nowrap;
+}
+.privacy-hero__chip strong {
+  color: var(--text-on-light-primary);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Two-column grid ---- */
+.privacy-body__inner.legal-grid {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 720px);
+  gap: 72px;
+  align-items: start;
+  max-width: 1044px;
+}
+
+/* ---- Sticky section index (left rail) ---- */
+.legal-index__inner {
+  position: sticky;
+  top: 116px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  max-height: calc(100dvh - 150px);
+  overflow-y: auto;
+  padding-right: 6px;
+  -webkit-overflow-scrolling: touch;
+}
+.legal-index__heading {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-on-light-muted);
+  margin: 0 0 16px 12px;
+}
+.legal-index__item {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 11px;
+  align-items: baseline;
+  padding: 7px 12px;
+  border-radius: 9px;
+  color: var(--text-on-light-muted);
+  transition:
+    color      220ms cubic-bezier(0.32, 0.72, 0, 1),
+    background 220ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.legal-index__num {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+}
+.legal-index__label {
+  font-family: var(--font-ui);
+  font-size: 12.5px;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+}
+.legal-index__item:hover {
+  color: var(--text-on-light-primary);
+  background: rgba(17, 17, 17, 0.04);
+}
+.legal-index__item.is-active {
+  color: var(--text-on-light-primary);
+  background: rgba(156, 58, 0, 0.07);
+}
+.legal-index__item.is-active .legal-index__num {
+  color: var(--orange-on-light);
+  opacity: 1;
+}
+.legal-index__item:focus-visible {
+  outline: 2px solid var(--orange-on-light);
+  outline-offset: 2px;
+}
+
+/* ---- Content column: section margin numbers + anchor offset ---- */
+.privacy-section { scroll-margin-top: 112px; }
+.legal-content .privacy-section { position: relative; }
+.legal-content .privacy-section::before {
+  content: attr(data-num);
+  position: absolute;
+  left: -72px;
+  top: 1px;
+  width: 56px;
+  text-align: right;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--orange-on-light);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Reading progress bar ---- */
+.legal-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 2px;
+  z-index: 200;
+  pointer-events: none;
+  background: transparent;
+}
+.legal-progress__fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+/* ---- Tablet / mobile: drop the rail, inline the numbers ---- */
+@media (max-width: 960px) {
+  .privacy-hero { padding-top: 132px; }
+  .privacy-body__inner.legal-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    max-width: 720px;
+  }
+  .legal-index { display: none; }
+  .legal-content .privacy-section::before {
+    position: static;
+    display: block;
+    width: auto;
+    text-align: left;
+    margin-bottom: 7px;
+    font-size: 12px;
+  }
+  .privacy-hero__ghost { font-size: clamp(120px, 34vw, 240px); right: -4vw; }
+}
+
+@media (max-width: 480px) {
+  .privacy-hero__meta { gap: 7px; }
+  .privacy-hero__chip { font-size: 11px; padding: 5px 12px; }
+}
+
+/* ---- Reduced motion: progress + reveals settle instantly ---- */
+@media (prefers-reduced-motion: reduce) {
+  .legal-progress__fill { transition: none; }
+  .legal-index__item { transition: none; }
+}
+
+/* ---- Dark mode (dossier elements) ---- */
+:root.dark .privacy-hero__ghost { color: rgba(255, 255, 255, 0.04); }
+:root.dark .privacy-hero__chip {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--border-dark);
+  color: rgba(232, 220, 203, 0.6);
+}
+:root.dark .privacy-hero__chip strong { color: #E8DCCB; }
+:root.dark .legal-index__heading { color: rgba(232, 220, 203, 0.4); }
+:root.dark .legal-index__item { color: rgba(232, 220, 203, 0.45); }
+:root.dark .legal-index__item:hover {
+  color: #E8DCCB;
+  background: rgba(255, 255, 255, 0.05);
+}
+:root.dark .legal-index__item.is-active {
+  color: #E8DCCB;
+  background: rgba(232, 84, 10, 0.12);
+}
+:root.dark .legal-index__item.is-active .legal-index__num { color: var(--orange); }
+:root.dark .legal-index__item:focus-visible { outline-color: var(--orange); }
+:root.dark .legal-content .privacy-section::before { color: var(--orange); }
+
 /* ---- Dark mode ---- */
 :root.dark .privacy-hero {
   background:

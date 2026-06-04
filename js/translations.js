@@ -48,6 +48,7 @@ window.NOXUS_I18N = {
     'error404.body':         "The page you were looking for doesn't exist (or moved). Let's get you back to something that does.",
     'error404.ctaPrimary':   'Back to home →',
     'error404.ctaSecondary': 'See the work',
+    'error404.jumpLabel':    'Quick links',
 
     /* -------- HOME (index.html) -------- */
     'home.title': 'Noxus — Hand-coded studio. Built in 4-7 days. Starting at $500 USD.',
@@ -849,6 +850,7 @@ window.NOXUS_I18N = {
     'error404.body':         "La page que vous cherchiez n'existe pas (ou a été déplacée). Retournons vers quelque chose qui existe.",
     'error404.ctaPrimary':   "Retour à l'accueil →",
     'error404.ctaSecondary': 'Voir les projets',
+    'error404.jumpLabel':    'Accès rapide',
 
     /* -------- HOME -------- */
     'home.title': 'Noxus — Studio codé à la main. Livré en 4-7 jours. À partir de 500 $ USD.',
