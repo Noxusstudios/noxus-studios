@@ -1,10 +1,9 @@
 /* ============================================================
    NOXUS — case-orbit.js
-   The case-study screen as a slowly-rotating orb. By default the orb is
-   painted in the CLIENT SITE'S OWN COLOURS (teal + coral + cream, sampled
-   from the screenshot) as smooth longitude bands that sweep around as it
-   spins. Hovering reveals a "sneak peek" of the real screenshot in a soft
-   lens that follows the cursor — the orb keeps turning under it.
+   The case-study screen as a slowly-rotating orb in the client's dominant
+   brand colour (a deep teal body with a lighter-teal sheen that sweeps round
+   as it spins). Hovering reveals a "sneak peek" of the real screenshot in a
+   soft lens that follows the cursor — the orb keeps turning under it.
 
    Self-contained raw WebGL — no library, one texture, one draw call/frame.
    The palette is computed in the shader (no mipmap wash). Lazy: starts only
@@ -79,11 +78,8 @@
     '  float ndv=max(dot(N,V),0.0);' +
     '  float fres=pow(1.0-ndv,3.0);' +
     '  float t=atan(vMod.z,vMod.x)*0.1591549+0.5;' +   // longitude 0..1
-    '  vec3 pal=uTeal;' +
-    '  pal=mix(pal,uCream, smoothstep(0.12,0.28,t));' +
-    '  pal=mix(pal,uCoral, smoothstep(0.34,0.50,t));' +
-    '  pal=mix(pal,uCream, smoothstep(0.56,0.70,t));' +
-    '  pal=mix(pal,uTeal,  smoothstep(0.78,0.94,t));' +
+    '  float sheen=0.5+0.5*cos((t-0.5)*6.2831853);' +   // one soft highlight band
+    '  vec3 pal=mix(uCream, uTeal, sheen*0.9);' +        // uCream=deep teal, uTeal=light teal sheen
     '  vec2 d=vScr-uMouse; d.x*=uAspect;' +
     '  float lens=smoothstep(uRadius,uRadius*0.42,length(d))*uHover;' +
     '  vec3 shot=texture2D(uShot,vUV).rgb;' +
@@ -99,31 +95,15 @@
   var FOV = 0.62, TILT = 0.32, FIT = 0.66;
   var DIST = 5, angle = 0, lastT = 0;
   var mouseX = 0, mouseY = 0, hover = 0, hoverTarget = 0, RADIUS = 0.5;
-  var teal = [0.16, 0.60, 0.55], coral = [0.91, 0.47, 0.35], cream = [0.93, 0.86, 0.78];
+  // Single dominant brand teal: a light-teal sheen (uTeal) over a deep teal
+  // body (uCream). coral is unused now.
+  var teal = [0.17, 0.53, 0.53], coral = [0.91, 0.47, 0.35], cream = [0.05, 0.18, 0.20];
 
   function compile(type, src) {
     var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
     return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
   }
 
-  // Pull the site's two signature hues (a cool teal + a warm coral) from the shot.
-  function samplePalette() {
-    var s = document.createElement('canvas'); s.width = 64; s.height = 40;
-    var sx = s.getContext('2d');
-    var cov = Math.max(64 / img.naturalWidth, 40 / img.naturalHeight);
-    var dw = img.naturalWidth * cov, dh = img.naturalHeight * cov;
-    sx.drawImage(img, (64 - dw) / 2, (40 - dh) / 2, dw, dh);
-    var d = null; try { d = sx.getImageData(0, 0, 64, 40).data; } catch (e) {}
-    var t = [42, 153, 141], c = [232, 119, 90], tS = 0, cS = 0;
-    if (d) for (var i = 0; i < d.length; i += 4) {
-      var r = d[i], g = d[i+1], b = d[i+2], sat = Math.max(r, g, b) - Math.min(r, g, b);
-      if (sat < 45) continue;
-      if (b > r && g > r && sat > tS) { tS = sat; t = [r, g, b]; }
-      if (r > g && r > b && sat > cS) { cS = sat; c = [r, g, b]; }
-    }
-    teal = [t[0]/255, t[1]/255, t[2]/255];
-    coral = [c[0]/255, c[1]/255, c[2]/255];
-  }
 
   function initGL() {
     canvas = document.createElement('canvas');
@@ -161,8 +141,6 @@
     gl.bindBuffer(gl.ARRAY_BUFFER, buf.pos); gl.bufferData(gl.ARRAY_BUFFER, geo.pos, gl.STATIC_DRAW);
     gl.bindBuffer(gl.ARRAY_BUFFER, buf.uv);  gl.bufferData(gl.ARRAY_BUFFER, geo.uv,  gl.STATIC_DRAW);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buf.idx); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, geo.idx, gl.STATIC_DRAW);
-
-    samplePalette();
 
     // One POT texture of the screenshot (cover-fit, aspect preserved — no stretch),
     // sharp + mipmapped for the hover reveal.
