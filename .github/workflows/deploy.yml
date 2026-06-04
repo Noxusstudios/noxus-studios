@@ -8,6 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # Content-hash cache-busting: stamp ?v=<hash> on every CSS/JS ref so
+      # returning devices never get stuck on a stale immutable-cached asset.
+      - run: node stamp-assets.mjs
       - uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
