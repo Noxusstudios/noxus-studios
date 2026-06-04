@@ -485,8 +485,11 @@
    flip it independently from .split-section / .split-left */
 :root:not(.dark) .split-right {
   background:
-    radial-gradient(ellipse at 70% 60%, rgba(232, 84, 10, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 50%, rgba(232, 84, 10, 0.07) 0%, transparent 58%),
     var(--off-white);
+}
+:root:not(.dark) .split-right::before {
+  color: rgba(20, 12, 6, 0.045);
 }
 /* Divider rules between split-left and split-right */
 :root:not(.dark) .split-divider {

@@ -1033,15 +1033,36 @@
 .split-diamond.inactive { background: rgba(255, 255, 255, 0.20); }
 
 .split-right {
-  padding: 48px 48px 40px;
+  position: relative;
+  padding: 56px 56px 40px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  gap: 24px;
+  justify-content: center;
+  gap: 22px;
+  overflow: hidden;
   background:
-    radial-gradient(ellipse at 70% 60%, rgba(60, 30, 10, 0.20) 0%, transparent 55%),
+    radial-gradient(ellipse at 78% 50%, rgba(60, 30, 10, 0.24) 0%, transparent 58%),
     var(--dark-bg);
 }
+/* Ghost index numeral — fills the empty right field with depth and
+   echoes the 01/03 counter as an oversized editorial watermark. */
+.split-right::before {
+  content: attr(data-index);
+  position: absolute;
+  top: 50%;
+  right: -1.5vw;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(220px, 28vw, 440px);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.026);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+/* Keep real content above the watermark. */
+.split-right > * { position: relative; z-index: 1; }
 .split-right > .split-counter { margin-top: auto; }
 .split-plus-icon {
   width: 28px; height: 28px;
@@ -1069,10 +1090,21 @@
   text-transform: uppercase;
   color: var(--text-on-dark-secondary);
   line-height: 1.7;
-  max-width: 320px;
-  text-align: center;
-  align-self: center;
+  max-width: 38ch;
+  text-align: left;
+  align-self: flex-start;
   margin: 0;
+}
+/* Short orange kicker rule anchors the supporting copy to the left
+   edge, matching the headline alignment. */
+.split-body-text::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--orange);
+  margin-bottom: 18px;
 }
 .split-outcome {
   font-family: var(--font-body);
@@ -1080,9 +1112,9 @@
   font-style: italic;
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.55;
-  max-width: 380px;
-  text-align: center;
-  align-self: center;
+  max-width: 42ch;
+  text-align: left;
+  align-self: flex-start;
   margin: 14px 0 0;
 }
 .split-counter {
