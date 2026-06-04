@@ -378,7 +378,9 @@
   align-items: center;
   gap: 10px;
   padding: 14px 28px;
-  background: var(--orange);
+  /* Deeper orange so the small (11px) white label clears WCAG AA 4.5:1
+     (brand --orange #E8540A only reaches 3.68:1 under white). */
+  background: #C9480A;
   color: white;
   font-family: var(--font-body);
   font-size: 11px;
@@ -392,7 +394,7 @@
 }
 .contact-form__submit:hover,
 .contact-form__submit:active,
-.contact-form__submit:focus-visible { background: var(--orange-hover); }
+.contact-form__submit:focus-visible { background: #B5400A; }
 .contact-form__submit { -webkit-tap-highlight-color: transparent; }
 
 /* ============================================================

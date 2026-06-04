@@ -20,7 +20,7 @@
   /* Core palette */
   --orange:          #E8540A;
   --orange-hover:    #FF6520;
-  --orange-on-light: #B83F00;  /* darker variant for orange TEXT on cream — WCAG AA 4.5:1+ */
+  --orange-on-light: #9C3A00;  /* darker variant for orange TEXT on cream — WCAG AA 4.5:1+ even on the warm #E8DCCB panels */
   --black:           #111111;
   --dark-bg:         #151515;
   --dark-surface:    #1E1E1E;
@@ -40,8 +40,8 @@
      WCAG AA (4.5:1) on cream backgrounds; visual hierarchy is now carried
      by font weight/size rather than color depth. */
   --text-on-light-primary:   #111111;
-  --text-on-light-secondary: #6B6B6B;
-  --text-on-light-muted:     #6B6B6B;
+  --text-on-light-secondary: #5F5F5F;
+  --text-on-light-muted:     #5F5F5F;
   --text-decorative-light:   #999999;
 
   /* Borders */

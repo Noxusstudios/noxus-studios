@@ -169,7 +169,9 @@
 .lang-toggle[disabled] { pointer-events: none; }
 
 .lang-toggle__opt {
-  opacity: 0.45;
+  /* 0.62 (was 0.45) so the dimmed inactive language still clears WCAG AA
+     4.5:1 on cream; the active opt's orange + full opacity keeps it distinct. */
+  opacity: 0.62;
   transition: opacity 220ms ease, color 220ms ease;
 }
 .lang-toggle__opt.is-active {

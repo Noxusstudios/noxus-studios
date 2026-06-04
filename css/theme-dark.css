@@ -1068,6 +1068,41 @@
   vertical-align: top;
 }
 
+/* A11y: orange heading emphasis (the italic accent word) on cream sections.
+   Raw --orange (#E8540A) only clears ~2.7-3.2:1 on the warm cream panels —
+   below AA. In light mode these route through the AA-safe --orange-on-light.
+   Dark-mode keeps raw --orange (it reads fine on the dark substrate). */
+:root:not(.dark) .founder__title-orange,
+:root:not(.dark) .values__heading em,
+:root:not(.dark) .values__card-name em,
+:root:not(.dark) .timeline__heading em,
+:root:not(.dark) .timeline__num em,
+:root:not(.dark) .methods__heading em,
+:root:not(.dark) .contact-form-section__heading em,
+:root:not(.dark) .expect__heading em,
+:root:not(.dark) .expect__step-name em,
+:root:not(.dark) .work-grid-section__heading em,
+:root:not(.dark) .impact__heading em,
+:root:not(.dark) .about-cta__title em,
+:root:not(.dark) .case-feature__mock-hl em,
+:root:not(.dark) .svc-tiers__heading em,
+:root:not(.dark) .svc-design__heading em,
+:root:not(.dark) .svc-caps__heading em,
+:root:not(.dark) .svc-tech__heading em,
+:root:not(.dark) .svc-addon__heading em,
+:root:not(.dark) .svc-tech__cat-title {
+  color: var(--orange-on-light);
+}
+
+/* Orange inline links in legal-page body copy + the active EN/FR toggle:
+   raw --orange is only 3.16:1 on cream at small sizes. */
+:root:not(.dark) .privacy-section__body a {
+  color: var(--orange-on-light);
+}
+:root:not(.dark) .site-nav:not(.on-dark) .lang-toggle__opt.is-active {
+  color: var(--orange-on-light);
+}
+
 /* A11y: orange eyebrow TEXT on the cream substrate only clears 3.16:1 at
    #E8540A. Light mode uses the AA-safe --orange-on-light (#B83F00, 4.8:1).
    The decorative ::before hairline stays bright orange (1px graphic, 3:1). */
