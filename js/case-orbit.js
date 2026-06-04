@@ -79,7 +79,8 @@
     '  float fres=pow(1.0-ndv,3.0);' +
     '  float t=atan(vMod.z,vMod.x)*0.1591549+0.5;' +   // longitude 0..1
     '  float sheen=0.5+0.5*cos((t-0.5)*6.2831853);' +   // one soft highlight band
-    '  vec3 pal=mix(uCream, uTeal, sheen*0.9);' +        // uCream=deep teal, uTeal=light teal sheen
+    '  sheen=pow(sheen,0.72);' +                          // bias the band wider/brighter
+    '  vec3 pal=mix(uCream, uTeal, sheen);' +             // uCream=deep teal, uTeal=light teal sheen
     '  vec2 d=vScr-uMouse; d.x*=uAspect;' +
     '  float lens=smoothstep(uRadius,uRadius*0.42,length(d))*uHover;' +
     '  vec3 shot=texture2D(uShot,vUV).rgb;' +
@@ -97,7 +98,7 @@
   var mouseX = 0, mouseY = 0, hover = 0, hoverTarget = 0, RADIUS = 0.5;
   // Single dominant brand teal: a light-teal sheen (uTeal) over a deep teal
   // body (uCream). coral is unused now.
-  var teal = [0.17, 0.53, 0.53], coral = [0.91, 0.47, 0.35], cream = [0.05, 0.18, 0.20];
+  var teal = [0.27, 0.68, 0.67], coral = [0.91, 0.47, 0.35], cream = [0.07, 0.25, 0.27];
 
   function compile(type, src) {
     var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
