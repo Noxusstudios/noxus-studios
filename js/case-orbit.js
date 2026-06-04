@@ -86,7 +86,7 @@
 
   /* ---------- GL bootstrap ---------- */
   var canvas, gl, prog, loc, buf, geo, tex, raf = 0, started = false, ready = false;
-  var inView = false, visible = true, hovering = false;
+  var inView = false, visible = true;
   var FOV = 0.62, TILT = 0.32, FIT = 0.66;   // FIT = globe size vs the smaller box dimension
   var DIST = 5, angle = 0, lastT = 0;
 
@@ -126,17 +126,16 @@
     gl.bindBuffer(gl.ARRAY_BUFFER, buf.uv);  gl.bufferData(gl.ARRAY_BUFFER, geo.uv,  gl.STATIC_DRAW);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buf.idx); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, geo.idx, gl.STATIC_DRAW);
 
-    // Power-of-two copy of the screenshot so we can REPEAT + mipmap (seamless wrap).
-    // Cover-fit (preserve aspect — no stretch) + blur so the page reads as an
-    // abstract holographic surface, not a legible screenshot.
-    var pot = document.createElement('canvas'); pot.width = 1024; pot.height = 512;
+    // Power-of-two copy of the screenshot so we can REPEAT + mipmap (seamless
+    // wrap). Cover-fit (preserve aspect — no stretch), sharp + high-res so the
+    // real website reads cleanly on the surface.
+    var pot = document.createElement('canvas'); pot.width = 2048; pot.height = 1024;
     var pctx = pot.getContext('2d');
-    pctx.fillStyle = '#0c0c0e'; pctx.fillRect(0, 0, 1024, 512);
-    pctx.filter = 'blur(7px)';
-    var cov = Math.max(1024 / img.naturalWidth, 512 / img.naturalHeight);
+    pctx.imageSmoothingEnabled = true; pctx.imageSmoothingQuality = 'high';
+    pctx.fillStyle = '#0c0c0e'; pctx.fillRect(0, 0, 2048, 1024);
+    var cov = Math.max(2048 / img.naturalWidth, 1024 / img.naturalHeight);
     var dw = img.naturalWidth * cov, dh = img.naturalHeight * cov;
-    pctx.drawImage(img, (1024 - dw) / 2, (512 - dh) / 2, dw, dh);
-    pctx.filter = 'none';
+    pctx.drawImage(img, (2048 - dw) / 2, (1024 - dh) / 2, dw, dh);
     tex = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_2D, tex);
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
@@ -196,18 +195,8 @@
     gl.uniformMatrix4fv(loc.uMVP, false, mvp);
     gl.uniformMatrix4fv(loc.uMV, false, mv);
     gl.drawElements(gl.TRIANGLES, geo.idx.length, gl.UNSIGNED_SHORT, 0);
-
-    // Atmosphere pass: slightly larger sphere, additive halo, cull front.
-    var modelA = mul(model, scale(1.14));
-    var mvA = mul(view, modelA); mvA[13] += bob;
-    var mvpA = mul(proj, mvA);
-    gl.depthMask(false);
-    gl.cullFace(gl.FRONT);
-    gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
-    gl.uniform1f(loc.uMode, 1.0);
-    gl.uniformMatrix4fv(loc.uMVP, false, mvpA);
-    gl.uniformMatrix4fv(loc.uMV, false, mvA);
-    gl.drawElements(gl.TRIANGLES, geo.idx.length, gl.UNSIGNED_SHORT, 0);
+    // (No external atmosphere halo — it reads as a grey ring on the light
+    // section. The in-shader fresnel rim gives the edge its glow instead.)
   }
 
   function frame(t) {
@@ -219,7 +208,7 @@
     if (running()) raf = requestAnimationFrame(frame);
   }
 
-  function running() { return ready && inView && visible && !hovering; }
+  function running() { return ready && inView && visible; }
   function tick() {
     if (running() && !raf) { lastT = 0; raf = requestAnimationFrame(frame); }
     else if (!running() && raf) { cancelAnimationFrame(raf); raf = 0; }
@@ -256,8 +245,6 @@
   setTimeout(function () { if (!started && img.complete) boot(); }, 1500);
 
   document.addEventListener('visibilitychange', function () { visible = !document.hidden; tick(); });
-  visual.addEventListener('pointerenter', function () { hovering = true; tick(); });
-  visual.addEventListener('pointerleave', function () { hovering = false; tick(); });
 
   var rt;
   window.addEventListener('resize', function () {
