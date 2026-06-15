@@ -32,11 +32,24 @@
     #F0E6DF;
 }
 
-.hero-title-block {
+/* Left lede column: title + tagline (top) and description + buttons
+   (below), centred as one group. Both blocks used to be independently
+   absolute — the vertically-centred title sagged onto the bottom-anchored
+   description on any viewport shorter than ~1000px (laptops, windowed
+   desktop). Grouping them in one flex column makes overlap impossible at
+   any height, the same DOM-stacking principle the mobile layout uses. */
+.hero-lede {
   position: absolute;
-  top: 50%;
   left: 40px;
-  transform: translateY(-45%);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(28px, 5vh, 84px);
+}
+.hero-title-block {
   z-index: 1;
 }
 .hero-title {
@@ -131,9 +144,6 @@
 
 /* Bottom-left description */
 .hero-desc-block {
-  position: absolute;
-  bottom: 200px;
-  left: 40px;
   z-index: 3;
   max-width: 340px;
 }
@@ -1623,6 +1633,7 @@
     align-items: stretch;
     padding: 104px 24px 0;
   }
+  .hero-lede,
   .hero-title-block,
   .hero-desc-block,
   .hero-price-block,
@@ -1634,6 +1645,9 @@
     max-width: none;
     width: auto;
   }
+  /* lede is just a passthrough container on mobile — let the children
+     flow with their own margins (hero-desc-block margin-top below). */
+  .hero-lede { display: block; gap: 0; }
   .hero-title { font-size: clamp(56px, 16vw, 88px); }
   .hero-image { display: none; }
   .hero-desc-block { margin-top: 30px; }
